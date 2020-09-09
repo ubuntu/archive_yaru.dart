@@ -66,6 +66,8 @@ final yaruTextTheme = TextTheme(
     button: yaruButtonStyle,
     overline: yaruOverlineStyle);
 
+// FIXME(robert-ancell): Getter or method or class?
+// FIXME(robert-ancell): Light and dark theme.
 ThemeData get yaruTheme {
   var yaru =
       ThemeData.from(colorScheme: yaruColorScheme, textTheme: yaruTextTheme);
