@@ -17,17 +17,18 @@ final yaruTextGrey = Color(0xFF111111);
 final yaruCanonicalAubergine = Color(0xFF772953);
 
 final yaruColorScheme = ColorScheme.fromSwatch(
+    // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
     primarySwatch: MaterialColor(yaruUbuntuOrange.value, {
-      50: yaruUbuntuOrange,
-      100: yaruUbuntuOrange,
-      200: yaruUbuntuOrange,
-      300: yaruUbuntuOrange,
-      400: yaruUbuntuOrange,
+      50: Color(0xFFFDEEE9),
+      100: Color(0xFFFBDDD2),
+      200: Color(0xFFF6BBA6),
+      300: Color(0xFFF29879),
+      400: Color(0xFFED764D),
       500: yaruUbuntuOrange,
-      600: yaruUbuntuOrange,
-      700: yaruUbuntuOrange,
-      800: yaruUbuntuOrange,
-      900: yaruUbuntuOrange
+      600: Color(0xFFBA431A),
+      700: Color(0xFF8C3213),
+      800: Color(0xFF5D220D),
+      900: Color(0xFF2F1106),
     }),
     primaryColorDark: yaruCoolGrey,
     accentColor: yaruUbuntuOrange,
