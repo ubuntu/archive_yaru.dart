@@ -26,14 +26,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,95 +93,71 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 250.0,
               height: 50.0,
               color: yaruUbuntuOrange,
-              child: Center(child: Text(
-                                     'yaruUbuntuOrange',
-                                     style: Theme.of(context).textTheme.headline6
-                                    )
-                            ),
+              child: Center(
+                  child: Text('yaruUbuntuOrange',
+                      style: Theme.of(context).textTheme.headline6)),
             ),
             Container(
               width: 250.0,
               height: 50.0,
               color: yaruLightAubergine,
-              child: Center(child: Text(
-                                     'yaruLightAubergine',
-                                     style: Theme.of(context).textTheme.headline6
-                                    )
-                            ),
+              child: Center(
+                  child: Text('yaruLightAubergine',
+                      style: Theme.of(context).textTheme.headline6)),
             ),
             Container(
               width: 250.0,
               height: 50.0,
               color: yaruMidAubergine,
-              child: Center(child: Text(
-                                     'yaruMidAubergine',
-                                     style: Theme.of(context).textTheme.headline6
-                                    )
-                            ),
+              child: Center(
+                  child: Text('yaruMidAubergine',
+                      style: Theme.of(context).textTheme.headline6)),
             ),
             Container(
               width: 250.0,
               height: 50.0,
               color: yaruDarkAubergine,
-              child: Center(child: Text(
-                                     'yaruDarkAubergine',
-                                     style: Theme.of(context).textTheme.headline6
-                                    )
-                            ),
+              child: Center(
+                  child: Text('yaruDarkAubergine',
+                      style: Theme.of(context).textTheme.headline6)),
             ),
             Container(
               width: 250.0,
               height: 50.0,
               color: yaruCanonicalAubergine,
-              child: Center(child: Text(
-                                     'yaruCanonicalAubergine',
-                                     style: Theme.of(context).textTheme.headline6
-                                    )
-                            ),
+              child: Center(
+                  child: Text('yaruCanonicalAubergine',
+                      style: Theme.of(context).textTheme.headline6)),
             ),
             Container(
               width: 250.0,
               height: 50.0,
               color: yaruWarmGrey,
-              child: Center(child: Text(
-                                     'yaruWarmGrey',
-                                     style: Theme.of(context).textTheme.headline6
-                                    )
-                            ),
+              child: Center(
+                  child: Text('yaruWarmGrey',
+                      style: Theme.of(context).textTheme.headline6)),
             ),
             Container(
               width: 250.0,
               height: 50.0,
               color: yaruCoolGrey,
-              child: Center(child: Text(
-                                     'yaruCoolGrey',
-                                     style: Theme.of(context).textTheme.headline6
-                                    )
-                            ),
+              child: Center(
+                  child: Text('yaruCoolGrey',
+                      style: Theme.of(context).textTheme.headline6)),
             ),
             Container(
               width: 250.0,
               height: 50.0,
               color: yaruTextGrey,
-              child: Center(child: Text(
-                                     'yaruTextGrey',
-                                     style: Theme.of(context).textTheme.headline6
-                                    )
-                            ),
-            ),
-            Text(
-              'You have pushed the button this many times:',
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline6,
+              child: Center(
+                  child: Text('yaruTextGrey',
+                      style: Theme.of(context).textTheme.headline6)),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {},
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
