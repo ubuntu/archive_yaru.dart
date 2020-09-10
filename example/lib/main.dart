@@ -93,17 +93,38 @@ class _MyHomePageState extends State<MyHomePage> {
               'overline',
               style: Theme.of(context).textTheme.overline,
             ),
+            Row(children: <Widget>[
+              FlatButton(
+                onPressed: () => print('FlatButton'),
+                child: const Text('Click me!'),
+              ),
+              SizedBox(width: 15),
+              FlatButton(
+                child: const Text("Can't click me!"),
+              ),
+            ]),
+            Row(children: <Widget>[
+              OutlineButton(
+                onPressed: () => print('OutlineButton'),
+                child: const Text('Click me!'),
+              ),
+              SizedBox(width: 15),
+              OutlineButton(
+                child: const Text("Can't click me!"),
+              ),
+            ]),
+            Row(children: <Widget>[
+              RaisedButton(
+                onPressed: () => print('RaisedButton'),
+                child: const Text('Click me!'),
+              ),
+              SizedBox(width: 15),
+              RaisedButton(
+                child: const Text("Can't click me!"),
+              ),
+            ]),
             Row(
               children: <Widget>[
-                RaisedButton(
-                  onPressed: () => print('RaisedButton'),
-                  child: const Text('Click me!'),
-                ),
-                SizedBox(width: 15),
-                RaisedButton(
-                  child: const Text("Can't click me!"),
-                ),
-                SizedBox(width: 15),
                 DropdownButton<int>(
                   onChanged: (value) => print('DropdownButton ${value}'),
                   value: 1,
