@@ -98,20 +98,75 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Row(
               children: <Widget>[
-                Checkbox(onChanged: (value) {}, value: true),
-                Text('Yes'),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Checkbox(onChanged: (value) {}, value: false),
-                Text('No'),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Checkbox(value: true),
-                Text('Disabled'),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Checkbox(onChanged: (value) {}, value: true),
+                        Text('Yes'),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Checkbox(onChanged: (value) {}, value: false),
+                        Text('No'),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Checkbox(value: true),
+                        Text('Disabled'),
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Switch(onChanged: (value) {}, value: true),
+                        Text('Yes'),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Switch(onChanged: (value) {}, value: false),
+                        Text('No'),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Switch(value: true),
+                        Text('Disabled'),
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Radio(onChanged: (value) {}, value: 1, groupValue: 1),
+                        Text('Yes'),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Radio(onChanged: (value) {}, value: 2, groupValue: 1),
+                        Text('No'),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Radio(value: 3, groupValue: 1),
+                        Text('Disabled'),
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
             Container(
