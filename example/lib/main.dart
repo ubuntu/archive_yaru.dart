@@ -187,6 +187,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                errorText: "You're doing it wrong",
+              ),
+            ),
+            TextField(
               keyboardType: TextInputType.multiline,
               controller: textController,
               minLines: 5,
