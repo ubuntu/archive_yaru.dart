@@ -26,6 +26,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final textController = TextEditingController(
+      text:
+          'My code fails.\nI do not know why.\nMy code works.\nI do not know why.');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -168,6 +172,28 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ],
+            ),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Username',
+              ),
+            ),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Password',
+              ),
+            ),
+            TextField(
+              keyboardType: TextInputType.multiline,
+              controller: textController,
+              minLines: 5,
+              maxLines: 5,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+              ),
             ),
             Container(
               width: 250.0,
