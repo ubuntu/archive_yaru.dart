@@ -66,6 +66,9 @@ final yaruTextTheme = TextTheme(
     button: yaruButtonStyle,
     overline: yaruOverlineStyle);
 
+final yaruButtonThemeData = ButtonThemeData(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)));
+
 // FIXME(robert-ancell): Getter or method or class?
 // FIXME(robert-ancell): Light and dark theme.
 ThemeData get yaruTheme {
@@ -86,6 +89,7 @@ ThemeData get yaruTheme {
       textTheme: yaruTextTheme,
       indicatorColor: yaruColorScheme.onPrimary,
       applyElevationOverlayColor: false,
-      colorScheme: yaruColorScheme);
+      colorScheme: yaruColorScheme,
+      buttonTheme: yaruButtonThemeData);
   return yaru;
 }
