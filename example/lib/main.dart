@@ -209,12 +209,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            SizedBox(height: 15),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Username',
               ),
             ),
+            SizedBox(height: 15),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
@@ -222,12 +224,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelText: 'Password',
               ),
             ),
+            SizedBox(height: 15),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 errorText: "You're doing it wrong",
               ),
             ),
+            SizedBox(height: 15),
             TextField(
               keyboardType: TextInputType.multiline,
               controller: textController,
@@ -237,13 +241,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 border: OutlineInputBorder(),
               ),
             ),
+            SizedBox(height: 15),
             Container(
               width: 250.0,
               height: 50.0,
               color: yaruUbuntuOrange,
               child: Center(
                   child: Text('yaruUbuntuOrange',
-                      style: Theme.of(context).textTheme.headline6)),
+                      style: TextStyle(
+                          color: yaruWhite,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
@@ -251,7 +259,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: yaruLightAubergine,
               child: Center(
                   child: Text('yaruLightAubergine',
-                      style: Theme.of(context).textTheme.headline6)),
+                      style: TextStyle(
+                          color: yaruWhite,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
@@ -259,7 +270,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: yaruMidAubergine,
               child: Center(
                   child: Text('yaruMidAubergine',
-                      style: Theme.of(context).textTheme.headline6)),
+                      style: TextStyle(
+                          color: yaruWhite,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
@@ -267,7 +281,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: yaruDarkAubergine,
               child: Center(
                   child: Text('yaruDarkAubergine',
-                      style: Theme.of(context).textTheme.headline6)),
+                      style: TextStyle(
+                          color: yaruWhite,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
@@ -275,7 +292,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: yaruCanonicalAubergine,
               child: Center(
                   child: Text('yaruCanonicalAubergine',
-                      style: Theme.of(context).textTheme.headline6)),
+                      style: TextStyle(
+                          color: yaruWhite,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
@@ -283,7 +303,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: yaruWarmGrey,
               child: Center(
                   child: Text('yaruWarmGrey',
-                      style: Theme.of(context).textTheme.headline6)),
+                      style: TextStyle(
+                          color: yaruTextGrey,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
@@ -291,7 +314,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: yaruCoolGrey,
               child: Center(
                   child: Text('yaruCoolGrey',
-                      style: Theme.of(context).textTheme.headline6)),
+                      style: TextStyle(
+                          color: yaruWhite,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
@@ -299,7 +325,10 @@ class _MyHomePageState extends State<MyHomePage> {
               color: yaruTextGrey,
               child: Center(
                   child: Text('yaruTextGrey',
-                      style: Theme.of(context).textTheme.headline6)),
+                      style: TextStyle(
+                          color: yaruWhite,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w300))),
             ),
           ],
         ),
