@@ -69,7 +69,23 @@ final yaruTextTheme = TextTheme(
 // FIXME(robert-ancell): Getter or method or class?
 // FIXME(robert-ancell): Light and dark theme.
 ThemeData get yaruTheme {
-  var yaru =
-      ThemeData.from(colorScheme: yaruColorScheme, textTheme: yaruTextTheme);
+  var yaru = ThemeData(
+      brightness: Brightness.light,
+      primaryColor: yaruColorScheme.primary,
+      primaryColorBrightness: ThemeData.estimateBrightnessForColor(yaruColorScheme.primary),
+      canvasColor: yaruColorScheme.background,
+      accentColor: yaruColorScheme.secondary,
+      accentColorBrightness: ThemeData.estimateBrightnessForColor(yaruColorScheme.secondary),
+      scaffoldBackgroundColor: yaruColorScheme.background,
+      bottomAppBarColor: yaruColorScheme.surface,
+      cardColor: yaruColorScheme.surface,
+      dividerColor: yaruColorScheme.onSurface.withOpacity(0.12),
+      backgroundColor: yaruColorScheme.background,
+      dialogBackgroundColor: yaruColorScheme.background,
+      errorColor: yaruColorScheme.error,
+      textTheme: yaruTextTheme,
+      indicatorColor: yaruColorScheme.onPrimary,
+      applyElevationOverlayColor: false,
+      colorScheme: yaruColorScheme);
   return yaru;
 }
