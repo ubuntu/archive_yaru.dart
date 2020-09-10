@@ -89,6 +89,31 @@ class _MyHomePageState extends State<MyHomePage> {
               'overline',
               style: Theme.of(context).textTheme.overline,
             ),
+            RaisedButton(
+              onPressed: () => print('RaisedButton'),
+              child: const Text('Click me!'),
+            ),
+            RaisedButton(
+              child: const Text("Can't click me!"),
+            ),
+            Row(
+              children: <Widget>[
+                Checkbox(onChanged: (value) {}, value: true),
+                Text('Yes'),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Checkbox(onChanged: (value) {}, value: false),
+                Text('No'),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Checkbox(value: true),
+                Text('Disabled'),
+              ],
+            ),
             Container(
               width: 250.0,
               height: 50.0,
