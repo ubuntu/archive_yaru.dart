@@ -16,7 +16,9 @@ final yaruCoolGrey = Color(0xFF333333);
 final yaruTextGrey = Color(0xFF111111);
 final yaruCanonicalAubergine = Color(0xFF772953);
 
-final yaruColorScheme = ColorScheme.fromSwatch(
+final yaruErrorColor = Color(0xFFFF0000);
+
+final yaruLightColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
     primarySwatch: MaterialColor(yaruUbuntuOrange.value, {
       50: Color(0xFFFDEEE9),
@@ -34,8 +36,29 @@ final yaruColorScheme = ColorScheme.fromSwatch(
     accentColor: yaruUbuntuOrange,
     cardColor: yaruWhite,
     backgroundColor: yaruWhite,
-    errorColor: yaruUbuntuOrange,
+    errorColor: yaruErrorColor,
     brightness: Brightness.light);
+
+final yaruDarkColorScheme = ColorScheme.fromSwatch(
+    // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
+    primarySwatch: MaterialColor(yaruUbuntuOrange.value, {
+      50: Color(0xFFFDEEE9),
+      100: Color(0xFFFBDDD2),
+      200: Color(0xFFF6BBA6),
+      300: Color(0xFFF29879),
+      400: Color(0xFFED764D),
+      500: yaruUbuntuOrange,
+      600: Color(0xFFBA431A),
+      700: Color(0xFF8C3213),
+      800: Color(0xFF5D220D),
+      900: Color(0xFF2F1106),
+    }),
+    primaryColorDark: yaruCoolGrey,
+    accentColor: yaruUbuntuOrange,
+    cardColor: yaruCoolGrey,
+    backgroundColor: yaruCoolGrey,
+    errorColor: yaruErrorColor,
+    brightness: Brightness.dark);
 
 final yaruHeadline1Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
 final yaruHeadline2Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
@@ -69,27 +92,58 @@ final yaruTextTheme = TextTheme(
 final yaruButtonThemeData = ButtonThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)));
 
-// FIXME(robert-ancell): Getter or method or class?
-// FIXME(robert-ancell): Light and dark theme.
-ThemeData get yaruTheme {
-  var yaru = ThemeData(
-      brightness: Brightness.light,
-      primaryColor: yaruColorScheme.primary,
-      primaryColorBrightness: ThemeData.estimateBrightnessForColor(yaruColorScheme.primary),
-      canvasColor: yaruColorScheme.background,
-      accentColor: yaruColorScheme.secondary,
-      accentColorBrightness: ThemeData.estimateBrightnessForColor(yaruColorScheme.secondary),
-      scaffoldBackgroundColor: yaruColorScheme.background,
-      bottomAppBarColor: yaruColorScheme.surface,
-      cardColor: yaruColorScheme.surface,
-      dividerColor: yaruColorScheme.onSurface.withOpacity(0.12),
-      backgroundColor: yaruColorScheme.background,
-      dialogBackgroundColor: yaruColorScheme.background,
-      errorColor: yaruColorScheme.error,
-      textTheme: yaruTextTheme,
-      indicatorColor: yaruColorScheme.onPrimary,
-      applyElevationOverlayColor: false,
-      colorScheme: yaruColorScheme,
-      buttonTheme: yaruButtonThemeData);
-  return yaru;
-}
+final yaruAppBarLightTheme = AppBarTheme(
+  brightness: Brightness.light,
+  color: yaruWarmGrey,
+);
+
+final yaruAppBarDarkTheme = AppBarTheme(
+  brightness: Brightness.dark,
+  color: yaruCoolGrey,
+);
+
+final yaruLightTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: yaruLightColorScheme.primary,
+    primaryColorBrightness:
+        ThemeData.estimateBrightnessForColor(yaruLightColorScheme.primary),
+    canvasColor: yaruLightColorScheme.background,
+    accentColor: yaruLightColorScheme.secondary,
+    accentColorBrightness:
+        ThemeData.estimateBrightnessForColor(yaruLightColorScheme.secondary),
+    scaffoldBackgroundColor: yaruLightColorScheme.background,
+    bottomAppBarColor: yaruLightColorScheme.surface,
+    cardColor: yaruLightColorScheme.surface,
+    dividerColor: yaruLightColorScheme.onSurface.withOpacity(0.12),
+    backgroundColor: yaruLightColorScheme.background,
+    dialogBackgroundColor: yaruLightColorScheme.background,
+    errorColor: yaruLightColorScheme.error,
+    textTheme: yaruTextTheme,
+    indicatorColor: yaruLightColorScheme.onPrimary,
+    applyElevationOverlayColor: false,
+    colorScheme: yaruLightColorScheme,
+    buttonTheme: yaruButtonThemeData,
+    appBarTheme: yaruAppBarLightTheme);
+
+final yaruDarkTheme = ThemeData(
+    brightness: Brightness.dark,
+    primaryColor: yaruDarkColorScheme.surface,
+    primaryColorBrightness:
+        ThemeData.estimateBrightnessForColor(yaruDarkColorScheme.surface),
+    canvasColor: yaruDarkColorScheme.background,
+    accentColor: yaruDarkColorScheme.secondary,
+    accentColorBrightness:
+        ThemeData.estimateBrightnessForColor(yaruDarkColorScheme.secondary),
+    scaffoldBackgroundColor: yaruDarkColorScheme.background,
+    bottomAppBarColor: yaruDarkColorScheme.surface,
+    cardColor: yaruDarkColorScheme.surface,
+    dividerColor: yaruDarkColorScheme.onSurface.withOpacity(0.12),
+    backgroundColor: yaruDarkColorScheme.background,
+    dialogBackgroundColor: yaruDarkColorScheme.background,
+    errorColor: yaruDarkColorScheme.error,
+    textTheme: yaruTextTheme,
+    indicatorColor: yaruDarkColorScheme.onPrimary,
+    applyElevationOverlayColor: true,
+    colorScheme: yaruDarkColorScheme,
+    buttonTheme: yaruButtonThemeData,
+    appBarTheme: yaruAppBarDarkTheme);

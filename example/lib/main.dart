@@ -5,36 +5,60 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var theme = yaruLightTheme;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Yaru Example',
-      theme: yaruTheme,
-      home: MyHomePage(title: 'Yaru Example'),
+      theme: theme,
+      home: MyHomePage(
+          title: 'Yaru Example',
+          themeChanged: (isDark) => setState(() {
+                theme = isDark ? yaruDarkTheme : yaruLightTheme;
+              })),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key, this.title, this.themeChanged}) : super(key: key);
 
   final String title;
+  final void Function(bool isDark) themeChanged;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState(themeChanged);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   final textController = TextEditingController(
       text:
           'My code fails.\nI do not know why.\nMy code works.\nI do not know why.');
+  var isDark = false;
+  final void Function(bool isDark) themeChanged;
+
+  _MyHomePageState(this.themeChanged);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        leading: Switch(
+            onChanged: (value) {
+              setState(() {
+                isDark = value;
+                themeChanged(isDark);
+              });
+            },
+            value: isDark),
       ),
       body: Center(
         child: ListView(
