@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var theme = yaruLightTheme;
+  var theme = yaruTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +19,23 @@ class _MyAppState extends State<MyApp> {
       title: 'Yaru Example',
       theme: theme,
       home: MyHomePage(
-          title: 'Yaru Example',
-          themeChanged: (isDark) => setState(() {
-                theme = isDark ? yaruDarkTheme : yaruLightTheme;
+          themeChanged: (themeName) => setState(() {
+                if (themeName == 'Yaru') {
+                  theme = yaruTheme;
+                } else if (themeName == 'Yaru-light') {
+                  theme = yaruLightTheme;
+                } else if (themeName == 'Yaru-dark') {
+                  theme = yaruDarkTheme;
+                }
               })),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title, this.themeChanged}) : super(key: key);
+  MyHomePage({Key key, this.themeChanged}) : super(key: key);
 
-  final String title;
-  final void Function(bool isDark) themeChanged;
+  final void Function(String themeName) themeChanged;
 
   @override
   _MyHomePageState createState() => _MyHomePageState(themeChanged);
@@ -41,8 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final textController = TextEditingController(
       text:
           'My code fails.\nI do not know why.\nMy code works.\nI do not know why.');
-  var isDark = false;
-  final void Function(bool isDark) themeChanged;
+  var themeName = 'Yaru';
+  final void Function(String themeName) themeChanged;
 
   _MyHomePageState(this.themeChanged);
 
@@ -50,15 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-        leading: Switch(
-            onChanged: (value) {
+        title: Text(themeName),
+        leading: PopupMenuButton<String>(
+            onSelected: (value) {
               setState(() {
-                isDark = value;
-                themeChanged(isDark);
+                themeName = value;
+                themeChanged(themeName);
               });
             },
-            value: isDark),
+            itemBuilder: (context) => <PopupMenuItem<String>>[
+                  PopupMenuItem(value: 'Yaru', child: Text('Standard')),
+                  PopupMenuItem(value: 'Yaru-light', child: Text('Light')),
+                  PopupMenuItem(value: 'Yaru-dark', child: Text('Dark')),
+                ]),
       ),
       body: Center(
         child: ListView(

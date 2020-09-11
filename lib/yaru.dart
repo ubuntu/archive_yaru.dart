@@ -102,6 +102,29 @@ final yaruAppBarDarkTheme = AppBarTheme(
   color: yaruCoolGrey,
 );
 
+final yaruTheme = ThemeData(
+    brightness: Brightness.light,
+    primaryColor: yaruLightColorScheme.primary,
+    primaryColorBrightness:
+        ThemeData.estimateBrightnessForColor(yaruLightColorScheme.primary),
+    canvasColor: yaruLightColorScheme.background,
+    accentColor: yaruLightColorScheme.secondary,
+    accentColorBrightness:
+        ThemeData.estimateBrightnessForColor(yaruLightColorScheme.secondary),
+    scaffoldBackgroundColor: yaruLightColorScheme.background,
+    bottomAppBarColor: yaruLightColorScheme.surface,
+    cardColor: yaruLightColorScheme.surface,
+    dividerColor: yaruLightColorScheme.onSurface.withOpacity(0.12),
+    backgroundColor: yaruLightColorScheme.background,
+    dialogBackgroundColor: yaruLightColorScheme.background,
+    errorColor: yaruLightColorScheme.error,
+    textTheme: yaruTextTheme,
+    indicatorColor: yaruLightColorScheme.onPrimary,
+    applyElevationOverlayColor: false,
+    colorScheme: yaruLightColorScheme,
+    buttonTheme: yaruButtonThemeData,
+    appBarTheme: yaruAppBarDarkTheme);
+
 final yaruLightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: yaruLightColorScheme.primary,
