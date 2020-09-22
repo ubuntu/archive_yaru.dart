@@ -3,3 +3,7 @@
 Ubuntu [Yaru](https://github.com/ubuntu/yaru) theme.
 
 ![Example app using Yaru theme](screenshot.png)
+
+## Contributing to yaru.dart
+
+We welcome contributions! See the [contribution guide](CONTRIBUTING.md) for more details.
