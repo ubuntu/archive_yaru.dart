@@ -2,9 +2,9 @@ library yaru;
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
-export 'checkbox.dart';
-export 'YaruSwitch.dart';
-export 'YaruRadio.dart';
+export 'widgets/YaruCheckbox.dart';
+export 'widgets/YaruSwitch.dart';
+export 'widgets/YaruRadio.dart';
 
 // Ubuntu color palette
 // https://design.ubuntu.com/brand/colour-palette/

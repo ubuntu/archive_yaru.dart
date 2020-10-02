@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'yaru.dart';
+import '../yaru.dart';
 import 'package:flutter/src/material/constants.dart';
 import 'package:flutter/src/material/debug.dart';
 import 'package:flutter/src/material/material_state.dart';
