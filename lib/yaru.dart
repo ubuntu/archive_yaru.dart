@@ -2,9 +2,10 @@ library yaru;
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
-export 'widgets/YaruCheckbox.dart';
-export 'widgets/YaruSwitch.dart';
-export 'widgets/YaruRadio.dart';
+export 'package:yaru/widgets/YaruCheckbox.dart';
+export 'package:yaru/widgets/YaruSwitch.dart';
+export 'package:yaru/widgets/YaruRadio.dart';
+export 'package:yaru/widgets/YaruButton.dart';
 
 // Ubuntu color palette
 // https://design.ubuntu.com/brand/colour-palette/
@@ -93,6 +94,8 @@ final yaruTextTheme = TextTheme(
     overline: yaruOverlineStyle);
 
 final yaruButtonThemeData = ButtonThemeData(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)));
+final yaruButtonThemeDataDark = ButtonThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)));
 
 final yaruAppBarLightTheme = AppBarTheme(
