@@ -1,23 +1,18 @@
-// Copyright 2014 The Flutter Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-// @dart = 2.8
-
+/*
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-import 'colors.dart';
-import 'constants.dart';
-import 'debug.dart';
-import 'material_state.dart';
-import 'shadows.dart';
-import 'theme.dart';
-import 'theme_data.dart';
-import 'toggleable.dart';
+import 'package:flutter/src/material/colors.dart';
+import 'package:flutter/src/material/constants.dart';
+import 'package:flutter/src/material/debug.dart';
+import 'package:flutter/src/material/material_state.dart';
+import 'package:flutter/src/material/shadows.dart';
+import 'package:flutter/src/material/theme.dart';
+import 'package:flutter/src/material/theme_data.dart';
+import 'package:flutter/src/material/toggleable.dart';
 
 const double _kTrackHeight = 14.0;
 const double _kTrackWidth = 33.0;
@@ -29,42 +24,42 @@ const double _kYaruSwitchHeightCollapsed = 2 * kRadialReactionRadius;
 
 enum _YaruSwitchType { material, adaptive }
 
-/// A material design YaruSwitch.
-///
-/// Used to toggle the on/off state of a single setting.
-///
-/// The YaruSwitch itself does not maintain any state. Instead, when the state of
-/// the YaruSwitch changes, the widget calls the [onChanged] callback. Most widgets
-/// that use a YaruSwitch will listen for the [onChanged] callback and rebuild the
-/// YaruSwitch with a new [value] to update the visual appearance of the YaruSwitch.
-///
-/// If the [onChanged] callback is null, then the YaruSwitch will be disabled (it
-/// will not respond to input). A disabled YaruSwitch's thumb and track are rendered
-/// in shades of grey by default. The default appearance of a disabled YaruSwitch
-/// can be overridden with [inactiveThumbColor] and [inactiveTrackColor].
-///
-/// Requires one of its ancestors to be a [Material] widget.
-///
-/// See also:
-///
-///  * [YaruSwitchListTile], which combines this widget with a [ListTile] so that
-///    you can give the YaruSwitch a label.
-///  * [Checkbox], another widget with similar semantics.
-///  * [Radio], for selecting among a set of explicit values.
-///  * [Slider], for selecting a value in a range.
-///  * <https://material.io/design/components/selection-controls.html#YaruSwitches>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class YaruSwitch extends StatefulWidget {
-  /// Creates a material design YaruSwitch.
-  ///
-  /// The YaruSwitch itself does not maintain any state. Instead, when the state of
-  /// the YaruSwitch changes, the widget calls the [onChanged] callback. Most widgets
-  /// that use a YaruSwitch will listen for the [onChanged] callback and rebuild the
-  /// YaruSwitch with a new [value] to update the visual appearance of the YaruSwitch.
-  ///
-  /// The following arguments are required:
-  ///
-  /// * [value] determines whether this YaruSwitch is on or off.
-  /// * [onChanged] is called when the user toggles the YaruSwitch on or off.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   const YaruSwitch({
     Key key,
     @required this.value,
@@ -90,15 +85,15 @@ class YaruSwitch extends StatefulWidget {
         assert(inactiveThumbImage != null || onInactiveThumbImageError == null),
         super(key: key);
 
-  /// Creates a [CupertinoYaruSwitch] if the target platform is iOS, creates a
-  /// material design YaruSwitch otherwise.
-  ///
-  /// If a [CupertinoYaruSwitch] is created, the following parameters are
-  /// ignored: [activeTrackColor], [inactiveThumbColor], [inactiveTrackColor],
-  /// [activeThumbImage], [onActiveThumbImageError], [inactiveThumbImage],
-  /// [onInactiveThumbImageError], [materialTapTargetSize].
-  ///
-  /// The target platform is based on the current [Theme]: [ThemeData.platform].
+  
+  
+  
+  
+  
+  
+  
+  
+  
   const YaruSwitch.adaptive({
     Key key,
     @required this.value,
@@ -124,117 +119,117 @@ class YaruSwitch extends StatefulWidget {
         _YaruSwitchType = _YaruSwitchType.adaptive,
         super(key: key);
 
-  /// Whether this YaruSwitch is on or off.
-  ///
-  /// This property must not be null.
+  
+  
+  
   final bool value;
 
-  /// Called when the user toggles the YaruSwitch on or off.
-  ///
-  /// The YaruSwitch passes the new value to the callback but does not actually
-  /// change state until the parent widget rebuilds the YaruSwitch with the new
-  /// value.
-  ///
-  /// If null, the YaruSwitch will be displayed as disabled.
-  ///
-  /// The callback provided to [onChanged] should update the state of the parent
-  /// [StatefulWidget] using the [State.setState] method, so that the parent
-  /// gets rebuilt; for example:
-  ///
-  /// ```dart
-  /// YaruSwitch(
-  ///   value: _giveVerse,
-  ///   onChanged: (bool newValue) {
-  ///     setState(() {
-  ///       _giveVerse = newValue;
-  ///     });
-  ///   },
-  /// )
-  /// ```
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   final ValueChanged<bool> onChanged;
 
-  /// The color to use when this YaruSwitch is on.
-  ///
-  /// Defaults to [ThemeData.toggleableActiveColor].
+  
+  
+  
   final Color activeColor;
 
-  /// The color to use on the track when this YaruSwitch is on.
-  ///
-  /// Defaults to [ThemeData.toggleableActiveColor] with the opacity set at 50%.
-  ///
-  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  
+  
+  
+  
+  
   final Color activeTrackColor;
 
-  /// The color to use on the thumb when this YaruSwitch is off.
-  ///
-  /// Defaults to the colors described in the Material design specification.
-  ///
-  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  
+  
+  
+  
+  
   final Color inactiveThumbColor;
 
-  /// The color to use on the track when this YaruSwitch is off.
-  ///
-  /// Defaults to the colors described in the Material design specification.
-  ///
-  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  
+  
+  
+  
+  
   final Color inactiveTrackColor;
 
-  /// An image to use on the thumb of this YaruSwitch when the YaruSwitch is on.
-  ///
-  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  
+  
+  
   final ImageProvider activeThumbImage;
 
-  /// An optional error callback for errors emitted when loading
-  /// [activeThumbImage].
+  
+  
   final ImageErrorListener onActiveThumbImageError;
 
-  /// An image to use on the thumb of this YaruSwitch when the YaruSwitch is off.
-  ///
-  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  
+  
+  
   final ImageProvider inactiveThumbImage;
 
-  /// An optional error callback for errors emitted when loading
-  /// [inactiveThumbImage].
+  
+  
   final ImageErrorListener onInactiveThumbImageError;
 
-  /// Configures the minimum size of the tap target.
-  ///
-  /// Defaults to [ThemeData.materialTapTargetSize].
-  ///
-  /// See also:
-  ///
-  ///  * [MaterialTapTargetSize], for a description of how this affects tap targets.
+  
+  
+  
+  
+  
+  
+  
   final MaterialTapTargetSize materialTapTargetSize;
 
   final _YaruSwitchType _YaruSwitchType;
 
-  /// {@macro flutter.cupertino.YaruSwitch.dragStartBehavior}
+  
   final DragStartBehavior dragStartBehavior;
 
-  /// The cursor for a mouse pointer when it enters or is hovering over the
-  /// widget.
-  ///
-  /// If [mouseCursor] is a [MaterialStateProperty<MouseCursor>],
-  /// [MaterialStateProperty.resolve] is used for the following [MaterialState]s:
-  ///
-  ///  * [MaterialState.selected].
-  ///  * [MaterialState.hovered].
-  ///  * [MaterialState.focused].
-  ///  * [MaterialState.disabled].
-  ///
-  /// If this property is null, [MaterialStateMouseCursor.clickable] will be used.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   final MouseCursor mouseCursor;
 
-  /// The color for the button's [Material] when it has the input focus.
+  
   final Color focusColor;
 
-  /// The color for the button's [Material] when a pointer is hovering over it.
+  
   final Color hoverColor;
 
-  /// {@macro flutter.widgets.Focus.focusNode}
+  
   final FocusNode focusNode;
 
-  /// {@macro flutter.widgets.Focus.autofocus}
+  
   final bool autofocus;
 
   @override
@@ -297,8 +292,8 @@ class _YaruSwitchState extends State<YaruSwitch> with TickerProviderStateMixin {
   bool get enabled => widget.onChanged != null;
 
   void _didFinishDragging() {
-    // The user has finished dragging the thumb of this YaruSwitch. Rebuild the YaruSwitch
-    // to update the animation.
+    
+    
     setState(() {});
   }
 
@@ -315,7 +310,7 @@ class _YaruSwitchState extends State<YaruSwitch> with TickerProviderStateMixin {
     Color inactiveThumbColor;
     Color inactiveTrackColor;
     if (enabled) {
-      const Color black32 = Color(0x52000000); // Black with 32% opacity
+      const Color black32 = Color(0x52000000); 
       inactiveThumbColor = widget.inactiveThumbColor ?? (isDark ? Colors.grey.shade400 : Colors.grey.shade50);
       inactiveTrackColor = widget.inactiveTrackColor ?? (isDark ? Colors.white30 : black32);
     } else {
@@ -373,7 +368,7 @@ class _YaruSwitchState extends State<YaruSwitch> with TickerProviderStateMixin {
       focusNode: widget.focusNode,
       autofocus: widget.autofocus,
       child: Container(
-        width: size.width, // Same size as the Material YaruSwitch.
+        width: size.width, 
         height: size.height,
         alignment: Alignment.center,
         child: CupertinoYaruSwitch(
@@ -647,7 +642,7 @@ class _RenderYaruSwitch extends RenderToggleable {
   set value(bool newValue) {
     assert(value != null);
     super.value = newValue;
-    // The widget is rebuilt and we have pending position animation to play.
+    
     if (_needsPositionAnimation) {
       _needsPositionAnimation = false;
       position
@@ -730,10 +725,10 @@ class _RenderYaruSwitch extends RenderToggleable {
   bool _isPainting = false;
 
   void _handleDecorationChanged() {
-    // If the image decoration is available synchronously, we'll get called here
-    // during paint. There's no reason to mark ourselves as needing paint if we
-    // are already in the middle of painting. (In fact, doing so would trigger
-    // an assert).
+    
+    
+    
+    
     if (!_isPainting)
       markNeedsPaint();
   }
@@ -776,7 +771,7 @@ class _RenderYaruSwitch extends RenderToggleable {
       ? (currentValue < 0.5 ? onInactiveThumbImageError : onActiveThumbImageError)
       : onInactiveThumbImageError;
 
-    // Paint the track
+    
     final Paint paint = Paint()
       ..color = trackColor;
     const double trackHorizontalPadding = kRadialReactionRadius - _kTrackRadius;
@@ -807,7 +802,7 @@ class _RenderYaruSwitch extends RenderToggleable {
       }
       thumbPainter = _cachedThumbPainter;
 
-      // The thumb contracts slightly during the animation
+      
       final double inset = 1.0 - (currentValue - 0.5).abs() * 2.0;
       final double radius = _kThumbRadius - inset;
       thumbPainter.paint(
@@ -820,3 +815,4 @@ class _RenderYaruSwitch extends RenderToggleable {
     }
   }
 }
+*/
