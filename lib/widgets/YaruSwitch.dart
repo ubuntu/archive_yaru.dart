@@ -1,34 +1,241 @@
-import 'dart:ui' show lerpDouble;
-import 'package:flutter/material.dart';
+// Copyright 2014 The Flutter Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// @dart = 2.8
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter/services.dart';
-import '../yaru.dart';
-import 'package:flutter/src/cupertino/thumb_painter.dart';
 
+import 'colors.dart';
+import 'constants.dart';
+import 'debug.dart';
+import 'material_state.dart';
+import 'shadows.dart';
+import 'theme.dart';
+import 'theme_data.dart';
+import 'toggleable.dart';
+
+const double _kTrackHeight = 14.0;
+const double _kTrackWidth = 33.0;
+const double _kTrackRadius = _kTrackHeight / 2.0;
+const double _kThumbRadius = 10.0;
+const double _kYaruSwitchWidth = _kTrackWidth - 2 * _kTrackRadius + 2 * kRadialReactionRadius;
+const double _kYaruSwitchHeight = 2 * kRadialReactionRadius + 8.0;
+const double _kYaruSwitchHeightCollapsed = 2 * kRadialReactionRadius;
+
+enum _YaruSwitchType { material, adaptive }
+
+/// A material design YaruSwitch.
+///
+/// Used to toggle the on/off state of a single setting.
+///
+/// The YaruSwitch itself does not maintain any state. Instead, when the state of
+/// the YaruSwitch changes, the widget calls the [onChanged] callback. Most widgets
+/// that use a YaruSwitch will listen for the [onChanged] callback and rebuild the
+/// YaruSwitch with a new [value] to update the visual appearance of the YaruSwitch.
+///
+/// If the [onChanged] callback is null, then the YaruSwitch will be disabled (it
+/// will not respond to input). A disabled YaruSwitch's thumb and track are rendered
+/// in shades of grey by default. The default appearance of a disabled YaruSwitch
+/// can be overridden with [inactiveThumbColor] and [inactiveTrackColor].
+///
+/// Requires one of its ancestors to be a [Material] widget.
+///
+/// See also:
+///
+///  * [YaruSwitchListTile], which combines this widget with a [ListTile] so that
+///    you can give the YaruSwitch a label.
+///  * [Checkbox], another widget with similar semantics.
+///  * [Radio], for selecting among a set of explicit values.
+///  * [Slider], for selecting a value in a range.
+///  * <https://material.io/design/components/selection-controls.html#YaruSwitches>
 class YaruSwitch extends StatefulWidget {
+  /// Creates a material design YaruSwitch.
+  ///
+  /// The YaruSwitch itself does not maintain any state. Instead, when the state of
+  /// the YaruSwitch changes, the widget calls the [onChanged] callback. Most widgets
+  /// that use a YaruSwitch will listen for the [onChanged] callback and rebuild the
+  /// YaruSwitch with a new [value] to update the visual appearance of the YaruSwitch.
+  ///
+  /// The following arguments are required:
+  ///
+  /// * [value] determines whether this YaruSwitch is on or off.
+  /// * [onChanged] is called when the user toggles the YaruSwitch on or off.
   const YaruSwitch({
     Key key,
     @required this.value,
     @required this.onChanged,
     this.activeColor,
-    this.trackColor,
+    this.activeTrackColor,
+    this.inactiveThumbColor,
+    this.inactiveTrackColor,
+    this.activeThumbImage,
+    this.onActiveThumbImageError,
+    this.inactiveThumbImage,
+    this.onInactiveThumbImageError,
+    this.materialTapTargetSize,
     this.dragStartBehavior = DragStartBehavior.start,
-  })  : assert(value != null),
+    this.mouseCursor,
+    this.focusColor,
+    this.hoverColor,
+    this.focusNode,
+    this.autofocus = false,
+  })  : _YaruSwitchType = _YaruSwitchType.material,
         assert(dragStartBehavior != null),
+        assert(activeThumbImage != null || onActiveThumbImageError == null),
+        assert(inactiveThumbImage != null || onInactiveThumbImageError == null),
         super(key: key);
 
+  /// Creates a [CupertinoYaruSwitch] if the target platform is iOS, creates a
+  /// material design YaruSwitch otherwise.
+  ///
+  /// If a [CupertinoYaruSwitch] is created, the following parameters are
+  /// ignored: [activeTrackColor], [inactiveThumbColor], [inactiveTrackColor],
+  /// [activeThumbImage], [onActiveThumbImageError], [inactiveThumbImage],
+  /// [onInactiveThumbImageError], [materialTapTargetSize].
+  ///
+  /// The target platform is based on the current [Theme]: [ThemeData.platform].
+  const YaruSwitch.adaptive({
+    Key key,
+    @required this.value,
+    @required this.onChanged,
+    this.activeColor,
+    this.activeTrackColor,
+    this.inactiveThumbColor,
+    this.inactiveTrackColor,
+    this.activeThumbImage,
+    this.onActiveThumbImageError,
+    this.inactiveThumbImage,
+    this.onInactiveThumbImageError,
+    this.materialTapTargetSize,
+    this.dragStartBehavior = DragStartBehavior.start,
+    this.mouseCursor,
+    this.focusColor,
+    this.hoverColor,
+    this.focusNode,
+    this.autofocus = false,
+  })  : assert(autofocus != null),
+        assert(activeThumbImage != null || onActiveThumbImageError == null),
+        assert(inactiveThumbImage != null || onInactiveThumbImageError == null),
+        _YaruSwitchType = _YaruSwitchType.adaptive,
+        super(key: key);
+
+  /// Whether this YaruSwitch is on or off.
+  ///
+  /// This property must not be null.
   final bool value;
 
+  /// Called when the user toggles the YaruSwitch on or off.
+  ///
+  /// The YaruSwitch passes the new value to the callback but does not actually
+  /// change state until the parent widget rebuilds the YaruSwitch with the new
+  /// value.
+  ///
+  /// If null, the YaruSwitch will be displayed as disabled.
+  ///
+  /// The callback provided to [onChanged] should update the state of the parent
+  /// [StatefulWidget] using the [State.setState] method, so that the parent
+  /// gets rebuilt; for example:
+  ///
+  /// ```dart
+  /// YaruSwitch(
+  ///   value: _giveVerse,
+  ///   onChanged: (bool newValue) {
+  ///     setState(() {
+  ///       _giveVerse = newValue;
+  ///     });
+  ///   },
+  /// )
+  /// ```
   final ValueChanged<bool> onChanged;
 
+  /// The color to use when this YaruSwitch is on.
+  ///
+  /// Defaults to [ThemeData.toggleableActiveColor].
   final Color activeColor;
 
-  final Color trackColor;
+  /// The color to use on the track when this YaruSwitch is on.
+  ///
+  /// Defaults to [ThemeData.toggleableActiveColor] with the opacity set at 50%.
+  ///
+  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  final Color activeTrackColor;
 
+  /// The color to use on the thumb when this YaruSwitch is off.
+  ///
+  /// Defaults to the colors described in the Material design specification.
+  ///
+  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  final Color inactiveThumbColor;
+
+  /// The color to use on the track when this YaruSwitch is off.
+  ///
+  /// Defaults to the colors described in the Material design specification.
+  ///
+  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  final Color inactiveTrackColor;
+
+  /// An image to use on the thumb of this YaruSwitch when the YaruSwitch is on.
+  ///
+  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  final ImageProvider activeThumbImage;
+
+  /// An optional error callback for errors emitted when loading
+  /// [activeThumbImage].
+  final ImageErrorListener onActiveThumbImageError;
+
+  /// An image to use on the thumb of this YaruSwitch when the YaruSwitch is off.
+  ///
+  /// Ignored if this YaruSwitch is created with [YaruSwitch.adaptive].
+  final ImageProvider inactiveThumbImage;
+
+  /// An optional error callback for errors emitted when loading
+  /// [inactiveThumbImage].
+  final ImageErrorListener onInactiveThumbImageError;
+
+  /// Configures the minimum size of the tap target.
+  ///
+  /// Defaults to [ThemeData.materialTapTargetSize].
+  ///
+  /// See also:
+  ///
+  ///  * [MaterialTapTargetSize], for a description of how this affects tap targets.
+  final MaterialTapTargetSize materialTapTargetSize;
+
+  final _YaruSwitchType _YaruSwitchType;
+
+  /// {@macro flutter.cupertino.YaruSwitch.dragStartBehavior}
   final DragStartBehavior dragStartBehavior;
+
+  /// The cursor for a mouse pointer when it enters or is hovering over the
+  /// widget.
+  ///
+  /// If [mouseCursor] is a [MaterialStateProperty<MouseCursor>],
+  /// [MaterialStateProperty.resolve] is used for the following [MaterialState]s:
+  ///
+  ///  * [MaterialState.selected].
+  ///  * [MaterialState.hovered].
+  ///  * [MaterialState.focused].
+  ///  * [MaterialState.disabled].
+  ///
+  /// If this property is null, [MaterialStateMouseCursor.clickable] will be used.
+  final MouseCursor mouseCursor;
+
+  /// The color for the button's [Material] when it has the input focus.
+  final Color focusColor;
+
+  /// The color for the button's [Material] when a pointer is hovering over it.
+  final Color hoverColor;
+
+  /// {@macro flutter.widgets.Focus.focusNode}
+  final FocusNode focusNode;
+
+  /// {@macro flutter.widgets.Focus.autofocus}
+  final bool autofocus;
 
   @override
   _YaruSwitchState createState() => _YaruSwitchState();
@@ -36,177 +243,173 @@ class YaruSwitch extends StatefulWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(FlagProperty('value',
-        value: value, ifTrue: 'on', ifFalse: 'off', showName: true));
-    properties.add(ObjectFlagProperty<ValueChanged<bool>>(
-        'onChanged', onChanged,
-        ifNull: 'disabled'));
+    properties.add(FlagProperty('value', value: value, ifTrue: 'on', ifFalse: 'off', showName: true));
+    properties.add(ObjectFlagProperty<ValueChanged<bool>>('onChanged', onChanged, ifNull: 'disabled'));
   }
 }
 
 class _YaruSwitchState extends State<YaruSwitch> with TickerProviderStateMixin {
-  TapGestureRecognizer _tap;
-  HorizontalDragGestureRecognizer _drag;
-
-  AnimationController _positionController;
-  CurvedAnimation position;
-
-  AnimationController _reactionController;
-  Animation<double> _reaction;
-
-  bool get isInteractive => widget.onChanged != null;
-
-  bool needsPositionAnimation = false;
+  Map<Type, Action<Intent>> _actionMap;
 
   @override
   void initState() {
     super.initState();
-
-    _tap = TapGestureRecognizer()
-      ..onTapDown = _handleTapDown
-      ..onTapUp = _handleTapUp
-      ..onTap = _handleTap
-      ..onTapCancel = _handleTapCancel;
-    _drag = HorizontalDragGestureRecognizer()
-      ..onStart = _handleDragStart
-      ..onUpdate = _handleDragUpdate
-      ..onEnd = _handleDragEnd
-      ..dragStartBehavior = widget.dragStartBehavior;
-
-    _positionController = AnimationController(
-      duration: _kToggleDuration,
-      value: widget.value ? 1.0 : 0.0,
-      vsync: this,
-    );
-    position = CurvedAnimation(
-      parent: _positionController,
-      curve: Curves.linear,
-    );
-    _reactionController = AnimationController(
-      duration: _kReactionDuration,
-      vsync: this,
-    );
-    _reaction = CurvedAnimation(
-      parent: _reactionController,
-      curve: Curves.ease,
-    );
+    _actionMap = <Type, Action<Intent>>{
+      ActivateIntent: CallbackAction<ActivateIntent>(onInvoke: _actionHandler),
+    };
   }
 
-  @override
-  void didUpdateWidget(YaruSwitch oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _drag.dragStartBehavior = widget.dragStartBehavior;
-
-    if (needsPositionAnimation || oldWidget.value != widget.value)
-      _resumePositionAnimation(isLinear: needsPositionAnimation);
-  }
-
-  void _resumePositionAnimation({bool isLinear = true}) {
-    needsPositionAnimation = false;
-    position
-      ..curve = isLinear ? null : Curves.ease
-      ..reverseCurve = isLinear ? null : Curves.ease.flipped;
-    if (widget.value)
-      _positionController.forward();
-    else
-      _positionController.reverse();
-  }
-
-  void _handleTapDown(TapDownDetails details) {
-    if (isInteractive) needsPositionAnimation = false;
-    _reactionController.forward();
-  }
-
-  void _handleTap() {
-    if (isInteractive) {
+  void _actionHandler(ActivateIntent intent) {
+    if (widget.onChanged != null) {
       widget.onChanged(!widget.value);
-      _emitVibration();
+    }
+    final RenderObject renderObject = context.findRenderObject();
+    renderObject.sendSemanticsEvent(const TapSemanticEvent());
+  }
+
+  bool _focused = false;
+  void _handleFocusHighlightChanged(bool focused) {
+    if (focused != _focused) {
+      setState(() { _focused = focused; });
     }
   }
 
-  void _handleTapUp(TapUpDetails details) {
-    if (isInteractive) {
-      needsPositionAnimation = false;
-      _reactionController.reverse();
+  bool _hovering = false;
+  void _handleHoverChanged(bool hovering) {
+    if (hovering != _hovering) {
+      setState(() { _hovering = hovering; });
     }
   }
 
-  void _handleTapCancel() {
-    if (isInteractive) _reactionController.reverse();
-  }
-
-  void _handleDragStart(DragStartDetails details) {
-    if (isInteractive) {
-      needsPositionAnimation = false;
-      _reactionController.forward();
-      _emitVibration();
-    }
-  }
-
-  void _handleDragUpdate(DragUpdateDetails details) {
-    if (isInteractive) {
-      position
-        ..curve = null
-        ..reverseCurve = null;
-      final double delta = details.primaryDelta / _kTrackInnerLength;
-      switch (Directionality.of(context)) {
-        case TextDirection.rtl:
-          _positionController.value -= delta;
-          break;
-        case TextDirection.ltr:
-          _positionController.value += delta;
-          break;
-      }
-    }
-  }
-
-  void _handleDragEnd(DragEndDetails details) {
-    setState(() {
-      needsPositionAnimation = true;
-    });
-
-    if (position.value >= 0.5 != widget.value) widget.onChanged(!widget.value);
-    _reactionController.reverse();
-  }
-
-  void _emitVibration() {
-    switch (defaultTargetPlatform) {
-      case TargetPlatform.iOS:
-        HapticFeedback.lightImpact();
+  Size getYaruSwitchSize(ThemeData theme) {
+    YaruSwitch (widget.materialTapTargetSize ?? theme.materialTapTargetSize) {
+      case MaterialTapTargetSize.padded:
+        return const Size(_kYaruSwitchWidth, _kYaruSwitchHeight);
         break;
-      case TargetPlatform.android:
-      case TargetPlatform.fuchsia:
-      case TargetPlatform.linux:
-      case TargetPlatform.macOS:
-      case TargetPlatform.windows:
+      case MaterialTapTargetSize.shrinkWrap:
+        return const Size(_kYaruSwitchWidth, _kYaruSwitchHeightCollapsed);
         break;
     }
+    assert(false);
+    return null;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    if (needsPositionAnimation) _resumePositionAnimation();
-    return Opacity(
-      opacity: widget.onChanged == null ? _kYaruSwitchDisabledOpacity : 1.0,
-      child: _YaruSwitchRenderObjectWidget(
-        value: widget.value,
-        activeColor: widget.activeColor ?? yaruLightAubergine,
-        trackColor: widget.trackColor ?? Colors.grey.withOpacity(0.5),
-        onChanged: widget.onChanged,
-        textDirection: Directionality.of(context),
-        state: this,
+  bool get enabled => widget.onChanged != null;
+
+  void _didFinishDragging() {
+    // The user has finished dragging the thumb of this YaruSwitch. Rebuild the YaruSwitch
+    // to update the animation.
+    setState(() {});
+  }
+
+  Widget buildMaterialYaruSwitch(BuildContext context) {
+    assert(debugCheckHasMaterial(context));
+    final ThemeData theme = Theme.of(context);
+    final bool isDark = theme.brightness == Brightness.dark;
+
+    final Color activeThumbColor = widget.activeColor ?? theme.toggleableActiveColor;
+    final Color activeTrackColor = widget.activeTrackColor ?? activeThumbColor.withAlpha(0x80);
+    final Color hoverColor = widget.hoverColor ?? theme.hoverColor;
+    final Color focusColor = widget.focusColor ?? theme.focusColor;
+
+    Color inactiveThumbColor;
+    Color inactiveTrackColor;
+    if (enabled) {
+      const Color black32 = Color(0x52000000); // Black with 32% opacity
+      inactiveThumbColor = widget.inactiveThumbColor ?? (isDark ? Colors.grey.shade400 : Colors.grey.shade50);
+      inactiveTrackColor = widget.inactiveTrackColor ?? (isDark ? Colors.white30 : black32);
+    } else {
+      inactiveThumbColor = widget.inactiveThumbColor ?? (isDark ? Colors.grey.shade800 : Colors.grey.shade400);
+      inactiveTrackColor = widget.inactiveTrackColor ?? (isDark ? Colors.white10 : Colors.black12);
+    }
+    final MouseCursor effectiveMouseCursor = MaterialStateProperty.resolveAs<MouseCursor>(
+      widget.mouseCursor ?? MaterialStateMouseCursor.clickable,
+      <MaterialState>{
+        if (!enabled) MaterialState.disabled,
+        if (_hovering) MaterialState.hovered,
+        if (_focused) MaterialState.focused,
+        if (widget.value) MaterialState.selected,
+      },
+    );
+
+    return FocusableActionDetector(
+      actions: _actionMap,
+      focusNode: widget.focusNode,
+      autofocus: widget.autofocus,
+      enabled: enabled,
+      onShowFocusHighlight: _handleFocusHighlightChanged,
+      onShowHoverHighlight: _handleHoverChanged,
+      mouseCursor: effectiveMouseCursor,
+      child: Builder(
+        builder: (BuildContext context) {
+          return _YaruSwitchRenderObjectWidget(
+            dragStartBehavior: widget.dragStartBehavior,
+            value: widget.value,
+            activeColor: activeThumbColor,
+            inactiveColor: inactiveThumbColor,
+            hoverColor: hoverColor,
+            focusColor: focusColor,
+            activeThumbImage: widget.activeThumbImage,
+            onActiveThumbImageError: widget.onActiveThumbImageError,
+            inactiveThumbImage: widget.inactiveThumbImage,
+            onInactiveThumbImageError: widget.onInactiveThumbImageError,
+            activeTrackColor: activeTrackColor,
+            inactiveTrackColor: inactiveTrackColor,
+            configuration: createLocalImageConfiguration(context),
+            onChanged: widget.onChanged,
+            additionalConstraints: BoxConstraints.tight(getYaruSwitchSize(theme)),
+            hasFocus: _focused,
+            hovering: _hovering,
+            state: this,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget buildCupertinoYaruSwitch(BuildContext context) {
+    final Size size = getYaruSwitchSize(Theme.of(context));
+    return Focus(
+      focusNode: widget.focusNode,
+      autofocus: widget.autofocus,
+      child: Container(
+        width: size.width, // Same size as the Material YaruSwitch.
+        height: size.height,
+        alignment: Alignment.center,
+        child: CupertinoYaruSwitch(
+          dragStartBehavior: widget.dragStartBehavior,
+          value: widget.value,
+          onChanged: widget.onChanged,
+          activeColor: widget.activeColor,
+          trackColor: widget.inactiveTrackColor
+        ),
       ),
     );
   }
 
   @override
-  void dispose() {
-    _tap.dispose();
-    _drag.dispose();
+  Widget build(BuildContext context) {
+    YaruSwitch (widget._YaruSwitchType) {
+      case _YaruSwitchType.material:
+        return buildMaterialYaruSwitch(context);
 
-    _positionController.dispose();
-    _reactionController.dispose();
-    super.dispose();
+      case _YaruSwitchType.adaptive: {
+        final ThemeData theme = Theme.of(context);
+        assert(theme.platform != null);
+        YaruSwitch (theme.platform) {
+          case TargetPlatform.android:
+          case TargetPlatform.fuchsia:
+          case TargetPlatform.linux:
+          case TargetPlatform.windows:
+            return buildMaterialYaruSwitch(context);
+          case TargetPlatform.iOS:
+          case TargetPlatform.macOS:
+            return buildCupertinoYaruSwitch(context);
+        }
+      }
+    }
+    assert(false);
+    return null;
   }
 }
 
@@ -215,164 +418,340 @@ class _YaruSwitchRenderObjectWidget extends LeafRenderObjectWidget {
     Key key,
     this.value,
     this.activeColor,
-    this.trackColor,
+    this.inactiveColor,
+    this.hoverColor,
+    this.focusColor,
+    this.activeThumbImage,
+    this.onActiveThumbImageError,
+    this.inactiveThumbImage,
+    this.onInactiveThumbImageError,
+    this.activeTrackColor,
+    this.inactiveTrackColor,
+    this.configuration,
     this.onChanged,
-    this.textDirection,
+    this.additionalConstraints,
+    this.dragStartBehavior,
+    this.hasFocus,
+    this.hovering,
     this.state,
   }) : super(key: key);
 
   final bool value;
   final Color activeColor;
-  final Color trackColor;
+  final Color inactiveColor;
+  final Color hoverColor;
+  final Color focusColor;
+  final ImageProvider activeThumbImage;
+  final ImageErrorListener onActiveThumbImageError;
+  final ImageProvider inactiveThumbImage;
+  final ImageErrorListener onInactiveThumbImageError;
+  final Color activeTrackColor;
+  final Color inactiveTrackColor;
+  final ImageConfiguration configuration;
   final ValueChanged<bool> onChanged;
+  final BoxConstraints additionalConstraints;
+  final DragStartBehavior dragStartBehavior;
+  final bool hasFocus;
+  final bool hovering;
   final _YaruSwitchState state;
-  final TextDirection textDirection;
 
   @override
   _RenderYaruSwitch createRenderObject(BuildContext context) {
     return _RenderYaruSwitch(
+      dragStartBehavior: dragStartBehavior,
       value: value,
       activeColor: activeColor,
-      trackColor: trackColor,
+      inactiveColor: inactiveColor,
+      hoverColor: hoverColor,
+      focusColor: focusColor,
+      activeThumbImage: activeThumbImage,
+      onActiveThumbImageError: onActiveThumbImageError,
+      inactiveThumbImage: inactiveThumbImage,
+      onInactiveThumbImageError: onInactiveThumbImageError,
+      activeTrackColor: activeTrackColor,
+      inactiveTrackColor: inactiveTrackColor,
+      configuration: configuration,
       onChanged: onChanged,
-      textDirection: textDirection,
+      textDirection: Directionality.of(context),
+      additionalConstraints: additionalConstraints,
+      hasFocus: hasFocus,
+      hovering: hovering,
       state: state,
     );
   }
 
   @override
-  void updateRenderObject(
-      BuildContext context, _RenderYaruSwitch renderObject) {
+  void updateRenderObject(BuildContext context, _RenderYaruSwitch renderObject) {
     renderObject
       ..value = value
       ..activeColor = activeColor
-      ..trackColor = trackColor
+      ..inactiveColor = inactiveColor
+      ..hoverColor = hoverColor
+      ..focusColor = focusColor
+      ..activeThumbImage = activeThumbImage
+      ..onActiveThumbImageError = onActiveThumbImageError
+      ..inactiveThumbImage = inactiveThumbImage
+      ..onInactiveThumbImageError = onInactiveThumbImageError
+      ..activeTrackColor = activeTrackColor
+      ..inactiveTrackColor = inactiveTrackColor
+      ..configuration = configuration
       ..onChanged = onChanged
-      ..textDirection = textDirection;
+      ..textDirection = Directionality.of(context)
+      ..additionalConstraints = additionalConstraints
+      ..dragStartBehavior = dragStartBehavior
+      ..hasFocus = hasFocus
+      ..hovering = hovering
+      ..vsync = state;
   }
 }
 
-const double _kTrackWidth = 51.0;
-const double _kTrackHeight = 26.0;
-const double _kTrackRadius = _kTrackHeight / 2.0;
-const double _kTrackInnerStart = _kTrackHeight / 2.0;
-const double _kTrackInnerEnd = _kTrackWidth - _kTrackInnerStart;
-const double _kTrackInnerLength = _kTrackInnerEnd - _kTrackInnerStart;
-const double _kSwitchWidth = 30.0;
-const double _kSwitchHeight = 21.0;
-
-const double _kYaruSwitchDisabledOpacity = 0.5;
-
-const Duration _kReactionDuration = Duration(milliseconds: 300);
-const Duration _kToggleDuration = Duration(milliseconds: 200);
-
-class _RenderYaruSwitch extends RenderConstrainedBox {
+class _RenderYaruSwitch extends RenderToggleable {
   _RenderYaruSwitch({
-    @required bool value,
-    @required Color activeColor,
-    @required Color trackColor,
-    ValueChanged<bool> onChanged,
+    bool value,
+    Color activeColor,
+    Color inactiveColor,
+    Color hoverColor,
+    Color focusColor,
+    ImageProvider activeThumbImage,
+    ImageErrorListener onActiveThumbImageError,
+    ImageProvider inactiveThumbImage,
+    ImageErrorListener onInactiveThumbImageError,
+    Color activeTrackColor,
+    Color inactiveTrackColor,
+    ImageConfiguration configuration,
+    BoxConstraints additionalConstraints,
     @required TextDirection textDirection,
-    @required _YaruSwitchState state,
-  })  : assert(value != null),
-        assert(activeColor != null),
-        assert(state != null),
-        _value = value,
-        _activeColor = activeColor,
-        _trackColor = trackColor,
-        _onChanged = onChanged,
-        _textDirection = textDirection,
-        _state = state,
-        super(
-            additionalConstraints: const BoxConstraints.tightFor(
-                width: _kSwitchWidth, height: _kSwitchHeight)) {
-    state.position.addListener(markNeedsPaint);
-    state._reaction.addListener(markNeedsPaint);
+    ValueChanged<bool> onChanged,
+    DragStartBehavior dragStartBehavior,
+    bool hasFocus,
+    bool hovering,
+    @required this.state,
+  }) : assert(textDirection != null),
+       _activeThumbImage = activeThumbImage,
+       _onActiveThumbImageError = onActiveThumbImageError,
+       _inactiveThumbImage = inactiveThumbImage,
+       _onInactiveThumbImageError = onInactiveThumbImageError,
+       _activeTrackColor = activeTrackColor,
+       _inactiveTrackColor = inactiveTrackColor,
+       _configuration = configuration,
+       _textDirection = textDirection,
+       super(
+         value: value,
+         tristate: false,
+         activeColor: activeColor,
+         inactiveColor: inactiveColor,
+         hoverColor: hoverColor,
+         focusColor: focusColor,
+         onChanged: onChanged,
+         additionalConstraints: additionalConstraints,
+         hasFocus: hasFocus,
+         hovering: hovering,
+         vsync: state,
+       ) {
+    _drag = HorizontalDragGestureRecognizer()
+      ..onStart = _handleDragStart
+      ..onUpdate = _handleDragUpdate
+      ..onEnd = _handleDragEnd
+      ..dragStartBehavior = dragStartBehavior;
   }
 
-  final _YaruSwitchState _state;
-
-  bool get value => _value;
-  bool _value;
-  set value(bool value) {
-    assert(value != null);
-    if (value == _value) return;
-    _value = value;
-    markNeedsSemanticsUpdate();
-  }
-
-  Color get activeColor => _activeColor;
-  Color _activeColor;
-  set activeColor(Color value) {
-    assert(value != null);
-    if (value == _activeColor) return;
-    _activeColor = value;
+  ImageProvider get activeThumbImage => _activeThumbImage;
+  ImageProvider _activeThumbImage;
+  set activeThumbImage(ImageProvider value) {
+    if (value == _activeThumbImage)
+      return;
+    _activeThumbImage = value;
     markNeedsPaint();
   }
 
-  Color get trackColor => _trackColor;
-  Color _trackColor;
-  set trackColor(Color value) {
-    assert(value != null);
-    if (value == _trackColor) return;
-    _trackColor = value;
-    markNeedsPaint();
-  }
-
-  ValueChanged<bool> get onChanged => _onChanged;
-  ValueChanged<bool> _onChanged;
-  set onChanged(ValueChanged<bool> value) {
-    if (value == _onChanged) return;
-    final bool wasInteractive = isInteractive;
-    _onChanged = value;
-    if (wasInteractive != isInteractive) {
-      markNeedsPaint();
-      markNeedsSemanticsUpdate();
+  ImageErrorListener get onActiveThumbImageError => _onActiveThumbImageError;
+  ImageErrorListener _onActiveThumbImageError;
+  set onActiveThumbImageError(ImageErrorListener value) {
+    if (value == _onActiveThumbImageError) {
+      return;
     }
+    _onActiveThumbImageError = value;
+    markNeedsPaint();
+  }
+
+  ImageProvider get inactiveThumbImage => _inactiveThumbImage;
+  ImageProvider _inactiveThumbImage;
+  set inactiveThumbImage(ImageProvider value) {
+    if (value == _inactiveThumbImage)
+      return;
+    _inactiveThumbImage = value;
+    markNeedsPaint();
+  }
+
+  ImageErrorListener get onInactiveThumbImageError => _onInactiveThumbImageError;
+  ImageErrorListener _onInactiveThumbImageError;
+  set onInactiveThumbImageError(ImageErrorListener value) {
+    if (value == _onInactiveThumbImageError) {
+      return;
+    }
+    _onInactiveThumbImageError = value;
+    markNeedsPaint();
+  }
+
+  Color get activeTrackColor => _activeTrackColor;
+  Color _activeTrackColor;
+  set activeTrackColor(Color value) {
+    assert(value != null);
+    if (value == _activeTrackColor)
+      return;
+    _activeTrackColor = value;
+    markNeedsPaint();
+  }
+
+  Color get inactiveTrackColor => _inactiveTrackColor;
+  Color _inactiveTrackColor;
+  set inactiveTrackColor(Color value) {
+    assert(value != null);
+    if (value == _inactiveTrackColor)
+      return;
+    _inactiveTrackColor = value;
+    markNeedsPaint();
+  }
+
+  ImageConfiguration get configuration => _configuration;
+  ImageConfiguration _configuration;
+  set configuration(ImageConfiguration value) {
+    assert(value != null);
+    if (value == _configuration)
+      return;
+    _configuration = value;
+    markNeedsPaint();
   }
 
   TextDirection get textDirection => _textDirection;
   TextDirection _textDirection;
   set textDirection(TextDirection value) {
     assert(value != null);
-    if (_textDirection == value) return;
+    if (_textDirection == value)
+      return;
     _textDirection = value;
     markNeedsPaint();
   }
 
-  bool get isInteractive => onChanged != null;
+  DragStartBehavior get dragStartBehavior => _drag.dragStartBehavior;
+  set dragStartBehavior(DragStartBehavior value) {
+    assert(value != null);
+    if (_drag.dragStartBehavior == value)
+      return;
+    _drag.dragStartBehavior = value;
+  }
+
+  _YaruSwitchState state;
 
   @override
-  bool hitTestSelf(Offset position) => true;
+  set value(bool newValue) {
+    assert(value != null);
+    super.value = newValue;
+    // The widget is rebuilt and we have pending position animation to play.
+    if (_needsPositionAnimation) {
+      _needsPositionAnimation = false;
+      position
+        ..curve = null
+        ..reverseCurve = null;
+      if (newValue)
+        positionController.forward();
+      else
+        positionController.reverse();
+    }
+  }
+
+
+  @override
+  void detach() {
+    _cachedThumbPainter?.dispose();
+    _cachedThumbPainter = null;
+    super.detach();
+  }
+
+  double get _trackInnerLength => size.width - 2.0 * kRadialReactionRadius;
+
+  HorizontalDragGestureRecognizer _drag;
+
+  bool _needsPositionAnimation = false;
+
+  void _handleDragStart(DragStartDetails details) {
+    if (isInteractive)
+      reactionController.forward();
+  }
+
+  void _handleDragUpdate(DragUpdateDetails details) {
+    if (isInteractive) {
+      position
+        ..curve = null
+        ..reverseCurve = null;
+      final double delta = details.primaryDelta / _trackInnerLength;
+      YaruSwitch (textDirection) {
+        case TextDirection.rtl:
+          positionController.value -= delta;
+          break;
+        case TextDirection.ltr:
+          positionController.value += delta;
+          break;
+      }
+    }
+  }
+
+  void _handleDragEnd(DragEndDetails details) {
+    _needsPositionAnimation = true;
+
+    if (position.value >= 0.5 != value)
+      onChanged(!value);
+    reactionController.reverse();
+    state._didFinishDragging();
+  }
 
   @override
   void handleEvent(PointerEvent event, BoxHitTestEntry entry) {
     assert(debugHandleEvent(event, entry));
-    if (event is PointerDownEvent && isInteractive) {
-      _state._drag.addPointer(event);
-      _state._tap.addPointer(event);
-    }
+    if (event is PointerDownEvent && onChanged != null)
+      _drag.addPointer(event);
+    super.handleEvent(event, entry);
+  }
+
+  Color _cachedThumbColor;
+  ImageProvider _cachedThumbImage;
+  ImageErrorListener _cachedThumbErrorListener;
+  BoxPainter _cachedThumbPainter;
+
+  BoxDecoration _createDefaultThumbDecoration(Color color, ImageProvider image, ImageErrorListener errorListener) {
+    return BoxDecoration(
+      color: color,
+      image: image == null ? null : DecorationImage(image: image, onError: errorListener),
+      shape: BoxShape.circle,
+      boxShadow: kElevationToShadow[1],
+    );
+  }
+
+  bool _isPainting = false;
+
+  void _handleDecorationChanged() {
+    // If the image decoration is available synchronously, we'll get called here
+    // during paint. There's no reason to mark ourselves as needing paint if we
+    // are already in the middle of painting. (In fact, doing so would trigger
+    // an assert).
+    if (!_isPainting)
+      markNeedsPaint();
   }
 
   @override
   void describeSemanticsConfiguration(SemanticsConfiguration config) {
     super.describeSemanticsConfiguration(config);
-
-    if (isInteractive) config.onTap = _state._handleTap;
-
-    config.isEnabled = isInteractive;
-    config.isToggled = _value;
+    config.isToggled = value == true;
   }
 
   @override
   void paint(PaintingContext context, Offset offset) {
     final Canvas canvas = context.canvas;
-
-    final double currentValue = _state.position.value;
-    final double currentReactionValue = _state._reaction.value;
+    final bool isEnabled = onChanged != null;
+    final double currentValue = position.value;
 
     double visualPosition;
-    switch (textDirection) {
+    YaruSwitch (textDirection) {
       case TextDirection.rtl:
         visualPosition = 1.0 - currentValue;
         break;
@@ -381,63 +760,63 @@ class _RenderYaruSwitch extends RenderConstrainedBox {
         break;
     }
 
-    final Paint paint = Paint()
-      ..color = Color.lerp(trackColor, activeColor, currentValue);
+    final Color trackColor = isEnabled
+      ? Color.lerp(inactiveTrackColor, activeTrackColor, currentValue)
+      : inactiveTrackColor;
 
+    final Color thumbColor = isEnabled
+      ? Color.lerp(inactiveColor, activeColor, currentValue)
+      : inactiveColor;
+
+    final ImageProvider thumbImage = isEnabled
+      ? (currentValue < 0.5 ? inactiveThumbImage : activeThumbImage)
+      : inactiveThumbImage;
+
+    final ImageErrorListener thumbErrorListener = isEnabled
+      ? (currentValue < 0.5 ? onInactiveThumbImageError : onActiveThumbImageError)
+      : onInactiveThumbImageError;
+
+    // Paint the track
+    final Paint paint = Paint()
+      ..color = trackColor;
+    const double trackHorizontalPadding = kRadialReactionRadius - _kTrackRadius;
     final Rect trackRect = Rect.fromLTWH(
-      offset.dx + (size.width - _kTrackWidth) / 2.0,
+      offset.dx + trackHorizontalPadding,
       offset.dy + (size.height - _kTrackHeight) / 2.0,
-      _kTrackWidth,
+      size.width - 2.0 * trackHorizontalPadding,
       _kTrackHeight,
     );
-    final RRect trackRRect = RRect.fromRectAndRadius(
-        trackRect, const Radius.circular(_kTrackRadius));
+    final RRect trackRRect = RRect.fromRectAndRadius(trackRect, const Radius.circular(_kTrackRadius));
     canvas.drawRRect(trackRRect, paint);
 
-    final double currentThumbExtension =
-        CupertinoThumbPainter.extension * currentReactionValue;
-    final double thumbLeft = lerpDouble(
-      trackRect.left + _kTrackInnerStart - CupertinoThumbPainter.radius,
-      trackRect.left +
-          _kTrackInnerEnd -
-          CupertinoThumbPainter.radius -
-          currentThumbExtension,
-      visualPosition,
-    );
-    final double thumbRight = lerpDouble(
-      trackRect.left +
-          _kTrackInnerStart +
-          CupertinoThumbPainter.radius +
-          currentThumbExtension,
-      trackRect.left + _kTrackInnerEnd + CupertinoThumbPainter.radius,
-      visualPosition,
-    );
-    final double thumbCenterY = offset.dy + size.height / 2.0;
-    final Rect thumbBounds = Rect.fromLTRB(
-      thumbLeft,
-      thumbCenterY - CupertinoThumbPainter.radius,
-      thumbRight,
-      thumbCenterY + CupertinoThumbPainter.radius,
+    final Offset thumbPosition = Offset(
+      kRadialReactionRadius + visualPosition * _trackInnerLength,
+      size.height / 2.0,
     );
 
-    context
-        .pushClipRRect(needsCompositing, Offset.zero, thumbBounds, trackRRect,
-            (PaintingContext innerContext, Offset offset) {
-      const CupertinoThumbPainter.switchThumb()
-          .paint(innerContext.canvas, thumbBounds);
-    });
-  }
+    paintRadialReaction(canvas, offset, thumbPosition);
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder description) {
-    super.debugFillProperties(description);
-    description.add(FlagProperty('value',
-        value: value, ifTrue: 'checked', ifFalse: 'unchecked', showName: true));
-    description.add(FlagProperty('isInteractive',
-        value: isInteractive,
-        ifTrue: 'enabled',
-        ifFalse: 'disabled',
-        showName: true,
-        defaultValue: true));
+    try {
+      _isPainting = true;
+      BoxPainter thumbPainter;
+      if (_cachedThumbPainter == null || thumbColor != _cachedThumbColor || thumbImage != _cachedThumbImage || thumbErrorListener != _cachedThumbErrorListener) {
+        _cachedThumbColor = thumbColor;
+        _cachedThumbImage = thumbImage;
+        _cachedThumbErrorListener = thumbErrorListener;
+        _cachedThumbPainter = _createDefaultThumbDecoration(thumbColor, thumbImage, thumbErrorListener).createBoxPainter(_handleDecorationChanged);
+      }
+      thumbPainter = _cachedThumbPainter;
+
+      // The thumb contracts slightly during the animation
+      final double inset = 1.0 - (currentValue - 0.5).abs() * 2.0;
+      final double radius = _kThumbRadius - inset;
+      thumbPainter.paint(
+        canvas,
+        thumbPosition + offset - Offset(radius, radius),
+        configuration.copyWith(size: Size.fromRadius(radius)),
+      );
+    } finally {
+      _isPainting = false;
+    }
   }
 }
