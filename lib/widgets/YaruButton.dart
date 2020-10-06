@@ -8,8 +8,8 @@ import 'package:flutter/src/material/material_button.dart';
 import 'package:flutter/src/material/theme.dart';
 import 'package:flutter/src/material/theme_data.dart';
 
-class RaisedButton extends MaterialButton {
-  const RaisedButton({
+class YaruButton extends MaterialButton {
+  const YaruButton({
     Key key,
     @required VoidCallback onPressed,
     VoidCallback onLongPress,
@@ -78,7 +78,7 @@ class RaisedButton extends MaterialButton {
           child: child,
         );
 
-  factory RaisedButton.icon({
+  factory YaruButton.icon({
     Key key,
     @required VoidCallback onPressed,
     VoidCallback onLongPress,
@@ -106,7 +106,7 @@ class RaisedButton extends MaterialButton {
     Duration animationDuration,
     @required Widget icon,
     @required Widget label,
-  }) = _RaisedButtonWithIcon;
+  }) = _YaruButtonWithIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -160,9 +160,8 @@ class RaisedButton extends MaterialButton {
   }
 }
 
-class _RaisedButtonWithIcon extends RaisedButton
-    with MaterialButtonWithIconMixin {
-  _RaisedButtonWithIcon({
+class _YaruButtonWithIcon extends YaruButton with MaterialButtonWithIconMixin {
+  _YaruButtonWithIcon({
     Key key,
     @required VoidCallback onPressed,
     VoidCallback onLongPress,
