@@ -136,12 +136,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ]),
             Row(children: <Widget>[
-              OutlineButton(
-                onPressed: () => print('OutlineButton'),
+              OutlinedButton(
+                onPressed: () => print('OutlinedButton'),
                 child: const Text('Click me!'),
               ),
               SizedBox(width: 15),
-              OutlineButton(
+              OutlinedButton(
+                onPressed: null,
                 child: const Text("Can't click me!"),
               ),
             ]),
