@@ -101,6 +101,9 @@ final yaruTextTheme = TextTheme(
 final yaruButtonThemeData = ButtonThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)));
 
+final yaruOutlinedButtonThemeData = OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(primary: yaruTextGrey));
+
 final yaruAppBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
   color: yaruWarmGrey,
@@ -132,6 +135,7 @@ final yaruTheme = ThemeData(
     applyElevationOverlayColor: false,
     colorScheme: yaruLightColorScheme,
     buttonTheme: yaruButtonThemeData,
+    outlinedButtonTheme: yaruOutlinedButtonThemeData,
     appBarTheme: yaruAppBarDarkTheme);
 
 final yaruLightTheme = ThemeData(
