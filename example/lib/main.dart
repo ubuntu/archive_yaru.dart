@@ -44,7 +44,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final textController = TextEditingController(
       text:
-          'My code fails.\nI do not know why.\nMy code works.\nI do not know why.');
+          'My code fails, I do not know why.\nMy code works, I do not know why.\nText in other scripts: Tamaziɣt Taqbaylit, 中文(简体), Čeština, Беларуская, Ελληνικά, עברית, Русский, བོད་ཡིག, Norsk bokmål.');
   var themeName = 'Yaru';
   final void Function(String themeName) themeChanged;
 

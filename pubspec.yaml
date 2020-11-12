@@ -37,3 +37,25 @@ flutter:
         - asset: packages/yaru/fonts/Ubuntu-BI.ttf
           weight: 700
           style: italic
+    - family: Noto Sans CJK
+      fonts:
+        - asset: packages/yaru/fonts/NotoSansCJK-Regular.ttc
+          weight: 300
+        - asset: packages/yaru/fonts/NotoSansCJK-Bold.ttc
+          weight: 700
+    - family: Tibetan Machine Uni
+      fonts:
+        - asset: packages/yaru/fonts/TibetanMachineUni.ttf
+          weight: 300
+    - family: Liberation Serif
+      fonts:
+        - asset: packages/yaru/fonts/LiberationSerif-Regular.ttf
+          weight: 300
+        - asset: packages/yaru/fonts/LiberationSerif-Italic.ttf
+          weight: 300
+          style: italic
+        - asset: packages/yaru/fonts/LiberationSerif-Bold.ttf
+          weight: 700
+        - asset: packages/yaru/fonts/LiberationSerif-BoldItalic.ttf
+          weight: 700
+          style: italic
