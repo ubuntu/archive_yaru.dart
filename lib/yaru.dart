@@ -106,7 +106,15 @@ final yaruOutlinedButtonThemeData = OutlinedButtonThemeData(
 
 final yaruAppBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
-  color: yaruWarmGrey,
+  color: yaruWhite,
+  textTheme: yaruTextTheme.copyWith(
+      headline6: yaruHeadline6Style.copyWith(
+    color: yaruCoolGrey,
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+  )),
+  iconTheme: IconThemeData(color: yaruCoolGrey),
+  actionsIconTheme: IconThemeData(color: yaruCoolGrey),
 );
 
 final yaruAppBarDarkTheme = AppBarTheme(
