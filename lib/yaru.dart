@@ -60,19 +60,28 @@ final yaruDarkColorScheme = ColorScheme.fromSwatch(
     errorColor: yaruErrorColor,
     brightness: Brightness.dark);
 
-final yaruHeadline1Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruHeadline2Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruHeadline3Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruHeadline4Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruHeadline5Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruHeadline6Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruSubtitle1Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruSubtitle2Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruBodyText1Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruBodyText2Style = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruCaptionStyle = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruButtonStyle = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
-final yaruOverlineStyle = TextStyle(fontFamily: 'Ubuntu', package: 'yaru');
+final _yaruTextStyle = TextStyle(
+  fontFamily: 'Ubuntu',
+  package: 'yaru',
+  fontFamilyFallback: [
+    'Liberation Serif',
+    'Noto Sans CJK',
+    'Tibetan Machine Uni',
+  ],
+);
+final yaruHeadline1Style = _yaruTextStyle;
+final yaruHeadline2Style = _yaruTextStyle;
+final yaruHeadline3Style = _yaruTextStyle;
+final yaruHeadline4Style = _yaruTextStyle;
+final yaruHeadline5Style = _yaruTextStyle;
+final yaruHeadline6Style = _yaruTextStyle;
+final yaruSubtitle1Style = _yaruTextStyle;
+final yaruSubtitle2Style = _yaruTextStyle;
+final yaruBodyText1Style = _yaruTextStyle;
+final yaruBodyText2Style = _yaruTextStyle;
+final yaruCaptionStyle = _yaruTextStyle;
+final yaruButtonStyle = _yaruTextStyle;
+final yaruOverlineStyle = _yaruTextStyle;
 
 final yaruTextTheme = TextTheme(
     headline1: yaruHeadline1Style,
