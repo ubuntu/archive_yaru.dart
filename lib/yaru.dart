@@ -104,6 +104,9 @@ final yaruButtonThemeData = ButtonThemeData(
 final yaruOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(primary: yaruTextGrey));
 
+final yaruDarkOutlinedButtonThemeData = OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(primary: yaruWhite));
+
 final yaruAppBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
   color: yaruWhite,
@@ -167,6 +170,7 @@ final yaruLightTheme = ThemeData(
     applyElevationOverlayColor: false,
     colorScheme: yaruLightColorScheme,
     buttonTheme: yaruButtonThemeData,
+    outlinedButtonTheme: yaruOutlinedButtonThemeData,
     appBarTheme: yaruAppBarLightTheme);
 
 final yaruDarkTheme = ThemeData(
@@ -190,4 +194,5 @@ final yaruDarkTheme = ThemeData(
     applyElevationOverlayColor: true,
     colorScheme: yaruDarkColorScheme,
     buttonTheme: yaruButtonThemeData,
+    outlinedButtonTheme: yaruDarkOutlinedButtonThemeData,
     appBarTheme: yaruAppBarDarkTheme);
