@@ -126,13 +126,15 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.overline,
             ),
             Row(children: <Widget>[
-              FlatButton(
+              TextButton(
                 onPressed: () => print('FlatButton'),
                 child: const Text('Click me!'),
               ),
               SizedBox(width: 15),
-              FlatButton(
+              TextButton(
+                onPressed: null,
                 child: const Text("Can't click me!"),
+                autofocus: true,
               ),
             ]),
             Row(children: <Widget>[
@@ -147,19 +149,20 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ]),
             Row(children: <Widget>[
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => print('RaisedButton'),
                 child: const Text('Click me!'),
               ),
               SizedBox(width: 15),
-              RaisedButton(
+              ElevatedButton(
+                onPressed: null,
                 child: const Text("Can't click me!"),
               ),
             ]),
             Row(
               children: <Widget>[
                 DropdownButton<int>(
-                  onChanged: (value) => print('DropdownButton ${value}'),
+                  onChanged: (value) => print('DropdownButton $value'),
                   value: 1,
                   items: <DropdownMenuItem<int>>[
                     DropdownMenuItem(value: 1, child: Text('One')),
@@ -188,7 +191,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Row(
                       children: <Widget>[
-                        Checkbox(value: true),
+                        Checkbox(
+                          value: true,
+                          onChanged: null,
+                        ),
                         Text('Disabled'),
                       ],
                     ),
@@ -211,7 +217,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Row(
                       children: <Widget>[
-                        Switch(value: true),
+                        Switch(
+                          value: true,
+                          onChanged: (bool value) {},
+                        ),
                         Text('Disabled'),
                       ],
                     ),
@@ -234,7 +243,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Row(
                       children: <Widget>[
-                        Radio(value: 3, groupValue: 1),
+                        Radio(
+                          value: 3,
+                          groupValue: 1,
+                          onChanged: (int value) {},
+                        ),
                         Text('Disabled'),
                       ],
                     ),
