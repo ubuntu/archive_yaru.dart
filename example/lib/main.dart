@@ -224,6 +224,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         Text('Disabled'),
                       ],
                     ),
+                    Row(
+                      children: <Widget>[CircularProgressIndicator()],
+                    )
                   ],
                 ),
                 Column(
