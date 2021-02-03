@@ -15,8 +15,12 @@ final yaruWarmGrey = Color(0xFFAEA79F);
 final yaruCoolGrey = Color(0xFF333333);
 final yaruTextGrey = Color(0xFF111111);
 final yaruCanonicalAubergine = Color(0xFF772953);
-
+final yaruGreen = Color(0xFF109a26);
 final yaruErrorColor = Color(0xFFFF0000);
+
+final elevatedButtonThemeData = ElevatedButtonThemeData(
+    style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(yaruGreen)));
 
 final yaruLightColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
@@ -33,7 +37,7 @@ final yaruLightColorScheme = ColorScheme.fromSwatch(
       900: Color(0xFF2F1106),
     }),
     primaryColorDark: yaruCoolGrey,
-    accentColor: yaruUbuntuOrange,
+    accentColor: yaruLightAubergine,
     cardColor: yaruWhite,
     backgroundColor: yaruWhite,
     errorColor: yaruErrorColor,
@@ -54,7 +58,7 @@ final yaruDarkColorScheme = ColorScheme.fromSwatch(
       900: Color(0xFF2F1106),
     }),
     primaryColorDark: yaruCoolGrey,
-    accentColor: yaruUbuntuOrange,
+    accentColor: yaruLightAubergine,
     cardColor: yaruCoolGrey,
     backgroundColor: yaruCoolGrey,
     errorColor: yaruErrorColor,
@@ -99,7 +103,7 @@ final yaruTextTheme = TextTheme(
     overline: yaruOverlineStyle);
 
 final yaruButtonThemeData = ButtonThemeData(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)));
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)));
 
 final yaruOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(primary: yaruTextGrey));
@@ -142,10 +146,11 @@ final yaruTheme = ThemeData(
     dialogBackgroundColor: yaruLightColorScheme.background,
     errorColor: yaruLightColorScheme.error,
     textTheme: yaruTextTheme,
-    indicatorColor: yaruLightColorScheme.onPrimary,
+    indicatorColor: yaruLightColorScheme.secondary,
     applyElevationOverlayColor: false,
     colorScheme: yaruLightColorScheme,
     buttonTheme: yaruButtonThemeData,
+    elevatedButtonTheme: elevatedButtonThemeData,
     outlinedButtonTheme: yaruOutlinedButtonThemeData,
     appBarTheme: yaruAppBarDarkTheme);
 
@@ -166,10 +171,11 @@ final yaruLightTheme = ThemeData(
     dialogBackgroundColor: yaruLightColorScheme.background,
     errorColor: yaruLightColorScheme.error,
     textTheme: yaruTextTheme,
-    indicatorColor: yaruLightColorScheme.onPrimary,
+    indicatorColor: yaruLightColorScheme.secondary,
     applyElevationOverlayColor: false,
     colorScheme: yaruLightColorScheme,
     buttonTheme: yaruButtonThemeData,
+    elevatedButtonTheme: elevatedButtonThemeData,
     outlinedButtonTheme: yaruOutlinedButtonThemeData,
     appBarTheme: yaruAppBarLightTheme);
 
@@ -190,9 +196,10 @@ final yaruDarkTheme = ThemeData(
     dialogBackgroundColor: yaruDarkColorScheme.background,
     errorColor: yaruDarkColorScheme.error,
     textTheme: yaruTextTheme,
-    indicatorColor: yaruDarkColorScheme.onPrimary,
+    indicatorColor: yaruDarkColorScheme.secondary,
     applyElevationOverlayColor: true,
     colorScheme: yaruDarkColorScheme,
     buttonTheme: yaruButtonThemeData,
+    elevatedButtonTheme: elevatedButtonThemeData,
     outlinedButtonTheme: yaruDarkOutlinedButtonThemeData,
     appBarTheme: yaruAppBarDarkTheme);
