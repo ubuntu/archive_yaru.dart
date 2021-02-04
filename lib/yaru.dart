@@ -256,43 +256,27 @@ final elevatedButtonThemeDataDark = ElevatedButtonThemeData(
 
 // Switches
 Color getSwitchThumbColorDark(Set<MaterialState> states) {
-  const Set<MaterialState> interactiveStates = <MaterialState>{
-    MaterialState.pressed,
-    MaterialState.focused,
-    MaterialState.dragged,
-    MaterialState.selected
-  };
-  const Set<MaterialState> disabledStates = <MaterialState>{
-    MaterialState.disabled
-  };
-
-  if (states.any(interactiveStates.contains)) {
-    return yaruLightAubergine;
+  if (states.contains(MaterialState.disabled)) {
+    return yaruWarmGrey;
+  } else {
+    if (states.contains(MaterialState.selected)) {
+      return yaruMidAubergine;
+    } else {
+      return yaruWhite;
+    }
   }
-  if (states.any(disabledStates.contains)) {
-    return yaruDisabledGreyDark;
-  }
-  return yaruWhite;
 }
 
 Color getSwitchTrackColorDark(Set<MaterialState> states) {
-  const Set<MaterialState> interactiveStates = <MaterialState>{
-    MaterialState.pressed,
-    MaterialState.focused,
-    MaterialState.selected,
-    MaterialState.dragged
-  };
-  const Set<MaterialState> disabledStates = <MaterialState>{
-    MaterialState.disabled
-  };
-
-  if (states.any(interactiveStates.contains)) {
-    return yaruMidAubergine;
-  }
-  if (states.contains(disabledStates)) {
+  if (states.contains(MaterialState.disabled)) {
     return yaruDisabledGreyDark;
+  } else {
+    if (states.contains(MaterialState.selected)) {
+      return yaruMidAubergine;
+    } else {
+      return yaruWarmGrey;
+    }
   }
-  return yaruWarmGrey;
 }
 
 final switchStyleDark = SwitchThemeData(
@@ -301,41 +285,20 @@ final switchStyleDark = SwitchThemeData(
 
 // Checks
 Color getCheckFillColorDark(Set<MaterialState> states) {
-  const Set<MaterialState> interactiveStates = <MaterialState>{
-    MaterialState.pressed,
-    MaterialState.focused,
-    MaterialState.selected,
-    MaterialState.dragged
-  };
-  const Set<MaterialState> disabledStates = <MaterialState>{
-    MaterialState.disabled
-  };
-  if (states.any(interactiveStates.contains)) {
-    return yaruMidAubergine;
+  if (!states.contains(MaterialState.disabled)) {
+    if (states.contains(MaterialState.selected)) {
+      return yaruLightAubergine;
+    }
+    return yaruWarmGrey;
   }
-  if (states.any(disabledStates.contains)) {
-    return yaruDisabledGreyDark;
-  }
-  return yaruWarmGrey;
+  return yaruDisabledGreyDark;
 }
 
 Color getCheckColorDark(Set<MaterialState> states) {
-  const Set<MaterialState> interactiveStates = <MaterialState>{
-    MaterialState.pressed,
-    MaterialState.focused,
-    MaterialState.selected,
-    MaterialState.dragged
-  };
-  const Set<MaterialState> disabledStates = <MaterialState>{
-    MaterialState.disabled
-  };
-  if (states.any(interactiveStates.contains)) {
+  if (!states.contains(MaterialState.disabled)) {
     return yaruWhite;
   }
-  if (states.any(disabledStates.contains)) {
-    return yaruDisabledGreyDark;
-  }
-  return yaruWhite;
+  return yaruWarmGrey;
 }
 
 final checkStyle = CheckboxThemeData(
