@@ -20,6 +20,7 @@ final yaruErrorColor = Color(0xFFFF0000);
 // more colors, as the canonical palette is not enough
 final yaruGreen = Color(0xFF109a26);
 final yaruDisabledGreyDark = Color(0xFF535353);
+final yaruMidAubergineTransparentized = Color(0xAA5E2750);
 
 final yaruLightColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
@@ -272,7 +273,7 @@ Color getSwitchTrackColorDark(Set<MaterialState> states) {
     return yaruDisabledGreyDark;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return yaruMidAubergine;
+      return yaruMidAubergineTransparentized;
     } else {
       return yaruWarmGrey;
     }
