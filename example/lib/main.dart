@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               children: <Widget>[
                 DropdownButton<int>(
-                  onChanged: (value) => print('DropdownButton $value'),
+                  onChanged: (value) => print('DropdownButton ${value}'),
                   value: 1,
                   items: <DropdownMenuItem<int>>[
                     DropdownMenuItem(value: 1, child: const Text('One')),
