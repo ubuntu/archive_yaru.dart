@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.themeChanged}) : super(key: key);
+  const MyHomePage({Key key, this.themeChanged}) : super(key: key);
 
   final void Function(String themeName) themeChanged;
 
@@ -63,9 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             itemBuilder: (context) => <PopupMenuItem<String>>[
-                  PopupMenuItem(value: 'Yaru', child: Text('Standard')),
-                  PopupMenuItem(value: 'Yaru-light', child: Text('Light')),
-                  PopupMenuItem(value: 'Yaru-dark', child: Text('Dark')),
+                  PopupMenuItem(value: 'Yaru', child: const Text('Standard')),
+                  PopupMenuItem(
+                      value: 'Yaru-light', child: const Text('Light')),
+                  PopupMenuItem(value: 'Yaru-dark', child: const Text('Dark')),
                 ]),
       ),
       body: Center(
@@ -130,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () => print('FlatButton'),
                 child: const Text('Click me!'),
               ),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               FlatButton(
                 child: const Text("Can't click me!"),
               ),
@@ -140,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () => print('OutlinedButton'),
                 child: const Text('Click me!'),
               ),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               OutlinedButton(
                 onPressed: null,
                 child: const Text("Can't click me!"),
@@ -151,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () => print('RaisedButton'),
                 child: const Text('Click me!'),
               ),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               RaisedButton(
                 child: const Text("Can't click me!"),
               ),
@@ -162,9 +163,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   onChanged: (value) => print('DropdownButton ${value}'),
                   value: 1,
                   items: <DropdownMenuItem<int>>[
-                    DropdownMenuItem(value: 1, child: Text('One')),
-                    DropdownMenuItem(value: 2, child: Text('Two')),
-                    DropdownMenuItem(value: 3, child: Text('Three')),
+                    DropdownMenuItem(value: 1, child: const Text('One')),
+                    DropdownMenuItem(value: 2, child: const Text('Two')),
+                    DropdownMenuItem(value: 3, child: const Text('Three')),
                   ],
                 ),
               ],
@@ -177,19 +178,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     Row(
                       children: <Widget>[
                         Checkbox(onChanged: (value) {}, value: true),
-                        Text('Yes'),
+                        const Text('Yes'),
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         Checkbox(onChanged: (value) {}, value: false),
-                        Text('No'),
+                        const Text('No'),
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         Checkbox(value: true),
-                        Text('Disabled'),
+                        const Text('Disabled'),
                       ],
                     ),
                   ],
@@ -200,19 +201,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     Row(
                       children: <Widget>[
                         Switch(onChanged: (value) {}, value: true),
-                        Text('Yes'),
+                        const Text('Yes'),
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         Switch(onChanged: (value) {}, value: false),
-                        Text('No'),
+                        const Text('No'),
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         Switch(value: true),
-                        Text('Disabled'),
+                        const Text('Disabled'),
                       ],
                     ),
                   ],
@@ -223,33 +224,33 @@ class _MyHomePageState extends State<MyHomePage> {
                     Row(
                       children: <Widget>[
                         Radio(onChanged: (value) {}, value: 1, groupValue: 1),
-                        Text('Yes'),
+                        const Text('Yes'),
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         Radio(onChanged: (value) {}, value: 2, groupValue: 1),
-                        Text('No'),
+                        const Text('No'),
                       ],
                     ),
                     Row(
                       children: <Widget>[
                         Radio(value: 3, groupValue: 1),
-                        Text('Disabled'),
+                        const Text('Disabled'),
                       ],
                     ),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Username',
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
@@ -257,14 +258,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelText: 'Password',
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 errorText: "You're doing it wrong",
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             TextField(
               keyboardType: TextInputType.multiline,
               controller: textController,
@@ -274,7 +275,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Container(
               width: 250.0,
               height: 50.0,
@@ -369,7 +370,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'This button does nothing',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
