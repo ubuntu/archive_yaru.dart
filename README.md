@@ -2,7 +2,7 @@
 
 Ubuntu [Yaru](https://github.com/ubuntu/yaru) theme.
 
-![Example app using Yaru theme](screenshot.png)
+![Example app using Yaru theme](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/screenshot.png)
 
 ## Contributing to yaru.dart
 
