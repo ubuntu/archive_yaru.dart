@@ -15,8 +15,12 @@ final yaruWarmGrey = Color(0xFFAEA79F);
 final yaruCoolGrey = Color(0xFF333333);
 final yaruTextGrey = Color(0xFF111111);
 final yaruCanonicalAubergine = Color(0xFF772953);
-
 final yaruErrorColor = Color(0xFFFF0000);
+
+// more colors, as the canonical palette is not enough
+final yaruGreen = Color(0xFF109a26);
+final yaruDisabledGreyDark = Color(0xFF535353);
+final yaruMidAubergineTransparentized = Color(0xAA5E2750);
 
 final yaruLightColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
@@ -33,7 +37,7 @@ final yaruLightColorScheme = ColorScheme.fromSwatch(
       900: Color(0xFF2F1106),
     }),
     primaryColorDark: yaruCoolGrey,
-    accentColor: yaruUbuntuOrange,
+    accentColor: yaruLightAubergine,
     cardColor: yaruWhite,
     backgroundColor: yaruWhite,
     errorColor: yaruErrorColor,
@@ -54,7 +58,7 @@ final yaruDarkColorScheme = ColorScheme.fromSwatch(
       900: Color(0xFF2F1106),
     }),
     primaryColorDark: yaruCoolGrey,
-    accentColor: yaruUbuntuOrange,
+    accentColor: yaruLightAubergine,
     cardColor: yaruCoolGrey,
     backgroundColor: yaruCoolGrey,
     errorColor: yaruErrorColor,
@@ -99,7 +103,7 @@ final yaruTextTheme = TextTheme(
     overline: yaruOverlineStyle);
 
 final yaruButtonThemeData = ButtonThemeData(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)));
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)));
 
 final yaruOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(primary: yaruTextGrey));
@@ -142,10 +146,11 @@ final yaruTheme = ThemeData(
     dialogBackgroundColor: yaruLightColorScheme.background,
     errorColor: yaruLightColorScheme.error,
     textTheme: yaruTextTheme,
-    indicatorColor: yaruLightColorScheme.onPrimary,
+    indicatorColor: yaruLightColorScheme.secondary,
     applyElevationOverlayColor: false,
     colorScheme: yaruLightColorScheme,
     buttonTheme: yaruButtonThemeData,
+    elevatedButtonTheme: elevatedButtonThemeDataLight,
     outlinedButtonTheme: yaruOutlinedButtonThemeData,
     appBarTheme: yaruAppBarDarkTheme);
 
@@ -166,18 +171,19 @@ final yaruLightTheme = ThemeData(
     dialogBackgroundColor: yaruLightColorScheme.background,
     errorColor: yaruLightColorScheme.error,
     textTheme: yaruTextTheme,
-    indicatorColor: yaruLightColorScheme.onPrimary,
+    indicatorColor: yaruLightColorScheme.secondary,
     applyElevationOverlayColor: false,
     colorScheme: yaruLightColorScheme,
     buttonTheme: yaruButtonThemeData,
+    elevatedButtonTheme: elevatedButtonThemeDataLight,
     outlinedButtonTheme: yaruOutlinedButtonThemeData,
     appBarTheme: yaruAppBarLightTheme);
 
 final yaruDarkTheme = ThemeData(
     brightness: Brightness.dark,
-    primaryColor: yaruDarkColorScheme.surface,
+    primaryColor: yaruDarkColorScheme.primary,
     primaryColorBrightness:
-        ThemeData.estimateBrightnessForColor(yaruDarkColorScheme.surface),
+        ThemeData.estimateBrightnessForColor(yaruDarkColorScheme.primary),
     canvasColor: yaruDarkColorScheme.background,
     accentColor: yaruDarkColorScheme.secondary,
     accentColorBrightness:
@@ -190,9 +196,116 @@ final yaruDarkTheme = ThemeData(
     dialogBackgroundColor: yaruDarkColorScheme.background,
     errorColor: yaruDarkColorScheme.error,
     textTheme: yaruTextTheme,
-    indicatorColor: yaruDarkColorScheme.onPrimary,
+    indicatorColor: yaruDarkColorScheme.secondary,
     applyElevationOverlayColor: true,
     colorScheme: yaruDarkColorScheme,
     buttonTheme: yaruButtonThemeData,
+    elevatedButtonTheme: elevatedButtonThemeDataDark,
     outlinedButtonTheme: yaruDarkOutlinedButtonThemeData,
+    switchTheme: switchStyleDark,
+    checkboxTheme: checkStyle,
+    radioTheme: radioStyle,
+    primaryColorDark: yaruUbuntuOrange,
     appBarTheme: yaruAppBarDarkTheme);
+
+// Special casing some widgets
+// That are not catched with the default theming in flutter
+// "Green" elevated Buttons
+Color getElevatedButtonColorLight(Set<MaterialState> states) {
+  const Set<MaterialState> interactiveStates = <MaterialState>{
+    MaterialState.pressed,
+    MaterialState.hovered,
+    MaterialState.focused,
+  };
+  const Set<MaterialState> disabledStates = <MaterialState>{
+    MaterialState.disabled
+  };
+  if (states.any(interactiveStates.contains)) {
+    return yaruGreen;
+  } else if (states.any(disabledStates.contains)) {
+    return yaruWarmGrey;
+  }
+  return yaruGreen;
+}
+
+Color getElevatedButtonColorDark(Set<MaterialState> states) {
+  const Set<MaterialState> interactiveStates = <MaterialState>{
+    MaterialState.pressed,
+    MaterialState.hovered,
+    MaterialState.focused,
+  };
+  const Set<MaterialState> disabledStates = <MaterialState>{
+    MaterialState.disabled
+  };
+  if (states.any(interactiveStates.contains)) {
+    return yaruGreen;
+  } else if (states.any(disabledStates.contains)) {
+    return yaruDisabledGreyDark;
+  }
+  return yaruGreen;
+}
+
+final elevatedButtonThemeDataLight = ElevatedButtonThemeData(
+    style: ButtonStyle(
+        backgroundColor:
+            MaterialStateProperty.resolveWith(getElevatedButtonColorLight)));
+
+final elevatedButtonThemeDataDark = ElevatedButtonThemeData(
+    style: ButtonStyle(
+        backgroundColor:
+            MaterialStateProperty.resolveWith(getElevatedButtonColorDark)));
+
+// Switches
+Color getSwitchThumbColorDark(Set<MaterialState> states) {
+  if (states.contains(MaterialState.disabled)) {
+    return yaruWarmGrey;
+  } else {
+    if (states.contains(MaterialState.selected)) {
+      return yaruMidAubergine;
+    } else {
+      return yaruWhite;
+    }
+  }
+}
+
+Color getSwitchTrackColorDark(Set<MaterialState> states) {
+  if (states.contains(MaterialState.disabled)) {
+    return yaruDisabledGreyDark;
+  } else {
+    if (states.contains(MaterialState.selected)) {
+      return yaruMidAubergineTransparentized;
+    } else {
+      return yaruWarmGrey;
+    }
+  }
+}
+
+final switchStyleDark = SwitchThemeData(
+    thumbColor: MaterialStateProperty.resolveWith(getSwitchThumbColorDark),
+    trackColor: MaterialStateProperty.resolveWith(getSwitchTrackColorDark));
+
+// Checks
+Color getCheckFillColorDark(Set<MaterialState> states) {
+  if (!states.contains(MaterialState.disabled)) {
+    if (states.contains(MaterialState.selected)) {
+      return yaruLightAubergine;
+    }
+    return yaruWarmGrey;
+  }
+  return yaruDisabledGreyDark;
+}
+
+Color getCheckColorDark(Set<MaterialState> states) {
+  if (!states.contains(MaterialState.disabled)) {
+    return yaruWhite;
+  }
+  return yaruWarmGrey;
+}
+
+final checkStyle = CheckboxThemeData(
+    fillColor: MaterialStateProperty.resolveWith(getCheckFillColorDark),
+    checkColor: MaterialStateProperty.resolveWith(getCheckColorDark));
+
+// Radios
+final radioStyle = RadioThemeData(
+    fillColor: MaterialStateProperty.resolveWith(getCheckFillColorDark));
