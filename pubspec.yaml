@@ -13,6 +13,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+dev_dependencies:
+  effective_dart: ^1.3.0
+
 flutter:
   fonts:
     - family: Ubuntu
