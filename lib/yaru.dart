@@ -258,14 +258,18 @@ Color getElevatedButtonColorDark(Set<MaterialState> states) {
 }
 
 final elevatedButtonThemeDataLight = ElevatedButtonThemeData(
-    style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith(getElevatedButtonColorLight)));
+  style: ButtonStyle(
+    backgroundColor:
+        MaterialStateProperty.resolveWith(getElevatedButtonColorLight),
+  ),
+);
 
 final elevatedButtonThemeDataDark = ElevatedButtonThemeData(
-    style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith(getElevatedButtonColorDark)));
+  style: ButtonStyle(
+    backgroundColor:
+        MaterialStateProperty.resolveWith(getElevatedButtonColorDark),
+  ),
+);
 
 // Switches
 Color getSwitchThumbColorDark(Set<MaterialState> states) {
@@ -322,4 +326,5 @@ final checkStyle = CheckboxThemeData(
 
 // Radios
 final radioStyle = RadioThemeData(
-    fillColor: MaterialStateProperty.resolveWith(getCheckFillColorDark));
+  fillColor: MaterialStateProperty.resolveWith(getCheckFillColorDark),
+);
