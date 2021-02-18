@@ -5,24 +5,24 @@ import 'package:flutter/material.dart';
 
 // Ubuntu color palette
 // https://design.ubuntu.com/brand/colour-palette/
-final yaruUbuntuOrange = Color(0xFFE95420);
-final yaruWhite = Color(0xFFFFFFFF);
-final yaruBlack = Color(0xFF000000);
-final yaruLightAubergine = Color(0xFF77216F);
-final yaruMidAubergine = Color(0xFF5E2750);
-final yaruDarkAubergine = Color(0xFF2C001E);
-final yaruWarmGrey = Color(0xFFAEA79F);
-final yaruCoolGrey = Color(0xFF333333);
-final yaruTextGrey = Color(0xFF111111);
-final yaruCanonicalAubergine = Color(0xFF772953);
-final yaruErrorColor = Color(0xFFFF0000);
+const yaruUbuntuOrange = Color(0xFFE95420);
+const yaruWhite = Color(0xFFFFFFFF);
+const yaruBlack = Color(0xFF000000);
+const yaruLightAubergine = Color(0xFF77216F);
+const yaruMidAubergine = Color(0xFF5E2750);
+const yaruDarkAubergine = Color(0xFF2C001E);
+const yaruWarmGrey = Color(0xFFAEA79F);
+const yaruCoolGrey = Color(0xFF333333);
+const yaruTextGrey = Color(0xFF111111);
+const yaruCanonicalAubergine = Color(0xFF772953);
+const yaruErrorColor = Color(0xFFFF0000);
 
 // more colors, as the canonical palette is not enough
-final yaruGreen = Color(0xFF109a26);
-final yaruDisabledGreyDark = Color(0xFF535353);
-final yaruMidAubergineTransparentized = Color(0xAA5E2750);
+const yaruGreen = Color(0xFF109a26);
+const yaruDisabledGreyDark = Color(0xFF535353);
+const yaruMidAubergineTransparentized = Color(0xAA5E2750);
 
-final yaruLightColorScheme = ColorScheme.fromSwatch(
+const yaruLightColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
     primarySwatch: MaterialColor(yaruUbuntuOrange.value, {
       50: Color(0xFFFDEEE9),
@@ -43,7 +43,7 @@ final yaruLightColorScheme = ColorScheme.fromSwatch(
     errorColor: yaruErrorColor,
     brightness: Brightness.light);
 
-final yaruDarkColorScheme = ColorScheme.fromSwatch(
+const yaruDarkColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
     primarySwatch: MaterialColor(yaruUbuntuOrange.value, {
       50: Color(0xFFFDEEE9),
@@ -64,7 +64,7 @@ final yaruDarkColorScheme = ColorScheme.fromSwatch(
     errorColor: yaruErrorColor,
     brightness: Brightness.dark);
 
-final _yaruTextStyle = TextStyle(
+const _yaruTextStyle = TextStyle(
   fontFamily: 'Ubuntu',
   package: 'yaru',
   fontFamilyFallback: [
@@ -73,21 +73,21 @@ final _yaruTextStyle = TextStyle(
     'Tibetan Machine Uni',
   ],
 );
-final yaruHeadline1Style = _yaruTextStyle;
-final yaruHeadline2Style = _yaruTextStyle;
-final yaruHeadline3Style = _yaruTextStyle;
-final yaruHeadline4Style = _yaruTextStyle;
-final yaruHeadline5Style = _yaruTextStyle;
-final yaruHeadline6Style = _yaruTextStyle;
-final yaruSubtitle1Style = _yaruTextStyle;
-final yaruSubtitle2Style = _yaruTextStyle;
-final yaruBodyText1Style = _yaruTextStyle;
-final yaruBodyText2Style = _yaruTextStyle;
-final yaruCaptionStyle = _yaruTextStyle;
-final yaruButtonStyle = _yaruTextStyle;
-final yaruOverlineStyle = _yaruTextStyle;
+const yaruHeadline1Style = _yaruTextStyle;
+const yaruHeadline2Style = _yaruTextStyle;
+const yaruHeadline3Style = _yaruTextStyle;
+const yaruHeadline4Style = _yaruTextStyle;
+const yaruHeadline5Style = _yaruTextStyle;
+const yaruHeadline6Style = _yaruTextStyle;
+const yaruSubtitle1Style = _yaruTextStyle;
+const yaruSubtitle2Style = _yaruTextStyle;
+const yaruBodyText1Style = _yaruTextStyle;
+const yaruBodyText2Style = _yaruTextStyle;
+const yaruCaptionStyle = _yaruTextStyle;
+const yaruButtonStyle = _yaruTextStyle;
+const yaruOverlineStyle = _yaruTextStyle;
 
-final yaruTextTheme = TextTheme(
+const yaruTextTheme = TextTheme(
     headline1: yaruHeadline1Style,
     headline2: yaruHeadline2Style,
     headline3: yaruHeadline3Style,
@@ -102,16 +102,16 @@ final yaruTextTheme = TextTheme(
     button: yaruButtonStyle,
     overline: yaruOverlineStyle);
 
-final yaruButtonThemeData = ButtonThemeData(
+const yaruButtonThemeData = ButtonThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)));
 
-final yaruOutlinedButtonThemeData = OutlinedButtonThemeData(
+const yaruOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(primary: yaruTextGrey));
 
-final yaruDarkOutlinedButtonThemeData = OutlinedButtonThemeData(
+const yaruDarkOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(primary: yaruWhite));
 
-final yaruAppBarLightTheme = AppBarTheme(
+const yaruAppBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
   color: yaruWhite,
   textTheme: yaruTextTheme.copyWith(
@@ -124,12 +124,12 @@ final yaruAppBarLightTheme = AppBarTheme(
   actionsIconTheme: IconThemeData(color: yaruCoolGrey),
 );
 
-final yaruAppBarDarkTheme = AppBarTheme(
+const yaruAppBarDarkTheme = AppBarTheme(
   brightness: Brightness.dark,
   color: yaruCoolGrey,
 );
 
-final yaruTheme = ThemeData(
+const yaruTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: yaruLightColorScheme.primary,
     primaryColorBrightness:
@@ -154,7 +154,7 @@ final yaruTheme = ThemeData(
     outlinedButtonTheme: yaruOutlinedButtonThemeData,
     appBarTheme: yaruAppBarDarkTheme);
 
-final yaruLightTheme = ThemeData(
+const yaruLightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: yaruLightColorScheme.primary,
     primaryColorBrightness:
@@ -179,7 +179,7 @@ final yaruLightTheme = ThemeData(
     outlinedButtonTheme: yaruOutlinedButtonThemeData,
     appBarTheme: yaruAppBarLightTheme);
 
-final yaruDarkTheme = ThemeData(
+const yaruDarkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: yaruDarkColorScheme.primary,
     primaryColorBrightness:
@@ -245,12 +245,12 @@ Color getElevatedButtonColorDark(Set<MaterialState> states) {
   return yaruGreen;
 }
 
-final elevatedButtonThemeDataLight = ElevatedButtonThemeData(
+const elevatedButtonThemeDataLight = ElevatedButtonThemeData(
     style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith(getElevatedButtonColorLight)));
 
-final elevatedButtonThemeDataDark = ElevatedButtonThemeData(
+const elevatedButtonThemeDataDark = ElevatedButtonThemeData(
     style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith(getElevatedButtonColorDark)));
@@ -280,7 +280,7 @@ Color getSwitchTrackColorDark(Set<MaterialState> states) {
   }
 }
 
-final switchStyleDark = SwitchThemeData(
+const switchStyleDark = SwitchThemeData(
     thumbColor: MaterialStateProperty.resolveWith(getSwitchThumbColorDark),
     trackColor: MaterialStateProperty.resolveWith(getSwitchTrackColorDark));
 
@@ -302,10 +302,10 @@ Color getCheckColorDark(Set<MaterialState> states) {
   return yaruWarmGrey;
 }
 
-final checkStyle = CheckboxThemeData(
+const checkStyle = CheckboxThemeData(
     fillColor: MaterialStateProperty.resolveWith(getCheckFillColorDark),
     checkColor: MaterialStateProperty.resolveWith(getCheckColorDark));
 
 // Radios
-final radioStyle = RadioThemeData(
+const radioStyle = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(getCheckFillColorDark));
