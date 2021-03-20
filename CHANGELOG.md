@@ -3,3 +3,51 @@
 ## 0.0.0-dev
 
 * Initial prerelease
+
+## 0.0.9-dev
+
+* [Abhishek Ghaskata](https://github.com/Abhishek01039)
+  * Remove curly bracket
+  * Added curly braces
+  * Adding const keyword before constructor
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * YaruDark: Slightly transparent switch track
+  * update state helper methods
+  * Special case dark switches, checks and radios
+  * add CircularProgressIndicator to the example app
+  * Theme Fixes and CircularProgressIndicator addition
+  * Example: Replace or correct (deprecated) Widgets
+* [Olivier Tilloy](https://github.com/oSoMoN)
+  * Releasing 0.0.0-dev.5
+  * Also define the theme data for OutlinedButton for the light and dark theme variants.
+  * Update the colors of the AppBar with the light theme (cool * grey on white).
+  * Define the theme data for OutlinedButton to fix its text * foreground color.
+  * Ship extra fonts and set them as fontFamilyFallback.
+  * dd_custom_command() missing VERBATIM
+* [Robert Ancell](https://github.com/robert-ancell)
+  * Add CONTRIBUTING.md
+  * Releasing 0.0.0-dev.3
+  * Add screenshot
+  * Add a Yaru standard theme
+  * Add a dark theme
+  * Use rounded corners on buttons
+  * Use full constructor for ThemeData
+  * Update tooltip
+  * Fix spacing and label colors
+  * Add FlatButton and OutlineButton
+  * Add a DropdownButton
+  * Add a TextField showing an error
+  * Add TextFields to example
+  * Add radio buttons
+  * Add buttons and checkboxes to the example
+  * Drop old example code, run through dart format
+  * Make the example a full Flutter app
+  * Added cla-check, copied from snapcraft
+* [Ken VanDine](https://github.com/kenvandine)
+  * Added example that demonstrates all of the styles
+  * bump version to 0.0.0-dev.8 for release
+  * Updated README
+  * Full url to screenshot, should fix pub.dev/packages/yaru
+  * Updated description and homepage to reflect github move
+  * Re-license under MPL-2.0 to reduce the barrier for use by * Flutter developers.
+  * Releasing 0.0.0-dev.4
