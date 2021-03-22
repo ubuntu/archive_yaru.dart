@@ -17,45 +17,45 @@ flutter:
   fonts:
     - family: Ubuntu
       fonts:
-        - asset: packages/yaru/fonts/Ubuntu-L.ttf
+        - asset: packages/yaru/src/utils/fonts/Ubuntu-L.ttf
           weight: 300
-        - asset: packages/yaru/fonts/Ubuntu-LI.ttf
+        - asset: packages/yaru/src/utils/fonts/Ubuntu-LI.ttf
           weight: 300
           style: italic
-        - asset: packages/yaru/fonts/Ubuntu-R.ttf
+        - asset: packages/yaru/src/utils/fonts/Ubuntu-R.ttf
           weight: 400
-        - asset: packages/yaru/fonts/Ubuntu-RI.ttf
+        - asset: packages/yaru/src/utils/fonts/Ubuntu-RI.ttf
           weight: 400
           style: italic
-        - asset: packages/yaru/fonts/Ubuntu-M.ttf
+        - asset: packages/yaru/src/utils/fonts/Ubuntu-M.ttf
           weight: 500
-        - asset: packages/yaru/fonts/Ubuntu-MI.ttf
+        - asset: packages/yaru/src/utils/fonts/Ubuntu-MI.ttf
           weight: 500
           style: italic
-        - asset: packages/yaru/fonts/Ubuntu-B.ttf
+        - asset: packages/yaru/src/utils/fonts/Ubuntu-B.ttf
           weight: 700
-        - asset: packages/yaru/fonts/Ubuntu-BI.ttf
+        - asset: packages/yaru/src/utils/fonts/Ubuntu-BI.ttf
           weight: 700
           style: italic
     - family: Noto Sans CJK
       fonts:
-        - asset: packages/yaru/fonts/NotoSansCJK-Regular.ttc
+        - asset: packages/yaru/src/utils/fonts/NotoSansCJK-Regular.ttc
           weight: 300
-        - asset: packages/yaru/fonts/NotoSansCJK-Bold.ttc
+        - asset: packages/yaru/src/utils/fonts/NotoSansCJK-Bold.ttc
           weight: 700
     - family: Tibetan Machine Uni
       fonts:
-        - asset: packages/yaru/fonts/TibetanMachineUni.ttf
+        - asset: packages/yaru/src/utils/fonts/TibetanMachineUni.ttf
           weight: 300
     - family: Liberation Serif
       fonts:
-        - asset: packages/yaru/fonts/LiberationSerif-Regular.ttf
+        - asset: packages/yaru/src/utils/fonts/LiberationSerif-Regular.ttf
           weight: 300
-        - asset: packages/yaru/fonts/LiberationSerif-Italic.ttf
+        - asset: packages/yaru/src/utils/fonts/LiberationSerif-Italic.ttf
           weight: 300
           style: italic
-        - asset: packages/yaru/fonts/LiberationSerif-Bold.ttf
+        - asset: packages/yaru/src/utils/fonts/LiberationSerif-Bold.ttf
           weight: 700
-        - asset: packages/yaru/fonts/LiberationSerif-BoldItalic.ttf
+        - asset: packages/yaru/src/utils/fonts/LiberationSerif-BoldItalic.ttf
           weight: 700
           style: italic
