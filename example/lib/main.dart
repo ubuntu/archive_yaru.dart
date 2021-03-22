@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yaru/yaru.dart';
+import 'package:yaru/yaru.dart' as yaru;
 
 void main() {
   runApp(MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var theme = yaruTheme;
+  var theme = yaru.theme;
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,11 @@ class _MyAppState extends State<MyApp> {
       home: MyHomePage(
           themeChanged: (themeName) => setState(() {
                 if (themeName == 'Yaru') {
-                  theme = yaruTheme;
+                  theme = yaru.theme;
                 } else if (themeName == 'Yaru-light') {
-                  theme = yaruLightTheme;
+                  theme = yaru.lightTheme;
                 } else if (themeName == 'Yaru-dark') {
-                  theme = yaruDarkTheme;
+                  theme = yaru.darkTheme;
                 }
               })),
     );
@@ -295,88 +295,88 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               width: 250.0,
               height: 50.0,
-              color: yaruUbuntuOrange,
+              color: yaru.Colors.orange,
               child: Center(
                   child: Text('yaruUbuntuOrange',
                       style: TextStyle(
-                          color: yaruWhite,
+                          color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
               height: 50.0,
-              color: yaruLightAubergine,
+              color: yaru.Colors.lightAubergine,
               child: Center(
                   child: Text('yaruLightAubergine',
                       style: TextStyle(
-                          color: yaruWhite,
+                          color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
               height: 50.0,
-              color: yaruMidAubergine,
+              color: yaru.Colors.midAubergine,
               child: Center(
                   child: Text('yaruMidAubergine',
                       style: TextStyle(
-                          color: yaruWhite,
+                          color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
               height: 50.0,
-              color: yaruDarkAubergine,
+              color: yaru.Colors.darkAubergine,
               child: Center(
                   child: Text('yaruDarkAubergine',
                       style: TextStyle(
-                          color: yaruWhite,
+                          color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
               height: 50.0,
-              color: yaruCanonicalAubergine,
+              color: yaru.Colors.canonicalAubergine,
               child: Center(
                   child: Text('yaruCanonicalAubergine',
                       style: TextStyle(
-                          color: yaruWhite,
+                          color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
               height: 50.0,
-              color: yaruWarmGrey,
+              color: yaru.Colors.warmGrey,
               child: Center(
                   child: Text('yaruWarmGrey',
                       style: TextStyle(
-                          color: yaruTextGrey,
+                          color: yaru.Colors.textGrey,
                           fontSize: 22,
                           fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
               height: 50.0,
-              color: yaruCoolGrey,
+              color: yaru.Colors.coolGrey,
               child: Center(
                   child: Text('yaruCoolGrey',
                       style: TextStyle(
-                          color: yaruWhite,
+                          color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.w300))),
             ),
             Container(
               width: 250.0,
               height: 50.0,
-              color: yaruTextGrey,
+              color: yaru.Colors.textGrey,
               child: Center(
                   child: Text('yaruTextGrey',
                       style: TextStyle(
-                          color: yaruWhite,
+                          color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.w300))),
             ),
