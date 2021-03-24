@@ -19,7 +19,7 @@ final _lightColorScheme = ColorScheme.fromSwatch(
     accentColor: yaru.Colors.lightAubergine,
     cardColor: Colors.white,
     backgroundColor: Colors.white,
-    errorColor: yaru.Colors.error,
+    errorColor: yaru.Colors.red,
     brightness: Brightness.light);
 
 final _darkColorScheme = ColorScheme.fromSwatch(
@@ -40,7 +40,7 @@ final _darkColorScheme = ColorScheme.fromSwatch(
     accentColor: yaru.Colors.lightAubergine,
     cardColor: yaru.Colors.coolGrey,
     backgroundColor: yaru.Colors.coolGrey,
-    errorColor: yaru.Colors.error,
+    errorColor: yaru.Colors.red,
     brightness: Brightness.dark);
 
 final _textStyle = TextStyle(
