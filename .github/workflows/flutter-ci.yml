@@ -1,0 +1,34 @@
+name: Flutter CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    
+    - uses: actions/checkout@v1
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'dev'
+
+    - name: Enable Linux desktop support
+      run: flutter config --enable-linux-desktop
+
+    - name: Get dependencies
+      run: flutter pub get
+    
+    # - name: Run tests
+    #   run: flutter test
+
+    - name: Check for any formatting issues
+      run: flutter format --set-exit-if-changed .
+    
+    - name: Check for any analyzer issues
+      run: flutter analyze .
