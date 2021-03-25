@@ -5,7 +5,7 @@ import 'hex.dart';
 class YaruSwatch {
   const YaruSwatch._();
 
-  static const orange = MaterialColor(
+  static const ubuntuOrange = MaterialColor(
     YaruHex.ubuntuOrange,
     {
       50: YaruColor.roseWhite,

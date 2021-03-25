@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yaru/yaru.dart' as yaru;
+import 'package:yaru/yaru.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var theme = yaru.theme;
+  var theme = YaruTheme.theme;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +22,11 @@ class _MyAppState extends State<MyApp> {
         themeChanged: (themeName) => setState(
           () {
             if (themeName == 'Yaru') {
-              theme = yaru.theme;
+              theme = YaruTheme.theme;
             } else if (themeName == 'Yaru-light') {
-              theme = yaru.lightTheme;
+              theme = YaruTheme.lightTheme;
             } else if (themeName == 'Yaru-dark') {
-              theme = yaru.darkTheme;
+              theme = YaruTheme.darkTheme;
             }
           },
         ),
@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, @required this.themeChanged}) : super(key: key);
+  const MyHomePage({Key? key, required this.themeChanged}) : super(key: key);
 
   final void Function(String themeName) themeChanged;
 
@@ -343,32 +343,38 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               children: [
                 Expanded(
-                    child: colorPaletteExample(
-                        'orange', yaru.YaruColor.ubuntuOrange)),
+                  child: colorPaletteExample(
+                    'orange',
+                    YaruSwatch.ubuntuOrange,
+                  ),
+                ),
+                SizedBox(width: 25.0),
+                Expanded(
+                  child: colorPaletteExample(
+                      'lightAubergine', YaruSwatch.lightAubergine),
+                ),
                 SizedBox(width: 25.0),
                 Expanded(
                     child: colorPaletteExample(
-                        'lightAubergine', yaru.YaruColor.lightAubergine)),
-                SizedBox(width: 25.0),
-                Expanded(
-                    child: colorPaletteExample(
-                        'midAubergine', yaru.YaruColor.midAubergine)),
+                        'midAubergine', YaruSwatch.midAubergine)),
               ],
             ),
             Divider(height: 50.0, color: Colors.black),
             Row(
               children: [
                 Expanded(
-                    child: colorPaletteExample('canonicalAubergine',
-                        yaru.YaruColor.canonicalAubergine)),
+                  child: colorPaletteExample(
+                      'canonicalAubergine', YaruSwatch.canonicalAubergine),
+                ),
                 SizedBox(width: 25.0),
                 Expanded(
-                    child: colorPaletteExample(
-                        'darkAubergine', yaru.YaruColor.darkAubergine)),
+                  child: colorPaletteExample(
+                      'darkAubergine', YaruSwatch.darkAubergine),
+                ),
                 SizedBox(width: 25.0),
                 Expanded(
-                    child: colorPaletteExample(
-                        'warmGrey', yaru.YaruColor.warmGrey)),
+                  child: colorPaletteExample('warmGrey', YaruSwatch.warmGrey),
+                ),
               ],
             ),
           ],
@@ -386,7 +392,8 @@ class _MyHomePageState extends State<MyHomePage> {
     final _color = {colorName: color};
     int _shade = 0;
     TextStyle _textStyle(int _shade) => TextStyle(
-          color: (_color.values.first[_shade].computeLuminance() > 0.4)
+          color: (_color.values.first[_shade] != null &&
+                  _color.values.first[_shade]!.computeLuminance() > 0.4)
               ? Colors.black
               : Colors.white,
           fontSize: 18.0,
@@ -415,7 +422,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   flex: 4,
                   child: Text(
                     '#' +
-                        _color.values.first[_shade].value
+                        _color.values.first[_shade]!.value
                             .toRadixString(16)
                             .substring(2)
                             .toUpperCase(),

@@ -2,27 +2,15 @@ import 'package:flutter/material.dart';
 import '../yaru.dart';
 import 'utils/swatch.dart';
 
-ColorScheme get _lightColorScheme => ColorScheme.fromSwatch(
-      // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
-      primarySwatch: YaruSwatch.orange,
-      primaryColorDark: YaruColor.coolGrey,
-      accentColor: YaruColor.lightAubergine,
-      cardColor: YaruColor.white,
-      backgroundColor: YaruColor.white,
-      errorColor: YaruColor.red,
-      brightness: Brightness.light,
-    );
+const _disabledStates = <MaterialState>{
+  MaterialState.disabled,
+};
 
-ColorScheme get _darkColorScheme => ColorScheme.fromSwatch(
-      // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
-      primarySwatch: YaruSwatch.orange,
-      primaryColorDark: YaruColor.coolGrey,
-      accentColor: YaruColor.lightAubergine,
-      cardColor: YaruColor.coolGrey,
-      backgroundColor: YaruColor.coolGrey,
-      errorColor: YaruColor.red,
-      brightness: Brightness.dark,
-    );
+const _interactiveStates = <MaterialState>{
+  MaterialState.pressed,
+  MaterialState.hovered,
+  MaterialState.focused,
+};
 
 const _textStyle = TextStyle(
   fontFamily: 'Ubuntu',
@@ -90,6 +78,41 @@ const _appBarLightTextTheme = TextTheme(
   overline: _overLineStyle,
 );
 
+const _appBarLightTheme = AppBarTheme(
+  brightness: Brightness.light,
+  color: Colors.white,
+  textTheme: _appBarLightTextTheme,
+  iconTheme: IconThemeData(color: YaruColor.coolGrey),
+  actionsIconTheme: IconThemeData(color: YaruColor.coolGrey),
+);
+
+const _appBarDarkTheme = AppBarTheme(
+  brightness: Brightness.dark,
+  color: YaruColor.coolGrey,
+);
+
+ColorScheme get _lightColorScheme => ColorScheme.fromSwatch(
+      // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
+      primarySwatch: YaruSwatch.ubuntuOrange,
+      primaryColorDark: YaruColor.coolGrey,
+      accentColor: YaruColor.lightAubergine,
+      cardColor: YaruColor.white,
+      backgroundColor: YaruColor.white,
+      errorColor: YaruColor.red,
+      brightness: Brightness.light,
+    );
+
+ColorScheme get _darkColorScheme => ColorScheme.fromSwatch(
+      // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
+      primarySwatch: YaruSwatch.ubuntuOrange,
+      primaryColorDark: YaruColor.coolGrey,
+      accentColor: YaruColor.lightAubergine,
+      cardColor: YaruColor.coolGrey,
+      backgroundColor: YaruColor.coolGrey,
+      errorColor: YaruColor.red,
+      brightness: Brightness.dark,
+    );
+
 ButtonThemeData get _buttonThemeData {
   return ButtonThemeData(
     shape: RoundedRectangleBorder(
@@ -114,117 +137,9 @@ OutlinedButtonThemeData get _darkOutlinedButtonThemeData {
   );
 }
 
-const _appBarLightTheme = AppBarTheme(
-  brightness: Brightness.light,
-  color: Colors.white,
-  textTheme: _appBarLightTextTheme,
-  iconTheme: IconThemeData(color: YaruColor.coolGrey),
-  actionsIconTheme: IconThemeData(color: YaruColor.coolGrey),
-);
-
-const _appBarDarkTheme = AppBarTheme(
-  brightness: Brightness.dark,
-  color: YaruColor.coolGrey,
-);
-
-ThemeData get theme {
-  return ThemeData(
-    brightness: Brightness.light,
-    primaryColor: _lightColorScheme.primary,
-    primaryColorBrightness:
-        ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
-    canvasColor: _lightColorScheme.background,
-    accentColor: _lightColorScheme.secondary,
-    accentColorBrightness:
-        ThemeData.estimateBrightnessForColor(_lightColorScheme.secondary),
-    scaffoldBackgroundColor: _lightColorScheme.background,
-    bottomAppBarColor: _lightColorScheme.surface,
-    cardColor: _lightColorScheme.surface,
-    dividerColor: _lightColorScheme.onSurface.withOpacity(0.12),
-    backgroundColor: _lightColorScheme.background,
-    dialogBackgroundColor: _lightColorScheme.background,
-    errorColor: _lightColorScheme.error,
-    textTheme: _textTheme,
-    indicatorColor: _lightColorScheme.secondary,
-    applyElevationOverlayColor: false,
-    colorScheme: _lightColorScheme,
-    buttonTheme: _buttonThemeData,
-    elevatedButtonTheme: _elevatedButtonThemeDataLight,
-    outlinedButtonTheme: _outlinedButtonThemeData,
-    appBarTheme: _appBarDarkTheme,
-  );
-}
-
-ThemeData get lightTheme {
-  return ThemeData(
-      brightness: Brightness.light,
-      primaryColor: _lightColorScheme.primary,
-      primaryColorBrightness:
-          ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
-      canvasColor: _lightColorScheme.background,
-      accentColor: _lightColorScheme.secondary,
-      accentColorBrightness:
-          ThemeData.estimateBrightnessForColor(_lightColorScheme.secondary),
-      scaffoldBackgroundColor: _lightColorScheme.background,
-      bottomAppBarColor: _lightColorScheme.surface,
-      cardColor: _lightColorScheme.surface,
-      dividerColor: _lightColorScheme.onSurface.withOpacity(0.12),
-      backgroundColor: _lightColorScheme.background,
-      dialogBackgroundColor: _lightColorScheme.background,
-      errorColor: _lightColorScheme.error,
-      textTheme: _textTheme,
-      indicatorColor: _lightColorScheme.secondary,
-      applyElevationOverlayColor: false,
-      colorScheme: _lightColorScheme,
-      buttonTheme: _buttonThemeData,
-      elevatedButtonTheme: _elevatedButtonThemeDataLight,
-      outlinedButtonTheme: _outlinedButtonThemeData,
-      appBarTheme: _appBarLightTheme);
-}
-
-ThemeData get darkTheme => ThemeData(
-      brightness: Brightness.dark,
-      primaryColor: _darkColorScheme.primary,
-      primaryColorBrightness:
-          ThemeData.estimateBrightnessForColor(_darkColorScheme.primary),
-      canvasColor: _darkColorScheme.background,
-      accentColor: _darkColorScheme.secondary,
-      accentColorBrightness:
-          ThemeData.estimateBrightnessForColor(_darkColorScheme.secondary),
-      scaffoldBackgroundColor: _darkColorScheme.background,
-      bottomAppBarColor: _darkColorScheme.surface,
-      cardColor: _darkColorScheme.surface,
-      dividerColor: _darkColorScheme.onSurface.withOpacity(0.12),
-      backgroundColor: _darkColorScheme.background,
-      dialogBackgroundColor: _darkColorScheme.background,
-      errorColor: _darkColorScheme.error,
-      textTheme: _textTheme,
-      indicatorColor: _darkColorScheme.secondary,
-      applyElevationOverlayColor: true,
-      colorScheme: _darkColorScheme,
-      buttonTheme: _buttonThemeData,
-      elevatedButtonTheme: _elevatedButtonThemeDataDark,
-      outlinedButtonTheme: _darkOutlinedButtonThemeData,
-      switchTheme: _switchStyleDark,
-      checkboxTheme: _checkStyle,
-      radioTheme: _radioStyle,
-      primaryColorDark: YaruColor.ubuntuOrange,
-      appBarTheme: _appBarDarkTheme,
-    );
-
 // Special casing some widgets
 // That are not catched with the default theming in flutter
 // "Green" elevated Buttons
-
-const _disabledStates = <MaterialState>{
-  MaterialState.disabled,
-};
-
-const _interactiveStates = <MaterialState>{
-  MaterialState.pressed,
-  MaterialState.hovered,
-  MaterialState.focused,
-};
 
 Color _getElevatedButtonColorLight(Set<MaterialState> states) {
   if (states.any(_interactiveStates.contains)) {
@@ -323,4 +238,93 @@ RadioThemeData get _radioStyle {
   return RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark),
   );
+}
+
+class YaruTheme {
+  static ThemeData get theme {
+    return ThemeData(
+      brightness: Brightness.light,
+      primaryColor: _lightColorScheme.primary,
+      primaryColorBrightness:
+          ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
+      canvasColor: _lightColorScheme.background,
+      accentColor: _lightColorScheme.secondary,
+      accentColorBrightness:
+          ThemeData.estimateBrightnessForColor(_lightColorScheme.secondary),
+      scaffoldBackgroundColor: _lightColorScheme.background,
+      bottomAppBarColor: _lightColorScheme.surface,
+      cardColor: _lightColorScheme.surface,
+      dividerColor: _lightColorScheme.onSurface.withOpacity(0.12),
+      backgroundColor: _lightColorScheme.background,
+      dialogBackgroundColor: _lightColorScheme.background,
+      errorColor: _lightColorScheme.error,
+      textTheme: _textTheme,
+      indicatorColor: _lightColorScheme.secondary,
+      applyElevationOverlayColor: false,
+      colorScheme: _lightColorScheme,
+      buttonTheme: _buttonThemeData,
+      elevatedButtonTheme: _elevatedButtonThemeDataLight,
+      outlinedButtonTheme: _outlinedButtonThemeData,
+      appBarTheme: _appBarDarkTheme,
+    );
+  }
+
+  static ThemeData get lightTheme {
+    return ThemeData(
+        brightness: Brightness.light,
+        primaryColor: _lightColorScheme.primary,
+        primaryColorBrightness:
+            ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
+        canvasColor: _lightColorScheme.background,
+        accentColor: _lightColorScheme.secondary,
+        accentColorBrightness:
+            ThemeData.estimateBrightnessForColor(_lightColorScheme.secondary),
+        scaffoldBackgroundColor: _lightColorScheme.background,
+        bottomAppBarColor: _lightColorScheme.surface,
+        cardColor: _lightColorScheme.surface,
+        dividerColor: _lightColorScheme.onSurface.withOpacity(0.12),
+        backgroundColor: _lightColorScheme.background,
+        dialogBackgroundColor: _lightColorScheme.background,
+        errorColor: _lightColorScheme.error,
+        textTheme: _textTheme,
+        indicatorColor: _lightColorScheme.secondary,
+        applyElevationOverlayColor: false,
+        colorScheme: _lightColorScheme,
+        buttonTheme: _buttonThemeData,
+        elevatedButtonTheme: _elevatedButtonThemeDataLight,
+        outlinedButtonTheme: _outlinedButtonThemeData,
+        appBarTheme: _appBarLightTheme);
+  }
+
+  static ThemeData get darkTheme {
+    return ThemeData(
+      brightness: Brightness.dark,
+      primaryColor: _darkColorScheme.primary,
+      primaryColorBrightness:
+          ThemeData.estimateBrightnessForColor(_darkColorScheme.primary),
+      canvasColor: _darkColorScheme.background,
+      accentColor: _darkColorScheme.secondary,
+      accentColorBrightness:
+          ThemeData.estimateBrightnessForColor(_darkColorScheme.secondary),
+      scaffoldBackgroundColor: _darkColorScheme.background,
+      bottomAppBarColor: _darkColorScheme.surface,
+      cardColor: _darkColorScheme.surface,
+      dividerColor: _darkColorScheme.onSurface.withOpacity(0.12),
+      backgroundColor: _darkColorScheme.background,
+      dialogBackgroundColor: _darkColorScheme.background,
+      errorColor: _darkColorScheme.error,
+      textTheme: _textTheme,
+      indicatorColor: _darkColorScheme.secondary,
+      applyElevationOverlayColor: true,
+      colorScheme: _darkColorScheme,
+      buttonTheme: _buttonThemeData,
+      elevatedButtonTheme: _elevatedButtonThemeDataDark,
+      outlinedButtonTheme: _darkOutlinedButtonThemeData,
+      switchTheme: _switchStyleDark,
+      checkboxTheme: _checkStyle,
+      radioTheme: _radioStyle,
+      primaryColorDark: YaruColor.ubuntuOrange,
+      appBarTheme: _appBarDarkTheme,
+    );
+  }
 }
