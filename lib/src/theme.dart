@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../yaru.dart';
-import 'utils/swatch.dart';
 
 const _disabledStates = <MaterialState>{
   MaterialState.disabled,
@@ -21,6 +20,7 @@ const _textStyle = TextStyle(
     'Tibetan Machine Uni',
   ],
 );
+
 const _headline1Style = _textStyle;
 const _headline2Style = _textStyle;
 const _headline3Style = _textStyle;
