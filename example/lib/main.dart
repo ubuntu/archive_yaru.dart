@@ -3,15 +3,15 @@ import 'src/showcase.dart';
 import 'src/theme.dart';
 
 final _yaru = ValueNotifier<SelectedTheme>(SelectedTheme.standard());
-void main() => runApp(const MyApp());
+void main() => runApp(const _MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp() : super(key: const ValueKey('MyApp'));
+class _MyApp extends StatelessWidget {
+  const _MyApp() : super(key: const ValueKey('MyApp'));
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<SelectedTheme>(
-      child: const MyHomePage(),
+      child: const _MyHomePage(),
       valueListenable: _yaru,
       builder: (context, yaru, child) => MaterialApp(
         title: 'Yaru Example',
@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage() : super(key: const ValueKey('MyHomePage'));
+class _MyHomePage extends StatelessWidget {
+  const _MyHomePage() : super(key: const ValueKey('MyHomePage'));
 
   @override
   Widget build(BuildContext context) {

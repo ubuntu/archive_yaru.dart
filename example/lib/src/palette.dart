@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
+/// a Widget that demonstrates `Yaru` package `MaterialColor`s
 class Palette extends StatelessWidget {
+  /// holds a human readable identifier for a color
   final String name;
+
+  /// holds a `MaterialColor`
   final MaterialColor color;
+
+  /// allow a const constructor,
+  /// the key allows only one widget with the same
+  /// name and color in the `tree`
   Palette({
     required this.name,
     required this.color,
@@ -40,6 +48,7 @@ class Palette extends StatelessWidget {
                       flex: 4,
                       child: Text(
                         '# '
+                        // ignore: lines_longer_than_80_chars
                         '${color[shade]!.value.toRadixString(16).substring(2).toUpperCase()}',
                         style: TextStyle(
                           color: (color[shade] != null &&

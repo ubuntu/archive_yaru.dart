@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// a Widget that demonstrates `Yaru` package fonts
 class TextEditingShowCase extends StatefulWidget {
+  /// allows a `const` constructor
+  /// the key allows only one widget in the `tree`
   const TextEditingShowCase()
       : super(key: const ValueKey('TextEditingShowCase'));
 

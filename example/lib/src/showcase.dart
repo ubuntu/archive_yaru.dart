@@ -4,7 +4,10 @@ import 'package:yaru/yaru.dart' as yaru;
 import 'palette.dart';
 import 'text_edit.dart';
 
+/// a Widget that demonstrates `Yaru` package theming and colors
 class ShowCase extends StatelessWidget {
+  /// allows a `const` constructor
+  /// the key allows only one widget in the `tree`
   const ShowCase() : super(key: const ValueKey('ShowCase'));
 
   @override
@@ -103,9 +106,18 @@ class ShowCase extends StatelessWidget {
               onChanged: (value) => print('DropdownButton $value'),
               value: 1,
               items: <DropdownMenuItem<int>>[
-                const DropdownMenuItem(value: 1, child: Text('One')),
-                const DropdownMenuItem(value: 2, child: const Text('Two')),
-                const DropdownMenuItem(value: 3, child: const Text('Three')),
+                const DropdownMenuItem(
+                  value: 1,
+                  child: Text('One'),
+                ),
+                const DropdownMenuItem(
+                  value: 2,
+                  child: Text('Two'),
+                ),
+                const DropdownMenuItem(
+                  value: 3,
+                  child: Text('Three'),
+                ),
               ],
             ),
           ],
