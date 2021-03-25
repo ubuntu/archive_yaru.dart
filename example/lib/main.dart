@@ -19,15 +19,18 @@ class _MyAppState extends State<MyApp> {
       title: 'Yaru Example',
       theme: theme,
       home: MyHomePage(
-          themeChanged: (themeName) => setState(() {
-                if (themeName == 'Yaru') {
-                  theme = yaru.theme;
-                } else if (themeName == 'Yaru-light') {
-                  theme = yaru.lightTheme;
-                } else if (themeName == 'Yaru-dark') {
-                  theme = yaru.darkTheme;
-                }
-              })),
+        themeChanged: (themeName) => setState(
+          () {
+            if (themeName == 'Yaru') {
+              theme = yaru.theme;
+            } else if (themeName == 'Yaru-light') {
+              theme = yaru.lightTheme;
+            } else if (themeName == 'Yaru-dark') {
+              theme = yaru.darkTheme;
+            }
+          },
+        ),
+      ),
     );
   }
 }
@@ -43,8 +46,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final textController = TextEditingController(
-      text:
-          'My code fails, I do not know why.\nMy code works, I do not know why.\nText in other scripts: Tamaziɣt Taqbaylit, 中文(简体), Čeština, Беларуская, Ελληνικά, עברית, Русский, བོད་ཡིག, Norsk bokmål.');
+    text: 'My code fails, I do not know why.\nMy code works, I do not know why.'
+        '\nText in other scripts: Tamaziɣt Taqbaylit, 中文(简体), Čeština, '
+        'Беларуская, Ελληνικά, עברית, Русский, བོད་ཡིག, Norsk bokmål.',
+  );
   var themeName = 'Yaru';
   final void Function(String themeName) themeChanged;
 
@@ -56,18 +61,27 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(themeName),
         leading: PopupMenuButton<String>(
-            onSelected: (value) {
-              setState(() {
-                themeName = value;
-                themeChanged(themeName);
-              });
-            },
-            itemBuilder: (context) => <PopupMenuItem<String>>[
-                  PopupMenuItem(value: 'Yaru', child: const Text('Standard')),
-                  PopupMenuItem(
-                      value: 'Yaru-light', child: const Text('Light')),
-                  PopupMenuItem(value: 'Yaru-dark', child: const Text('Dark')),
-                ]),
+          onSelected: (value) {
+            setState(() {
+              themeName = value;
+              themeChanged(themeName);
+            });
+          },
+          itemBuilder: (context) => <PopupMenuItem<String>>[
+            PopupMenuItem(
+              value: 'Yaru',
+              child: const Text('Standard'),
+            ),
+            PopupMenuItem(
+              value: 'Yaru-light',
+              child: const Text('Light'),
+            ),
+            PopupMenuItem(
+              value: 'Yaru-dark',
+              child: const Text('Dark'),
+            ),
+          ],
+        ),
       ),
       body: Center(
         child: ListView(
@@ -166,9 +180,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   onChanged: (value) => print('DropdownButton $value'),
                   value: 1,
                   items: <DropdownMenuItem<int>>[
-                    DropdownMenuItem(value: 1, child: const Text('One')),
-                    DropdownMenuItem(value: 2, child: const Text('Two')),
-                    DropdownMenuItem(value: 3, child: const Text('Three')),
+                    DropdownMenuItem(
+                      value: 1,
+                      child: const Text('One'),
+                    ),
+                    DropdownMenuItem(
+                      value: 2,
+                      child: const Text('Two'),
+                    ),
+                    DropdownMenuItem(
+                      value: 3,
+                      child: const Text('Three'),
+                    ),
                   ],
                 ),
               ],
@@ -180,13 +203,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Checkbox(onChanged: (value) {}, value: true),
+                        Checkbox(
+                          onChanged: (value) {},
+                          value: true,
+                        ),
                         const Text('Yes'),
                       ],
                     ),
                     Row(
                       children: <Widget>[
-                        Checkbox(onChanged: (value) {}, value: false),
+                        Checkbox(
+                          onChanged: (value) {},
+                          value: false,
+                        ),
                         const Text('No'),
                       ],
                     ),
@@ -206,13 +235,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Switch(onChanged: (value) {}, value: true),
+                        Switch(
+                          onChanged: (value) {},
+                          value: true,
+                        ),
                         const Text('Yes'),
                       ],
                     ),
                     Row(
                       children: <Widget>[
-                        Switch(onChanged: (value) {}, value: false),
+                        Switch(
+                          onChanged: (value) {},
+                          value: false,
+                        ),
                         const Text('No'),
                       ],
                     ),
@@ -226,7 +261,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                     Row(
-                      children: <Widget>[CircularProgressIndicator()],
+                      children: <Widget>[const CircularProgressIndicator()],
                     )
                   ],
                 ),
@@ -235,13 +270,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Radio(onChanged: (value) {}, value: 1, groupValue: 1),
+                        Radio(
+                          onChanged: (value) {},
+                          value: 1,
+                          groupValue: 1,
+                        ),
                         const Text('Yes'),
                       ],
                     ),
                     Row(
                       children: <Widget>[
-                        Radio(onChanged: (value) {}, value: 2, groupValue: 1),
+                        Radio(
+                          onChanged: (value) {},
+                          value: 2,
+                          groupValue: 1,
+                        ),
                         const Text('No'),
                       ],
                     ),
@@ -292,7 +335,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 15),
-            Text('Yaru Colors', style: Theme.of(context).textTheme.headline4),
+            Text(
+              'Yaru Colors',
+              style: Theme.of(context).textTheme.headline4,
+            ),
             const SizedBox(height: 15.0),
             Row(
               children: [
@@ -302,27 +348,37 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(width: 25.0),
                 Expanded(
                     child: colorPaletteExample(
-                        'lightAubergine', yaru.YaruColor.lightAubergine)),
+                  'lightAubergine',
+                  yaru.YaruColor.lightAubergine,
+                )),
                 SizedBox(width: 25.0),
                 Expanded(
                     child: colorPaletteExample(
-                        'midAubergine', yaru.YaruColor.midAubergine)),
+                  'midAubergine',
+                  yaru.YaruColor.midAubergine,
+                )),
               ],
             ),
             Divider(height: 50.0, color: Colors.black),
             Row(
               children: [
                 Expanded(
-                    child: colorPaletteExample('canonicalAubergine',
-                        yaru.YaruColor.canonicalAubergine)),
+                    child: colorPaletteExample(
+                  'canonicalAubergine',
+                  yaru.YaruColor.canonicalAubergine,
+                )),
                 SizedBox(width: 25.0),
                 Expanded(
                     child: colorPaletteExample(
-                        'darkAubergine', yaru.YaruColor.darkAubergine)),
+                  'darkAubergine',
+                  yaru.YaruColor.darkAubergine,
+                )),
                 SizedBox(width: 25.0),
                 Expanded(
                     child: colorPaletteExample(
-                        'warmGrey', yaru.YaruColor.warmGrey)),
+                  'warmGrey',
+                  yaru.YaruColor.warmGrey,
+                )),
               ],
             ),
           ],
@@ -349,36 +405,38 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Widget> _colorItem = [];
     for (int i = 0; i < 5; i++) {
       _shade += 100;
-      _colorItem.add(Container(
-        height: 45.0,
-        color: _color.values.first[_shade],
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                flex: 12,
-                child: Text(
-                  _color.keys.first + '[$_shade]',
-                  style: _textStyle(_shade),
+      _colorItem.add(
+        Container(
+          height: 45.0,
+          color: _color.values.first[_shade],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  flex: 12,
+                  child: Text(
+                    _color.keys.first + '[$_shade]',
+                    style: _textStyle(_shade),
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 4,
-                child: Text(
-                  '#' +
-                      _color.values.first[_shade].value
-                          .toRadixString(16)
-                          .substring(2)
-                          .toUpperCase(),
-                  style: _textStyle(_shade),
+                Expanded(
+                  flex: 4,
+                  child: Text(
+                    '#' +
+                        _color.values.first[_shade].value
+                            .toRadixString(16)
+                            .substring(2)
+                            .toUpperCase(),
+                    style: _textStyle(_shade),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ));
+      );
     }
     return Column(
       children: _colorItem,
