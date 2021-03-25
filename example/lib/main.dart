@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.themeChanged}) : super(key: key);
+  const MyHomePage({Key key, this.themeChanged}) : super(key: key);
 
   final void Function(String themeName) themeChanged;
 
