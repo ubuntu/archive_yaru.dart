@@ -241,7 +241,7 @@ RadioThemeData get _radioStyle {
 }
 
 class YaruTheme {
-  static ThemeData get theme {
+  static ThemeData get standard {
     return ThemeData(
       brightness: Brightness.light,
       primaryColor: _lightColorScheme.primary,
@@ -269,34 +269,35 @@ class YaruTheme {
     );
   }
 
-  static ThemeData get lightTheme {
+  static ThemeData get light {
     return ThemeData(
-        brightness: Brightness.light,
-        primaryColor: _lightColorScheme.primary,
-        primaryColorBrightness:
-            ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
-        canvasColor: _lightColorScheme.background,
-        accentColor: _lightColorScheme.secondary,
-        accentColorBrightness:
-            ThemeData.estimateBrightnessForColor(_lightColorScheme.secondary),
-        scaffoldBackgroundColor: _lightColorScheme.background,
-        bottomAppBarColor: _lightColorScheme.surface,
-        cardColor: _lightColorScheme.surface,
-        dividerColor: _lightColorScheme.onSurface.withOpacity(0.12),
-        backgroundColor: _lightColorScheme.background,
-        dialogBackgroundColor: _lightColorScheme.background,
-        errorColor: _lightColorScheme.error,
-        textTheme: _textTheme,
-        indicatorColor: _lightColorScheme.secondary,
-        applyElevationOverlayColor: false,
-        colorScheme: _lightColorScheme,
-        buttonTheme: _buttonThemeData,
-        elevatedButtonTheme: _elevatedButtonThemeDataLight,
-        outlinedButtonTheme: _outlinedButtonThemeData,
-        appBarTheme: _appBarLightTheme);
+      brightness: Brightness.light,
+      primaryColor: _lightColorScheme.primary,
+      primaryColorBrightness:
+          ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
+      canvasColor: _lightColorScheme.background,
+      accentColor: _lightColorScheme.secondary,
+      accentColorBrightness:
+          ThemeData.estimateBrightnessForColor(_lightColorScheme.secondary),
+      scaffoldBackgroundColor: _lightColorScheme.background,
+      bottomAppBarColor: _lightColorScheme.surface,
+      cardColor: _lightColorScheme.surface,
+      dividerColor: _lightColorScheme.onSurface.withOpacity(0.12),
+      backgroundColor: _lightColorScheme.background,
+      dialogBackgroundColor: _lightColorScheme.background,
+      errorColor: _lightColorScheme.error,
+      textTheme: _textTheme,
+      indicatorColor: _lightColorScheme.secondary,
+      applyElevationOverlayColor: false,
+      colorScheme: _lightColorScheme,
+      buttonTheme: _buttonThemeData,
+      elevatedButtonTheme: _elevatedButtonThemeDataLight,
+      outlinedButtonTheme: _outlinedButtonThemeData,
+      appBarTheme: _appBarLightTheme,
+    );
   }
 
-  static ThemeData get darkTheme {
+  static ThemeData get dark {
     return ThemeData(
       brightness: Brightness.dark,
       primaryColor: _darkColorScheme.primary,
@@ -327,4 +328,6 @@ class YaruTheme {
       appBarTheme: _appBarDarkTheme,
     );
   }
+
+  static Set<ThemeData> get values => {standard, light, dark};
 }
