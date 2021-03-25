@@ -348,37 +348,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(width: 25.0),
                 Expanded(
                     child: colorPaletteExample(
-                  'lightAubergine',
-                  yaru.YaruColor.lightAubergine,
-                )),
+                        'lightAubergine', yaru.YaruColor.lightAubergine)),
                 SizedBox(width: 25.0),
                 Expanded(
                     child: colorPaletteExample(
-                  'midAubergine',
-                  yaru.YaruColor.midAubergine,
-                )),
+                        'midAubergine', yaru.YaruColor.midAubergine)),
               ],
             ),
             Divider(height: 50.0, color: Colors.black),
             Row(
               children: [
                 Expanded(
-                    child: colorPaletteExample(
-                  'canonicalAubergine',
-                  yaru.YaruColor.canonicalAubergine,
-                )),
+                    child: colorPaletteExample('canonicalAubergine',
+                        yaru.YaruColor.canonicalAubergine)),
                 SizedBox(width: 25.0),
                 Expanded(
                     child: colorPaletteExample(
-                  'darkAubergine',
-                  yaru.YaruColor.darkAubergine,
-                )),
+                        'darkAubergine', yaru.YaruColor.darkAubergine)),
                 SizedBox(width: 25.0),
                 Expanded(
                     child: colorPaletteExample(
-                  'warmGrey',
-                  yaru.YaruColor.warmGrey,
-                )),
+                        'warmGrey', yaru.YaruColor.warmGrey)),
               ],
             ),
           ],
