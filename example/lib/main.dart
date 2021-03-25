@@ -320,7 +320,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         'darkAubergine', yaru.Colors.darkAubergine)),
                 SizedBox(width: 25.0),
                 Expanded(
-                    child: colorPaletteExample('warmGrey', yaru.Colors.warmGrey)),
+                    child:
+                        colorPaletteExample('warmGrey', yaru.Colors.warmGrey)),
               ],
             ),
           ],
