@@ -2,54 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart' as yaru;
 
 /// an `enum-like` class to facilitate `Yaru` themes in the state management
-abstract class SelectedTheme {
+class SelectedTheme {
+  /// a private constructor, too be used in the factories
+  SelectedTheme._(this.theme, this.name);
+
   /// provides a ThemeData from `Yaru` package
-  ThemeData get theme;
+  ThemeData theme;
 
   /// provides a human readable identifier for the `theme`
-  String get name;
+  String name;
 
   /// provides list of `themes`
   static Set<SelectedTheme> get values {
     return {
-      _Standard(),
-      _Dark(),
-      _Light(),
+      SelectedTheme.standard(),
+      SelectedTheme.dark(),
+      SelectedTheme.light(),
     };
   }
 
   /// a factory for a `SelectedTheme` that holds `yaru.theme`
-  factory SelectedTheme.standard() => _Standard();
+  factory SelectedTheme.standard() => SelectedTheme._(yaru.theme, 'standard');
 
   /// a factory for a `SelectedTheme` that holds `yaru.darkTheme`
-  factory SelectedTheme.dark() => _Dark();
+  factory SelectedTheme.dark() => SelectedTheme._(yaru.darkTheme, 'dark');
 
   /// a factory for a `SelectedTheme` that holds `yaru.lightTheme`
-  factory SelectedTheme.light() => _Light();
-}
-
-class _Standard implements SelectedTheme {
-  @override
-  final name = 'standard';
-
-  @override
-  final theme = yaru.theme;
-}
-
-class _Dark implements SelectedTheme {
-  @override
-  final name = 'dark';
-
-  @override
-  final theme = yaru.darkTheme;
-}
-
-class _Light implements SelectedTheme {
-  @override
-  final name = 'light';
-
-  @override
-  final theme = yaru.lightTheme;
+  factory SelectedTheme.light() => SelectedTheme._(yaru.lightTheme, 'light');
 }
 
 final _yaru = ValueNotifier<SelectedTheme>(SelectedTheme.standard());
