@@ -1,8 +1,18 @@
 # Changelog
 
-## 0.0.0-dev
+## 0.0.0-dev.10
 
-* Initial prerelease
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Remove "clang-format off" comments from in CCfiles (#37)
+* [Marcus Tomlinson](https://github.com/MarcusTomlinson)
+  * Add "Flutter CI" workflow
+  * Use has-signed-canonical-cla GitHub Action
+* Talat El Beick
+  * Reorganize project structure and show colors in example (#29)
+* Fabio Colella
+  * Fix for screenshots not appearing on pub.dart (#28)
+* [J-P Nurmi](https://github.com/jpnurmi)
+  * Migrate to null-safety (#30)
 
 ## 0.0.9-dev
 
@@ -51,3 +61,7 @@
   * Updated description and homepage to reflect github move
   * Re-license under MPL-2.0 to reduce the barrier for use by * Flutter developers.
   * Releasing 0.0.0-dev.4
+  
+## 0.0.0-dev
+
+* Initial prerelease

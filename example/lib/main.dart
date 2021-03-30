@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, this.themeChanged}) : super(key: key);
+  const MyHomePage({Key? key, required this.themeChanged}) : super(key: key);
 
   final void Function(String themeName) themeChanged;
 
@@ -320,7 +320,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         'darkAubergine', yaru.Colors.darkAubergine)),
                 SizedBox(width: 25.0),
                 Expanded(
-                    child: colorPaletteExample('warmGrey', yaru.Colors.warmGrey)),
+                    child:
+                        colorPaletteExample('warmGrey', yaru.Colors.warmGrey)),
               ],
             ),
           ],
@@ -338,7 +339,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Map<String, MaterialColor> _color = {colorName: color};
     int _shade = 0;
     TextStyle _textStyle(int _shade) => TextStyle(
-          color: (_color.values.first[_shade].computeLuminance() > 0.4)
+          color: (_color.values.first[_shade]!.computeLuminance() > 0.4)
               ? Colors.black
               : Colors.white,
           fontSize: 18.0,
@@ -366,7 +367,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 flex: 4,
                 child: Text(
                   '#' +
-                      _color.values.first[_shade].value
+                      _color.values.first[_shade]!.value
                           .toRadixString(16)
                           .substring(2)
                           .toUpperCase(),
