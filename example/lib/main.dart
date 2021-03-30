@@ -296,32 +296,19 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 15.0),
             Row(
               children: [
-                Expanded(
-                    child: colorPaletteExample('orange', yaru.Colors.orange)),
-                SizedBox(width: 25.0),
-                Expanded(
-                    child: colorPaletteExample(
-                        'lightAubergine', yaru.Colors.lightAubergine)),
-                SizedBox(width: 25.0),
-                Expanded(
-                    child: colorPaletteExample(
-                        'midAubergine', yaru.Colors.midAubergine)),
+                colorPaletteExample('orange', yaru.Colors.orange),
+                colorPaletteExample(
+                    'lightAubergine', yaru.Colors.lightAubergine),
+                colorPaletteExample('midAubergine', yaru.Colors.midAubergine),
               ],
             ),
             Divider(height: 50.0, color: Colors.black),
             Row(
               children: [
-                Expanded(
-                    child: colorPaletteExample(
-                        'canonicalAubergine', yaru.Colors.canonicalAubergine)),
-                SizedBox(width: 25.0),
-                Expanded(
-                    child: colorPaletteExample(
-                        'darkAubergine', yaru.Colors.darkAubergine)),
-                SizedBox(width: 25.0),
-                Expanded(
-                    child:
-                        colorPaletteExample('warmGrey', yaru.Colors.warmGrey)),
+                colorPaletteExample(
+                    'canonicalAubergine', yaru.Colors.canonicalAubergine),
+                colorPaletteExample('darkAubergine', yaru.Colors.darkAubergine),
+                colorPaletteExample('warmGrey', yaru.Colors.warmGrey),
               ],
             ),
           ],
@@ -337,7 +324,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget colorPaletteExample(String colorName, MaterialColor color) {
     Map<String, MaterialColor> _color = {colorName: color};
-    int _shade = 0;
     TextStyle _textStyle(int _shade) => TextStyle(
           color: (_color.values.first[_shade]!.computeLuminance() > 0.4)
               ? Colors.black
@@ -346,8 +332,7 @@ class _MyHomePageState extends State<MyHomePage> {
           fontWeight: FontWeight.w400,
         );
     List<Widget> _colorItem = [];
-    for (int i = 0; i < 5; i++) {
-      _shade += 100;
+    for (int _shade = 100; _shade <= 500; _shade += 100) {
       _colorItem.add(Container(
         height: 45.0,
         color: _color.values.first[_shade],
@@ -379,8 +364,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ));
     }
-    return Column(
-      children: _colorItem,
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: _colorItem,
+        ),
+      ),
     );
   }
 }
