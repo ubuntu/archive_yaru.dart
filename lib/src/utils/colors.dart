@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart' show Color, MaterialColor;
 
-// Ubuntu color palette
-// https://design.ubuntu.com/brand/colour-palette/
-
+/// The Ubuntu color palette
+/// [](https://design.ubuntu.com/brand/colour-palette)
 class Colors {
   Colors._();
 
   static const int _orangePrimaryValue = 0xFFE95420;
+
+  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/orange.png)
   static const MaterialColor orange =
       MaterialColor(_orangePrimaryValue, <int, Color>{
     50: Color(0xFFFDEEE9),
@@ -18,6 +19,8 @@ class Colors {
   });
 
   static const int _lightAuberginePrimaryValue = 0xFF77216F;
+
+  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/lightAubergine.png)
   static const MaterialColor lightAubergine =
       MaterialColor(_lightAuberginePrimaryValue, <int, Color>{
     50: Color(0xFFF1E8F0),
@@ -29,6 +32,8 @@ class Colors {
   });
 
   static const int _midAuberginePrimaryValue = 0xFF5E2750;
+
+  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/midAubergine.png)
   static const MaterialColor midAubergine =
       MaterialColor(_midAuberginePrimaryValue, <int, Color>{
     50: Color(0xFFEEE9ED),
@@ -40,6 +45,8 @@ class Colors {
   });
 
   static const int _canonicalAuberginePrimaryValue = 0xFF772953;
+
+  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/canonicalAubergine.png)
   static const MaterialColor canonicalAubergine =
       MaterialColor(_canonicalAuberginePrimaryValue, <int, Color>{
     50: Color(0xFFF1E9ED),
@@ -51,6 +58,8 @@ class Colors {
   });
 
   static const int _darkAuberginePrimaryValue = 0xFF2C001E;
+
+  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/darkAubergine.png)
   static const MaterialColor darkAubergine =
       MaterialColor(_darkAuberginePrimaryValue, <int, Color>{
     50: Color(0xFFE9E5E8),
@@ -62,6 +71,8 @@ class Colors {
   });
 
   static const int _warmGreyPrimaryValue = 0xFFAEA79F;
+
+  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/warmGrey.png)
   static const MaterialColor warmGrey =
       MaterialColor(_warmGreyPrimaryValue, <int, Color>{
     50: Color(0xFFF6F6F5),
