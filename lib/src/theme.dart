@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/src/utils/colors.dart' as yaru;
 
+MaterialColor _primarySwatchColor = MaterialColor(yaru.Colors.orange.value, {
+  50: Color(0xFFFDEEE9),
+  100: Color(0xFFFBDDD2),
+  200: Color(0xFFF6BBA6),
+  300: Color(0xFFF29879),
+  400: Color(0xFFED764D),
+  500: Color(yaru.Colors.orange.value),
+  600: Color(0xFFBA431A),
+  700: Color(0xFF8C3213),
+  800: Color(0xFF5D220D),
+  900: Color(0xFF2F1106),
+});
+
 final _lightColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
-    primarySwatch: MaterialColor(yaru.Colors.orange.value, {
-      50: Color(0xFFFDEEE9),
-      100: Color(0xFFFBDDD2),
-      200: Color(0xFFF6BBA6),
-      300: Color(0xFFF29879),
-      400: Color(0xFFED764D),
-      500: Color(yaru.Colors.orange.value),
-      600: Color(0xFFBA431A),
-      700: Color(0xFF8C3213),
-      800: Color(0xFF5D220D),
-      900: Color(0xFF2F1106),
-    }),
+    primarySwatch: _primarySwatchColor,
     primaryColorDark: yaru.Colors.coolGrey,
     accentColor: yaru.Colors.lightAubergine,
     cardColor: Colors.white,
@@ -24,18 +26,7 @@ final _lightColorScheme = ColorScheme.fromSwatch(
 
 final _darkColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
-    primarySwatch: MaterialColor(yaru.Colors.orange.value, {
-      50: Color(0xFFFDEEE9),
-      100: Color(0xFFFBDDD2),
-      200: Color(0xFFF6BBA6),
-      300: Color(0xFFF29879),
-      400: Color(0xFFED764D),
-      500: Color(yaru.Colors.orange.value),
-      600: Color(0xFFBA431A),
-      700: Color(0xFF8C3213),
-      800: Color(0xFF5D220D),
-      900: Color(0xFF2F1106),
-    }),
+    primarySwatch: _primarySwatchColor,
     primaryColorDark: yaru.Colors.coolGrey,
     accentColor: yaru.Colors.lightAubergine,
     cardColor: yaru.Colors.coolGrey,
