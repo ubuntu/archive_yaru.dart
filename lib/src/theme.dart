@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yaru/src/headline_style.dart';
 import 'package:yaru/src/utils/colors.dart' as yaru;
 
 MaterialColor _primarySwatchColor = MaterialColor(yaru.Colors.orange.value, {
@@ -34,43 +35,20 @@ final _darkColorScheme = ColorScheme.fromSwatch(
     errorColor: yaru.Colors.red,
     brightness: Brightness.dark);
 
-final _textStyle = TextStyle(
-  fontFamily: 'Ubuntu',
-  package: 'yaru',
-  fontFamilyFallback: [
-    'Liberation Serif',
-    'Noto Sans CJK',
-    'Tibetan Machine Uni',
-  ],
-);
-final _headline1Style = _textStyle;
-final _headline2Style = _textStyle;
-final _headline3Style = _textStyle;
-final _headline4Style = _textStyle;
-final _headline5Style = _textStyle;
-final _headline6Style = _textStyle;
-final _subtitle1Style = _textStyle;
-final _subtitle2Style = _textStyle;
-final _bodyText1Style = _textStyle;
-final _bodyText2Style = _textStyle;
-final _captionStyle = _textStyle;
-final _buttonStyle = _textStyle;
-final _overLineStyle = _textStyle;
-
 final _textTheme = TextTheme(
-  headline1: _headline1Style,
-  headline2: _headline2Style,
-  headline3: _headline3Style,
-  headline4: _headline4Style,
-  headline5: _headline5Style,
-  headline6: _headline6Style,
-  subtitle1: _subtitle1Style,
-  subtitle2: _subtitle2Style,
-  bodyText1: _bodyText1Style,
-  bodyText2: _bodyText2Style,
-  caption: _captionStyle,
-  button: _buttonStyle,
-  overline: _overLineStyle,
+  headline1: HeadlineStyle.headline1,
+  headline2: HeadlineStyle.headline2,
+  headline3: HeadlineStyle.headline3,
+  headline4: HeadlineStyle.headline4,
+  headline5: HeadlineStyle.headline5,
+  headline6: HeadlineStyle.headline6,
+  subtitle1: HeadlineStyle.subtitle1,
+  subtitle2: HeadlineStyle.subtitle2,
+  bodyText1: HeadlineStyle.bodyText1,
+  bodyText2: HeadlineStyle.bodyText2,
+  caption: HeadlineStyle.caption,
+  button: HeadlineStyle.button,
+  overline: HeadlineStyle.overLine,
 );
 
 final _buttonThemeData = ButtonThemeData(
@@ -86,7 +64,7 @@ final _appBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
   color: Colors.white,
   textTheme: _textTheme.copyWith(
-      headline6: _headline6Style.copyWith(
+      headline6: HeadlineStyle.headline6.copyWith(
     color: yaru.Colors.coolGrey,
     fontSize: 20,
     fontWeight: FontWeight.w500,
