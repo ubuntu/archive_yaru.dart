@@ -15,7 +15,7 @@ MaterialColor _primarySwatchColor = MaterialColor(yaru.Colors.orange.value, {
   900: Color(0xFF2F1106),
 });
 
-final _lightColorScheme = ColorScheme.fromSwatch(
+ColorScheme _lightColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
     primarySwatch: _primarySwatchColor,
     primaryColorDark: yaru.Colors.coolGrey,
@@ -25,7 +25,7 @@ final _lightColorScheme = ColorScheme.fromSwatch(
     errorColor: yaru.Colors.red,
     brightness: Brightness.light);
 
-final _darkColorScheme = ColorScheme.fromSwatch(
+ColorScheme _darkColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
     primarySwatch: _primarySwatchColor,
     primaryColorDark: yaru.Colors.coolGrey,
@@ -35,7 +35,7 @@ final _darkColorScheme = ColorScheme.fromSwatch(
     errorColor: yaru.Colors.red,
     brightness: Brightness.dark);
 
-final _textTheme = TextTheme(
+TextTheme _textTheme = TextTheme(
   headline1: HeadlineStyle.headline1,
   headline2: HeadlineStyle.headline2,
   headline3: HeadlineStyle.headline3,
@@ -51,16 +51,16 @@ final _textTheme = TextTheme(
   overline: HeadlineStyle.overLine,
 );
 
-final _buttonThemeData = ButtonThemeData(
+ButtonThemeData _buttonThemeData = ButtonThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)));
 
-final _outlinedButtonThemeData = OutlinedButtonThemeData(
+OutlinedButtonThemeData _outlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(primary: yaru.Colors.textGrey));
 
-final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
+OutlinedButtonThemeData _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(primary: Colors.white));
 
-final _appBarLightTheme = AppBarTheme(
+AppBarTheme _appBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
   color: Colors.white,
   textTheme: _textTheme.copyWith(
@@ -73,12 +73,12 @@ final _appBarLightTheme = AppBarTheme(
   actionsIconTheme: IconThemeData(color: yaru.Colors.coolGrey),
 );
 
-final _appBarDarkTheme = AppBarTheme(
+AppBarTheme _appBarDarkTheme = AppBarTheme(
   brightness: Brightness.dark,
   color: yaru.Colors.coolGrey,
 );
 
-final theme = ThemeData(
+ThemeData theme = ThemeData(
     brightness: Brightness.light,
     primaryColor: _lightColorScheme.primary,
     primaryColorBrightness:
@@ -103,7 +103,7 @@ final theme = ThemeData(
     outlinedButtonTheme: _outlinedButtonThemeData,
     appBarTheme: _appBarDarkTheme);
 
-final lightTheme = ThemeData(
+ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: _lightColorScheme.primary,
     primaryColorBrightness:
@@ -128,7 +128,7 @@ final lightTheme = ThemeData(
     outlinedButtonTheme: _outlinedButtonThemeData,
     appBarTheme: _appBarLightTheme);
 
-final darkTheme = ThemeData(
+ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: _darkColorScheme.primary,
     primaryColorBrightness:
@@ -194,12 +194,12 @@ Color _getElevatedButtonColorDark(Set<MaterialState> states) {
   return yaru.Colors.green;
 }
 
-final _elevatedButtonThemeDataLight = ElevatedButtonThemeData(
+ElevatedButtonThemeData _elevatedButtonThemeDataLight = ElevatedButtonThemeData(
     style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith(_getElevatedButtonColorLight)));
 
-final _elevatedButtonThemeDataDark = ElevatedButtonThemeData(
+ElevatedButtonThemeData _elevatedButtonThemeDataDark = ElevatedButtonThemeData(
     style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith(_getElevatedButtonColorDark)));
@@ -229,7 +229,7 @@ Color _getSwitchTrackColorDark(Set<MaterialState> states) {
   }
 }
 
-final _switchStyleDark = SwitchThemeData(
+SwitchThemeData _switchStyleDark = SwitchThemeData(
     thumbColor: MaterialStateProperty.resolveWith(_getSwitchThumbColorDark),
     trackColor: MaterialStateProperty.resolveWith(_getSwitchTrackColorDark));
 
@@ -251,10 +251,10 @@ Color _getCheckColorDark(Set<MaterialState> states) {
   return yaru.Colors.warmGrey;
 }
 
-final _checkStyle = CheckboxThemeData(
+CheckboxThemeData _checkStyle = CheckboxThemeData(
     fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark),
     checkColor: MaterialStateProperty.resolveWith(_getCheckColorDark));
 
 // Radios
-final _radioStyle = RadioThemeData(
+RadioThemeData _radioStyle = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark));
