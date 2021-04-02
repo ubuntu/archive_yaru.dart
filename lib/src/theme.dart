@@ -267,6 +267,7 @@ InputDecorationTheme _inputDecorationTheme = InputDecorationTheme(
   focusedBorder: OutlineInputBorder(
     borderSide: BorderSide(
       color: yaru.Colors.orange,
+      width: 2.0,
     ),
   ),
 );
