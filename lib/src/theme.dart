@@ -155,7 +155,10 @@ ThemeData darkTheme = ThemeData(
     checkboxTheme: _checkStyle,
     radioTheme: _radioStyle,
     primaryColorDark: yaru.Colors.orange,
-    appBarTheme: _appBarDarkTheme);
+    appBarTheme: _appBarDarkTheme,
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
+    inputDecorationTheme: _inputDecorationTheme);
 
 // Special casing some widgets
 // That are not catched with the default theming in flutter
@@ -258,3 +261,12 @@ CheckboxThemeData _checkStyle = CheckboxThemeData(
 // Radios
 RadioThemeData _radioStyle = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark));
+
+InputDecorationTheme _inputDecorationTheme = InputDecorationTheme(
+  labelStyle: TextStyle(color: yaru.Colors.warmGrey),
+  focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(
+      color: yaru.Colors.orange,
+    ),
+  ),
+);
