@@ -43,43 +43,40 @@ final _darkColorScheme = ColorScheme.fromSwatch(
     errorColor: yaru.Colors.red,
     brightness: Brightness.dark);
 
-final _textStyle = TextStyle(
-  fontFamily: 'Ubuntu',
-  package: 'yaru',
-  fontFamilyFallback: [
-    'Liberation Serif',
-    'Noto Sans CJK',
-    'Tibetan Machine Uni',
-  ],
-);
-final _headline1Style = _textStyle;
-final _headline2Style = _textStyle;
-final _headline3Style = _textStyle;
-final _headline4Style = _textStyle;
-final _headline5Style = _textStyle;
-final _headline6Style = _textStyle;
-final _subtitle1Style = _textStyle;
-final _subtitle2Style = _textStyle;
-final _bodyText1Style = _textStyle;
-final _bodyText2Style = _textStyle;
-final _captionStyle = _textStyle;
-final _buttonStyle = _textStyle;
-final _overLineStyle = _textStyle;
-
-final _textTheme = TextTheme(
-  headline1: _headline1Style,
-  headline2: _headline2Style,
-  headline3: _headline3Style,
-  headline4: _headline4Style,
-  headline5: _headline5Style,
-  headline6: _headline6Style,
-  subtitle1: _subtitle1Style,
-  subtitle2: _subtitle2Style,
-  bodyText1: _bodyText1Style,
-  bodyText2: _bodyText2Style,
-  caption: _captionStyle,
-  button: _buttonStyle,
-  overline: _overLineStyle,
+const _textTheme = TextTheme(
+  headline1: _UbuntuTextStyle(
+    fontSize: 96,
+    letterSpacing: -1.5,
+    fontWeight: FontWeight.w300,
+  ),
+  headline2: _UbuntuTextStyle(
+    fontSize: 60,
+    letterSpacing: -0.5,
+    fontWeight: FontWeight.w300,
+  ),
+  headline3: _UbuntuTextStyle(fontSize: 48),
+  headline4: _UbuntuTextStyle(fontSize: 34),
+  headline5: _UbuntuTextStyle(fontSize: 24, letterSpacing: -0.18),
+  headline6: _UbuntuTextStyle(
+    fontSize: 20,
+    letterSpacing: 0.15,
+    fontWeight: FontWeight.w500,
+  ),
+  subtitle1: _UbuntuTextStyle(fontSize: 16, letterSpacing: 0.15),
+  subtitle2: _UbuntuTextStyle(
+    fontSize: 14,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+  ),
+  bodyText1: _UbuntuTextStyle(fontSize: 16, letterSpacing: 0.5),
+  bodyText2: _UbuntuTextStyle(fontSize: 14, letterSpacing: 0.25),
+  button: _UbuntuTextStyle(
+    fontSize: 14,
+    letterSpacing: 0.25,
+    fontWeight: FontWeight.w500,
+  ),
+  caption: _UbuntuTextStyle(fontSize: 12, letterSpacing: 0.4),
+  overline: _UbuntuTextStyle(fontSize: 10, letterSpacing: 1.5),
 );
 
 final _buttonThemeData = ButtonThemeData(
@@ -95,7 +92,7 @@ final _appBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
   color: Colors.white,
   textTheme: _textTheme.copyWith(
-      headline6: _headline6Style.copyWith(
+      headline6: _textTheme.headline6!.copyWith(
     color: yaru.Colors.coolGrey,
     fontSize: 20,
     fontWeight: FontWeight.w500,
@@ -289,3 +286,22 @@ final _checkStyle = CheckboxThemeData(
 // Radios
 final _radioStyle = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark));
+
+class _UbuntuTextStyle extends TextStyle {
+  const _UbuntuTextStyle({
+    double? fontSize,
+    double? letterSpacing,
+    FontWeight? fontWeight,
+  }) : super(
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    letterSpacing: letterSpacing,
+    fontFamily: 'Ubuntu',
+    package: 'yaru',
+    fontFamilyFallback: const [
+      'Liberation Serif',
+      'Noto Sans CJK',
+      'Tibetan Machine Uni',
+    ],
+  );
+}
