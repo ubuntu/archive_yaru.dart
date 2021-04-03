@@ -293,15 +293,15 @@ class _UbuntuTextStyle extends TextStyle {
     double? letterSpacing,
     FontWeight? fontWeight,
   }) : super(
-    fontSize: fontSize,
-    fontWeight: fontWeight,
-    letterSpacing: letterSpacing,
-    fontFamily: 'Ubuntu',
-    package: 'yaru',
-    fontFamilyFallback: const [
-      'Liberation Serif',
-      'Noto Sans CJK',
-      'Tibetan Machine Uni',
-    ],
-  );
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          letterSpacing: letterSpacing,
+          fontFamily: 'Ubuntu',
+          package: 'yaru',
+          fontFamilyFallback: const [
+            'Liberation Serif',
+            'Noto Sans CJK',
+            'Tibetan Machine Uni',
+          ],
+        );
 }
