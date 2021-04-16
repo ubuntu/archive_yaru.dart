@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/src/utils/colors.dart' as yaru;
+import 'package:yaru/src/utils/text_theme.dart';
 
 final _lightColorScheme = ColorScheme.fromSwatch(
     // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
@@ -43,42 +44,6 @@ final _darkColorScheme = ColorScheme.fromSwatch(
     errorColor: yaru.Colors.red,
     brightness: Brightness.dark);
 
-const _textTheme = TextTheme(
-  headline1: _UbuntuTextStyle(
-    fontSize: 96,
-    letterSpacing: -1.5,
-    fontWeight: FontWeight.w300,
-  ),
-  headline2: _UbuntuTextStyle(
-    fontSize: 60,
-    letterSpacing: -0.5,
-    fontWeight: FontWeight.w300,
-  ),
-  headline3: _UbuntuTextStyle(fontSize: 48),
-  headline4: _UbuntuTextStyle(fontSize: 34),
-  headline5: _UbuntuTextStyle(fontSize: 24, letterSpacing: -0.18),
-  headline6: _UbuntuTextStyle(
-    fontSize: 20,
-    letterSpacing: 0.15,
-    fontWeight: FontWeight.w500,
-  ),
-  subtitle1: _UbuntuTextStyle(fontSize: 16, letterSpacing: 0.15),
-  subtitle2: _UbuntuTextStyle(
-    fontSize: 14,
-    letterSpacing: 0.1,
-    fontWeight: FontWeight.w500,
-  ),
-  bodyText1: _UbuntuTextStyle(fontSize: 16, letterSpacing: 0.5),
-  bodyText2: _UbuntuTextStyle(fontSize: 14, letterSpacing: 0.25),
-  button: _UbuntuTextStyle(
-    fontSize: 14,
-    letterSpacing: 0.25,
-    fontWeight: FontWeight.w500,
-  ),
-  caption: _UbuntuTextStyle(fontSize: 12, letterSpacing: 0.4),
-  overline: _UbuntuTextStyle(fontSize: 10, letterSpacing: 1.5),
-);
-
 final _buttonThemeData = ButtonThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)));
 
@@ -91,8 +56,8 @@ final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
 final _appBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
   color: Colors.white,
-  textTheme: _textTheme.copyWith(
-      headline6: _textTheme.headline6!.copyWith(
+  textTheme: textTheme.copyWith(
+      headline6: textTheme.headline6!.copyWith(
     color: yaru.Colors.coolGrey,
     fontSize: 20,
     fontWeight: FontWeight.w500,
@@ -122,7 +87,7 @@ final theme = ThemeData(
     backgroundColor: _lightColorScheme.background,
     dialogBackgroundColor: _lightColorScheme.background,
     errorColor: _lightColorScheme.error,
-    textTheme: _textTheme,
+    textTheme: textTheme,
     indicatorColor: _lightColorScheme.secondary,
     applyElevationOverlayColor: false,
     colorScheme: _lightColorScheme,
@@ -147,7 +112,7 @@ final lightTheme = ThemeData(
     backgroundColor: _lightColorScheme.background,
     dialogBackgroundColor: _lightColorScheme.background,
     errorColor: _lightColorScheme.error,
-    textTheme: _textTheme,
+    textTheme: textTheme,
     indicatorColor: _lightColorScheme.secondary,
     applyElevationOverlayColor: false,
     colorScheme: _lightColorScheme,
@@ -172,7 +137,7 @@ final darkTheme = ThemeData(
     backgroundColor: _darkColorScheme.background,
     dialogBackgroundColor: _darkColorScheme.background,
     errorColor: _darkColorScheme.error,
-    textTheme: _textTheme,
+    textTheme: textTheme,
     indicatorColor: _darkColorScheme.secondary,
     applyElevationOverlayColor: true,
     colorScheme: _darkColorScheme,
@@ -286,22 +251,3 @@ final _checkStyle = CheckboxThemeData(
 // Radios
 final _radioStyle = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark));
-
-class _UbuntuTextStyle extends TextStyle {
-  const _UbuntuTextStyle({
-    double? fontSize,
-    double? letterSpacing,
-    FontWeight? fontWeight,
-  }) : super(
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          letterSpacing: letterSpacing,
-          fontFamily: 'Ubuntu',
-          package: 'yaru',
-          fontFamilyFallback: const [
-            'Liberation Serif',
-            'Noto Sans CJK',
-            'Tibetan Machine Uni',
-          ],
-        );
-}
