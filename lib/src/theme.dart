@@ -155,6 +155,8 @@ final darkTheme = ThemeData(
   radioTheme: _radioStyle,
   primaryColorDark: yaru.Colors.orange,
   appBarTheme: _appBarDarkTheme,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
 );
 
 // Special casing some widgets
