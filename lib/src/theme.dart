@@ -225,7 +225,7 @@ Color _getSwitchTrackColorDark(Set<MaterialState> states) {
     return yaru.Colors.disabledGreyDark;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return yaru.Colors.midAubergine;
+      return Color(0xFF6A2957);
     } else {
       return yaru.Colors.warmGrey;
     }
