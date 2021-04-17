@@ -153,6 +153,7 @@ final darkTheme = ThemeData(
   appBarTheme: _appBarDarkTheme,
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
+  inputDecorationTheme: _inputDecorationTheme,
 );
 
 // Special casing some widgets
@@ -262,4 +263,13 @@ final _checkStyle = CheckboxThemeData(
 // Radios
 final _radioStyle = RadioThemeData(
   fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark),
+);
+
+final InputDecorationTheme _inputDecorationTheme = InputDecorationTheme(
+  labelStyle: TextStyle(color: yaru.Colors.warmGrey),
+  focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(
+      color: yaru.Colors.orange,
+    ),
+  ),
 );
