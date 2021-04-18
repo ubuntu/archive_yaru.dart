@@ -95,6 +95,8 @@ final theme = ThemeData(
   elevatedButtonTheme: _elevatedButtonThemeDataLight,
   outlinedButtonTheme: _outlinedButtonThemeData,
   appBarTheme: _appBarDarkTheme,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
 );
 
 final lightTheme = ThemeData(
@@ -121,6 +123,8 @@ final lightTheme = ThemeData(
   elevatedButtonTheme: _elevatedButtonThemeDataLight,
   outlinedButtonTheme: _outlinedButtonThemeData,
   appBarTheme: _appBarLightTheme,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
 );
 
 final darkTheme = ThemeData(
