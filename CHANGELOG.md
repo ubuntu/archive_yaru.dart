@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.1
+
+* [Talat El Beick](https://github.com/elbeicktalat)
+  * Fixing style issues (#48)
+* [Arish Sultan](https://github.com/ArishSultan)
+  * Let TextStyles be different (#45)
 ## 0.0.0-dev.10
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
@@ -7,9 +13,9 @@
 * [Marcus Tomlinson](https://github.com/MarcusTomlinson)
   * Add "Flutter CI" workflow
   * Use has-signed-canonical-cla GitHub Action
-* Talat El Beick
+* [Talat El Beick](https://github.com/elbeicktalat)
   * Reorganize project structure and show colors in example (#29)
-* Fabio Colella
+* [Fabio Colella](https://github.com/fcole90)
   * Fix for screenshots not appearing on pub.dart (#28)
 * [J-P Nurmi](https://github.com/jpnurmi)
   * Migrate to null-safety (#30)
