@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.2
+
+* [Talat El Beick](https://github.com/elbeicktalat)
+  * Fix TextField focus border regression (#52)
+
 ## 0.0.1
 
 * [Talat El Beick](https://github.com/elbeicktalat)
