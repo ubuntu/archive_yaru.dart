@@ -79,7 +79,7 @@ final theme = ThemeData(
   canvasColor: _lightColorScheme.background,
   accentColor: _lightColorScheme.secondary,
   accentColorBrightness:
-      ThemeData.estimateBrightnessForColor(_lightColorScheme.secondary),
+      ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
   scaffoldBackgroundColor: _lightColorScheme.background,
   bottomAppBarColor: _lightColorScheme.surface,
   cardColor: _lightColorScheme.surface,
@@ -97,6 +97,9 @@ final theme = ThemeData(
   appBarTheme: _appBarDarkTheme,
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: _lightColorScheme.primary,
+      unselectedItemColor: _lightColorScheme.onSurface.withOpacity(0.7)),
 );
 
 final lightTheme = ThemeData(
@@ -107,7 +110,7 @@ final lightTheme = ThemeData(
   canvasColor: _lightColorScheme.background,
   accentColor: _lightColorScheme.secondary,
   accentColorBrightness:
-      ThemeData.estimateBrightnessForColor(_lightColorScheme.secondary),
+      ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
   scaffoldBackgroundColor: _lightColorScheme.background,
   bottomAppBarColor: _lightColorScheme.surface,
   cardColor: _lightColorScheme.surface,
@@ -125,39 +128,44 @@ final lightTheme = ThemeData(
   appBarTheme: _appBarLightTheme,
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: _lightColorScheme.primary,
+      unselectedItemColor: _lightColorScheme.onSurface.withOpacity(0.7)),
 );
 
 final darkTheme = ThemeData(
-  brightness: Brightness.dark,
-  primaryColor: _darkColorScheme.primary,
-  primaryColorBrightness:
-      ThemeData.estimateBrightnessForColor(_darkColorScheme.primary),
-  canvasColor: _darkColorScheme.background,
-  accentColor: _darkColorScheme.secondary,
-  accentColorBrightness:
-      ThemeData.estimateBrightnessForColor(_darkColorScheme.secondary),
-  scaffoldBackgroundColor: _darkColorScheme.background,
-  bottomAppBarColor: _darkColorScheme.surface,
-  cardColor: _darkColorScheme.surface,
-  dividerColor: _darkColorScheme.onSurface.withOpacity(0.12),
-  backgroundColor: _darkColorScheme.background,
-  dialogBackgroundColor: _darkColorScheme.background,
-  errorColor: _darkColorScheme.error,
-  textTheme: textTheme,
-  indicatorColor: _darkColorScheme.secondary,
-  applyElevationOverlayColor: true,
-  colorScheme: _darkColorScheme,
-  buttonTheme: _buttonThemeData,
-  elevatedButtonTheme: _elevatedButtonThemeDataDark,
-  outlinedButtonTheme: _darkOutlinedButtonThemeData,
-  switchTheme: _switchStyleDark,
-  checkboxTheme: _checkStyle,
-  radioTheme: _radioStyle,
-  primaryColorDark: yaru.Colors.orange,
-  appBarTheme: _appBarDarkTheme,
-  floatingActionButtonTheme:
-      FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
-);
+    brightness: Brightness.dark,
+    primaryColor: _darkColorScheme.primary,
+    primaryColorBrightness:
+        ThemeData.estimateBrightnessForColor(_darkColorScheme.primary),
+    canvasColor: _darkColorScheme.background,
+    accentColor: _darkColorScheme.secondary,
+    accentColorBrightness:
+        ThemeData.estimateBrightnessForColor(_darkColorScheme.secondary),
+    scaffoldBackgroundColor: _darkColorScheme.background,
+    bottomAppBarColor: _darkColorScheme.surface,
+    cardColor: _darkColorScheme.surface,
+    dividerColor: _darkColorScheme.onSurface.withOpacity(0.12),
+    backgroundColor: _darkColorScheme.background,
+    dialogBackgroundColor: _darkColorScheme.background,
+    errorColor: _darkColorScheme.error,
+    textTheme: textTheme,
+    indicatorColor: _darkColorScheme.secondary,
+    applyElevationOverlayColor: true,
+    colorScheme: _darkColorScheme,
+    buttonTheme: _buttonThemeData,
+    elevatedButtonTheme: _elevatedButtonThemeDataDark,
+    outlinedButtonTheme: _darkOutlinedButtonThemeData,
+    switchTheme: _switchStyleDark,
+    checkboxTheme: _checkStyle,
+    radioTheme: _radioStyle,
+    primaryColorDark: yaru.Colors.orange,
+    appBarTheme: _appBarDarkTheme,
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        selectedItemColor: _lightColorScheme.primary,
+        unselectedItemColor: _lightColorScheme.onSecondary.withOpacity(0.8)));
 
 // Special casing some widgets
 // That are not catched with the default theming in flutter
