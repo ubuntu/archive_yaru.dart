@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yaru/src/utils/colors.dart' as yaru;
 import 'package:yaru/src/utils/text_theme.dart';
+
+part 'text_theme.dart';
 
 final MaterialColor _primarySwatchColor =
     MaterialColor(yaru.Colors.orange.value, {
@@ -16,8 +17,6 @@ final MaterialColor _primarySwatchColor =
   800: Color(0xFF5D220D),
   900: Color(0xFF2F1106),
 });
-
-part 'text_theme.dart';
 
 final _lightColorScheme = ColorScheme.fromSwatch(
   // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
