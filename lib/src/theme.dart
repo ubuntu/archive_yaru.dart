@@ -1,53 +1,51 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yaru/src/utils/colors.dart' as yaru;
+import 'package:yaru/src/utils/text_theme.dart';
+
+final MaterialColor _primarySwatchColor =
+    MaterialColor(yaru.Colors.orange.value, {
+  50: Color(0xFFFDEEE9),
+  100: Color(0xFFFBDDD2),
+  200: Color(0xFFF6BBA6),
+  300: Color(0xFFF29879),
+  400: Color(0xFFED764D),
+  500: Color(yaru.Colors.orange.value),
+  600: Color(0xFFBA431A),
+  700: Color(0xFF8C3213),
+  800: Color(0xFF5D220D),
+  900: Color(0xFF2F1106),
+});
 
 part 'text_theme.dart';
 
 final _lightColorScheme = ColorScheme.fromSwatch(
-    // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
-    primarySwatch: MaterialColor(yaru.Colors.orange.value, {
-      50: Color(0xFFFDEEE9),
-      100: Color(0xFFFBDDD2),
-      200: Color(0xFFF6BBA6),
-      300: Color(0xFFF29879),
-      400: Color(0xFFED764D),
-      500: Color(yaru.Colors.orange.value),
-      600: Color(0xFFBA431A),
-      700: Color(0xFF8C3213),
-      800: Color(0xFF5D220D),
-      900: Color(0xFF2F1106),
-    }),
-    primaryColorDark: yaru.Colors.coolGrey,
-    accentColor: yaru.Colors.lightAubergine,
-    cardColor: Colors.white,
-    backgroundColor: Colors.white,
-    errorColor: yaru.Colors.red,
-    brightness: Brightness.light);
+  // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
+  primarySwatch: _primarySwatchColor,
+  primaryColorDark: yaru.Colors.coolGrey,
+  accentColor: yaru.Colors.lightAubergine,
+  cardColor: Colors.white,
+  backgroundColor: Colors.white,
+  errorColor: yaru.Colors.red,
+  brightness: Brightness.light,
+);
 
 final _darkColorScheme = ColorScheme.fromSwatch(
-    // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
-    primarySwatch: MaterialColor(yaru.Colors.orange.value, {
-      50: Color(0xFFFDEEE9),
-      100: Color(0xFFFBDDD2),
-      200: Color(0xFFF6BBA6),
-      300: Color(0xFFF29879),
-      400: Color(0xFFED764D),
-      500: Color(yaru.Colors.orange.value),
-      600: Color(0xFFBA431A),
-      700: Color(0xFF8C3213),
-      800: Color(0xFF5D220D),
-      900: Color(0xFF2F1106),
-    }),
-    primaryColorDark: yaru.Colors.coolGrey,
-    accentColor: yaru.Colors.lightAubergine,
-    cardColor: yaru.Colors.coolGrey,
-    backgroundColor: yaru.Colors.coolGrey,
-    errorColor: yaru.Colors.red,
-    brightness: Brightness.dark);
+  // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
+  primarySwatch: _primarySwatchColor,
+  primaryColorDark: yaru.Colors.coolGrey,
+  accentColor: yaru.Colors.lightAubergine,
+  cardColor: yaru.Colors.coolGrey,
+  backgroundColor: yaru.Colors.coolGrey,
+  errorColor: yaru.Colors.red,
+  brightness: Brightness.dark,
+);
 
 final _buttonThemeData = ButtonThemeData(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)));
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(4.0),
+  ),
+);
 
 final _outlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
@@ -64,12 +62,13 @@ final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
 final _appBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
   color: Colors.white,
-  textTheme: _textTheme.copyWith(
-      headline6: _textTheme.headline6!.copyWith(
-    color: yaru.Colors.coolGrey,
-    fontSize: 20,
-    fontWeight: FontWeight.w500,
-  )),
+  textTheme: textTheme.copyWith(
+    headline6: textTheme.headline6!.copyWith(
+      color: yaru.Colors.coolGrey,
+      fontSize: 20,
+      fontWeight: FontWeight.w500,
+    ),
+  ),
   iconTheme: IconThemeData(color: yaru.Colors.coolGrey),
   actionsIconTheme: IconThemeData(color: yaru.Colors.coolGrey),
 );
@@ -165,6 +164,7 @@ final _elevatedButtonThemeData = ElevatedButtonThemeData(
     ),
   ),
 );
+
 // Switches
 Color _getSwitchThumbColorDark(Set<MaterialState> states) {
   if (states.contains(MaterialState.disabled)) {
@@ -183,7 +183,7 @@ Color _getSwitchTrackColorDark(Set<MaterialState> states) {
     return yaru.Colors.disabledGreyDark;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return yaru.Colors.midAubergine;
+      return Color(0xFF6A2957);
     } else {
       return yaru.Colors.warmGrey;
     }
@@ -191,8 +191,9 @@ Color _getSwitchTrackColorDark(Set<MaterialState> states) {
 }
 
 final _switchStyleDark = SwitchThemeData(
-    thumbColor: MaterialStateProperty.resolveWith(_getSwitchThumbColorDark),
-    trackColor: MaterialStateProperty.resolveWith(_getSwitchTrackColorDark));
+  thumbColor: MaterialStateProperty.resolveWith(_getSwitchThumbColorDark),
+  trackColor: MaterialStateProperty.resolveWith(_getSwitchTrackColorDark),
+);
 
 // Checks
 Color _getCheckFillColorDark(Set<MaterialState> states) {
@@ -213,8 +214,9 @@ Color _getCheckColorDark(Set<MaterialState> states) {
 }
 
 final _checkStyle = CheckboxThemeData(
-    fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark),
-    checkColor: MaterialStateProperty.resolveWith(_getCheckColorDark));
+  fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark),
+  checkColor: MaterialStateProperty.resolveWith(_getCheckColorDark),
+);
 
 // Radios
 final _radioStyle = RadioThemeData(
