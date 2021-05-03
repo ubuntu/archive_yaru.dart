@@ -85,7 +85,7 @@ final theme = ThemeData(
   canvasColor: _lightColorScheme.background,
   accentColor: _lightColorScheme.secondary,
   accentColorBrightness:
-      ThemeData.estimateBrightnessForColor(_lightColorScheme.secondary),
+      ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
   scaffoldBackgroundColor: _lightColorScheme.background,
   bottomAppBarColor: _lightColorScheme.surface,
   cardColor: _lightColorScheme.surface,
@@ -101,6 +101,13 @@ final theme = ThemeData(
   elevatedButtonTheme: _elevatedButtonThemeData,
   outlinedButtonTheme: _outlinedButtonThemeData,
   appBarTheme: _appBarLightTheme,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: yaru.Colors.green,
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    selectedItemColor: _lightColorScheme.primary,
+    unselectedItemColor: _lightColorScheme.onSurface.withOpacity(0.7),
+  ),
 );
 
 final lightTheme = theme;
@@ -133,6 +140,13 @@ final darkTheme = ThemeData(
   radioTheme: _radioStyle,
   primaryColorDark: yaru.Colors.orange,
   appBarTheme: _appBarDarkTheme,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: yaru.Colors.green,
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    selectedItemColor: _lightColorScheme.primary,
+    unselectedItemColor: _lightColorScheme.onSecondary.withOpacity(0.8),
+  ),
 );
 
 // Special casing some widgets
