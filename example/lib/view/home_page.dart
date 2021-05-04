@@ -16,6 +16,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   _HomePageState(this.themeChanged);
+  int _counter = 0;
+
+  void incrementCounter() {
+    setState(() {
+      _counter++;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Yay! $_counter ❤️ for Yaru')));
+    });
+  }
 
   final textController = TextEditingController(
       text:
@@ -80,6 +89,11 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {incrementCounter()},
+        child: Icon(Icons.plus_one),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
     );
   }
 }
