@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yaru/src/utils/colors.dart' as yaru;
 import 'package:yaru/src/utils/text_theme.dart';
 
+part 'text_theme.dart';
+
 final MaterialColor _primarySwatchColor =
     MaterialColor(yaru.Colors.orange.value, {
   50: Color(0xFFFDEEE9),
@@ -45,12 +47,16 @@ final _buttonThemeData = ButtonThemeData(
 );
 
 final _outlinedButtonThemeData = OutlinedButtonThemeData(
-  style: OutlinedButton.styleFrom(primary: yaru.Colors.textGrey),
-);
+    style: OutlinedButton.styleFrom(
+  visualDensity: VisualDensity.standard,
+  primary: yaru.Colors.textGrey,
+));
 
 final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
-  style: OutlinedButton.styleFrom(primary: Colors.white),
-);
+    style: OutlinedButton.styleFrom(
+  visualDensity: VisualDensity.standard,
+  primary: Colors.white,
+));
 
 final _appBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
@@ -87,85 +93,61 @@ final theme = ThemeData(
   backgroundColor: _lightColorScheme.background,
   dialogBackgroundColor: _lightColorScheme.background,
   errorColor: _lightColorScheme.error,
-  textTheme: textTheme,
+  textTheme: _textTheme,
   indicatorColor: _lightColorScheme.secondary,
   applyElevationOverlayColor: false,
   colorScheme: _lightColorScheme,
   buttonTheme: _buttonThemeData,
-  elevatedButtonTheme: _elevatedButtonThemeDataLight,
-  outlinedButtonTheme: _outlinedButtonThemeData,
-  appBarTheme: _appBarDarkTheme,
-  floatingActionButtonTheme:
-      FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: _lightColorScheme.primary,
-      unselectedItemColor: _lightColorScheme.onSurface.withOpacity(0.7)),
-);
-
-final lightTheme = ThemeData(
-  brightness: Brightness.light,
-  primaryColor: _lightColorScheme.primary,
-  primaryColorBrightness:
-      ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
-  canvasColor: _lightColorScheme.background,
-  accentColor: _lightColorScheme.secondary,
-  accentColorBrightness:
-      ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
-  scaffoldBackgroundColor: _lightColorScheme.background,
-  bottomAppBarColor: _lightColorScheme.surface,
-  cardColor: _lightColorScheme.surface,
-  dividerColor: _lightColorScheme.onSurface.withOpacity(0.12),
-  backgroundColor: _lightColorScheme.background,
-  dialogBackgroundColor: _lightColorScheme.background,
-  errorColor: _lightColorScheme.error,
-  textTheme: textTheme,
-  indicatorColor: _lightColorScheme.secondary,
-  applyElevationOverlayColor: false,
-  colorScheme: _lightColorScheme,
-  buttonTheme: _buttonThemeData,
-  elevatedButtonTheme: _elevatedButtonThemeDataLight,
+  elevatedButtonTheme: _elevatedButtonThemeData,
   outlinedButtonTheme: _outlinedButtonThemeData,
   appBarTheme: _appBarLightTheme,
-  floatingActionButtonTheme:
-      FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: yaru.Colors.green,
+  ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: _lightColorScheme.primary,
-      unselectedItemColor: _lightColorScheme.onSurface.withOpacity(0.7)),
+    selectedItemColor: _lightColorScheme.primary,
+    unselectedItemColor: _lightColorScheme.onSurface.withOpacity(0.7),
+  ),
 );
 
+final lightTheme = theme;
+
 final darkTheme = ThemeData(
-    brightness: Brightness.dark,
-    primaryColor: _darkColorScheme.primary,
-    primaryColorBrightness:
-        ThemeData.estimateBrightnessForColor(_darkColorScheme.primary),
-    canvasColor: _darkColorScheme.background,
-    accentColor: _darkColorScheme.secondary,
-    accentColorBrightness:
-        ThemeData.estimateBrightnessForColor(_darkColorScheme.secondary),
-    scaffoldBackgroundColor: _darkColorScheme.background,
-    bottomAppBarColor: _darkColorScheme.surface,
-    cardColor: _darkColorScheme.surface,
-    dividerColor: _darkColorScheme.onSurface.withOpacity(0.12),
-    backgroundColor: _darkColorScheme.background,
-    dialogBackgroundColor: _darkColorScheme.background,
-    errorColor: _darkColorScheme.error,
-    textTheme: textTheme,
-    indicatorColor: _darkColorScheme.secondary,
-    applyElevationOverlayColor: true,
-    colorScheme: _darkColorScheme,
-    buttonTheme: _buttonThemeData,
-    elevatedButtonTheme: _elevatedButtonThemeDataDark,
-    outlinedButtonTheme: _darkOutlinedButtonThemeData,
-    switchTheme: _switchStyleDark,
-    checkboxTheme: _checkStyle,
-    radioTheme: _radioStyle,
-    primaryColorDark: yaru.Colors.orange,
-    appBarTheme: _appBarDarkTheme,
-    floatingActionButtonTheme:
-        FloatingActionButtonThemeData(backgroundColor: yaru.Colors.green),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        selectedItemColor: _lightColorScheme.primary,
-        unselectedItemColor: _lightColorScheme.onSecondary.withOpacity(0.8)));
+  brightness: Brightness.dark,
+  primaryColor: _darkColorScheme.primary,
+  primaryColorBrightness:
+      ThemeData.estimateBrightnessForColor(_darkColorScheme.primary),
+  canvasColor: _darkColorScheme.background,
+  accentColor: _darkColorScheme.secondary,
+  accentColorBrightness:
+      ThemeData.estimateBrightnessForColor(_darkColorScheme.secondary),
+  scaffoldBackgroundColor: _darkColorScheme.background,
+  bottomAppBarColor: _darkColorScheme.surface,
+  cardColor: _darkColorScheme.surface,
+  dividerColor: _darkColorScheme.onSurface.withOpacity(0.12),
+  backgroundColor: _darkColorScheme.background,
+  dialogBackgroundColor: _darkColorScheme.background,
+  errorColor: _darkColorScheme.error,
+  textTheme: _textTheme,
+  indicatorColor: _darkColorScheme.secondary,
+  applyElevationOverlayColor: true,
+  colorScheme: _darkColorScheme,
+  buttonTheme: _buttonThemeData,
+  elevatedButtonTheme: _elevatedButtonThemeData,
+  outlinedButtonTheme: _darkOutlinedButtonThemeData,
+  switchTheme: _switchStyleDark,
+  checkboxTheme: _checkStyle,
+  radioTheme: _radioStyle,
+  primaryColorDark: yaru.Colors.orange,
+  appBarTheme: _appBarDarkTheme,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: yaru.Colors.green,
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    selectedItemColor: _lightColorScheme.primary,
+    unselectedItemColor: _lightColorScheme.onSecondary.withOpacity(0.8),
+  ),
+);
 
 // Special casing some widgets
 // That are not catched with the default theming in flutter
@@ -187,34 +169,12 @@ Color _getElevatedButtonColorLight(Set<MaterialState> states) {
   return yaru.Colors.green;
 }
 
-Color _getElevatedButtonColorDark(Set<MaterialState> states) {
-  const Set<MaterialState> interactiveStates = <MaterialState>{
-    MaterialState.pressed,
-    MaterialState.hovered,
-    MaterialState.focused,
-  };
-  const Set<MaterialState> disabledStates = <MaterialState>{
-    MaterialState.disabled
-  };
-  if (states.any(interactiveStates.contains)) {
-    return yaru.Colors.green;
-  } else if (states.any(disabledStates.contains)) {
-    return yaru.Colors.disabledGreyDark;
-  }
-  return yaru.Colors.green;
-}
-
-final _elevatedButtonThemeDataLight = ElevatedButtonThemeData(
-  style: ButtonStyle(
-    backgroundColor:
-        MaterialStateProperty.resolveWith(_getElevatedButtonColorLight),
-  ),
-);
-
-final _elevatedButtonThemeDataDark = ElevatedButtonThemeData(
-  style: ButtonStyle(
-    backgroundColor:
-        MaterialStateProperty.resolveWith(_getElevatedButtonColorDark),
+final _elevatedButtonThemeData = ElevatedButtonThemeData(
+  style: _commonButtonStyle.copyWith(
+    textStyle: MaterialStateProperty.all(_textTheme.button),
+    backgroundColor: MaterialStateProperty.resolveWith(
+      _getElevatedButtonColorLight,
+    ),
   ),
 );
 
@@ -273,5 +233,6 @@ final _checkStyle = CheckboxThemeData(
 
 // Radios
 final _radioStyle = RadioThemeData(
-  fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark),
-);
+    fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark));
+
+final _commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
