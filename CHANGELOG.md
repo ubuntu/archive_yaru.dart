@@ -1,5 +1,13 @@
 # Changelog
 
+# 0.0.3
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Example: add FAB and snackbar (#56)
+  * Fix bottombar and pimp up the example (#55)
+* [Arish Sultan](https://github.com/ArishSultan)
+  * Fixes incorrect fontWeight, Button- and TextStyles. (#46)
+
 ## 0.0.2
 
 * [Talat El Beick](https://github.com/elbeicktalat)
