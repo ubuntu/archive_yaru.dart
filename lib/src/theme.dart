@@ -215,7 +215,7 @@ Color _getSwitchThumbColorDark(Set<MaterialState> states) {
     return yaru.Colors.warmGrey;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return yaru.Colors.midAubergine;
+      return yaru.Colors.lightAubergine;
     } else {
       return Colors.white;
     }
@@ -227,7 +227,7 @@ Color _getSwitchTrackColorDark(Set<MaterialState> states) {
     return yaru.Colors.disabledGreyDark;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return Color(0xFF6A2957);
+      return yaru.Colors.lightAubergine.withAlpha(180);
     } else {
       return yaru.Colors.warmGrey;
     }
