@@ -1,5 +1,11 @@
 # Changelog
 
+# 0.0.4
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Improve dark and light theme contrast (#61)
+  * Button theme fixes (#60)
+
 # 0.0.3
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
