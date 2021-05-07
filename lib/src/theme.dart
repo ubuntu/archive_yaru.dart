@@ -58,6 +58,9 @@ final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
   primary: Colors.white,
 ));
 
+final _textButtonThemeData = TextButtonThemeData(
+    style: TextButton.styleFrom(visualDensity: VisualDensity.standard));
+
 final _appBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
   color: Colors.white,
@@ -100,6 +103,7 @@ final theme = ThemeData(
   buttonTheme: _buttonThemeData,
   elevatedButtonTheme: _elevatedButtonThemeData,
   outlinedButtonTheme: _outlinedButtonThemeData,
+  textButtonTheme: _textButtonThemeData,
   appBarTheme: _appBarLightTheme,
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: yaru.Colors.green,
@@ -133,7 +137,8 @@ final darkTheme = ThemeData(
   applyElevationOverlayColor: true,
   colorScheme: _darkColorScheme,
   buttonTheme: _buttonThemeData,
-  elevatedButtonTheme: _elevatedButtonThemeData,
+  textButtonTheme: _textButtonThemeData,
+  elevatedButtonTheme: _elevatedButtonThemeDataDark,
   outlinedButtonTheme: _darkOutlinedButtonThemeData,
   switchTheme: _switchStyleDark,
   checkboxTheme: _checkStyle,
@@ -169,11 +174,37 @@ Color _getElevatedButtonColorLight(Set<MaterialState> states) {
   return yaru.Colors.green;
 }
 
+Color _getElevatedButtonColorDark(Set<MaterialState> states) {
+  const Set<MaterialState> interactiveStates = <MaterialState>{
+    MaterialState.pressed,
+    MaterialState.hovered,
+    MaterialState.focused,
+  };
+  const Set<MaterialState> disabledStates = <MaterialState>{
+    MaterialState.disabled
+  };
+  if (states.any(interactiveStates.contains)) {
+    return yaru.Colors.green;
+  } else if (states.any(disabledStates.contains)) {
+    return yaru.Colors.disabledGreyDark;
+  }
+  return yaru.Colors.green;
+}
+
 final _elevatedButtonThemeData = ElevatedButtonThemeData(
   style: _commonButtonStyle.copyWith(
     textStyle: MaterialStateProperty.all(_textTheme.button),
     backgroundColor: MaterialStateProperty.resolveWith(
       _getElevatedButtonColorLight,
+    ),
+  ),
+);
+
+final _elevatedButtonThemeDataDark = ElevatedButtonThemeData(
+  style: _commonButtonStyle.copyWith(
+    textStyle: MaterialStateProperty.all(_textTheme.button),
+    backgroundColor: MaterialStateProperty.resolveWith(
+      _getElevatedButtonColorDark,
     ),
   ),
 );
