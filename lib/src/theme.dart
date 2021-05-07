@@ -24,7 +24,7 @@ final _lightColorScheme = ColorScheme.fromSwatch(
   primaryColorDark: yaru.Colors.coolGrey,
   accentColor: yaru.Colors.lightAubergine,
   cardColor: Colors.white,
-  backgroundColor: Colors.white,
+  backgroundColor: yaru.Colors.porcelain,
   errorColor: yaru.Colors.red,
   brightness: Brightness.light,
 );
@@ -63,7 +63,7 @@ final _textButtonThemeData = TextButtonThemeData(
 
 final _appBarLightTheme = AppBarTheme(
   brightness: Brightness.light,
-  color: Colors.white,
+  color: yaru.Colors.porcelain,
   textTheme: textTheme.copyWith(
     headline6: textTheme.headline6!.copyWith(
       color: yaru.Colors.coolGrey,
@@ -77,7 +77,7 @@ final _appBarLightTheme = AppBarTheme(
 
 final _appBarDarkTheme = AppBarTheme(
   brightness: Brightness.dark,
-  color: yaru.Colors.coolGrey,
+  color: yaru.Colors.inkstone,
 );
 
 final theme = ThemeData(
