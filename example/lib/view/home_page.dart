@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   final textController = TextEditingController(
       text:
           'My code fails, I do not know why.\nMy code works, I do not know why.\nText in other scripts: Tamaziɣt Taqbaylit, 中文(简体), Čeština, Беларуская, Ελληνικά, עברית, Русский, བོད་ཡིག, Norsk bokmål.');
-  var themeName = 'Yaru';
+  var themeName = 'Yaru-light';
   final void Function(String themeName) themeChanged;
 
   int _selectedIndex = 0;
@@ -43,20 +43,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(themeName),
-        leading: PopupMenuButton<String>(
-            onSelected: (value) {
-              setState(() {
-                themeName = value;
-                themeChanged(themeName);
-              });
-            },
-            itemBuilder: (context) => <PopupMenuItem<String>>[
-                  PopupMenuItem(value: 'Yaru', child: const Text('Standard')),
-                  PopupMenuItem(
-                      value: 'Yaru-light', child: const Text('Light')),
-                  PopupMenuItem(value: 'Yaru-dark', child: const Text('Dark')),
-                ]),
+        leading: TextButton(
+          child: Icon(themeName.contains('-light')
+              ? Icons.dark_mode
+              : Icons.light_mode),
+          onPressed: () => {
+            setState(() {
+              if (themeName.contains('-light')) {
+                themeName = 'Yaru-dark';
+              } else if (themeName.contains('-dark')) {
+                themeName = 'Yaru-light';
+              }
+              themeChanged(themeName);
+            })
+          },
+        ),
       ),
       body: Column(
         children: <Widget>[

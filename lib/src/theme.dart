@@ -80,7 +80,7 @@ final _appBarDarkTheme = AppBarTheme(
   color: yaru.Colors.inkstone,
 );
 
-final theme = ThemeData(
+final lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: _lightColorScheme.primary,
   primaryColorBrightness:
@@ -113,8 +113,6 @@ final theme = ThemeData(
     unselectedItemColor: _lightColorScheme.onSurface.withOpacity(0.7),
   ),
 );
-
-final lightTheme = theme;
 
 final darkTheme = ThemeData(
   brightness: Brightness.dark,

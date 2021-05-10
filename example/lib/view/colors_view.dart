@@ -49,8 +49,7 @@ class ColorsView extends StatelessWidget {
           color: (_color.values.first[_shade]!.computeLuminance() > 0.4)
               ? Colors.black
               : Colors.white,
-          fontSize: 18.0,
-          fontWeight: FontWeight.w400,
+          fontSize: 10.0,
         );
     List<Widget> _colorItem = [];
     for (int i = 0; i < 5; i++) {
@@ -64,7 +63,7 @@ class ColorsView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                flex: 12,
+                flex: 10,
                 child: Text(
                   _color.keys.first + '[$_shade]',
                   style: _textStyle(_shade),

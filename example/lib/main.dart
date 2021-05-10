@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var theme = yaru.theme;
+  var theme = yaru.lightTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,7 @@ class _MyAppState extends State<MyApp> {
       theme: theme,
       home: HomePage(
           themeChanged: (themeName) => setState(() {
-                if (themeName == 'Yaru') {
-                  theme = yaru.theme;
-                } else if (themeName == 'Yaru-light') {
+                if (themeName == 'Yaru-light') {
                   theme = yaru.lightTheme;
                 } else if (themeName == 'Yaru-dark') {
                   theme = yaru.darkTheme;
