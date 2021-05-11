@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.0.5
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  *  Reduce themes to 2 and update light/dark mode button (#63)
+
 # 0.0.4
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
