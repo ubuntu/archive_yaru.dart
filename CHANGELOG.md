@@ -3,7 +3,8 @@
 # 0.0.5
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
-  *  Reduce themes to 2 and update light/dark mode button (#63)
+  * Reduce themes to 2 and update light/dark mode button (#63)
+  * Fixes and improvements for Flutter 2.3 (#64)
 
 # 0.0.4
 
