@@ -8,12 +8,12 @@ Ubuntu [Yaru](https://github.com/ubuntu/yaru) Style - Distinct look and feel of 
 ## Using Yaru
 To be able to use this package follow this steps:
 1. [Installation](https://pub.dev/packages/yaru/install)
-1. Make you sure when you import this package `as` yaru
+2. Make you sure when you import this package `as` yaru
    
     ```dart
     import 'package:yaru/yaru.dart' as yaru;
     ```
-2. Inside your `MaterialApp` set `theme` to `yaru.lightTheme` which is the standard light theme and `darkTheme` to `yaru.darkTheme` to get the yaru dark theme. The `darkTheme` property is used when you toggle your system theme to dark:
+3. Inside your `MaterialApp` set `theme` to `yaru.lightTheme` which is the standard light theme and `darkTheme` to `yaru.darkTheme` to get the yaru dark theme. The `darkTheme` property is used when you toggle your system theme to dark:
    
     ```dart
     MaterialApp(
