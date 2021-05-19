@@ -1,5 +1,11 @@
 # Changelog
 
+# 0.0.6
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Do not style progress indicators (yet) (#68)
+  * Update readme instructions (#65)
+
 # 0.0.5
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
