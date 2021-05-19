@@ -55,8 +55,6 @@ final lightTheme = ThemeData(
   errorColor: _lightColorScheme.error,
   textTheme: _textTheme,
   indicatorColor: _lightColorScheme.secondary,
-  progressIndicatorTheme:
-      ProgressIndicatorThemeData(color: _lightColorScheme.secondary),
   applyElevationOverlayColor: false,
   colorScheme: _lightColorScheme,
   buttonTheme: _buttonThemeData,
@@ -91,8 +89,6 @@ final darkTheme = ThemeData(
   errorColor: _darkColorScheme.error,
   textTheme: _textTheme,
   indicatorColor: _darkColorScheme.secondary,
-  progressIndicatorTheme:
-      ProgressIndicatorThemeData(color: _darkColorScheme.secondary),
   applyElevationOverlayColor: true,
   colorScheme: _darkColorScheme,
   buttonTheme: _buttonThemeData,
