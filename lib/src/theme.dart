@@ -22,7 +22,7 @@ final _lightColorScheme = ColorScheme.fromSwatch(
   // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
   primarySwatch: _primarySwatchColor,
   primaryColorDark: yaru.Colors.coolGrey,
-  accentColor: yaru.Colors.lightAubergine,
+  accentColor: yaru.Colors.orange,
   cardColor: Colors.white,
   backgroundColor: yaru.Colors.porcelain,
   errorColor: yaru.Colors.red,
@@ -33,7 +33,7 @@ final _darkColorScheme = ColorScheme.fromSwatch(
   // NOTE(robert-ancell): Light shades from 'Tint' on website, dark shades calculated.
   primarySwatch: _primarySwatchColor,
   primaryColorDark: yaru.Colors.coolGrey,
-  accentColor: yaru.Colors.lightAubergine,
+  accentColor: yaru.Colors.orange,
   cardColor: yaru.Colors.coolGrey,
   backgroundColor: yaru.Colors.coolGrey,
   errorColor: yaru.Colors.red,
@@ -194,7 +194,7 @@ Color _getSwitchThumbColorDark(Set<MaterialState> states) {
     return yaru.Colors.disabledGreyDark;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return yaru.Colors.lightAubergine;
+      return yaru.Colors.orange;
     } else {
       return yaru.Colors.warmGrey;
     }
@@ -206,7 +206,7 @@ Color _getSwitchTrackColorDark(Set<MaterialState> states) {
     return yaru.Colors.disabledGreyDark.withAlpha(120);
   } else {
     if (states.contains(MaterialState.selected)) {
-      return yaru.Colors.lightAubergine.withAlpha(160);
+      return yaru.Colors.orange.withAlpha(160);
     } else {
       return yaru.Colors.warmGrey.withAlpha(80);
     }
@@ -223,7 +223,7 @@ Color _getSwitchThumbColorLight(Set<MaterialState> states) {
     return yaru.Colors.warmGrey.shade200;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return yaru.Colors.lightAubergine;
+      return yaru.Colors.orange;
     } else {
       return Colors.white;
     }
@@ -235,7 +235,7 @@ Color _getSwitchTrackColorLight(Set<MaterialState> states) {
     return yaru.Colors.warmGrey.shade200;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return yaru.Colors.lightAubergine.withAlpha(180);
+      return yaru.Colors.orange.withAlpha(180);
     } else {
       return yaru.Colors.warmGrey.shade300;
     }
@@ -251,7 +251,7 @@ final _switchStyleLight = SwitchThemeData(
 Color _getCheckFillColorDark(Set<MaterialState> states) {
   if (!states.contains(MaterialState.disabled)) {
     if (states.contains(MaterialState.selected)) {
-      return yaru.Colors.lightAubergine;
+      return yaru.Colors.orange;
     }
     return yaru.Colors.warmGrey;
   }
@@ -273,7 +273,7 @@ final _checkStyleDark = CheckboxThemeData(
 Color _getCheckFillColorLight(Set<MaterialState> states) {
   if (!states.contains(MaterialState.disabled)) {
     if (states.contains(MaterialState.selected)) {
-      return yaru.Colors.lightAubergine;
+      return yaru.Colors.orange;
     }
     return yaru.Colors.warmGrey;
   }
