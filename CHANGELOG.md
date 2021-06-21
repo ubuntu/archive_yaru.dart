@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.0.7
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Replace lightAubergine with orange (#70)
+
 # 0.0.6
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
