@@ -13,12 +13,12 @@ To be able to use this package follow this steps:
     ```dart
     import 'package:yaru/yaru.dart' as yaru;
     ```
-3. Inside your `MaterialApp` set `theme` to `yaru.lightTheme` which is the standard light theme and `darkTheme` to `yaru.darkTheme` to get the yaru dark theme. The `darkTheme` property is used when you toggle your system theme to dark:
+3. Inside your `MaterialApp` set `theme` to `yaru.Theme.light` which is the standard light theme and `darkTheme` to `yaru.Theme.dark` to get the yaru dark theme. The `darkTheme` property is used when you toggle your system theme to dark:
    
     ```dart
     MaterialApp(
-          theme: yaru.lightTheme,
-          darkTheme: yaru.darkTheme,
+          theme: yaru.Theme.light,
+          darkTheme: yaru.Theme.dark,
           home: Scaffold(
             appBar: AppBar(
               title: Text('Yaru Theme'),
