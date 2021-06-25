@@ -1,4 +1,4 @@
-part of 'theme.dart';
+part of '../contracts/themeable.dart';
 
 const _textTheme = TextTheme(
   headline1: _UbuntuTextStyle(
