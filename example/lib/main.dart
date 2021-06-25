@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var theme = yaru.lightTheme;
+  var theme = yaru.Theme.light;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +20,16 @@ class _MyAppState extends State<MyApp> {
       title: 'Yaru Example',
       theme: theme,
       home: HomePage(
-          themeChanged: (themeName) => setState(() {
-                if (themeName == 'Yaru-light') {
-                  theme = yaru.lightTheme;
-                } else if (themeName == 'Yaru-dark') {
-                  theme = yaru.darkTheme;
-                }
-              })),
+        themeChanged: (themeName) {
+          setState(() {
+            if (themeName == 'Yaru-light') {
+              theme = yaru.Theme.light;
+            } else if (themeName == 'Yaru-dark') {
+              theme = yaru.Theme.dark;
+            }
+          });
+        },
+      ),
     );
   }
 }
