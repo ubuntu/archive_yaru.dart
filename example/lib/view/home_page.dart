@@ -43,6 +43,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Super cool title'),
         leading: TextButton(
           child: Icon(themeName.contains('-light')
               ? Icons.dark_mode

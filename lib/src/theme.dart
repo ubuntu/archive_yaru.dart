@@ -300,8 +300,10 @@ final _radioStyleLight = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorLight));
 
 final _appBarLightTheme = AppBarTheme(
+  elevation: 1.0,
   brightness: Brightness.light,
-  color: yaru.Colors.porcelain,
+  backgroundColor: yaru.Colors.porcelain,
+  foregroundColor: yaru.Colors.coolGrey,
   textTheme: textTheme.copyWith(
     headline6: textTheme.headline6!.copyWith(
       color: yaru.Colors.coolGrey,
@@ -314,6 +316,14 @@ final _appBarLightTheme = AppBarTheme(
 );
 
 final _appBarDarkTheme = AppBarTheme(
-  brightness: Brightness.dark,
-  color: yaru.Colors.inkstone,
-);
+    elevation: 1.0,
+    brightness: Brightness.dark,
+    backgroundColor: yaru.Colors.inkstone,
+    foregroundColor: yaru.Colors.porcelain,
+    textTheme: textTheme.copyWith(
+      headline6: textTheme.headline6!.copyWith(
+        color: yaru.Colors.porcelain,
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+      ),
+    ));
