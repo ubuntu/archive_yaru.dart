@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.0.8
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * AppBar: reduce elevation, adapt the text theme (#73) 
+
 # 0.0.7
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
