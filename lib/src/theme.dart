@@ -58,7 +58,7 @@ final lightTheme = ThemeData(
   applyElevationOverlayColor: false,
   colorScheme: _lightColorScheme,
   buttonTheme: _buttonThemeData,
-  elevatedButtonTheme: _elevatedButtonThemeDataLight,
+  elevatedButtonTheme: _getElevatedButtonThemeData(Brightness.light),
   outlinedButtonTheme: _outlinedButtonThemeData,
   textButtonTheme: _textButtonThemeData,
   switchTheme: _switchStyleLight,
@@ -93,7 +93,7 @@ final darkTheme = ThemeData(
   colorScheme: _darkColorScheme,
   buttonTheme: _buttonThemeData,
   textButtonTheme: _textButtonThemeData,
-  elevatedButtonTheme: _elevatedButtonThemeDataDark,
+  elevatedButtonTheme: _getElevatedButtonThemeData(Brightness.dark),
   outlinedButtonTheme: _darkOutlinedButtonThemeData,
   switchTheme: _switchStyleDark,
   checkboxTheme: _checkStyleDark,
@@ -136,57 +136,34 @@ final _textButtonThemeData = TextButtonThemeData(
     style:
         TextButton.styleFrom(visualDensity: _commonButtonStyle.visualDensity));
 
-Color _getElevatedButtonColorLight(Set<MaterialState> states) {
-  const Set<MaterialState> interactiveStates = <MaterialState>{
-    MaterialState.pressed,
-    MaterialState.hovered,
-    MaterialState.focused,
-  };
-  const Set<MaterialState> disabledStates = <MaterialState>{
-    MaterialState.disabled
-  };
-  if (states.any(interactiveStates.contains)) {
-    return yaru.Colors.green;
-  } else if (states.any(disabledStates.contains)) {
-    return yaru.Colors.warmGrey;
-  }
-  return yaru.Colors.green;
+ElevatedButtonThemeData _getElevatedButtonThemeData(Brightness brightness) {
+  return ElevatedButtonThemeData(
+    style: _commonButtonStyle.copyWith(
+        elevation: MaterialStateProperty.resolveWith(
+            (states) => _getElevation(states)),
+        textStyle: MaterialStateProperty.all(_textTheme.button),
+        backgroundColor: MaterialStateProperty.resolveWith(
+            (states) => _getElevatedButtonColor(states, brightness))),
+  );
 }
 
-final _elevatedButtonThemeDataLight = ElevatedButtonThemeData(
-  style: _commonButtonStyle.copyWith(
-    textStyle: MaterialStateProperty.all(_textTheme.button),
-    backgroundColor: MaterialStateProperty.resolveWith(
-      _getElevatedButtonColorLight,
-    ),
-  ),
-);
-
-Color _getElevatedButtonColorDark(Set<MaterialState> states) {
-  const Set<MaterialState> interactiveStates = <MaterialState>{
-    MaterialState.pressed,
-    MaterialState.hovered,
-    MaterialState.focused,
-  };
-  const Set<MaterialState> disabledStates = <MaterialState>{
-    MaterialState.disabled
-  };
-  if (states.any(interactiveStates.contains)) {
-    return yaru.Colors.green;
-  } else if (states.any(disabledStates.contains)) {
-    return yaru.Colors.disabledGreyDark;
+Color _getElevatedButtonColor(
+    Set<MaterialState> states, Brightness brightness) {
+  Color color = yaru.Colors.green;
+  if (states.contains(MaterialState.disabled)) {
+    color = (brightness == Brightness.light)
+        ? yaru.Colors.warmGrey.withOpacity(0.7)
+        : yaru.Colors.disabledGreyDark;
   }
-  return yaru.Colors.green;
+  return color;
 }
 
-final _elevatedButtonThemeDataDark = ElevatedButtonThemeData(
-  style: _commonButtonStyle.copyWith(
-    textStyle: MaterialStateProperty.all(_textTheme.button),
-    backgroundColor: MaterialStateProperty.resolveWith(
-      _getElevatedButtonColorDark,
-    ),
-  ),
-);
+double _getElevation(Set<MaterialState> states) {
+  if (states.contains(MaterialState.hovered)) {
+    return 2.0;
+  }
+  return 0.0;
+}
 
 // Switches
 Color _getSwitchThumbColorDark(Set<MaterialState> states) {
