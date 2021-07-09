@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.0.9
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * ElevatedButton: improve and simplify (#76)
+
 # 0.0.8
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
