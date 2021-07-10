@@ -78,36 +78,6 @@ class YaruLight extends Themeable {
   }
 
   @override
-  Color elevatedButtonColor(Set<MaterialState> states) {
-    const Set<MaterialState> interactiveStates = <MaterialState>{
-      MaterialState.pressed,
-      MaterialState.hovered,
-      MaterialState.focused,
-    };
-    const Set<MaterialState> disabledStates = <MaterialState>{
-      MaterialState.disabled
-    };
-    if (states.any(interactiveStates.contains)) {
-      return yaru.Colors.green;
-    } else if (states.any(disabledStates.contains)) {
-      return yaru.Colors.warmGrey;
-    }
-    return yaru.Colors.green;
-  }
-
-  @override
-  ElevatedButtonThemeData elevatedButtonThemeData() {
-    return ElevatedButtonThemeData(
-      style: buttonStyle().copyWith(
-        textStyle: MaterialStateProperty.all(textTheme.button),
-        backgroundColor: MaterialStateProperty.resolveWith(
-          elevatedButtonColor,
-        ),
-      ),
-    );
-  }
-
-  @override
   FloatingActionButtonThemeData floatingActionButtonThemeData() {
     return FloatingActionButtonThemeData(
       backgroundColor: yaru.Colors.green,
@@ -190,7 +160,7 @@ class YaruLight extends Themeable {
       applyElevationOverlayColor: false,
       colorScheme: colorScheme(),
       buttonTheme: buttonThemeData(),
-      elevatedButtonTheme: elevatedButtonThemeData(),
+      elevatedButtonTheme: elevatedButtonThemeData(Brightness.light),
       outlinedButtonTheme: outlinedButtonThemeData(),
       textButtonTheme: textButtonThemeData(),
       switchTheme: switchThemeData(),
