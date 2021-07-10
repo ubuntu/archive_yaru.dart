@@ -30,13 +30,35 @@ abstract class Themeable {
 
   ButtonThemeData buttonThemeData();
 
-  ElevatedButtonThemeData elevatedButtonThemeData();
+  ElevatedButtonThemeData elevatedButtonThemeData(Brightness brightness){
+return ElevatedButtonThemeData(
+    style: buttonStyle.copyWith(
+        elevation: MaterialStateProperty.resolveWith(
+            (states) => elevatedButtonElevation(states)),
+        textStyle: MaterialStateProperty.all(_textTheme.button),
+        backgroundColor: MaterialStateProperty.resolveWith(
+            (states) => elevatedButtonColor(states, brightness),),),
+  );
+}
 
   OutlinedButtonThemeData outlinedButtonThemeData();
 
   TextButtonThemeData textButtonThemeData();
 
-  Color elevatedButtonColor(Set<MaterialState> states);
+  Color elevatedButtonColor(Set<MaterialState> states, Brightness brightness){
+Color color = yaru.Colors.green;
+  if (states.contains(MaterialState.disabled)) {
+    color = (brightness == Brightness.light)
+        ? yaru.Colors.warmGrey.withOpacity(0.7)
+        : yaru.Colors.disabledGreyDark;
+}
+
+double elevatedButtonElevation(Set<MaterialState> states) {
+  if (states.contains(MaterialState.hovered)) {
+    return 2.0;
+  }
+  return 0.0;
+}
 
   Color switchThumbColor(Set<MaterialState> states);
 
