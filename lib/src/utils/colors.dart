@@ -86,7 +86,7 @@ class Colors {
   static const Color coolGrey = Color(0xFF333333);
   static const Color textGrey = Color(0xFF111111);
   static const Color red = Color(0xFFCC0000);
-  static const Color green = Color(0xFF109a26);
+  static const Color green = Color(0xFF0e8420);
   static const Color disabledGreyDark = Color(0xFF535353);
   static const Color porcelain = Color(0xFFF7F7F7);
   static const Color inkstone = Color(0xFF3B3B3B);
