@@ -32,7 +32,7 @@ abstract class Themeable {
 
   ElevatedButtonThemeData elevatedButtonThemeData(Brightness brightness){
 return ElevatedButtonThemeData(
-    style: buttonStyle.copyWith(
+    style: buttonStyle().copyWith(
         elevation: MaterialStateProperty.resolveWith(
             (states) => elevatedButtonElevation(states)),
         textStyle: MaterialStateProperty.all(_textTheme.button),
