@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.1.0
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * ColorTheme: darken the green (#78)
+
 # 0.0.9
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
