@@ -41,38 +41,40 @@ final _darkColorScheme = ColorScheme.fromSwatch(
 );
 
 final lightTheme = ThemeData(
-  brightness: Brightness.light,
-  primaryColor: _lightColorScheme.primary,
-  primaryColorBrightness:
-      ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
-  canvasColor: _lightColorScheme.background,
-  scaffoldBackgroundColor: _lightColorScheme.background,
-  bottomAppBarColor: _lightColorScheme.surface,
-  cardColor: _lightColorScheme.surface,
-  dividerColor: _lightColorScheme.onSurface.withOpacity(0.12),
-  backgroundColor: _lightColorScheme.background,
-  dialogBackgroundColor: _lightColorScheme.background,
-  errorColor: _lightColorScheme.error,
-  textTheme: _textTheme,
-  indicatorColor: _lightColorScheme.secondary,
-  applyElevationOverlayColor: false,
-  colorScheme: _lightColorScheme,
-  buttonTheme: _buttonThemeData,
-  elevatedButtonTheme: _getElevatedButtonThemeData(Brightness.light),
-  outlinedButtonTheme: _outlinedButtonThemeData,
-  textButtonTheme: _textButtonThemeData,
-  switchTheme: _switchStyleLight,
-  checkboxTheme: _checkStyleLight,
-  radioTheme: _radioStyleLight,
-  appBarTheme: _appBarLightTheme,
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: yaru.Colors.green,
-  ),
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    selectedItemColor: _lightColorScheme.primary,
-    unselectedItemColor: yaru.Colors.coolGrey,
-  ),
-);
+    brightness: Brightness.light,
+    primaryColor: _lightColorScheme.primary,
+    primaryColorBrightness:
+        ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
+    canvasColor: _lightColorScheme.background,
+    scaffoldBackgroundColor: _lightColorScheme.background,
+    bottomAppBarColor: _lightColorScheme.surface,
+    cardColor: _lightColorScheme.surface,
+    dividerColor: _lightColorScheme.onSurface.withOpacity(0.12),
+    backgroundColor: _lightColorScheme.background,
+    dialogBackgroundColor: _lightColorScheme.background,
+    errorColor: _lightColorScheme.error,
+    textTheme: _textTheme,
+    indicatorColor: _lightColorScheme.secondary,
+    applyElevationOverlayColor: false,
+    colorScheme: _lightColorScheme,
+    buttonTheme: _buttonThemeData,
+    elevatedButtonTheme: _getElevatedButtonThemeData(Brightness.light),
+    outlinedButtonTheme: _outlinedButtonThemeData,
+    textButtonTheme: _textButtonThemeData,
+    switchTheme: _switchStyleLight,
+    checkboxTheme: _checkStyleLight,
+    radioTheme: _radioStyleLight,
+    appBarTheme: _appBarLightTheme,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: yaru.Colors.green,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: _lightColorScheme.primary,
+      unselectedItemColor: yaru.Colors.coolGrey,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(),
+    ));
 
 final darkTheme = ThemeData(
   brightness: Brightness.dark,
