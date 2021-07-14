@@ -14,7 +14,9 @@ class InputsView extends StatelessWidget {
           const SizedBox(height: 15),
           TextField(
             autofocus: true,
-            decoration: InputDecoration(hintText: 'Awesome Textfield'),
+            decoration: InputDecoration(
+                hintText: 'Awesome Textfield',
+                labelText: 'All TextFields have a border in Yaru'),
           ),
           const SizedBox(height: 15),
           TextField(
