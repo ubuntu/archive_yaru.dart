@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.1.1
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * All TextFields should have a border in Yaru (#80)
 # 0.1.0
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
