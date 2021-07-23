@@ -21,7 +21,6 @@ class InputsView extends StatelessWidget {
           const SizedBox(height: 15),
           TextField(
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
               labelText: 'Username',
             ),
           ),
@@ -29,14 +28,12 @@ class InputsView extends StatelessWidget {
           TextField(
             obscureText: true,
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
               labelText: 'Password',
             ),
           ),
           const SizedBox(height: 15),
           TextField(
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
               errorText: "You're doing it wrong",
             ),
           ),
@@ -46,9 +43,6 @@ class InputsView extends StatelessWidget {
             controller: textController,
             minLines: 5,
             maxLines: 5,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-            ),
           ),
           const SizedBox(height: 15),
         ],
