@@ -109,6 +109,9 @@ final darkTheme = ThemeData(
     selectedItemColor: _darkColorScheme.primary,
     unselectedItemColor: yaru.Colors.warmGrey.shade300,
   ),
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(),
+  ),
 );
 
 // Special casing some widgets to get the desired Yaru look
