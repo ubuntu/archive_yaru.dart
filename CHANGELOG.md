@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.1.2
+
+* [jpnurmi](https://github.com/jpnurmi)
+  * Add missing input decoration border in dark theme (#82)
+
 # 0.1.1
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
