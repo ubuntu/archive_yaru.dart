@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:yaru/src/utils/colors.dart' as yaru;
 import 'package:yaru/src/utils/text_theme.dart';
 
@@ -283,29 +284,26 @@ final _radioStyleLight = RadioThemeData(
 
 final _appBarLightTheme = AppBarTheme(
   elevation: 1.0,
-  brightness: Brightness.light,
+  systemOverlayStyle: SystemUiOverlayStyle.light,
   backgroundColor: yaru.Colors.porcelain,
   foregroundColor: yaru.Colors.coolGrey,
-  textTheme: textTheme.copyWith(
-    headline6: textTheme.headline6!.copyWith(
-      color: yaru.Colors.coolGrey,
-      fontSize: 20,
-      fontWeight: FontWeight.w500,
-    ),
+  titleTextStyle: textTheme.headline6!.copyWith(
+    color: yaru.Colors.coolGrey,
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
   ),
   iconTheme: IconThemeData(color: yaru.Colors.coolGrey),
   actionsIconTheme: IconThemeData(color: yaru.Colors.coolGrey),
 );
 
 final _appBarDarkTheme = AppBarTheme(
-    elevation: 1.0,
-    brightness: Brightness.dark,
-    backgroundColor: yaru.Colors.inkstone,
-    foregroundColor: yaru.Colors.porcelain,
-    textTheme: textTheme.copyWith(
-      headline6: textTheme.headline6!.copyWith(
-        color: yaru.Colors.porcelain,
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
-      ),
-    ));
+  elevation: 1.0,
+  systemOverlayStyle: SystemUiOverlayStyle.dark,
+  backgroundColor: yaru.Colors.inkstone,
+  foregroundColor: yaru.Colors.porcelain,
+  titleTextStyle: textTheme.headline6!.copyWith(
+    color: yaru.Colors.porcelain,
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+  ),
+);
