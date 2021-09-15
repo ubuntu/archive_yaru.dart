@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.1.3
+
+* [mivoligo](https://github.com/mivoligo)
+  * Replace deprecated properties in AppBarTheme (#88)
+
 # 0.1.2
 
 * [jpnurmi](https://github.com/jpnurmi)
