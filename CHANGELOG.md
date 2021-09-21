@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.1.4
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  *  Make red 10% lighter (#91)
+
 # 0.1.3
 
 * [mivoligo](https://github.com/mivoligo)
