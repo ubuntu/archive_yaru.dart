@@ -147,6 +147,28 @@ class ControlsView extends StatelessWidget {
                 ),
               ],
             ),
+            Column(
+              children: [
+                Text('Checkbox'),
+                Row(
+                  children: [
+                    Checkbox(value: true, onChanged: (_) {}),
+                    Checkbox(value: false, onChanged: (_) {}),
+                    Checkbox(value: true, onChanged: null),
+                    Checkbox(value: false, onChanged: null),
+                  ],
+                ),
+                Text('Radio'),
+                Row(
+                  children: [
+                    Radio(value: true, groupValue: true, onChanged: (_) {}),
+                    Radio(value: false, groupValue: true, onChanged: (_) {}),
+                    Radio(value: true, groupValue: true, onChanged: null),
+                    Radio(value: false, groupValue: true, onChanged: null),
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
         LinearProgressIndicator(),

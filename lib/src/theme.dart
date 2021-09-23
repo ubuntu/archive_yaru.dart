@@ -78,6 +78,11 @@ final lightTheme = ThemeData(
     ));
 
 final darkTheme = ThemeData(
+  dialogTheme: DialogTheme(
+      backgroundColor: yaru.Colors.jet,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+          side: BorderSide(color: Colors.white.withOpacity(0.2)))),
   brightness: Brightness.dark,
   primaryColor: _darkColorScheme.primary,
   primaryColorBrightness:
@@ -236,9 +241,9 @@ Color _getCheckFillColorDark(Set<MaterialState> states) {
     if (states.contains(MaterialState.selected)) {
       return yaru.Colors.orange;
     }
-    return yaru.Colors.warmGrey;
+    return yaru.Colors.warmGrey.shade400;
   }
-  return yaru.Colors.disabledGreyDark;
+  return yaru.Colors.warmGrey.withOpacity(0.4);
 }
 
 Color _getCheckColorDark(Set<MaterialState> states) {
