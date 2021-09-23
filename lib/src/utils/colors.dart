@@ -90,5 +90,5 @@ class Colors {
   static const Color disabledGreyDark = Color(0xFF535353);
   static const Color porcelain = Color(0xFFF7F7F7);
   static const Color inkstone = Color(0xFF3B3B3B);
-  static const Color jet = Color(0xFF1D1D1D);
+  static const Color jet = Color(0xFF2B2B2B);
 }
