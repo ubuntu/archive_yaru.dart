@@ -238,7 +238,7 @@ Color _getCheckFillColorDark(Set<MaterialState> states) {
     }
     return yaru.Colors.warmGrey;
   }
-  return yaru.Colors.disabledGreyDark;
+  return yaru.Colors.warmGrey.withOpacity(0.4);
 }
 
 Color _getCheckColorDark(Set<MaterialState> states) {
