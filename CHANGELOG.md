@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.1.5
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Dark theme: Brighten up check and radios and adapt dark dialogs to gtk/shell theme (#95)
+
 # 0.1.4
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
