@@ -65,10 +65,5 @@ class _UbuntuTextStyle extends TextStyle {
           letterSpacing: letterSpacing,
           fontFamily: 'Ubuntu',
           package: 'yaru',
-          fontFamilyFallback: const [
-            'Liberation Serif',
-            'Noto Sans CJK',
-            'Tibetan Machine Uni',
-          ],
         );
 }
