@@ -1,5 +1,11 @@
 # Changelog
 
+# 0.1.6
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  *  Make the checkmarks a bit rounded (#98)
+  *  Remove the fallback fonts (#99)
+
 # 0.1.5
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
