@@ -254,6 +254,9 @@ Color _getCheckColorDark(Set<MaterialState> states) {
 }
 
 final _checkStyleDark = CheckboxThemeData(
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(2),
+  ),
   fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark),
   checkColor: MaterialStateProperty.resolveWith(_getCheckColorDark),
 );
@@ -276,6 +279,9 @@ Color _getCheckColorLight(Set<MaterialState> states) {
 }
 
 final _checkStyleLight = CheckboxThemeData(
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(2),
+  ),
   fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorLight),
   checkColor: MaterialStateProperty.resolveWith(_getCheckColorLight),
 );
