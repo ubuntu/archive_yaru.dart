@@ -79,7 +79,7 @@ final lightTheme = ThemeData(
 
 final darkTheme = ThemeData(
   dialogTheme: DialogTheme(
-      backgroundColor: yaru.Colors.jet,
+      backgroundColor: yaru.Colors.coolGrey,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
           side: BorderSide(color: Colors.white.withOpacity(0.2)))),
