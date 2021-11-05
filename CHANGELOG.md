@@ -1,5 +1,14 @@
 # Changelog
 
+# 0.1.7
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  *  Clean-ups: update generated files, including a wayland window option and a test, remove unnecessary imports (#103)
+  *  Add a tabbar theme and update example (#104)
+  *  change light bg to FAFAFA (#105) 
+* [Paul Kepinski](https://github.com/Jupi007)
+  *  Make dark theme bg darker (#101)
+
 # 0.1.6
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
