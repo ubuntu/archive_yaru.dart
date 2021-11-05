@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:yaru/yaru.dart' as yaru;
 
 class ColorsView extends StatelessWidget {
