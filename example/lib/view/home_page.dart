@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:yaru_example/view/colors_view.dart';
 import 'package:yaru_example/view/controls_view.dart';
 import 'package:yaru_example/view/fonts_view.dart';
