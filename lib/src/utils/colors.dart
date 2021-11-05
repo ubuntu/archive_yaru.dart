@@ -88,7 +88,7 @@ class Colors {
   static const Color red = Color(0xFFff0000);
   static const Color green = Color(0xFF0e8420);
   static const Color disabledGreyDark = Color(0xFF535353);
-  static const Color porcelain = Color(0xFFF7F7F7);
+  static const Color porcelain = Color(0xFFFAFAFA);
   static const Color inkstone = Color(0xFF3B3B3B);
   static const Color jet = Color(0xFF2B2B2B);
 }
