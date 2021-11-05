@@ -42,6 +42,7 @@ final _darkColorScheme = ColorScheme.fromSwatch(
 );
 
 final lightTheme = ThemeData(
+    tabBarTheme: TabBarTheme(labelColor: _lightColorScheme.onSurface),
     brightness: Brightness.light,
     primaryColor: _lightColorScheme.primary,
     primaryColorBrightness:
@@ -78,6 +79,7 @@ final lightTheme = ThemeData(
     ));
 
 final darkTheme = ThemeData(
+  tabBarTheme: TabBarTheme(labelColor: _darkColorScheme.onBackground),
   dialogTheme: DialogTheme(
       backgroundColor: yaru.Colors.jet,
       shape: RoundedRectangleBorder(
