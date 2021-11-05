@@ -35,8 +35,8 @@ final _darkColorScheme = ColorScheme.fromSwatch(
   primarySwatch: _primarySwatchColor,
   primaryColorDark: yaru.Colors.coolGrey,
   accentColor: yaru.Colors.orange,
-  cardColor: yaru.Colors.coolGrey,
-  backgroundColor: yaru.Colors.coolGrey,
+  cardColor: yaru.Colors.jet,
+  backgroundColor: yaru.Colors.jet,
   errorColor: yaru.Colors.red,
   brightness: Brightness.dark,
 );
@@ -81,7 +81,7 @@ final lightTheme = ThemeData(
 final darkTheme = ThemeData(
   tabBarTheme: TabBarTheme(labelColor: _darkColorScheme.onBackground),
   dialogTheme: DialogTheme(
-      backgroundColor: yaru.Colors.jet,
+      backgroundColor: yaru.Colors.coolGrey,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
           side: BorderSide(color: Colors.white.withOpacity(0.2)))),
@@ -312,7 +312,7 @@ final _appBarLightTheme = AppBarTheme(
 final _appBarDarkTheme = AppBarTheme(
   elevation: 1.0,
   systemOverlayStyle: SystemUiOverlayStyle.dark,
-  backgroundColor: yaru.Colors.inkstone,
+  backgroundColor: yaru.Colors.jet,
   foregroundColor: yaru.Colors.porcelain,
   titleTextStyle: textTheme.headline6!.copyWith(
     color: yaru.Colors.porcelain,
