@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.1.8
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * AppBar title: use normal font-weight (#107)
+
 # 0.1.7
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
