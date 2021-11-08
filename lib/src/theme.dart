@@ -302,8 +302,7 @@ final _appBarLightTheme = AppBarTheme(
   foregroundColor: yaru.Colors.coolGrey,
   titleTextStyle: textTheme.headline6!.copyWith(
     color: yaru.Colors.coolGrey,
-    fontSize: 20,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.normal,
   ),
   iconTheme: IconThemeData(color: yaru.Colors.coolGrey),
   actionsIconTheme: IconThemeData(color: yaru.Colors.coolGrey),
@@ -316,7 +315,6 @@ final _appBarDarkTheme = AppBarTheme(
   foregroundColor: yaru.Colors.porcelain,
   titleTextStyle: textTheme.headline6!.copyWith(
     color: yaru.Colors.porcelain,
-    fontSize: 20,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.normal,
   ),
 );
