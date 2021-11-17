@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yaru/yaru.dart' as yaru;
+import 'package:yaru/yaru.dart';
 import 'package:yaru_example/view/home_page.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var theme = yaru.lightTheme;
+  var theme = yaruLight;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class _MyAppState extends State<MyApp> {
       home: HomePage(
           themeChanged: (themeName) => setState(() {
                 if (themeName == 'Yaru-light') {
-                  theme = yaru.lightTheme;
+                  theme = yaruLight;
                 } else if (themeName == 'Yaru-dark') {
-                  theme = yaru.darkTheme;
+                  theme = yaruDark;
                 }
               })),
     );

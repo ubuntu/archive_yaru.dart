@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yaru/yaru.dart' as yaru;
+import 'package:yaru/yaru.dart';
 
 class ColorsView extends StatelessWidget {
   @override
@@ -11,15 +11,16 @@ class ColorsView extends StatelessWidget {
         const SizedBox(height: 15.0),
         Row(
           children: [
-            Expanded(child: colorPaletteExample('orange', yaru.Colors.orange)),
+            Expanded(
+                child: colorPaletteExample('orange', YaruColors.ubuntuOrange)),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample(
-                    'lightAubergine', yaru.Colors.lightAubergine)),
+                    'lightAubergine', YaruColors.lightAubergine)),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample(
-                    'midAubergine', yaru.Colors.midAubergine)),
+                    'midAubergine', YaruColors.midAubergine)),
           ],
         ),
         Divider(height: 50.0, color: Colors.black),
@@ -27,14 +28,14 @@ class ColorsView extends StatelessWidget {
           children: [
             Expanded(
                 child: colorPaletteExample(
-                    'canonicalAubergine', yaru.Colors.canonicalAubergine)),
+                    'canonicalAubergine', YaruColors.canonicalAubergine)),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample(
-                    'darkAubergine', yaru.Colors.darkAubergine)),
+                    'darkAubergine', YaruColors.darkAubergine)),
             SizedBox(width: 25.0),
             Expanded(
-                child: colorPaletteExample('warmGrey', yaru.Colors.warmGrey)),
+                child: colorPaletteExample('warmGrey', YaruColors.warmGrey)),
           ],
         ),
       ],
