@@ -53,7 +53,7 @@ final yaruXubuntuDark = ThemeData(
     backgroundColor: _primaryColor,
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    selectedItemColor: _darkColorScheme.primary,
+    selectedItemColor: FlavorColors.xubuntuBlue.shade300,
     unselectedItemColor: YaruColors.warmGrey.shade300,
   ),
   inputDecorationTheme: InputDecorationTheme(
