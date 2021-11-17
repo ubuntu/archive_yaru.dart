@@ -2,27 +2,31 @@ import 'package:flutter/material.dart' show Color, MaterialColor;
 
 /// The Ubuntu color palette
 /// [](https://design.ubuntu.com/brand/colour-palette)
-class Colors {
-  Colors._();
+class YaruColors {
+  YaruColors._();
 
-  static const int _orangePrimaryValue = 0xFFE95420;
+  static const int _ubuntuOrangePrimaryValue = 0xFFE95420;
 
   ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/orange.png)
-  static const MaterialColor orange =
-      MaterialColor(_orangePrimaryValue, <int, Color>{
+  static const MaterialColor ubuntuOrange =
+      MaterialColor(_ubuntuOrangePrimaryValue, {
     50: Color(0xFFFDEEE9),
     100: Color(0xFFFBDDD2),
     200: Color(0xFFF6BBA6),
     300: Color(0xFFF29879),
     400: Color(0xFFED764D),
-    500: Color(_orangePrimaryValue),
+    500: Color(_ubuntuOrangePrimaryValue),
+    600: Color(0xFFBA431A),
+    700: Color(0xFF8C3213),
+    800: Color(0xFF5D220D),
+    900: Color(0xFF2F1106),
   });
 
   static const int _lightAuberginePrimaryValue = 0xFF77216F;
 
   ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/lightAubergine.png)
   static const MaterialColor lightAubergine =
-      MaterialColor(_lightAuberginePrimaryValue, <int, Color>{
+      MaterialColor(_lightAuberginePrimaryValue, {
     50: Color(0xFFF1E8F0),
     100: Color(0xFFE3D2E2),
     200: Color(0xFFC8A6C5),
@@ -35,7 +39,7 @@ class Colors {
 
   ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/midAubergine.png)
   static const MaterialColor midAubergine =
-      MaterialColor(_midAuberginePrimaryValue, <int, Color>{
+      MaterialColor(_midAuberginePrimaryValue, {
     50: Color(0xFFEEE9ED),
     100: Color(0xFFDED3DC),
     200: Color(0xFFBEA8B9),
@@ -48,7 +52,7 @@ class Colors {
 
   ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/canonicalAubergine.png)
   static const MaterialColor canonicalAubergine =
-      MaterialColor(_canonicalAuberginePrimaryValue, <int, Color>{
+      MaterialColor(_canonicalAuberginePrimaryValue, {
     50: Color(0xFFF1E9ED),
     100: Color(0xFFE3D4DC),
     200: Color(0xFFC8A9BA),
@@ -61,7 +65,7 @@ class Colors {
 
   ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/darkAubergine.png)
   static const MaterialColor darkAubergine =
-      MaterialColor(_darkAuberginePrimaryValue, <int, Color>{
+      MaterialColor(_darkAuberginePrimaryValue, {
     50: Color(0xFFE9E5E8),
     100: Color(0xFFD4CCD2),
     200: Color(0xFFAA99A5),
@@ -73,8 +77,7 @@ class Colors {
   static const int _warmGreyPrimaryValue = 0xFFAEA79F;
 
   ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/warmGrey.png)
-  static const MaterialColor warmGrey =
-      MaterialColor(_warmGreyPrimaryValue, <int, Color>{
+  static const MaterialColor warmGrey = MaterialColor(_warmGreyPrimaryValue, {
     50: Color(0xFFF6F6F5),
     100: Color(0xFFEEEDEB),
     200: Color(0xFFDEDBD8),

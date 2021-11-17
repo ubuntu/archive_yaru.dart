@@ -48,7 +48,11 @@ class FlavorColors {
     200: Color(0xFF9dc78b),
     300: Color(0xFF8fbf7a),
     400: Color(0xFF81b76a),
-    500: Color(_ubuntuMATEGreenPrimaryValue)
+    500: Color(_ubuntuMATEGreenPrimaryValue),
+    600: Color(0xFF689e50),
+    700: Color(0xFF5c8c47),
+    800: Color(0xFF517a3e),
+    900: Color(0xFF456935),
   });
 
   // Ubuntu Studio Blue

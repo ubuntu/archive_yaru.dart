@@ -17,23 +17,23 @@ flutter:
   fonts:
     - family: Ubuntu
       fonts:
-        - asset: packages/yaru/src/utils/fonts/Ubuntu-L.ttf
+        - asset: packages/yaru/src/text/fonts/Ubuntu-L.ttf
           weight: 300
-        - asset: packages/yaru/src/utils/fonts/Ubuntu-LI.ttf
+        - asset: packages/yaru/src/text/fonts/Ubuntu-LI.ttf
           weight: 300
           style: italic
-        - asset: packages/yaru/src/utils/fonts/Ubuntu-R.ttf
+        - asset: packages/yaru/src/text/fonts/Ubuntu-R.ttf
           weight: 400
-        - asset: packages/yaru/src/utils/fonts/Ubuntu-RI.ttf
+        - asset: packages/yaru/src/text/fonts/Ubuntu-RI.ttf
           weight: 400
           style: italic
-        - asset: packages/yaru/src/utils/fonts/Ubuntu-M.ttf
+        - asset: packages/yaru/src/text/fonts/Ubuntu-M.ttf
           weight: 500
-        - asset: packages/yaru/src/utils/fonts/Ubuntu-MI.ttf
+        - asset: packages/yaru/src/text/fonts/Ubuntu-MI.ttf
           weight: 500
           style: italic
-        - asset: packages/yaru/src/utils/fonts/Ubuntu-B.ttf
+        - asset: packages/yaru/src/text/fonts/Ubuntu-B.ttf
           weight: 700
-        - asset: packages/yaru/src/utils/fonts/Ubuntu-BI.ttf
+        - asset: packages/yaru/src/text/fonts/Ubuntu-BI.ttf
           weight: 700
           style: italic

@@ -1,6 +1,6 @@
-part of 'theme.dart';
+import 'package:flutter/material.dart';
 
-const _textTheme = TextTheme(
+const textTheme = TextTheme(
   headline1: _UbuntuTextStyle(
     fontSize: 96,
     letterSpacing: -1.5,
@@ -77,10 +77,5 @@ class _UbuntuTextStyle extends TextStyle {
           letterSpacing: letterSpacing,
           fontFamily: 'Ubuntu',
           package: 'yaru',
-          fontFamilyFallback: const [
-            'Liberation Serif',
-            'Noto Sans CJK',
-            'Tibetan Machine Uni',
-          ],
         );
 }
