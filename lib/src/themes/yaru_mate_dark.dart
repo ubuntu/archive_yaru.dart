@@ -4,7 +4,7 @@ import 'package:yaru/src/colors/yaru_colors.dart';
 import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/themes/common_themes.dart';
 
-const _primaryColor = FlavorColors.ubuntuMATEGreen;
+const _primaryColor = FlavorColors.ubuntuMateGreen;
 
 final _darkColorScheme = ColorScheme.fromSwatch(
   primarySwatch: _primaryColor,
@@ -42,7 +42,7 @@ final yaruMateDark = ThemeData(
   buttonTheme: buttonThemeData,
   textButtonTheme: textButtonThemeData,
   elevatedButtonTheme:
-      getElevatedButtonThemeData(Brightness.dark, FlavorColors.ubuntuMATEGreen),
+      getElevatedButtonThemeData(Brightness.dark, FlavorColors.ubuntuMateGreen),
   outlinedButtonTheme: _darkOutlinedButtonThemeData,
   switchTheme: _switchStyleDark,
   checkboxTheme: _checkStyleDark,
@@ -50,7 +50,7 @@ final yaruMateDark = ThemeData(
   primaryColorDark: _primaryColor,
   appBarTheme: appBarDarkTheme,
   floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: FlavorColors.ubuntuMATEGreen,
+    backgroundColor: FlavorColors.ubuntuMateGreen,
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedItemColor: _darkColorScheme.primary,

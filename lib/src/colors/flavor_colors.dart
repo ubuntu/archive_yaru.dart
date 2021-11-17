@@ -40,15 +40,15 @@ class FlavorColors {
   });
 
   // Ubuntu MATE
-  static const _ubuntuMATEGreenPrimaryValue = 0xFF73AF59;
-  static const ubuntuMATEGreen =
-      MaterialColor(_ubuntuMATEGreenPrimaryValue, <int, Color>{
+  static const _ubuntuMateGreenPrimaryValue = 0xFF73AF59;
+  static const ubuntuMateGreen =
+      MaterialColor(_ubuntuMateGreenPrimaryValue, <int, Color>{
     50: Color(0xFFb9d7ac),
     100: Color(0xFFabcf9b),
     200: Color(0xFF9dc78b),
     300: Color(0xFF8fbf7a),
     400: Color(0xFF81b76a),
-    500: Color(_ubuntuMATEGreenPrimaryValue),
+    500: Color(_ubuntuMateGreenPrimaryValue),
     600: Color(0xFF689e50),
     700: Color(0xFF5c8c47),
     800: Color(0xFF517a3e),
