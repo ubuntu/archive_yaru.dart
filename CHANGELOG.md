@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.2.0
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  *  Reorganize yaru and add yaru flavor themes (#110)
+
 # 0.1.8
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
