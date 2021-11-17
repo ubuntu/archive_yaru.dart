@@ -12,3 +12,5 @@ export 'package:yaru/src/themes/yaru_ubuntu_budgie_light.dart';
 export 'package:yaru/src/themes/yaru_ubuntu_budgie_dark.dart';
 export 'package:yaru/src/themes/yaru_ubuntu_studio_light.dart';
 export 'package:yaru/src/themes/yaru_ubuntu_studio_dark.dart';
+export 'package:yaru/src/themes/yaru_lubuntu_light.dart';
+export 'package:yaru/src/themes/yaru_lubuntu_dark.dart';
