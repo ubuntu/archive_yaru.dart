@@ -13,6 +13,10 @@ class FlavorColors {
     300: Color(0xFF3394CD),
     400: Color(0xFF1A86C7),
     500: Color(_kubuntuBluePrimaryValue),
+    600: Color(0xFF006dae),
+    700: Color(0xFF00619a),
+    800: Color(0xFF005587),
+    900: Color(0xFF004974),
   });
 
   // Lubuntu
@@ -24,7 +28,11 @@ class FlavorColors {
     200: Color(0xFF4d95d9),
     300: Color(0xFF3386d3),
     400: Color(0xFF1a77ce),
-    500: Color(_lubuntuBluePrimaryValue)
+    500: Color(_lubuntuBluePrimaryValue),
+    600: Color(0xFF005eb4),
+    700: Color(0xFF0053a0),
+    800: Color(0xFF00498c),
+    900: Color(0xFF003e78),
   });
 
   // Ubuntu Budgie
@@ -36,7 +44,11 @@ class FlavorColors {
     200: Color(0xFF666a4e),
     300: Color(0xFF535838),
     400: Color(0xFF535838),
-    500: Color(_ubuntuBudgieGrayPrimaryValue)
+    500: Color(_ubuntuBudgieGrayPrimaryValue),
+    600: Color(0xFF3a3e1f),
+    700: Color(0xFF33371b),
+    800: Color(0xFF2d3018),
+    900: Color(0xFF262914)
   });
 
   // Ubuntu MATE
@@ -64,7 +76,11 @@ class FlavorColors {
     200: Color(0xFF4db9fb),
     300: Color(0xFF33affa),
     400: Color(0xFF1aa5fa),
-    500: Color(_ubuntuStudioBluePrimaryValue)
+    500: Color(_ubuntuStudioBluePrimaryValue),
+    600: Color(0xFF008ce0),
+    700: Color(0xFF007cc7),
+    800: Color(0xFF006dae),
+    900: Color(0xFF005d95)
   });
 
   // Xubuntu Blue
@@ -76,6 +92,10 @@ class FlavorColors {
     200: Color(0xFF4d7cc4),
     300: Color(0xFF3369bb),
     400: Color(0xFF1a57b3),
-    500: Color(_xubuntuBluePrimaryValue)
+    500: Color(_xubuntuBluePrimaryValue),
+    600: Color(0xFF003d99),
+    700: Color(0xFF003688),
+    800: Color(0xFF003077),
+    900: Color(0xFF002966)
   });
 }
