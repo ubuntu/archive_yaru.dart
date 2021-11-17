@@ -8,3 +8,5 @@ export 'package:yaru/src/themes/yaru_mate_light.dart';
 export 'package:yaru/src/themes/yaru_mate_dark.dart';
 export 'package:yaru/src/themes/yaru_xubuntu_light.dart';
 export 'package:yaru/src/themes/yaru_xubuntu_dark.dart';
+export 'package:yaru/src/themes/yaru_ubuntu_budgie_light.dart';
+export 'package:yaru/src/themes/yaru_ubuntu_budgie_dark.dart';

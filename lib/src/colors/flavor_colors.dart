@@ -36,19 +36,19 @@ class FlavorColors {
   });
 
   // Ubuntu Budgie
-  static const _ubuntuBudgieGrayPrimaryValue = 0xFF404522;
-  static const ubuntuBudgieGray =
-      MaterialColor(_ubuntuBudgieGrayPrimaryValue, <int, Color>{
-    50: Color(0xFF8c8f7a),
-    100: Color(0xFF797d64),
-    200: Color(0xFF666a4e),
-    300: Color(0xFF535838),
-    400: Color(0xFF535838),
-    500: Color(_ubuntuBudgieGrayPrimaryValue),
-    600: Color(0xFF3a3e1f),
-    700: Color(0xFF33371b),
-    800: Color(0xFF2d3018),
-    900: Color(0xFF262914)
+  static const _ubuntuBudgieBluePrimaryValue = 0xFF2196f3;
+  static const ubuntuBudgieBlue =
+      MaterialColor(_ubuntuBudgieBluePrimaryValue, <int, Color>{
+    50: Color(0xFFe3f2fd),
+    100: Color(0xFFbbdefb),
+    200: Color(0xFF90caf9),
+    300: Color(0xFF64b5f6),
+    400: Color(0xFF42a5f5),
+    500: Color(_ubuntuBudgieBluePrimaryValue),
+    600: Color(0xFF1e88e5),
+    700: Color(0xFF1976d2),
+    800: Color(0xFF1565c0),
+    900: Color(0xFF0d47a1)
   });
 
   // Ubuntu MATE
