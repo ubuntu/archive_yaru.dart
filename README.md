@@ -13,7 +13,7 @@ To be able to use this package follow this steps:
     ```dart
     import 'package:yaru/yaru.dart';
     ```
-3. Inside your `MaterialApp` set `theme` to `yaru.lightTheme` which is the standard light theme and `darkTheme` to `yaru.darkTheme` to get the yaru dark theme. The `darkTheme` property is used when you toggle your system theme to dark:
+3. Inside your `MaterialApp` set `theme` to `yarulight` which is the standard light theme and `darkTheme` to `yaruDark` to get the yaru dark theme. The `darkTheme` property is used when you toggle your system theme to dark:
    
     ```dart
     MaterialApp(
@@ -27,6 +27,17 @@ To be able to use this package follow this steps:
           ),
         );
     ```
+
+## yaru.dart flavors
+
+Yaru comes in 7x2 different versions:
+- `yaruLight` & `yaruDark`
+- `yaruXubuntuLight` & `yaruXubuntuLight`
+- `yaruKubuntuLight` & `yaruKubuntuDark`
+- `yaruLubuntuLight` & `yaruLubuntuDark`
+- `yaruUbuntuStudioDark` & `yaruUbuntuStudioDark`
+- `yaruMateLight` & `yaruMateDark`
+- `yaruUbuntuBudgieLight` & `yaruUbuntuBudgieDark`
 
 ## Contributing to yaru.dart
 
