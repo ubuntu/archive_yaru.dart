@@ -42,7 +42,7 @@ final yaruMateDark = ThemeData(
   buttonTheme: buttonThemeData,
   textButtonTheme: textButtonThemeData,
   elevatedButtonTheme:
-      getElevatedButtonThemeData(Brightness.dark, FlavorColors.ubuntuMateGreen),
+      getElevatedButtonThemeData(Brightness.dark, _primaryColor),
   outlinedButtonTheme: _darkOutlinedButtonThemeData,
   switchTheme: _switchStyleDark,
   checkboxTheme: _checkStyleDark,
@@ -50,7 +50,7 @@ final yaruMateDark = ThemeData(
   primaryColorDark: _primaryColor,
   appBarTheme: appBarDarkTheme,
   floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: FlavorColors.ubuntuMateGreen,
+    backgroundColor: _primaryColor,
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedItemColor: _darkColorScheme.primary,

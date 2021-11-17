@@ -36,15 +36,15 @@ final yaruMateLight = ThemeData(
     colorScheme: _lightColorScheme,
     buttonTheme: buttonThemeData,
     outlinedButtonTheme: outlinedButtonThemeData,
-    elevatedButtonTheme: getElevatedButtonThemeData(
-        Brightness.light, FlavorColors.ubuntuMateGreen),
+    elevatedButtonTheme:
+        getElevatedButtonThemeData(Brightness.light, _primaryColor),
     textButtonTheme: textButtonThemeData,
     switchTheme: _switchStyleLight,
     checkboxTheme: _checkStyleLight,
     radioTheme: _radioStyleLight,
     appBarTheme: appBarLightTheme,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: FlavorColors.ubuntuMateGreen,
+      backgroundColor: _primaryColor,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: _lightColorScheme.primary,
