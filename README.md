@@ -17,7 +17,7 @@ To be able to use this package follow this steps:
    
     ```dart
     MaterialApp(
-          theme: yarulight,
+          theme: yaruLight,
           darkTheme: yaruDark,
           home: Scaffold(
             appBar: AppBar(
@@ -32,10 +32,10 @@ To be able to use this package follow this steps:
 
 Yaru comes in 7x2 different versions:
 - `yaruLight` & `yaruDark`
-- `yaruXubuntuLight` & `yaruXubuntuLight`
+- `yaruXubuntuLight` & `yaruXubuntuDark`
 - `yaruKubuntuLight` & `yaruKubuntuDark`
 - `yaruLubuntuLight` & `yaruLubuntuDark`
-- `yaruUbuntuStudioDark` & `yaruUbuntuStudioDark`
+- `yaruUbuntuStudioLight` & `yaruUbuntuStudioDark`
 - `yaruMateLight` & `yaruMateDark`
 - `yaruUbuntuBudgieLight` & `yaruUbuntuBudgieDark`
 
