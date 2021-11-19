@@ -3,7 +3,7 @@ import 'package:yaru/src/colors/yaru_colors.dart';
 import 'package:yaru/src/contracts/yaru_lighter.dart';
 import 'package:yaru/src/text/text_theme.dart';
 
-class YaruTheme extends YaruLighter {
+class YaruLight extends YaruLighter {
   final _primaryColor = YaruColors.ubuntuOrange;
 
   @override
