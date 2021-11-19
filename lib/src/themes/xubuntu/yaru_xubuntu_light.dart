@@ -3,7 +3,6 @@ import 'package:yaru/src/colors/flavor_colors.dart';
 import 'package:yaru/src/colors/yaru_colors.dart';
 import 'package:yaru/src/contracts/yaru_lighter.dart';
 import 'package:yaru/src/text/text_theme.dart';
-import 'package:yaru/src/themes/common_themes.dart';
 
 class XubuntuLight extends YaruLighter {
   final _primaryColor = FlavorColors.xubuntuBlue;
@@ -113,17 +112,17 @@ class XubuntuLight extends YaruLighter {
       indicatorColor: colorScheme().secondary,
       applyElevationOverlayColor: false,
       colorScheme: colorScheme(),
-      buttonTheme: buttonThemeData,
-      outlinedButtonTheme: outlinedButtonThemeData,
+      buttonTheme: buttonThemeData(),
+      outlinedButtonTheme: outlinedButtonThemeData(),
       elevatedButtonTheme: elevatedButtonThemeData(
         Brightness.light,
         _primaryColor,
       ),
-      textButtonTheme: textButtonThemeData,
+      textButtonTheme: textButtonThemeData(),
       switchTheme: switchThemeData(),
       checkboxTheme: checkboxThemeData(),
       radioTheme: radioThemeData(),
-      appBarTheme: appBarLightTheme,
+      appBarTheme: appBarTheme(),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: _primaryColor,
       ),
