@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 abstract class Themeable {
   ThemeData themeData();
 
-  ColorScheme lightColorScheme();
+  ColorScheme colorScheme();
 
   Color switchThumbColor(Set<MaterialState> states);
 
