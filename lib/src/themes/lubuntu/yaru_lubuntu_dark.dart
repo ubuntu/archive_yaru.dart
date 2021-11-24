@@ -26,16 +26,6 @@ class LubuntuDark extends YaruDarker {
     return YaruColors.warmGrey.withOpacity(0.4);
   }
 
-  @override
-  CheckboxThemeData checkboxThemeData() {
-    return CheckboxThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(2),
-      ),
-      fillColor: MaterialStateProperty.resolveWith(checkboxFillColor),
-      checkColor: MaterialStateProperty.resolveWith(checkboxColor),
-    );
-  }
 
   @override
   ColorScheme colorScheme() {
@@ -50,20 +40,7 @@ class LubuntuDark extends YaruDarker {
     );
   }
 
-  @override
-  RadioThemeData radioThemeData() {
-    return RadioThemeData(
-      fillColor: MaterialStateProperty.resolveWith(checkboxFillColor),
-    );
-  }
 
-  @override
-  SwitchThemeData switchThemeData() {
-    return SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith(switchThumbColor),
-      trackColor: MaterialStateProperty.resolveWith(switchTrackColor),
-    );
-  }
 
   @override
   Color switchThumbColor(Set<MaterialState> states) {

@@ -26,16 +26,6 @@ class KubuntuLight extends YaruLighter {
     return YaruColors.warmGrey.shade300;
   }
 
-  @override
-  CheckboxThemeData checkboxThemeData() {
-    return CheckboxThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(2),
-      ),
-      fillColor: MaterialStateProperty.resolveWith(checkboxFillColor),
-      checkColor: MaterialStateProperty.resolveWith(checkboxColor),
-    );
-  }
 
   @override
   ColorScheme colorScheme() {
@@ -50,19 +40,6 @@ class KubuntuLight extends YaruLighter {
     );
   }
 
-  @override
-  RadioThemeData radioThemeData() {
-    return RadioThemeData(
-        fillColor: MaterialStateProperty.resolveWith(checkboxFillColor));
-  }
-
-  @override
-  SwitchThemeData switchThemeData() {
-    return SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith(switchThumbColor),
-      trackColor: MaterialStateProperty.resolveWith(switchTrackColor),
-    );
-  }
 
   @override
   Color switchThumbColor(Set<MaterialState> states) {

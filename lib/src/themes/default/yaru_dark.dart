@@ -26,17 +26,6 @@ class YaruDark extends YaruDarker {
   }
 
   @override
-  CheckboxThemeData checkboxThemeData() {
-    return CheckboxThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(2),
-      ),
-      fillColor: MaterialStateProperty.resolveWith(checkboxFillColor),
-      checkColor: MaterialStateProperty.resolveWith(checkboxColor),
-    );
-  }
-
-  @override
   ColorScheme colorScheme() {
     return ColorScheme.fromSwatch(
       primarySwatch: _primaryColor,
@@ -46,21 +35,6 @@ class YaruDark extends YaruDarker {
       backgroundColor: YaruColors.jet,
       errorColor: YaruColors.red,
       brightness: Brightness.dark,
-    );
-  }
-
-  @override
-  RadioThemeData radioThemeData() {
-    return RadioThemeData(
-      fillColor: MaterialStateProperty.resolveWith(checkboxFillColor),
-    );
-  }
-
-  @override
-  SwitchThemeData switchThemeData() {
-    return SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith(switchThumbColor),
-      trackColor: MaterialStateProperty.resolveWith(switchTrackColor),
     );
   }
 
