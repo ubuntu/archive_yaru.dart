@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   _HomePageState(this.themeChanged);
+
   int _counter = 0;
 
   void incrementCounter() {
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   final textController = TextEditingController(
       text:
           'My code fails, I do not know why.\nMy code works, I do not know why.\nText in other scripts: Tamaziɣt Taqbaylit, 中文(简体), Čeština, Беларуская, Ελληνικά, עברית, Русский, བོད་ཡིག, Norsk bokmål.');
-  var themeName = 'Yaru-light';
+  String themeName = 'default-light';
   final void Function(String themeName) themeChanged;
 
   int _selectedIndex = 0;
@@ -39,10 +40,39 @@ class _HomePageState extends State<HomePage> {
     ColorsView()
   ];
 
+  final List<String> _themes = [
+    'budgie',
+    'default',
+    'kubuntu',
+    'lubuntu',
+    'mate',
+    'studio',
+    'xubuntu',
+  ];
+  String? _theme = 'default';
+
   Widget build(BuildContext context) {
+    print('theme is');
+    print(_theme);
     return Scaffold(
       appBar: AppBar(
         title: Text('Super cool title'),
+        actions: [
+          DropdownButton<String>(
+            value: _theme,
+            items: _themes.map(buildMenuItem).toList(),
+            onChanged: (value) => setState(() {
+              _theme = value;
+
+              if (!themeName.contains('-light')) {
+                themeName = _theme! + '-dark';
+              } else if (!themeName.contains('-dark')) {
+                themeName = _theme! + '-light';
+              }
+              themeChanged(themeName);
+            }),
+          ),
+        ],
         leading: TextButton(
           child: Icon(themeName.contains('-light')
               ? Icons.dark_mode
@@ -50,9 +80,9 @@ class _HomePageState extends State<HomePage> {
           onPressed: () => {
             setState(() {
               if (themeName.contains('-light')) {
-                themeName = 'Yaru-dark';
+                themeName = _theme! + '-dark';
               } else if (themeName.contains('-dark')) {
-                themeName = 'Yaru-light';
+                themeName = _theme! + '-light';
               }
               themeChanged(themeName);
             })
@@ -94,7 +124,14 @@ class _HomePageState extends State<HomePage> {
         onPressed: () => {incrementCounter()},
         child: Icon(Icons.plus_one),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
+    );
+  }
+
+  DropdownMenuItem<String> buildMenuItem(String item) {
+    return DropdownMenuItem(
+      value: item,
+      child: Text(item),
     );
   }
 }
