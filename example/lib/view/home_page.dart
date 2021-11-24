@@ -52,8 +52,6 @@ class _HomePageState extends State<HomePage> {
   String? _theme = 'default';
 
   Widget build(BuildContext context) {
-    print('theme is');
-    print(_theme);
     return Scaffold(
       appBar: AppBar(
         title: Text('Super cool title'),
