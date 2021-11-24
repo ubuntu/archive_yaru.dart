@@ -26,7 +26,6 @@ class LubuntuLight extends YaruLighter {
     return YaruColors.warmGrey.shade300;
   }
 
-
   @override
   ColorScheme colorScheme() {
     return ColorScheme.fromSwatch(
@@ -39,7 +38,6 @@ class LubuntuLight extends YaruLighter {
       brightness: Brightness.light,
     );
   }
-
 
   @override
   Color switchThumbColor(Set<MaterialState> states) {

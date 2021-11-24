@@ -67,7 +67,8 @@ abstract class BaseTheming extends Themeable {
   }
 
   @override
-  Color elevatedButtonColor(Set<MaterialState> states, Brightness brightness, Color color) {
+  Color elevatedButtonColor(
+      Set<MaterialState> states, Brightness brightness, Color color) {
     if (states.contains(MaterialState.disabled)) {
       color = (brightness == Brightness.light)
           ? YaruColors.warmGrey.withOpacity(0.7)
@@ -77,15 +78,16 @@ abstract class BaseTheming extends Themeable {
   }
 
   @override
-  ElevatedButtonThemeData elevatedButtonThemeData(Brightness brightness, Color color) {
+  ElevatedButtonThemeData elevatedButtonThemeData(
+      Brightness brightness, Color color) {
     return ElevatedButtonThemeData(
       style: buttonStyle().copyWith(
         elevation: MaterialStateProperty.resolveWith(
-              (states) => buttonElevation(states),
+          (states) => buttonElevation(states),
         ),
         textStyle: MaterialStateProperty.all(textTheme.button),
         backgroundColor: MaterialStateProperty.resolveWith(
-              (states) => elevatedButtonColor(states, brightness, color),
+          (states) => elevatedButtonColor(states, brightness, color),
         ),
       ),
     );

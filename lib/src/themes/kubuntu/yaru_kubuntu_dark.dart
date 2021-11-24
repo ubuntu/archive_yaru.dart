@@ -26,7 +26,6 @@ class KubuntuDark extends YaruDarker {
     return YaruColors.warmGrey.withOpacity(0.4);
   }
 
-
   @override
   ColorScheme colorScheme() {
     return ColorScheme.fromSwatch(
@@ -39,7 +38,6 @@ class KubuntuDark extends YaruDarker {
       brightness: Brightness.dark,
     );
   }
-
 
   @override
   Color switchThumbColor(Set<MaterialState> states) {
