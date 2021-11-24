@@ -10,6 +10,32 @@ import 'package:yaru/src/text/text_theme.dart';
 /// **Remember:** implement **Only** common stuff for dark and light themes.
 abstract class BaseTheming extends Themeable {
   @override
+  CheckboxThemeData checkboxThemeData() {
+    return CheckboxThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(2),
+      ),
+      fillColor: MaterialStateProperty.resolveWith(checkboxFillColor),
+      checkColor: MaterialStateProperty.resolveWith(checkboxColor),
+    );
+  }
+
+  @override
+  RadioThemeData radioThemeData() {
+    return RadioThemeData(
+      fillColor: MaterialStateProperty.resolveWith(checkboxFillColor),
+    );
+  }
+
+  @override
+  SwitchThemeData switchThemeData() {
+    return SwitchThemeData(
+      thumbColor: MaterialStateProperty.resolveWith(switchThumbColor),
+      trackColor: MaterialStateProperty.resolveWith(switchTrackColor),
+    );
+  }
+
+  @override
   ButtonStyle buttonStyle() {
     return ButtonStyle(visualDensity: VisualDensity.standard);
   }
@@ -41,8 +67,7 @@ abstract class BaseTheming extends Themeable {
   }
 
   @override
-  Color elevatedButtonColor(
-      Set<MaterialState> states, Brightness brightness, Color color) {
+  Color elevatedButtonColor(Set<MaterialState> states, Brightness brightness, Color color) {
     if (states.contains(MaterialState.disabled)) {
       color = (brightness == Brightness.light)
           ? YaruColors.warmGrey.withOpacity(0.7)
@@ -52,16 +77,15 @@ abstract class BaseTheming extends Themeable {
   }
 
   @override
-  ElevatedButtonThemeData elevatedButtonThemeData(
-      Brightness brightness, Color color) {
+  ElevatedButtonThemeData elevatedButtonThemeData(Brightness brightness, Color color) {
     return ElevatedButtonThemeData(
       style: buttonStyle().copyWith(
         elevation: MaterialStateProperty.resolveWith(
-          (states) => buttonElevation(states),
+              (states) => buttonElevation(states),
         ),
         textStyle: MaterialStateProperty.all(textTheme.button),
         backgroundColor: MaterialStateProperty.resolveWith(
-          (states) => elevatedButtonColor(states, brightness, color),
+              (states) => elevatedButtonColor(states, brightness, color),
         ),
       ),
     );
