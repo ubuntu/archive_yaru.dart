@@ -16,49 +16,49 @@ final _darkColorScheme = ColorScheme.fromSwatch(
 );
 
 final yaruDark = ThemeData(
-  tabBarTheme: TabBarTheme(labelColor: _darkColorScheme.onBackground),
-  dialogTheme: DialogTheme(
-      backgroundColor: YaruColors.coolGrey,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6),
-          side: BorderSide(color: Colors.white.withOpacity(0.2)))),
-  brightness: Brightness.dark,
-  primaryColor: _darkColorScheme.primary,
-  primaryColorBrightness:
-      ThemeData.estimateBrightnessForColor(_darkColorScheme.primary),
-  canvasColor: _darkColorScheme.background,
-  scaffoldBackgroundColor: _darkColorScheme.background,
-  bottomAppBarColor: _darkColorScheme.surface,
-  cardColor: _darkColorScheme.surface,
-  dividerColor: _darkColorScheme.onSurface.withOpacity(0.12),
-  backgroundColor: _darkColorScheme.background,
-  dialogBackgroundColor: _darkColorScheme.background,
-  errorColor: _darkColorScheme.error,
-  textTheme: textTheme,
-  indicatorColor: _darkColorScheme.secondary,
-  applyElevationOverlayColor: true,
-  colorScheme: _darkColorScheme,
-  buttonTheme: buttonThemeData,
-  textButtonTheme: textButtonThemeData,
-  elevatedButtonTheme:
-      getElevatedButtonThemeData(Brightness.dark, YaruColors.green),
-  outlinedButtonTheme: _darkOutlinedButtonThemeData,
-  switchTheme: _switchStyleDark,
-  checkboxTheme: _checkStyleDark,
-  radioTheme: _radioStyleDark,
-  primaryColorDark: _primaryColor,
-  appBarTheme: appBarDarkTheme,
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: YaruColors.green,
-  ),
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-    selectedItemColor: _darkColorScheme.primary,
-    unselectedItemColor: YaruColors.warmGrey.shade300,
-  ),
-  inputDecorationTheme: InputDecorationTheme(
-    border: OutlineInputBorder(),
-  ),
-);
+    tabBarTheme: TabBarTheme(labelColor: _darkColorScheme.onBackground),
+    dialogTheme: DialogTheme(
+        backgroundColor: YaruColors.coolGrey,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+            side: BorderSide(color: Colors.white.withOpacity(0.2)))),
+    brightness: Brightness.dark,
+    primaryColor: _darkColorScheme.primary,
+    primaryColorBrightness:
+        ThemeData.estimateBrightnessForColor(_darkColorScheme.primary),
+    canvasColor: _darkColorScheme.background,
+    scaffoldBackgroundColor: _darkColorScheme.background,
+    bottomAppBarColor: _darkColorScheme.surface,
+    cardColor: _darkColorScheme.surface,
+    dividerColor: _darkColorScheme.onSurface.withOpacity(0.12),
+    backgroundColor: _darkColorScheme.background,
+    dialogBackgroundColor: _darkColorScheme.background,
+    errorColor: _darkColorScheme.error,
+    textTheme: textTheme,
+    indicatorColor: _darkColorScheme.secondary,
+    applyElevationOverlayColor: true,
+    colorScheme: _darkColorScheme,
+    buttonTheme: buttonThemeData,
+    textButtonTheme: textButtonThemeData,
+    elevatedButtonTheme:
+        getElevatedButtonThemeData(Brightness.dark, YaruColors.green),
+    outlinedButtonTheme: _darkOutlinedButtonThemeData,
+    switchTheme: _switchStyleDark,
+    checkboxTheme: _checkStyleDark,
+    radioTheme: _radioStyleDark,
+    primaryColorDark: _primaryColor,
+    appBarTheme: appBarDarkTheme,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: YaruColors.green,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: _darkColorScheme.primary,
+      unselectedItemColor: YaruColors.warmGrey.shade300,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(),
+    ),
+    listTileTheme: listTileTheme);
 
 final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(

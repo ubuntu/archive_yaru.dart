@@ -51,7 +51,8 @@ final yaruLight = ThemeData(
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(),
-    ));
+    ),
+    listTileTheme: listTileTheme);
 
 Color _getSwitchThumbColorLight(Set<MaterialState> states) {
   if (states.contains(MaterialState.disabled)) {

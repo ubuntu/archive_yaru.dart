@@ -81,3 +81,5 @@ double _getElevation(Set<MaterialState> states) {
   }
   return 0.0;
 }
+
+final listTileTheme = ListTileThemeData(dense: true);
