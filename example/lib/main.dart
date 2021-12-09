@@ -18,7 +18,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Yaru Example',
-      theme: theme,
+      theme: theme.copyWith(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          listTileTheme: ListTileThemeData(dense: true),
+          buttonTheme: ButtonThemeData(height: 100)),
       home: HomePage(
           themeChanged: (themeName) => setState(() {
                 if (themeName == 'Yaru-light') {

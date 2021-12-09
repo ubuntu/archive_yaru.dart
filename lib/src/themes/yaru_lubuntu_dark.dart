@@ -56,9 +56,7 @@ final yaruLubuntuDark = ThemeData(
     selectedItemColor: _darkColorScheme.primary,
     unselectedItemColor: YaruColors.warmGrey.shade300,
   ),
-  inputDecorationTheme: InputDecorationTheme(
-    border: OutlineInputBorder(),
-  ),
+  inputDecorationTheme: inputDecorationTheme,
 );
 
 final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(

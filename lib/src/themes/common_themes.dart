@@ -83,3 +83,8 @@ double _getElevation(Set<MaterialState> states) {
 }
 
 final listTileTheme = ListTileThemeData(dense: true);
+
+final inputDecorationTheme = InputDecorationTheme(
+  isDense: true,
+  border: OutlineInputBorder(),
+);

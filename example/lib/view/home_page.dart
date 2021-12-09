@@ -3,6 +3,7 @@ import 'package:yaru_example/view/colors_view.dart';
 import 'package:yaru_example/view/controls_view.dart';
 import 'package:yaru_example/view/fonts_view.dart';
 import 'package:yaru_example/view/inputs_view.dart';
+import 'package:yaru_example/view/lists_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.themeChanged}) : super(key: key);
@@ -36,7 +37,8 @@ class _HomePageState extends State<HomePage> {
     FontsView(),
     ControlsView(),
     InputsView(),
-    ColorsView()
+    ColorsView(),
+    ListsView(),
   ];
 
   Widget build(BuildContext context) {
@@ -83,7 +85,11 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.color_lens_outlined),
                   activeIcon: Icon(Icons.color_lens),
-                  label: 'Palette')
+                  label: 'Palette'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.list_outlined),
+                  activeIcon: Icon(Icons.list),
+                  label: 'Lists')
             ],
             currentIndex: _selectedIndex,
             onTap: (index) => setState(() => _selectedIndex = index),

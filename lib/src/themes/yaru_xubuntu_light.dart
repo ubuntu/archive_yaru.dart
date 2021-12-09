@@ -50,9 +50,7 @@ final yaruXubuntuLight = ThemeData(
       selectedItemColor: _lightColorScheme.primary,
       unselectedItemColor: YaruColors.coolGrey,
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      border: OutlineInputBorder(),
-    ));
+    inputDecorationTheme: inputDecorationTheme);
 
 Color _getSwitchThumbColorLight(Set<MaterialState> states) {
   if (states.contains(MaterialState.disabled)) {

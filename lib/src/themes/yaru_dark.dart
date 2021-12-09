@@ -55,9 +55,7 @@ final yaruDark = ThemeData(
       selectedItemColor: _darkColorScheme.primary,
       unselectedItemColor: YaruColors.warmGrey.shade300,
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      border: OutlineInputBorder(),
-    ),
+    inputDecorationTheme: inputDecorationTheme,
     listTileTheme: listTileTheme);
 
 final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
