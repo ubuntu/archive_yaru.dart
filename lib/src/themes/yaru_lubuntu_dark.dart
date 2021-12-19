@@ -36,6 +36,7 @@ final yaruLubuntuDark = ThemeData(
   dialogBackgroundColor: _darkColorScheme.background,
   errorColor: _darkColorScheme.error,
   textTheme: textTheme,
+  textSelectionTheme: _textSelectionStyleDark,
   indicatorColor: _darkColorScheme.secondary,
   applyElevationOverlayColor: true,
   colorScheme: _darkColorScheme,
@@ -124,3 +125,6 @@ final _checkStyleDark = CheckboxThemeData(
 
 final _radioStyleDark = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorDark));
+
+final _textSelectionStyleDark =
+    TextSelectionThemeData(cursorColor: _darkColorScheme.onBackground);
