@@ -30,6 +30,7 @@ final yaruLight = ThemeData(
     dialogBackgroundColor: _lightColorScheme.background,
     errorColor: _lightColorScheme.error,
     textTheme: textTheme,
+    textSelectionTheme: _textSelectionStyleLight,
     indicatorColor: _lightColorScheme.secondary,
     applyElevationOverlayColor: false,
     colorScheme: _lightColorScheme,
@@ -109,3 +110,6 @@ final _checkStyleLight = CheckboxThemeData(
 
 final _radioStyleLight = RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorLight));
+
+final _textSelectionStyleLight =
+    TextSelectionThemeData(cursorColor: _lightColorScheme.onSurface);
