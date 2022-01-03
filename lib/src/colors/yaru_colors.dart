@@ -89,7 +89,11 @@ class YaruColors {
   static const Color coolGrey = Color(0xFF333333);
   static const Color textGrey = Color(0xFF111111);
   static const Color red = Color(0xFFff0000);
+  static const Color yellow = Color(0xFFf99b11);
   static const Color green = Color(0xFF0e8420);
+  static const Color blue = Color(0xFF19B6EE);
+  static const Color linkBlue = Color(0xFF007aa6);
+  static const Color darkBlue = Color(0xFF335280);
   static const Color disabledGreyDark = Color(0xFF535353);
   static const Color porcelain = Color(0xFFFAFAFA);
   static const Color inkstone = Color(0xFF3B3B3B);
