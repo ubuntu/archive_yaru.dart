@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Yaru Example',
       theme: theme,
+      debugShowCheckedModeBanner: false,
       home: HomePage(
           themeChanged: (themeName) => setState(() {
                 if (themeName == 'Yaru-light') {
