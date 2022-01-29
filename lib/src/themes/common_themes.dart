@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/colors/yaru_colors.dart';
+import 'package:yaru/src/themes/constants.dart';
 
-const _appBarElevation = 1.0;
+// AppBar
 
 final appBarLightTheme = AppBarTheme(
-  elevation: _appBarElevation,
+  elevation: appBarElevation,
   systemOverlayStyle: SystemUiOverlayStyle.light,
   backgroundColor: YaruColors.porcelain,
   foregroundColor: YaruColors.coolGrey,
@@ -19,7 +20,7 @@ final appBarLightTheme = AppBarTheme(
 );
 
 final appBarDarkTheme = AppBarTheme(
-  elevation: _appBarElevation,
+  elevation: appBarElevation,
   systemOverlayStyle: SystemUiOverlayStyle.dark,
   backgroundColor: YaruColors.jet,
   foregroundColor: YaruColors.porcelain,
@@ -29,11 +30,13 @@ final appBarDarkTheme = AppBarTheme(
   ),
 );
 
+// Buttons
+
 final commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
 
 final buttonThemeData = ButtonThemeData(
   shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(4.0),
+    borderRadius: BorderRadius.circular(buttonRadius),
   ),
 );
 
@@ -80,4 +83,98 @@ double _getElevation(Set<MaterialState> states) {
     return 2.0;
   }
   return 0.0;
+}
+
+// Dialogs
+
+final dialogThemeDark = DialogTheme(
+    backgroundColor: YaruColors.coolGrey,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(windowRadius),
+        side: BorderSide(color: Colors.white.withOpacity(0.2))));
+
+// Switches
+SwitchThemeData getSwitchThemeData(
+    MaterialColor primaryColor, Brightness brightness) {
+  return SwitchThemeData(
+      thumbColor: MaterialStateProperty.resolveWith(
+          (states) => _getSwitchThumbColor(states, primaryColor, brightness)),
+      trackColor: MaterialStateProperty.resolveWith(
+          (states) => _getSwitchTrackColor(states, primaryColor, brightness)));
+}
+
+Color _getSwitchThumbColor(Set<MaterialState> states,
+    MaterialColor selectedColor, Brightness brightness) {
+  if (states.contains(MaterialState.disabled)) {
+    return brightness == Brightness.dark
+        ? YaruColors.disabledGreyDark
+        : YaruColors.warmGrey.shade200;
+  } else {
+    if (states.contains(MaterialState.selected)) {
+      return selectedColor;
+    } else {
+      return brightness == Brightness.dark ? YaruColors.warmGrey : Colors.white;
+    }
+  }
+}
+
+Color _getSwitchTrackColor(Set<MaterialState> states,
+    MaterialColor selectedColor, Brightness brightness) {
+  if (states.contains(MaterialState.disabled)) {
+    return brightness == Brightness.dark
+        ? YaruColors.disabledGreyDark.withAlpha(120)
+        : YaruColors.warmGrey.shade200;
+  } else {
+    if (states.contains(MaterialState.selected)) {
+      return brightness == Brightness.dark
+          ? selectedColor.withAlpha(160)
+          : selectedColor.withAlpha(180);
+    } else {
+      return brightness == Brightness.dark
+          ? YaruColors.warmGrey.withAlpha(80)
+          : YaruColors.warmGrey.shade300;
+    }
+  }
+}
+
+// Checks
+Color _getCheckFillColorDark(Set<MaterialState> states,
+    MaterialColor selectedColor, Brightness brightness) {
+  if (!states.contains(MaterialState.disabled)) {
+    if (states.contains(MaterialState.selected)) {
+      return selectedColor;
+    }
+    return brightness == Brightness.dark
+        ? YaruColors.warmGrey.shade400
+        : YaruColors.warmGrey;
+  }
+  return brightness == Brightness.dark
+      ? YaruColors.warmGrey.withOpacity(0.4)
+      : YaruColors.warmGrey.shade300;
+}
+
+Color _getCheckColorDark(Set<MaterialState> states) {
+  if (!states.contains(MaterialState.disabled)) {
+    return Colors.white;
+  }
+  return YaruColors.warmGrey;
+}
+
+CheckboxThemeData getCheckBoxThemeDataDark(
+    MaterialColor primaryColor, Brightness brightness) {
+  return CheckboxThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(checkRadius),
+    ),
+    fillColor: MaterialStateProperty.resolveWith(
+        (states) => _getCheckFillColorDark(states, primaryColor, brightness)),
+    checkColor: MaterialStateProperty.resolveWith(_getCheckColorDark),
+  );
+}
+
+RadioThemeData getRadioThemeDataDark(
+    MaterialColor primaryColor, Brightness brightness) {
+  return RadioThemeData(
+      fillColor: MaterialStateProperty.resolveWith((states) =>
+          _getCheckFillColorDark(states, primaryColor, brightness)));
 }

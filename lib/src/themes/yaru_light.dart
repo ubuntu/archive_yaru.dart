@@ -19,8 +19,6 @@ final yaruLight = ThemeData(
     tabBarTheme: TabBarTheme(labelColor: _lightColorScheme.onSurface),
     brightness: Brightness.light,
     primaryColor: _lightColorScheme.primary,
-    primaryColorBrightness:
-        ThemeData.estimateBrightnessForColor(_lightColorScheme.primary),
     canvasColor: _lightColorScheme.background,
     scaffoldBackgroundColor: _lightColorScheme.background,
     bottomAppBarColor: _lightColorScheme.surface,
@@ -38,9 +36,9 @@ final yaruLight = ThemeData(
     elevatedButtonTheme:
         getElevatedButtonThemeData(Brightness.light, YaruColors.green),
     textButtonTheme: textButtonThemeData,
-    switchTheme: _switchStyleLight,
-    checkboxTheme: _checkStyleLight,
-    radioTheme: _radioStyleLight,
+    switchTheme: getSwitchThemeData(_primaryColor, Brightness.light),
+    checkboxTheme: getCheckBoxThemeDataDark(_primaryColor, Brightness.light),
+    radioTheme: getRadioThemeDataDark(_primaryColor, Brightness.light),
     appBarTheme: appBarLightTheme,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: YaruColors.green,
@@ -52,60 +50,3 @@ final yaruLight = ThemeData(
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(),
     ));
-
-Color _getSwitchThumbColorLight(Set<MaterialState> states) {
-  if (states.contains(MaterialState.disabled)) {
-    return YaruColors.warmGrey.shade200;
-  } else {
-    if (states.contains(MaterialState.selected)) {
-      return _primaryColor;
-    } else {
-      return Colors.white;
-    }
-  }
-}
-
-Color _getSwitchTrackColorLight(Set<MaterialState> states) {
-  if (states.contains(MaterialState.disabled)) {
-    return YaruColors.warmGrey.shade200;
-  } else {
-    if (states.contains(MaterialState.selected)) {
-      return _primaryColor.withAlpha(180);
-    } else {
-      return YaruColors.warmGrey.shade300;
-    }
-  }
-}
-
-final _switchStyleLight = SwitchThemeData(
-  thumbColor: MaterialStateProperty.resolveWith(_getSwitchThumbColorLight),
-  trackColor: MaterialStateProperty.resolveWith(_getSwitchTrackColorLight),
-);
-
-Color _getCheckFillColorLight(Set<MaterialState> states) {
-  if (!states.contains(MaterialState.disabled)) {
-    if (states.contains(MaterialState.selected)) {
-      return _primaryColor;
-    }
-    return YaruColors.warmGrey;
-  }
-  return YaruColors.warmGrey.shade300;
-}
-
-Color _getCheckColorLight(Set<MaterialState> states) {
-  if (!states.contains(MaterialState.disabled)) {
-    return Colors.white;
-  }
-  return YaruColors.warmGrey;
-}
-
-final _checkStyleLight = CheckboxThemeData(
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(2),
-  ),
-  fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorLight),
-  checkColor: MaterialStateProperty.resolveWith(_getCheckColorLight),
-);
-
-final _radioStyleLight = RadioThemeData(
-    fillColor: MaterialStateProperty.resolveWith(_getCheckFillColorLight));
