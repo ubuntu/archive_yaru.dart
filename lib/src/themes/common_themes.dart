@@ -8,7 +8,8 @@ import 'package:yaru/src/themes/constants.dart';
 
 AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
   return AppBarTheme(
-    elevation: appBarElevation,
+    toolbarHeight: kAppBarHeight,
+    elevation: kAppBarElevation,
     systemOverlayStyle: SystemUiOverlayStyle.light,
     backgroundColor: colorScheme.background,
     foregroundColor: colorScheme.onSurface.withOpacity(0.75),
@@ -23,7 +24,7 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
 
 AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
-    elevation: appBarElevation,
+    elevation: kAppBarElevation,
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     backgroundColor: colorScheme.surface,
     foregroundColor: colorScheme.onSurface,
@@ -40,7 +41,7 @@ final _commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
 
 final _buttonThemeData = ButtonThemeData(
   shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(buttonRadius),
+    borderRadius: BorderRadius.circular(kButtonRadius),
   ),
 );
 
@@ -75,7 +76,7 @@ ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
 final _dialogThemeDark = DialogTheme(
     backgroundColor: YaruColors.coolGrey,
     shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(windowRadius),
+        borderRadius: BorderRadius.circular(kWindowRadius),
         side: BorderSide(color: Colors.white.withOpacity(0.2))));
 
 // Switches
@@ -151,7 +152,7 @@ CheckboxThemeData _getCheckBoxThemeData(
     MaterialColor primaryColor, Brightness brightness) {
   return CheckboxThemeData(
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(checkRadius),
+      borderRadius: BorderRadius.circular(kCheckRadius),
     ),
     fillColor: MaterialStateProperty.resolveWith(
         (states) => _getCheckFillColor(states, primaryColor, brightness)),
