@@ -34,12 +34,11 @@ final yaruUbuntuStudioLight = ThemeData(
     colorScheme: _lightColorScheme,
     buttonTheme: buttonThemeData,
     outlinedButtonTheme: outlinedButtonThemeData,
-    elevatedButtonTheme:
-        getElevatedButtonThemeData(Brightness.light, _primaryColor),
+    elevatedButtonTheme: getElevatedButtonThemeData(_primaryColor),
     textButtonTheme: textButtonThemeData,
     switchTheme: getSwitchThemeData(_primaryColor, Brightness.light),
-    checkboxTheme: getCheckBoxThemeDataDark(_primaryColor, Brightness.light),
-    radioTheme: getRadioThemeDataDark(_primaryColor, Brightness.light),
+    checkboxTheme: getCheckBoxThemeData(_primaryColor, Brightness.light),
+    radioTheme: getRadioThemeData(_primaryColor, Brightness.light),
     appBarTheme: appBarLightTheme,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: _primaryColor,
