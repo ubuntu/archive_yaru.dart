@@ -161,3 +161,90 @@ RadioThemeData getRadioThemeData(
       fillColor: MaterialStateProperty.resolveWith(
           (states) => _getCheckFillColor(states, primaryColor, brightness)));
 }
+
+/// Helper function to create a new Yaru light theme
+ThemeData createYaruLightTheme(
+    {required ColorScheme colorScheme,
+    required MaterialColor primaryColor,
+    Color? elevatedButtonColor}) {
+  return ThemeData(
+      tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
+      brightness: Brightness.light,
+      primaryColor: colorScheme.primary,
+      canvasColor: colorScheme.background,
+      scaffoldBackgroundColor: colorScheme.background,
+      bottomAppBarColor: colorScheme.surface,
+      cardColor: colorScheme.surface,
+      dividerColor: colorScheme.onSurface.withOpacity(0.12),
+      backgroundColor: colorScheme.background,
+      dialogBackgroundColor: colorScheme.background,
+      errorColor: colorScheme.error,
+      textTheme: textTheme,
+      indicatorColor: colorScheme.secondary,
+      applyElevationOverlayColor: false,
+      colorScheme: colorScheme,
+      buttonTheme: buttonThemeData,
+      outlinedButtonTheme: outlinedButtonThemeData,
+      elevatedButtonTheme:
+          getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
+      textButtonTheme: textButtonThemeData,
+      switchTheme: getSwitchThemeData(primaryColor, Brightness.light),
+      checkboxTheme: getCheckBoxThemeData(primaryColor, Brightness.light),
+      radioTheme: getRadioThemeData(primaryColor, Brightness.light),
+      appBarTheme: appBarLightTheme,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: elevatedButtonColor ?? primaryColor,
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        selectedItemColor: colorScheme.primary,
+        unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(),
+      ));
+}
+
+/// Helper function to create a new Yaru dark theme
+ThemeData createYaruDarkTheme(
+    {required ColorScheme colorScheme,
+    required MaterialColor primaryColor,
+    Color? elevatedButtonColor}) {
+  return ThemeData(
+    tabBarTheme: TabBarTheme(labelColor: colorScheme.onBackground),
+    dialogTheme: dialogThemeDark,
+    brightness: Brightness.dark,
+    primaryColor: colorScheme.primary,
+    canvasColor: colorScheme.background,
+    scaffoldBackgroundColor: colorScheme.background,
+    bottomAppBarColor: colorScheme.surface,
+    cardColor: colorScheme.surface,
+    dividerColor: colorScheme.onSurface.withOpacity(0.12),
+    backgroundColor: colorScheme.background,
+    dialogBackgroundColor: colorScheme.background,
+    errorColor: colorScheme.error,
+    textTheme: textTheme,
+    indicatorColor: colorScheme.secondary,
+    applyElevationOverlayColor: true,
+    colorScheme: colorScheme,
+    buttonTheme: buttonThemeData,
+    textButtonTheme: textButtonThemeData,
+    elevatedButtonTheme:
+        getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
+    outlinedButtonTheme: darkOutlinedButtonThemeData,
+    switchTheme: getSwitchThemeData(primaryColor, Brightness.dark),
+    checkboxTheme: getCheckBoxThemeData(primaryColor, Brightness.dark),
+    radioTheme: getRadioThemeData(primaryColor, Brightness.dark),
+    primaryColorDark: primaryColor,
+    appBarTheme: appBarDarkTheme,
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: elevatedButtonColor ?? primaryColor,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: colorScheme.primary,
+      unselectedItemColor: colorScheme.onBackground.withOpacity(0.8),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(),
+    ),
+  );
+}
