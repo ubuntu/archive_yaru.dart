@@ -33,12 +33,11 @@ final yaruLight = ThemeData(
     colorScheme: _lightColorScheme,
     buttonTheme: buttonThemeData,
     outlinedButtonTheme: outlinedButtonThemeData,
-    elevatedButtonTheme:
-        getElevatedButtonThemeData(Brightness.light, YaruColors.green),
+    elevatedButtonTheme: getElevatedButtonThemeData(YaruColors.green),
     textButtonTheme: textButtonThemeData,
     switchTheme: getSwitchThemeData(_primaryColor, Brightness.light),
-    checkboxTheme: getCheckBoxThemeDataDark(_primaryColor, Brightness.light),
-    radioTheme: getRadioThemeDataDark(_primaryColor, Brightness.light),
+    checkboxTheme: getCheckBoxThemeData(_primaryColor, Brightness.light),
+    radioTheme: getRadioThemeData(_primaryColor, Brightness.light),
     appBarTheme: appBarLightTheme,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: YaruColors.green,

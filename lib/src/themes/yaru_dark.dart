@@ -34,12 +34,11 @@ final yaruDark = ThemeData(
   colorScheme: _darkColorScheme,
   buttonTheme: buttonThemeData,
   textButtonTheme: textButtonThemeData,
-  elevatedButtonTheme:
-      getElevatedButtonThemeData(Brightness.dark, YaruColors.green),
+  elevatedButtonTheme: getElevatedButtonThemeData(YaruColors.green),
   outlinedButtonTheme: darkOutlinedButtonThemeData,
   switchTheme: getSwitchThemeData(_primaryColor, Brightness.dark),
-  checkboxTheme: getCheckBoxThemeDataDark(_primaryColor, Brightness.dark),
-  radioTheme: getRadioThemeDataDark(_primaryColor, Brightness.dark),
+  checkboxTheme: getCheckBoxThemeData(_primaryColor, Brightness.dark),
+  radioTheme: getRadioThemeData(_primaryColor, Brightness.dark),
   primaryColorDark: _primaryColor,
   appBarTheme: appBarDarkTheme,
   floatingActionButtonTheme: FloatingActionButtonThemeData(
