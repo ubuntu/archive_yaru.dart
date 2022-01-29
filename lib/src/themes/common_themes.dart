@@ -6,29 +6,33 @@ import 'package:yaru/src/themes/constants.dart';
 
 // AppBar
 
-final appBarLightTheme = AppBarTheme(
-  elevation: appBarElevation,
-  systemOverlayStyle: SystemUiOverlayStyle.light,
-  backgroundColor: YaruColors.porcelain,
-  foregroundColor: YaruColors.coolGrey,
-  titleTextStyle: textTheme.headline6!.copyWith(
-    color: YaruColors.coolGrey,
-    fontWeight: FontWeight.normal,
-  ),
-  iconTheme: IconThemeData(color: YaruColors.coolGrey),
-  actionsIconTheme: IconThemeData(color: YaruColors.coolGrey),
-);
+AppBarTheme createLightAppBar(ColorScheme colorScheme) {
+  return AppBarTheme(
+    elevation: appBarElevation,
+    systemOverlayStyle: SystemUiOverlayStyle.light,
+    backgroundColor: colorScheme.background,
+    foregroundColor: colorScheme.onSurface.withOpacity(0.75),
+    titleTextStyle: textTheme.headline6!.copyWith(
+      color: colorScheme.onSurface.withOpacity(0.75),
+      fontWeight: FontWeight.normal,
+    ),
+    iconTheme: IconThemeData(color: colorScheme.onBackground),
+    actionsIconTheme: IconThemeData(color: colorScheme.onBackground),
+  );
+}
 
-final appBarDarkTheme = AppBarTheme(
-  elevation: appBarElevation,
-  systemOverlayStyle: SystemUiOverlayStyle.dark,
-  backgroundColor: YaruColors.jet,
-  foregroundColor: YaruColors.porcelain,
-  titleTextStyle: textTheme.headline6!.copyWith(
-    color: YaruColors.porcelain,
-    fontWeight: FontWeight.normal,
-  ),
-);
+AppBarTheme createDarkAppBarTheme(ColorScheme colorScheme) {
+  return AppBarTheme(
+    elevation: appBarElevation,
+    systemOverlayStyle: SystemUiOverlayStyle.dark,
+    backgroundColor: colorScheme.surface,
+    foregroundColor: colorScheme.onSurface,
+    titleTextStyle: textTheme.headline6!.copyWith(
+      color: colorScheme.onSurface,
+      fontWeight: FontWeight.normal,
+    ),
+  );
+}
 
 // Buttons
 
@@ -191,7 +195,7 @@ ThemeData createYaruLightTheme(
       switchTheme: getSwitchThemeData(primaryColor, Brightness.light),
       checkboxTheme: getCheckBoxThemeData(primaryColor, Brightness.light),
       radioTheme: getRadioThemeData(primaryColor, Brightness.light),
-      appBarTheme: appBarLightTheme,
+      appBarTheme: createLightAppBar(colorScheme),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: elevatedButtonColor ?? primaryColor,
       ),
@@ -235,7 +239,7 @@ ThemeData createYaruDarkTheme(
     checkboxTheme: getCheckBoxThemeData(primaryColor, Brightness.dark),
     radioTheme: getRadioThemeData(primaryColor, Brightness.dark),
     primaryColorDark: primaryColor,
-    appBarTheme: appBarDarkTheme,
+    appBarTheme: createDarkAppBarTheme(colorScheme),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: elevatedButtonColor ?? primaryColor,
     ),
