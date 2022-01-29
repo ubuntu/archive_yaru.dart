@@ -6,7 +6,7 @@ import 'package:yaru/src/themes/constants.dart';
 
 // AppBar
 
-AppBarTheme createLightAppBar(ColorScheme colorScheme) {
+AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
   return AppBarTheme(
     elevation: appBarElevation,
     systemOverlayStyle: SystemUiOverlayStyle.light,
@@ -21,7 +21,7 @@ AppBarTheme createLightAppBar(ColorScheme colorScheme) {
   );
 }
 
-AppBarTheme createDarkAppBarTheme(ColorScheme colorScheme) {
+AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
     elevation: appBarElevation,
     systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -36,43 +36,43 @@ AppBarTheme createDarkAppBarTheme(ColorScheme colorScheme) {
 
 // Buttons
 
-final commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
+final _commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
 
-final buttonThemeData = ButtonThemeData(
+final _buttonThemeData = ButtonThemeData(
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(buttonRadius),
   ),
 );
 
-final outlinedButtonThemeData = OutlinedButtonThemeData(
+final _outlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-  visualDensity: commonButtonStyle.visualDensity,
+  visualDensity: _commonButtonStyle.visualDensity,
   primary: YaruColors.textGrey,
 ));
 
-final darkOutlinedButtonThemeData = OutlinedButtonThemeData(
+final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-  visualDensity: commonButtonStyle.visualDensity,
+  visualDensity: _commonButtonStyle.visualDensity,
   primary: Colors.white,
 ));
 
-final textButtonThemeData = TextButtonThemeData(
+final _textButtonThemeData = TextButtonThemeData(
     style:
-        TextButton.styleFrom(visualDensity: commonButtonStyle.visualDensity));
+        TextButton.styleFrom(visualDensity: _commonButtonStyle.visualDensity));
 
-ElevatedButtonThemeData getElevatedButtonThemeData(Color color) {
+ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
     primary: color,
     onPrimary: Colors.white,
-    visualDensity: commonButtonStyle.visualDensity,
+    visualDensity: _commonButtonStyle.visualDensity,
     elevation: 0,
   ));
 }
 
 // Dialogs
 
-final dialogThemeDark = DialogTheme(
+final _dialogThemeDark = DialogTheme(
     backgroundColor: YaruColors.coolGrey,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(windowRadius),
@@ -80,7 +80,7 @@ final dialogThemeDark = DialogTheme(
 
 // Switches
 
-SwitchThemeData getSwitchThemeData(
+SwitchThemeData _getSwitchThemeData(
     MaterialColor primaryColor, Brightness brightness) {
   return SwitchThemeData(
       thumbColor: MaterialStateProperty.resolveWith(
@@ -147,7 +147,7 @@ Color _getCheckColor(Set<MaterialState> states) {
   return YaruColors.warmGrey;
 }
 
-CheckboxThemeData getCheckBoxThemeData(
+CheckboxThemeData _getCheckBoxThemeData(
     MaterialColor primaryColor, Brightness brightness) {
   return CheckboxThemeData(
     shape: RoundedRectangleBorder(
@@ -159,7 +159,7 @@ CheckboxThemeData getCheckBoxThemeData(
   );
 }
 
-RadioThemeData getRadioThemeData(
+RadioThemeData _getRadioThemeData(
     MaterialColor primaryColor, Brightness brightness) {
   return RadioThemeData(
       fillColor: MaterialStateProperty.resolveWith(
@@ -187,15 +187,15 @@ ThemeData createYaruLightTheme(
       indicatorColor: colorScheme.secondary,
       applyElevationOverlayColor: false,
       colorScheme: colorScheme,
-      buttonTheme: buttonThemeData,
-      outlinedButtonTheme: outlinedButtonThemeData,
+      buttonTheme: _buttonThemeData,
+      outlinedButtonTheme: _outlinedButtonThemeData,
       elevatedButtonTheme:
-          getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
-      textButtonTheme: textButtonThemeData,
-      switchTheme: getSwitchThemeData(primaryColor, Brightness.light),
-      checkboxTheme: getCheckBoxThemeData(primaryColor, Brightness.light),
-      radioTheme: getRadioThemeData(primaryColor, Brightness.light),
-      appBarTheme: createLightAppBar(colorScheme),
+          _getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
+      textButtonTheme: _textButtonThemeData,
+      switchTheme: _getSwitchThemeData(primaryColor, Brightness.light),
+      checkboxTheme: _getCheckBoxThemeData(primaryColor, Brightness.light),
+      radioTheme: _getRadioThemeData(primaryColor, Brightness.light),
+      appBarTheme: _createLightAppBar(colorScheme),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: elevatedButtonColor ?? primaryColor,
       ),
@@ -215,7 +215,7 @@ ThemeData createYaruDarkTheme(
     Color? elevatedButtonColor}) {
   return ThemeData(
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onBackground),
-    dialogTheme: dialogThemeDark,
+    dialogTheme: _dialogThemeDark,
     brightness: Brightness.dark,
     primaryColor: colorScheme.primary,
     canvasColor: colorScheme.background,
@@ -230,16 +230,16 @@ ThemeData createYaruDarkTheme(
     indicatorColor: colorScheme.secondary,
     applyElevationOverlayColor: true,
     colorScheme: colorScheme,
-    buttonTheme: buttonThemeData,
-    textButtonTheme: textButtonThemeData,
+    buttonTheme: _buttonThemeData,
+    textButtonTheme: _textButtonThemeData,
     elevatedButtonTheme:
-        getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
-    outlinedButtonTheme: darkOutlinedButtonThemeData,
-    switchTheme: getSwitchThemeData(primaryColor, Brightness.dark),
-    checkboxTheme: getCheckBoxThemeData(primaryColor, Brightness.dark),
-    radioTheme: getRadioThemeData(primaryColor, Brightness.dark),
+        _getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
+    outlinedButtonTheme: _darkOutlinedButtonThemeData,
+    switchTheme: _getSwitchThemeData(primaryColor, Brightness.dark),
+    checkboxTheme: _getCheckBoxThemeData(primaryColor, Brightness.dark),
+    radioTheme: _getRadioThemeData(primaryColor, Brightness.dark),
     primaryColorDark: primaryColor,
-    appBarTheme: createDarkAppBarTheme(colorScheme),
+    appBarTheme: _createDarkAppBarTheme(colorScheme),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: elevatedButtonColor ?? primaryColor,
     ),
