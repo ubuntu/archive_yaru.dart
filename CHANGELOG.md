@@ -1,5 +1,21 @@
 # Changelog
 
+# 0.2.1
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Fix AppBar text and icon color in the light theme (#129)
+  * Adapt constants to k* convention, add appbarheight (#128)
+  * Export createYaru*Theme() functions (#127)
+  * Detach appbar from yaru colors (#126)
+  * Example: add web support (#125)
+  * Use createYaru*Theme() functions to reduce code duplication (#124)
+  * Further theme simplifications (#123)
+  * Consolidate theming in common_themes (#122)
+[Paul Kepinski](https://github.com/Jupi007)
+  * Add missing colors from Yaru palette
+[Alberto Bonacina](https://github.com/polilluminato)
+  * Fix Typos in the yaru.dart flavors and Example (#114)
+
 # 0.2.0
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
