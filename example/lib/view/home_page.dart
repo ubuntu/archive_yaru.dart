@@ -44,7 +44,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Super cool title'),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.monitor_heart_sharp)),
+          IconButton(
+              onPressed: () {}, icon: Icon(Icons.account_circle_rounded)),
         ],
         leading: TextButton(
           child: Icon(themeName.contains('-light')
