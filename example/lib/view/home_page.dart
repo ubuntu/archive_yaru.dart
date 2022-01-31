@@ -43,6 +43,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Super cool title'),
+        actions: [
+          IconButton(
+              onPressed: () {}, icon: Icon(Icons.account_circle_rounded)),
+        ],
         leading: TextButton(
           child: Icon(themeName.contains('-light')
               ? Icons.dark_mode
@@ -66,35 +70,37 @@ class _HomePageState extends State<HomePage> {
               child: _views[_selectedIndex],
             ),
           ),
-          BottomNavigationBar(
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.font_download_outlined),
-                  activeIcon: Icon(Icons.font_download),
-                  label: 'Fonts'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.radio_button_checked_outlined),
-                  activeIcon: Icon(Icons.radio_button_checked),
-                  label: 'Controls'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.text_fields),
-                  activeIcon: Icon(Icons.text_fields_outlined),
-                  label: 'Text Fields'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.color_lens_outlined),
-                  activeIcon: Icon(Icons.color_lens),
-                  label: 'Palette')
-            ],
-            currentIndex: _selectedIndex,
-            onTap: (index) => setState(() => _selectedIndex = index),
-          ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.font_download_outlined),
+              activeIcon: Icon(Icons.font_download),
+              label: 'Fonts'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.radio_button_checked_outlined),
+              activeIcon: Icon(Icons.radio_button_checked),
+              label: 'Controls'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.text_fields),
+              activeIcon: Icon(Icons.text_fields_outlined),
+              label: 'Text Fields'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.color_lens_outlined),
+              activeIcon: Icon(Icons.color_lens),
+              label: 'Palette')
+        ],
+        currentIndex: _selectedIndex,
+        onTap: (index) => setState(() => _selectedIndex = index),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {incrementCounter()},
         child: Icon(Icons.plus_one),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
     );
   }
 }

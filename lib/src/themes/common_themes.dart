@@ -12,13 +12,13 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
     elevation: kAppBarElevation,
     systemOverlayStyle: SystemUiOverlayStyle.light,
     backgroundColor: colorScheme.background,
-    foregroundColor: colorScheme.onSurface.withOpacity(0.75),
+    foregroundColor: colorScheme.onSurface,
     titleTextStyle: textTheme.headline6!.copyWith(
-      color: colorScheme.onSurface.withOpacity(0.75),
+      color: colorScheme.onSurface,
       fontWeight: FontWeight.normal,
     ),
-    iconTheme: IconThemeData(color: colorScheme.onBackground),
-    actionsIconTheme: IconThemeData(color: colorScheme.onBackground),
+    iconTheme: IconThemeData(color: colorScheme.onSurface),
+    actionsIconTheme: IconThemeData(color: YaruColors.inkstone),
   );
 }
 
