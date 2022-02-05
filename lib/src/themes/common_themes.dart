@@ -36,6 +36,11 @@ AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   );
 }
 
+final inputDecorationTheme = InputDecorationTheme(
+  border: OutlineInputBorder(),
+  isDense: true,
+);
+
 // Buttons
 
 final _commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
@@ -205,9 +210,7 @@ ThemeData createYaruLightTheme(
         selectedItemColor: colorScheme.primary,
         unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
       ),
-      inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(),
-      ));
+      inputDecorationTheme: inputDecorationTheme);
 }
 
 /// Helper function to create a new Yaru dark theme
@@ -249,8 +252,6 @@ ThemeData createYaruDarkTheme(
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onBackground.withOpacity(0.8),
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      border: OutlineInputBorder(),
-    ),
+    inputDecorationTheme: inputDecorationTheme,
   );
 }
