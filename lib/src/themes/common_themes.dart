@@ -37,7 +37,8 @@ AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
 }
 
 final inputDecorationTheme = InputDecorationTheme(
-  border: OutlineInputBorder(),
+  border:
+      OutlineInputBorder(borderRadius: BorderRadius.circular(kButtonRadius)),
   isDense: true,
 );
 
@@ -55,6 +56,9 @@ final _outlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
   visualDensity: _commonButtonStyle.visualDensity,
   primary: YaruColors.textGrey,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(kButtonRadius),
+  ),
 ));
 
 final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
@@ -64,8 +68,13 @@ final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
 ));
 
 final _textButtonThemeData = TextButtonThemeData(
-    style:
-        TextButton.styleFrom(visualDensity: _commonButtonStyle.visualDensity));
+  style: TextButton.styleFrom(
+    visualDensity: _commonButtonStyle.visualDensity,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(kButtonRadius),
+    ),
+  ),
+);
 
 ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   return ElevatedButtonThemeData(
@@ -74,6 +83,9 @@ ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
     onPrimary: Colors.white,
     visualDensity: _commonButtonStyle.visualDensity,
     elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(kButtonRadius),
+    ),
   ));
 }
 
@@ -84,6 +96,11 @@ final _dialogThemeDark = DialogTheme(
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(kWindowRadius),
         side: BorderSide(color: Colors.white.withOpacity(0.2))));
+
+final _dialogThemeLight = DialogTheme(
+    shape: RoundedRectangleBorder(
+  borderRadius: BorderRadius.circular(kWindowRadius),
+));
 
 // Switches
 
@@ -180,6 +197,7 @@ ThemeData createYaruLightTheme(
     Color? elevatedButtonColor}) {
   return ThemeData(
       tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
+      dialogTheme: _dialogThemeLight,
       brightness: Brightness.light,
       primaryColor: colorScheme.primary,
       canvasColor: colorScheme.background,
