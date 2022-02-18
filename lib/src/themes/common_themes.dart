@@ -63,6 +63,9 @@ final _outlinedButtonThemeData = OutlinedButtonThemeData(
 
 final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(kButtonRadius),
+  ),
   visualDensity: _commonButtonStyle.visualDensity,
   primary: Colors.white,
 ));
