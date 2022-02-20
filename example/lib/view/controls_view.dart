@@ -92,6 +92,26 @@ class _ControlsViewState extends State<ControlsView>
                       ]),
                     ),
                     Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        height: 40,
+                        child: Row(
+                          children: [
+                            ToggleButtons(
+                              children: [Text('Yes'), Text('No'), Text('No')],
+                              isSelected: [true, false, false],
+                              onPressed: (v) {},
+                            ),
+                            const SizedBox(width: 15),
+                            ToggleButtons(
+                              children: [Text('Yes'), Text('No'), Text('No')],
+                              isSelected: [true, false, false],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Row(
                         children: <Widget>[
