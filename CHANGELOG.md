@@ -1,5 +1,14 @@
 # Changelog
 
+# 0.2.2
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * ToggleButtons: round toggle buttons (#135)
+  * Increase border radii to match gnome themes (#134)
+  * Inputs: make dense by default
+  * BorderRadius: increase to match yaru gnome
+  * Example: display dialog on AppBar button click
+
 # 0.2.1
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
