@@ -1,33 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:yaru/yaru.dart';
 import 'package:yaru_example/view/home_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => LightTheme(yaruLight)),
+      ChangeNotifierProvider(create: (_) => DarkTheme(yaruDark)),
+      ChangeNotifierProvider(create: (_) => AppTheme(ThemeMode.light)),
+    ],
+    child: MyApp(),
+  ));
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var theme = yaruLight;
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Yaru Example',
-      theme: theme,
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
-      home: HomePage(
-          themeChanged: (themeName) => setState(() {
-                if (themeName == 'Yaru-light') {
-                  theme = yaruLight;
-                } else if (themeName == 'Yaru-dark') {
-                  theme = yaruDark;
-                }
-              })),
+      themeMode: context.watch<AppTheme>().value,
+      theme: context.watch<LightTheme>().value,
+      darkTheme: context.watch<DarkTheme>().value,
     );
+  }
+}
+
+class LightTheme extends ValueNotifier<ThemeData> {
+  LightTheme(ThemeData value) : super(value);
+}
+
+class DarkTheme extends ValueNotifier<ThemeData> {
+  DarkTheme(ThemeData value) : super(value);
+}
+
+class AppTheme extends ValueNotifier<ThemeMode> {
+  AppTheme(ThemeMode value) : super(value);
+
+  void apply(Brightness brightness) {
+    switch (brightness) {
+      case Brightness.dark:
+        value = ThemeMode.dark;
+        break;
+      case Brightness.light:
+        value = ThemeMode.light;
+        break;
+    }
   }
 }
