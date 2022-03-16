@@ -131,6 +131,32 @@ class _ControlsViewState extends State<ControlsView>
                         ],
                       ),
                     ),
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () => showDialog(
+                                context: context,
+                                builder: (context) => SimpleDialog(
+                                      title:
+                                          Center(child: Text('Dialog Title')),
+                                      titlePadding: EdgeInsets.only(top: 15),
+                                      children: [
+                                        Center(
+                                            child: Column(
+                                          children: [
+                                            for (var i = 0; i < 10; i++)
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text('Content'),
+                                              ),
+                                          ],
+                                        )),
+                                      ],
+                                    )),
+                            icon: Icon(Icons.account_circle_rounded)),
+                      ],
+                    )
                   ],
                 ),
               ),
