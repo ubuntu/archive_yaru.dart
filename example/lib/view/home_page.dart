@@ -47,65 +47,83 @@ class _HomePageState extends State<HomePage> {
     final darkTheme = context.read<DarkTheme>();
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          SizedBox(
-            width: 50,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextButton(
-                  style: TextButton.styleFrom(padding: const EdgeInsets.all(0)),
-                  onPressed: () => themeMode.value == ThemeMode.light
-                      ? themeMode.value = ThemeMode.dark
-                      : themeMode.value = ThemeMode.light,
-                  child: Icon(themeMode.value == ThemeMode.light
-                      ? Icons.dark_mode
-                      : Icons.light_mode)),
-            ),
+        leading: SizedBox(
+          width: 50,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextButton(
+                style: TextButton.styleFrom(
+                    padding: const EdgeInsets.all(0),
+                    shape: const CircleBorder()),
+                onPressed: () => themeMode.value == ThemeMode.light
+                    ? themeMode.value = ThemeMode.dark
+                    : themeMode.value = ThemeMode.light,
+                child: Icon(themeMode.value == ThemeMode.light
+                    ? Icons.dark_mode
+                    : Icons.light_mode)),
           ),
+        ),
+        actions: [
           ColorDisk(
               color: YaruColors.ubuntuOrange,
+              selected:
+                  Theme.of(context).primaryColor == YaruColors.ubuntuOrange,
               onPressed: () {
                 lightTheme.value = yaruLight;
                 darkTheme.value = yaruDark;
               }),
           ColorDisk(
               color: olive,
+              selected:
+                  Theme.of(context).primaryColor == createMaterialColor(olive),
               onPressed: () {
                 lightTheme.value = oliveLight;
                 darkTheme.value = oliveDark;
               }),
           ColorDisk(
               color: bark,
+              selected:
+                  Theme.of(context).primaryColor == createMaterialColor(bark),
               onPressed: () {
                 lightTheme.value = barkLight;
                 darkTheme.value = barkDark;
               }),
           ColorDisk(
               color: viridian,
+              selected: Theme.of(context).primaryColor ==
+                  createMaterialColor(viridian),
               onPressed: () {
                 lightTheme.value = viridianLight;
                 darkTheme.value = viridianDark;
               }),
           ColorDisk(
               color: purple,
+              selected:
+                  Theme.of(context).primaryColor == createMaterialColor(purple),
               onPressed: () {
                 lightTheme.value = purpleLight;
                 darkTheme.value = purpleDark;
               }),
           ColorDisk(
               color: red,
+              selected:
+                  Theme.of(context).primaryColor == createMaterialColor(red),
               onPressed: () {
                 lightTheme.value = redLight;
                 darkTheme.value = redDark;
               }),
           ColorDisk(
               color: blue,
+              selected:
+                  Theme.of(context).primaryColor == createMaterialColor(blue),
               onPressed: () {
                 lightTheme.value = blueLight;
                 darkTheme.value = blueDark;
               }),
           ColorDisk(
               color: magenta,
+              selected: Theme.of(context).primaryColor ==
+                  createMaterialColor(magenta),
               onPressed: () {
                 lightTheme.value = magentaLight;
                 darkTheme.value = magentaDark;

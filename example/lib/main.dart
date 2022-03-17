@@ -37,15 +37,4 @@ class DarkTheme extends ValueNotifier<ThemeData> {
 
 class AppTheme extends ValueNotifier<ThemeMode> {
   AppTheme(ThemeMode value) : super(value);
-
-  void apply(Brightness brightness) {
-    switch (brightness) {
-      case Brightness.dark:
-        value = ThemeMode.dark;
-        break;
-      case Brightness.light:
-        value = ThemeMode.light;
-        break;
-    }
-  }
 }
