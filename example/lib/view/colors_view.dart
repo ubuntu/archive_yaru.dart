@@ -44,15 +44,14 @@ class ColorsView extends StatelessWidget {
           children: [
             Expanded(
                 child: colorPaletteExample(
-                    'viridianMaterialColor', blueMaterialColor)),
+                    'blueMaterialColor', blueMaterialColor)),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample(
-                    'purpleMaterialColor', magentaMaterialColor)),
+                    'magentaMaterialColor', magentaMaterialColor)),
             SizedBox(width: 25.0),
             Expanded(
-                child: colorPaletteExample(
-                    'redMaterialColor', YaruColors.warmGrey)),
+                child: colorPaletteExample('warmGrey', YaruColors.warmGrey)),
           ],
         ),
       ],
