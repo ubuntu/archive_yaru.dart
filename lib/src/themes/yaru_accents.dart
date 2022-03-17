@@ -7,7 +7,8 @@ final barkMaterialColor = YaruColors.createMaterialColor(YaruColors.bark);
 final viridianMaterialColor =
     YaruColors.createMaterialColor(YaruColors.viridian);
 final purpleMaterialColor = YaruColors.createMaterialColor(YaruColors.purple);
-final redMaterialColor = YaruColors.createMaterialColor(YaruColors.lightRed);
+final lightRedMaterialColor =
+    YaruColors.createMaterialColor(YaruColors.lightRed);
 final blueMaterialColor = YaruColors.createMaterialColor(YaruColors.blue);
 final magentaMaterialColor = YaruColors.createMaterialColor(YaruColors.magenta);
 
@@ -117,7 +118,7 @@ final yaruPurpleDark = createYaruDarkTheme(
 
 final yaruRedLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: redMaterialColor,
+    primarySwatch: lightRedMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
     accentColor: YaruColors.lightRed,
     cardColor: Colors.white,
@@ -125,12 +126,12 @@ final yaruRedLight = createYaruLightTheme(
     errorColor: YaruColors.red,
     brightness: Brightness.light,
   ),
-  primaryColor: redMaterialColor,
+  primaryColor: lightRedMaterialColor,
 );
 
 final yaruRedDark = createYaruDarkTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: redMaterialColor,
+    primarySwatch: lightRedMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
     accentColor: YaruColors.lightRed,
     cardColor: YaruColors.jet,
@@ -138,7 +139,7 @@ final yaruRedDark = createYaruDarkTheme(
     errorColor: YaruColors.red,
     brightness: Brightness.dark,
   ),
-  primaryColor: redMaterialColor,
+  primaryColor: lightRedMaterialColor,
 );
 
 final yaruBlueLight = createYaruLightTheme(

@@ -14,41 +14,29 @@ class ColorsView extends StatelessWidget {
             Expanded(
                 child: colorPaletteExample('orange', YaruColors.ubuntuOrange)),
             SizedBox(width: 25.0),
-            Expanded(
-                child: colorPaletteExample(
-                    'oliveMaterialColor', oliveMaterialColor)),
+            Expanded(child: colorPaletteExample('olive', oliveMaterialColor)),
             SizedBox(width: 25.0),
-            Expanded(
-                child: colorPaletteExample(
-                    'barkMaterialColor', barkMaterialColor)),
+            Expanded(child: colorPaletteExample('bark', barkMaterialColor)),
           ],
         ),
         Divider(height: 50.0, color: Colors.black),
         Row(
           children: [
             Expanded(
-                child: colorPaletteExample(
-                    'viridianMaterialColor', viridianMaterialColor)),
+                child: colorPaletteExample('viridian', viridianMaterialColor)),
             SizedBox(width: 25.0),
-            Expanded(
-                child: colorPaletteExample(
-                    'purpleMaterialColor', purpleMaterialColor)),
+            Expanded(child: colorPaletteExample('purple', purpleMaterialColor)),
             SizedBox(width: 25.0),
-            Expanded(
-                child:
-                    colorPaletteExample('redMaterialColor', redMaterialColor)),
+            Expanded(child: colorPaletteExample('red', lightRedMaterialColor)),
           ],
         ),
         Divider(height: 50.0, color: Colors.black),
         Row(
           children: [
-            Expanded(
-                child: colorPaletteExample(
-                    'blueMaterialColor', blueMaterialColor)),
+            Expanded(child: colorPaletteExample('blue', blueMaterialColor)),
             SizedBox(width: 25.0),
             Expanded(
-                child: colorPaletteExample(
-                    'magentaMaterialColor', magentaMaterialColor)),
+                child: colorPaletteExample('magenta', magentaMaterialColor)),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample('warmGrey', YaruColors.warmGrey)),
