@@ -134,6 +134,7 @@ class _ControlsViewState extends State<ControlsView>
                     Row(
                       children: [
                         IconButton(
+                            splashRadius: 20,
                             onPressed: () => showDialog(
                                 context: context,
                                 builder: (context) => SimpleDialog(

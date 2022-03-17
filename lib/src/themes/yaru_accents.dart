@@ -2,192 +2,193 @@ import 'package:flutter/material.dart';
 import 'package:yaru/src/colors/yaru_colors.dart';
 import 'package:yaru/src/themes/common_themes.dart';
 
-const olive = Color(0xFF4B8501);
-const bark = Color(0xFF787859);
-const viridian = Color(0xFF03875B);
-const purple = Color(0xFF8856EB);
-const red = Color(0xFFE61D34);
-const blue = Color(0xFF0073E5);
-const magenta = Color(0xFFBC33DB);
+final oliveMaterialColor = YaruColors.createMaterialColor(YaruColors.olive);
+final barkMaterialColor = YaruColors.createMaterialColor(YaruColors.bark);
+final viridianMaterialColor =
+    YaruColors.createMaterialColor(YaruColors.viridian);
+final purpleMaterialColor = YaruColors.createMaterialColor(YaruColors.purple);
+final redMaterialColor = YaruColors.createMaterialColor(YaruColors.red);
+final blueMaterialColor = YaruColors.createMaterialColor(YaruColors.blue);
+final magentaMaterialColor = YaruColors.createMaterialColor(YaruColors.magenta);
 
-final oliveLight = createYaruLightTheme(
+final yaruOliveLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(olive),
+    primarySwatch: oliveMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: olive,
+    accentColor: YaruColors.olive,
     cardColor: Colors.white,
     backgroundColor: YaruColors.porcelain,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.light,
   ),
-  primaryColor: createMaterialColor(olive),
+  primaryColor: oliveMaterialColor,
 );
 
-final oliveDark = createYaruDarkTheme(
+final yaruOliveDark = createYaruDarkTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(olive),
+    primarySwatch: oliveMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: olive,
+    accentColor: YaruColors.olive,
     cardColor: YaruColors.jet,
     backgroundColor: YaruColors.jet,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.dark,
   ),
-  primaryColor: createMaterialColor(olive),
+  primaryColor: oliveMaterialColor,
 );
 
-final barkLight = createYaruLightTheme(
+final yaruBarkLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(bark),
+    primarySwatch: barkMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: bark,
+    accentColor: YaruColors.bark,
     cardColor: Colors.white,
     backgroundColor: YaruColors.porcelain,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.light,
   ),
-  primaryColor: createMaterialColor(bark),
+  primaryColor: barkMaterialColor,
 );
 
-final barkDark = createYaruDarkTheme(
+final yaruBarkDark = createYaruDarkTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(bark),
+    primarySwatch: barkMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: bark,
+    accentColor: YaruColors.bark,
     cardColor: YaruColors.jet,
     backgroundColor: YaruColors.jet,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.dark,
   ),
-  primaryColor: createMaterialColor(bark),
+  primaryColor: barkMaterialColor,
 );
 
-final viridianLight = createYaruLightTheme(
+final yaruViridianLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(viridian),
+    primarySwatch: viridianMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: viridian,
+    accentColor: YaruColors.viridian,
     cardColor: Colors.white,
     backgroundColor: YaruColors.porcelain,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.light,
   ),
-  primaryColor: createMaterialColor(viridian),
+  primaryColor: viridianMaterialColor,
 );
 
-final viridianDark = createYaruDarkTheme(
+final yaruViridianDark = createYaruDarkTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(viridian),
+    primarySwatch: viridianMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: viridian,
+    accentColor: YaruColors.viridian,
     cardColor: YaruColors.jet,
     backgroundColor: YaruColors.jet,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.dark,
   ),
-  primaryColor: createMaterialColor(viridian),
+  primaryColor: viridianMaterialColor,
 );
 
-final purpleLight = createYaruLightTheme(
+final yaruPurpleLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(purple),
+    primarySwatch: purpleMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: purple,
+    accentColor: YaruColors.purple,
     cardColor: Colors.white,
     backgroundColor: YaruColors.porcelain,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.light,
   ),
-  primaryColor: createMaterialColor(purple),
+  primaryColor: purpleMaterialColor,
 );
 
-final purpleDark = createYaruDarkTheme(
+final yaruPurpleDark = createYaruDarkTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(purple),
+    primarySwatch: purpleMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: purple,
+    accentColor: YaruColors.purple,
     cardColor: YaruColors.jet,
     backgroundColor: YaruColors.jet,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.dark,
   ),
-  primaryColor: createMaterialColor(purple),
+  primaryColor: purpleMaterialColor,
 );
 
-final redLight = createYaruLightTheme(
+final yaruRedLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(red),
+    primarySwatch: redMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: red,
+    accentColor: YaruColors.red,
     cardColor: Colors.white,
     backgroundColor: YaruColors.porcelain,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.light,
   ),
-  primaryColor: createMaterialColor(red),
+  primaryColor: redMaterialColor,
 );
 
-final redDark = createYaruDarkTheme(
+final yaruRedDark = createYaruDarkTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(red),
+    primarySwatch: redMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: red,
+    accentColor: YaruColors.red,
     cardColor: YaruColors.jet,
     backgroundColor: YaruColors.jet,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.dark,
   ),
-  primaryColor: createMaterialColor(red),
+  primaryColor: redMaterialColor,
 );
 
-final blueLight = createYaruLightTheme(
+final yaruBlueLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(blue),
+    primarySwatch: blueMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: blue,
+    accentColor: YaruColors.blue,
     cardColor: Colors.white,
     backgroundColor: YaruColors.porcelain,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.light,
   ),
-  primaryColor: createMaterialColor(blue),
+  primaryColor: blueMaterialColor,
 );
 
-final blueDark = createYaruDarkTheme(
+final yaruBlueDark = createYaruDarkTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(blue),
+    primarySwatch: blueMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: blue,
+    accentColor: YaruColors.blue,
     cardColor: YaruColors.jet,
     backgroundColor: YaruColors.jet,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.dark,
   ),
-  primaryColor: createMaterialColor(blue),
+  primaryColor: blueMaterialColor,
 );
 
-final magentaLight = createYaruLightTheme(
+final yarMagentaLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(magenta),
+    primarySwatch: magentaMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: magenta,
+    accentColor: YaruColors.magenta,
     cardColor: Colors.white,
     backgroundColor: YaruColors.porcelain,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.light,
   ),
-  primaryColor: createMaterialColor(magenta),
+  primaryColor: magentaMaterialColor,
 );
 
-final magentaDark = createYaruDarkTheme(
+final yaruMagentaDark = createYaruDarkTheme(
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: createMaterialColor(magenta),
+    primarySwatch: magentaMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
-    accentColor: magenta,
+    accentColor: YaruColors.magenta,
     cardColor: YaruColors.jet,
     backgroundColor: YaruColors.jet,
-    errorColor: YaruColors.red,
+    errorColor: YaruColors.errorRed,
     brightness: Brightness.dark,
   ),
-  primaryColor: createMaterialColor(magenta),
+  primaryColor: magentaMaterialColor,
 );

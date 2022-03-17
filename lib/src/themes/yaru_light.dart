@@ -10,7 +10,7 @@ final _lightColorScheme = ColorScheme.fromSwatch(
   accentColor: _primaryColor,
   cardColor: Colors.white,
   backgroundColor: YaruColors.porcelain,
-  errorColor: YaruColors.red,
+  errorColor: YaruColors.errorRed,
   brightness: Brightness.light,
 );
 
