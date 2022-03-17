@@ -36,7 +36,7 @@ class YaruColors {
 
   static const Color coolGrey = Color(0xFF333333);
   static const Color textGrey = Color(0xFF111111);
-  static const Color errorRed = Color(0xFFff0000);
+  static const Color red = Color(0xFFff0000);
   static const Color yellow = Color(0xFFf99b11);
   static const Color green = Color(0xFF0e8420);
   static const Color disabledGreyDark = Color(0xFF535353);
@@ -47,7 +47,7 @@ class YaruColors {
   static const bark = Color(0xFF787859);
   static const viridian = Color(0xFF03875B);
   static const purple = Color(0xFF8856EB);
-  static const red = Color(0xFFE61D34);
+  static const lightRed = Color(0xFFE61D34);
   static const blue = Color(0xFF0073E5);
   static const magenta = Color(0xFFBC33DB);
 
