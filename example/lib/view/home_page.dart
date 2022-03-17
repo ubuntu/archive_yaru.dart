@@ -73,60 +73,53 @@ class _HomePageState extends State<HomePage> {
                 darkTheme.value = yaruDark;
               }),
           ColorDisk(
-              color: olive,
-              selected:
-                  Theme.of(context).primaryColor == createMaterialColor(olive),
+              color: YaruColors.olive,
+              selected: Theme.of(context).primaryColor == oliveMaterialColor,
               onPressed: () {
-                lightTheme.value = oliveLight;
-                darkTheme.value = oliveDark;
+                lightTheme.value = yaruOliveLight;
+                darkTheme.value = yaruOliveDark;
               }),
           ColorDisk(
-              color: bark,
-              selected:
-                  Theme.of(context).primaryColor == createMaterialColor(bark),
+              color: YaruColors.bark,
+              selected: Theme.of(context).primaryColor == barkMaterialColor,
               onPressed: () {
-                lightTheme.value = barkLight;
-                darkTheme.value = barkDark;
+                lightTheme.value = yaruBarkLight;
+                darkTheme.value = yaruBarkDark;
               }),
           ColorDisk(
-              color: viridian,
-              selected: Theme.of(context).primaryColor ==
-                  createMaterialColor(viridian),
+              color: YaruColors.viridian,
+              selected: Theme.of(context).primaryColor == viridianMaterialColor,
               onPressed: () {
-                lightTheme.value = viridianLight;
-                darkTheme.value = viridianDark;
+                lightTheme.value = yaruViridianLight;
+                darkTheme.value = yaruViridianDark;
               }),
           ColorDisk(
-              color: purple,
-              selected:
-                  Theme.of(context).primaryColor == createMaterialColor(purple),
+              color: YaruColors.purple,
+              selected: Theme.of(context).primaryColor == purpleMaterialColor,
               onPressed: () {
-                lightTheme.value = purpleLight;
-                darkTheme.value = purpleDark;
+                lightTheme.value = yaruPurpleLight;
+                darkTheme.value = yaruPurpleDark;
               }),
           ColorDisk(
-              color: red,
-              selected:
-                  Theme.of(context).primaryColor == createMaterialColor(red),
+              color: YaruColors.red,
+              selected: Theme.of(context).primaryColor == redMaterialColor,
               onPressed: () {
-                lightTheme.value = redLight;
-                darkTheme.value = redDark;
+                lightTheme.value = yaruRedLight;
+                darkTheme.value = yaruRedDark;
               }),
           ColorDisk(
-              color: blue,
-              selected:
-                  Theme.of(context).primaryColor == createMaterialColor(blue),
+              color: YaruColors.blue,
+              selected: Theme.of(context).primaryColor == blueMaterialColor,
               onPressed: () {
-                lightTheme.value = blueLight;
-                darkTheme.value = blueDark;
+                lightTheme.value = yaruBlueLight;
+                darkTheme.value = yaruBlueDark;
               }),
           ColorDisk(
-              color: magenta,
-              selected: Theme.of(context).primaryColor ==
-                  createMaterialColor(magenta),
+              color: YaruColors.magenta,
+              selected: Theme.of(context).primaryColor == magentaMaterialColor,
               onPressed: () {
-                lightTheme.value = magentaLight;
-                darkTheme.value = magentaDark;
+                lightTheme.value = yarMagentaLight;
+                darkTheme.value = yaruMagentaDark;
               }),
           SizedBox(
             width: 20,

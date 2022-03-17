@@ -22,58 +22,6 @@ class YaruColors {
     900: Color(0xFF2F1106),
   });
 
-  static const int _lightAuberginePrimaryValue = 0xFF77216F;
-
-  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/lightAubergine.png)
-  static const MaterialColor lightAubergine =
-      MaterialColor(_lightAuberginePrimaryValue, {
-    50: Color(0xFFF1E8F0),
-    100: Color(0xFFE3D2E2),
-    200: Color(0xFFC8A6C5),
-    300: Color(0xFFAD79A8),
-    400: Color(0xFF924D8B),
-    500: Color(_lightAuberginePrimaryValue),
-  });
-
-  static const int _midAuberginePrimaryValue = 0xFF5E2750;
-
-  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/midAubergine.png)
-  static const MaterialColor midAubergine =
-      MaterialColor(_midAuberginePrimaryValue, {
-    50: Color(0xFFEEE9ED),
-    100: Color(0xFFDED3DC),
-    200: Color(0xFFBEA8B9),
-    300: Color(0xFF9E7D96),
-    400: Color(0xFF7E5273),
-    500: Color(_midAuberginePrimaryValue),
-  });
-
-  static const int _canonicalAuberginePrimaryValue = 0xFF772953;
-
-  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/canonicalAubergine.png)
-  static const MaterialColor canonicalAubergine =
-      MaterialColor(_canonicalAuberginePrimaryValue, {
-    50: Color(0xFFF1E9ED),
-    100: Color(0xFFE3D4DC),
-    200: Color(0xFFC8A9BA),
-    300: Color(0xFFAD7E97),
-    400: Color(0xFF925375),
-    500: Color(_canonicalAuberginePrimaryValue),
-  });
-
-  static const int _darkAuberginePrimaryValue = 0xFF2C001E;
-
-  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/darkAubergine.png)
-  static const MaterialColor darkAubergine =
-      MaterialColor(_darkAuberginePrimaryValue, {
-    50: Color(0xFFE9E5E8),
-    100: Color(0xFFD4CCD2),
-    200: Color(0xFFAA99A5),
-    300: Color(0xFF806678),
-    400: Color(0xFF56334B),
-    500: Color(_darkAuberginePrimaryValue),
-  });
-
   static const int _warmGreyPrimaryValue = 0xFFAEA79F;
 
   ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/warmGrey.png)
@@ -88,14 +36,38 @@ class YaruColors {
 
   static const Color coolGrey = Color(0xFF333333);
   static const Color textGrey = Color(0xFF111111);
-  static const Color red = Color(0xFFff0000);
+  static const Color errorRed = Color(0xFFff0000);
   static const Color yellow = Color(0xFFf99b11);
   static const Color green = Color(0xFF0e8420);
-  static const Color blue = Color(0xFF19B6EE);
-  static const Color linkBlue = Color(0xFF007aa6);
-  static const Color darkBlue = Color(0xFF335280);
   static const Color disabledGreyDark = Color(0xFF535353);
   static const Color porcelain = Color(0xFFFAFAFA);
   static const Color inkstone = Color(0xFF3B3B3B);
   static const Color jet = Color(0xFF2B2B2B);
+  static const olive = Color(0xFF4B8501);
+  static const bark = Color(0xFF787859);
+  static const viridian = Color(0xFF03875B);
+  static const purple = Color(0xFF8856EB);
+  static const red = Color(0xFFE61D34);
+  static const blue = Color(0xFF0073E5);
+  static const magenta = Color(0xFFBC33DB);
+
+  static MaterialColor createMaterialColor(Color color) {
+    List strengths = <double>[.05];
+    Map<int, Color> swatch = {};
+    final int r = color.red, g = color.green, b = color.blue;
+
+    for (int i = 1; i < 10; i++) {
+      strengths.add(0.1 * i);
+    }
+    for (var strength in strengths) {
+      final double ds = 0.5 - strength;
+      swatch[(strength * 1000).round()] = Color.fromRGBO(
+        r + ((ds < 0 ? r : (255 - r)) * ds).round(),
+        g + ((ds < 0 ? g : (255 - g)) * ds).round(),
+        b + ((ds < 0 ? b : (255 - b)) * ds).round(),
+        1,
+      );
+    }
+    return MaterialColor(color.value, swatch);
+  }
 }
