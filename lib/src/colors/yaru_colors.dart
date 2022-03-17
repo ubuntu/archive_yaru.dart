@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart' show Color, MaterialColor;
 
-/// The Ubuntu color palette
-/// [](https://design.ubuntu.com/brand/colour-palette)
 class YaruColors {
   YaruColors._();
 
   static const int _ubuntuOrangePrimaryValue = 0xFFE95420;
 
-  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/orange.png)
   static const MaterialColor ubuntuOrange =
       MaterialColor(_ubuntuOrangePrimaryValue, {
     50: Color(0xFFFDEEE9),
@@ -24,7 +21,6 @@ class YaruColors {
 
   static const int _warmGreyPrimaryValue = 0xFFAEA79F;
 
-  ///![](https://raw.githubusercontent.com/ubuntu/yaru.dart/main/doc/api/src/utils/colors/warmGrey.png)
   static const MaterialColor warmGrey = MaterialColor(_warmGreyPrimaryValue, {
     50: Color(0xFFF6F6F5),
     100: Color(0xFFEEEDEB),
