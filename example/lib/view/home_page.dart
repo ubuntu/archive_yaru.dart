@@ -101,8 +101,8 @@ class _HomePageState extends State<HomePage> {
                 darkTheme.value = yaruPurpleDark;
               }),
           ColorDisk(
-              color: YaruColors.red,
-              selected: Theme.of(context).primaryColor == redMaterialColor,
+              color: YaruColors.lightRed,
+              selected: Theme.of(context).primaryColor == lightRedMaterialColor,
               onPressed: () {
                 lightTheme.value = yaruRedLight;
                 darkTheme.value = yaruRedDark;

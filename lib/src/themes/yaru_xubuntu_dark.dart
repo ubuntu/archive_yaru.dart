@@ -11,7 +11,7 @@ final _darkColorScheme = ColorScheme.fromSwatch(
   accentColor: _primaryColor,
   cardColor: YaruColors.jet,
   backgroundColor: YaruColors.jet,
-  errorColor: YaruColors.errorRed,
+  errorColor: YaruColors.red,
   brightness: Brightness.dark,
 );
 
