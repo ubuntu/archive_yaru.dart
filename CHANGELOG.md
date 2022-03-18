@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.2.4
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Two more accent colors (#141)
+
 # 0.2.3
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Add new accent colors from https://github.com/ubuntu/yaru/pull/3486 (#137)
