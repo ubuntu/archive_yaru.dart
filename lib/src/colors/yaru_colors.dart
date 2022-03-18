@@ -39,13 +39,15 @@ class YaruColors {
   static const Color porcelain = Color(0xFFFAFAFA);
   static const Color inkstone = Color(0xFF3B3B3B);
   static const Color jet = Color(0xFF2B2B2B);
-  static const olive = Color(0xFF4B8501);
-  static const bark = Color(0xFF787859);
-  static const viridian = Color(0xFF03875B);
-  static const purple = Color(0xFF8856EB);
-  static const lightRed = Color(0xFFE61D34);
-  static const blue = Color(0xFF0073E5);
-  static const magenta = Color(0xFFBC33DB);
+  static const Color olive = Color(0xFF4B8501);
+  static const Color bark = Color(0xFF787859);
+  static const Color sage = Color(0xFF657B69);
+  static const Color prussianGreen = Color(0xFF308280);
+  static const Color viridian = Color(0xFF03875B);
+  static const Color purple = Color(0xFF8856EB);
+  static const Color lightRed = Color(0xFFE61D34);
+  static const Color blue = Color(0xFF0073E5);
+  static const Color magenta = Color(0xFFBC33DB);
 
   static MaterialColor createMaterialColor(Color color) {
     List strengths = <double>[.05];

@@ -15,7 +15,7 @@ class ColorDisk extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 50,
+      width: 42,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextButton(
