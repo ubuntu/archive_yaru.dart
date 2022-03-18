@@ -4,6 +4,9 @@ import 'package:yaru/src/themes/common_themes.dart';
 
 final oliveMaterialColor = YaruColors.createMaterialColor(YaruColors.olive);
 final barkMaterialColor = YaruColors.createMaterialColor(YaruColors.bark);
+final sageMaterialColor = YaruColors.createMaterialColor(YaruColors.sage);
+final prussianGreenMaterialColor =
+    YaruColors.createMaterialColor(YaruColors.prussianGreen);
 final viridianMaterialColor =
     YaruColors.createMaterialColor(YaruColors.viridian);
 final purpleMaterialColor = YaruColors.createMaterialColor(YaruColors.purple);
@@ -11,6 +14,58 @@ final lightRedMaterialColor =
     YaruColors.createMaterialColor(YaruColors.lightRed);
 final blueMaterialColor = YaruColors.createMaterialColor(YaruColors.blue);
 final magentaMaterialColor = YaruColors.createMaterialColor(YaruColors.magenta);
+
+final yaruSageLight = createYaruLightTheme(
+  colorScheme: ColorScheme.fromSwatch(
+    primarySwatch: sageMaterialColor,
+    primaryColorDark: YaruColors.coolGrey,
+    accentColor: YaruColors.sage,
+    cardColor: Colors.white,
+    backgroundColor: YaruColors.porcelain,
+    errorColor: YaruColors.red,
+    brightness: Brightness.light,
+  ),
+  primaryColor: sageMaterialColor,
+);
+
+final yaruSageDark = createYaruDarkTheme(
+  colorScheme: ColorScheme.fromSwatch(
+    primarySwatch: sageMaterialColor,
+    primaryColorDark: YaruColors.coolGrey,
+    accentColor: YaruColors.sage,
+    cardColor: YaruColors.jet,
+    backgroundColor: YaruColors.jet,
+    errorColor: YaruColors.red,
+    brightness: Brightness.dark,
+  ),
+  primaryColor: sageMaterialColor,
+);
+
+final yaruPrussianGreenLight = createYaruLightTheme(
+  colorScheme: ColorScheme.fromSwatch(
+    primarySwatch: prussianGreenMaterialColor,
+    primaryColorDark: YaruColors.coolGrey,
+    accentColor: YaruColors.prussianGreen,
+    cardColor: Colors.white,
+    backgroundColor: YaruColors.porcelain,
+    errorColor: YaruColors.red,
+    brightness: Brightness.light,
+  ),
+  primaryColor: prussianGreenMaterialColor,
+);
+
+final yaruPrussianGreenDark = createYaruDarkTheme(
+  colorScheme: ColorScheme.fromSwatch(
+    primarySwatch: prussianGreenMaterialColor,
+    primaryColorDark: YaruColors.coolGrey,
+    accentColor: YaruColors.prussianGreen,
+    cardColor: YaruColors.jet,
+    backgroundColor: YaruColors.jet,
+    errorColor: YaruColors.red,
+    brightness: Brightness.dark,
+  ),
+  primaryColor: prussianGreenMaterialColor,
+);
 
 final yaruOliveLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(

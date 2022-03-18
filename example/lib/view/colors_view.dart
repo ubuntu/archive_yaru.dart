@@ -19,7 +19,7 @@ class ColorsView extends StatelessWidget {
             Expanded(child: colorPaletteExample('bark', barkMaterialColor)),
           ],
         ),
-        Divider(height: 50.0, color: Colors.black),
+        Divider(height: 50.0),
         Row(
           children: [
             Expanded(
@@ -30,13 +30,28 @@ class ColorsView extends StatelessWidget {
             Expanded(child: colorPaletteExample('red', lightRedMaterialColor)),
           ],
         ),
-        Divider(height: 50.0, color: Colors.black),
+        Divider(height: 50.0),
         Row(
           children: [
             Expanded(child: colorPaletteExample('blue', blueMaterialColor)),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample('magenta', magentaMaterialColor)),
+            SizedBox(width: 25.0),
+            Expanded(
+                child: colorPaletteExample('sageMaterial', sageMaterialColor)),
+          ],
+        ),
+        Divider(height: 50.0),
+        Row(
+          children: [
+            Expanded(
+                child: colorPaletteExample(
+                    'prussianGreen', prussianGreenMaterialColor)),
+            SizedBox(width: 25.0),
+            Expanded(
+                child: colorPaletteExample(
+                    'jet', YaruColors.createMaterialColor(YaruColors.jet))),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample('warmGrey', YaruColors.warmGrey)),
