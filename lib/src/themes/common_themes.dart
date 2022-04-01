@@ -172,9 +172,11 @@ Color _getCheckFillColor(Set<MaterialState> states, MaterialColor selectedColor,
       : YaruColors.warmGrey.shade300;
 }
 
-Color _getCheckColor(Set<MaterialState> states) {
+Color _getCheckColor(Set<MaterialState> states, Color color) {
   if (!states.contains(MaterialState.disabled)) {
-    return Colors.white;
+    return ThemeData.estimateBrightnessForColor(color) == Brightness.light
+        ? Colors.black
+        : Colors.white;
   }
   return YaruColors.warmGrey;
 }
@@ -187,7 +189,8 @@ CheckboxThemeData _getCheckBoxThemeData(
     ),
     fillColor: MaterialStateProperty.resolveWith(
         (states) => _getCheckFillColor(states, primaryColor, brightness)),
-    checkColor: MaterialStateProperty.resolveWith(_getCheckColor),
+    checkColor: MaterialStateProperty.resolveWith(
+        (states) => _getCheckColor(states, primaryColor.shade500)),
   );
 }
 
