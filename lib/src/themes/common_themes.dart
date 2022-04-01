@@ -83,7 +83,9 @@ ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
     primary: color,
-    onPrimary: Colors.white,
+    onPrimary: ThemeData.estimateBrightnessForColor(color) == Brightness.light
+        ? Colors.black
+        : Colors.white,
     visualDensity: _commonButtonStyle.visualDensity,
     elevation: 0,
     shape: RoundedRectangleBorder(
@@ -245,7 +247,7 @@ ThemeData createYaruDarkTheme(
     required MaterialColor primaryColor,
     Color? elevatedButtonColor}) {
   return ThemeData(
-    tabBarTheme: TabBarTheme(labelColor: colorScheme.onBackground),
+    tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
     dialogTheme: _dialogThemeDark,
     brightness: Brightness.dark,
     primaryColor: colorScheme.primary,
@@ -276,7 +278,7 @@ ThemeData createYaruDarkTheme(
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
-      unselectedItemColor: colorScheme.onBackground.withOpacity(0.8),
+      unselectedItemColor: Colors.white.withOpacity(0.8),
     ),
     inputDecorationTheme: inputDecorationTheme,
     toggleButtonsTheme: _toggleButtonsTheme,

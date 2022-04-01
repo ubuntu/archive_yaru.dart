@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
   final textController = TextEditingController(
       text:
           'My code fails, I do not know why.\nMy code works, I do not know why.\nText in other scripts: Tamaziɣt Taqbaylit, 中文(简体), Čeština, Беларуская, Ελληνικά, עברית, Русский, བོད་ཡིག, Norsk bokmål.');
-  var themeName = 'Yaru-light';
 
   int _selectedIndex = 0;
   final List<Widget> _views = <Widget>[
@@ -64,6 +63,16 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: [
+          ColorDisk(
+              color: themeMode.value == ThemeMode.light
+                  ? Colors.black
+                  : Colors.white,
+              selected: (lightTheme.value == yaruHighContrastLight ||
+                  darkTheme.value == yaruHighContrastDark),
+              onPressed: () {
+                lightTheme.value = yaruHighContrastLight;
+                darkTheme.value = yaruHighContrastDark;
+              }),
           ColorDisk(
               color: YaruColors.ubuntuOrange,
               selected:
