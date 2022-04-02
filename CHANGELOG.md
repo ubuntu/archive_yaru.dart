@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.2.5
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Add high contrast themes (#144)
+
 # 0.2.4
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Two more accent colors (#141)
