@@ -1,6 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/src/colors/yaru_colors.dart';
 import 'package:yaru/src/themes/common_themes.dart';
+import 'package:yaru/src/themes/yaru_dark.dart';
+import 'package:yaru/src/themes/yaru_light.dart';
+
+enum YaruAccent {
+  orange,
+  bark,
+  sage,
+  olive,
+  viridian,
+  prussianGreen,
+  blue,
+  purple,
+  magenta,
+  red,
+}
+
+ThemeData getYaruLightTheme(YaruAccent accent) {
+  return _yaruLightThemes[accent] ?? yaruLight;
+}
+
+ThemeData getYaruDarkTheme(YaruAccent accent) {
+  return _yaruDarkThemes[accent] ?? yaruDark;
+}
+
+final _yaruLightThemes = <YaruAccent, ThemeData>{
+  YaruAccent.orange: yaruLight,
+  YaruAccent.bark: yaruBarkLight,
+  YaruAccent.sage: yaruSageLight,
+  YaruAccent.olive: yaruOliveLight,
+  YaruAccent.viridian: yaruViridianLight,
+  YaruAccent.prussianGreen: yaruPrussianGreenLight,
+  YaruAccent.blue: yaruBlueLight,
+  YaruAccent.purple: yaruPurpleLight,
+  YaruAccent.magenta: yaruMagentaLight,
+  YaruAccent.red: yaruRedLight,
+};
+
+final _yaruDarkThemes = <YaruAccent, ThemeData>{
+  YaruAccent.orange: yaruDark,
+  YaruAccent.bark: yaruBarkDark,
+  YaruAccent.sage: yaruSageDark,
+  YaruAccent.olive: yaruOliveDark,
+  YaruAccent.viridian: yaruViridianDark,
+  YaruAccent.prussianGreen: yaruPrussianGreenDark,
+  YaruAccent.blue: yaruBlueDark,
+  YaruAccent.purple: yaruPurpleDark,
+  YaruAccent.magenta: yaruMagentaDark,
+  YaruAccent.red: yaruRedDark,
+};
 
 final oliveMaterialColor = YaruColors.createMaterialColor(YaruColors.olive);
 final barkMaterialColor = YaruColors.createMaterialColor(YaruColors.bark);
