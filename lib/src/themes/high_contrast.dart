@@ -3,30 +3,22 @@ import 'package:yaru/src/colors/yaru_colors.dart';
 
 import 'package:yaru/src/themes/common_themes.dart';
 
-final b = YaruColors.createMaterialColor(Colors.black);
 final yaruHighContrastLight = createYaruLightTheme(
-  colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: b,
-    primaryColorDark: YaruColors.coolGrey,
-    accentColor: Colors.black,
-    cardColor: Colors.white,
-    backgroundColor: Colors.white,
-    errorColor: YaruColors.red,
-    brightness: Brightness.light,
+  colorScheme: const ColorScheme.highContrastLight(
+    primary: Colors.black,
+    secondary: Colors.black,
+    onSecondary: Colors.white,
+    error: YaruColors.red,
   ),
-  primaryColor: b,
+  primaryColor: Colors.black,
 );
 
-final w = YaruColors.createMaterialColor(Colors.white);
 final yaruHighContrastDark = createYaruDarkTheme(
-  colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: w,
-    primaryColorDark: Colors.white,
-    accentColor: Colors.white,
-    cardColor: Colors.black,
-    backgroundColor: Colors.black,
-    errorColor: YaruColors.red,
-    brightness: Brightness.dark,
+  colorScheme: const ColorScheme.highContrastDark(
+    primary: Colors.white,
+    secondary: Colors.white,
+    onSecondary: Colors.black,
+    error: YaruColors.red,
   ),
-  primaryColor: w,
+  primaryColor: Colors.white,
 );

@@ -112,8 +112,7 @@ final _dialogThemeLight = DialogTheme(
 
 // Switches
 
-SwitchThemeData _getSwitchThemeData(
-    MaterialColor primaryColor, Brightness brightness) {
+SwitchThemeData _getSwitchThemeData(Color primaryColor, Brightness brightness) {
   return SwitchThemeData(
       thumbColor: MaterialStateProperty.resolveWith(
           (states) => _getSwitchThumbColor(states, primaryColor, brightness)),
@@ -121,8 +120,8 @@ SwitchThemeData _getSwitchThemeData(
           (states) => _getSwitchTrackColor(states, primaryColor, brightness)));
 }
 
-Color _getSwitchThumbColor(Set<MaterialState> states,
-    MaterialColor selectedColor, Brightness brightness) {
+Color _getSwitchThumbColor(
+    Set<MaterialState> states, Color selectedColor, Brightness brightness) {
   if (states.contains(MaterialState.disabled)) {
     return brightness == Brightness.dark
         ? YaruColors.disabledGreyDark
@@ -136,8 +135,8 @@ Color _getSwitchThumbColor(Set<MaterialState> states,
   }
 }
 
-Color _getSwitchTrackColor(Set<MaterialState> states,
-    MaterialColor selectedColor, Brightness brightness) {
+Color _getSwitchTrackColor(
+    Set<MaterialState> states, Color selectedColor, Brightness brightness) {
   if (states.contains(MaterialState.disabled)) {
     return brightness == Brightness.dark
         ? YaruColors.disabledGreyDark.withAlpha(120)
@@ -157,8 +156,8 @@ Color _getSwitchTrackColor(Set<MaterialState> states,
 
 // Checks & Radios
 
-Color _getCheckFillColor(Set<MaterialState> states, MaterialColor selectedColor,
-    Brightness brightness) {
+Color _getCheckFillColor(
+    Set<MaterialState> states, Color selectedColor, Brightness brightness) {
   if (!states.contains(MaterialState.disabled)) {
     if (states.contains(MaterialState.selected)) {
       return selectedColor;
@@ -182,7 +181,7 @@ Color _getCheckColor(Set<MaterialState> states, Color color) {
 }
 
 CheckboxThemeData _getCheckBoxThemeData(
-    MaterialColor primaryColor, Brightness brightness) {
+    Color primaryColor, Brightness brightness) {
   return CheckboxThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(kCheckRadius),
@@ -190,12 +189,11 @@ CheckboxThemeData _getCheckBoxThemeData(
     fillColor: MaterialStateProperty.resolveWith(
         (states) => _getCheckFillColor(states, primaryColor, brightness)),
     checkColor: MaterialStateProperty.resolveWith(
-        (states) => _getCheckColor(states, primaryColor.shade500)),
+        (states) => _getCheckColor(states, primaryColor)),
   );
 }
 
-RadioThemeData _getRadioThemeData(
-    MaterialColor primaryColor, Brightness brightness) {
+RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
   return RadioThemeData(
       fillColor: MaterialStateProperty.resolveWith(
           (states) => _getCheckFillColor(states, primaryColor, brightness)));
@@ -204,7 +202,7 @@ RadioThemeData _getRadioThemeData(
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme(
     {required ColorScheme colorScheme,
-    required MaterialColor primaryColor,
+    required Color primaryColor,
     Color? elevatedButtonColor}) {
   return ThemeData(
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
@@ -247,7 +245,7 @@ ThemeData createYaruLightTheme(
 /// Helper function to create a new Yaru dark theme
 ThemeData createYaruDarkTheme(
     {required ColorScheme colorScheme,
-    required MaterialColor primaryColor,
+    required Color primaryColor,
     Color? elevatedButtonColor}) {
   return ThemeData(
     tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
