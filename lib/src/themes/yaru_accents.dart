@@ -223,7 +223,7 @@ final yaruBlueDark = createYaruDarkTheme(
   primaryColor: blueMaterialColor,
 );
 
-final yarMagentaLight = createYaruLightTheme(
+final yaruMagentaLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
     primarySwatch: magentaMaterialColor,
     primaryColorDark: YaruColors.coolGrey,
