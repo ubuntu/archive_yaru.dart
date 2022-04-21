@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => AppTheme.apply(context, highContrast: true)),
           for (final accent in YaruAccent.values)
             ColorDisk(
-              color: getYaruLightTheme(accent).primaryColor,
+              color: accent.color,
               selected: accent == theme.accent && theme.highContrast != true,
               onPressed: () =>
                   AppTheme.apply(context, accent: accent, highContrast: false),

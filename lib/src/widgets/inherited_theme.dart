@@ -44,29 +44,6 @@ YaruFlavor? _detectYaruFlavor(Platform platform) {
   return null;
 }
 
-const _yaruAccents = <String, YaruAccent>{
-  'Yaru': YaruAccent.orange,
-  'Yaru-dark': YaruAccent.orange,
-  'Yaru-bark': YaruAccent.bark,
-  'Yaru-bark-dark': YaruAccent.bark,
-  'Yaru-sage': YaruAccent.sage,
-  'Yaru-sage-dark': YaruAccent.sage,
-  'Yaru-olive': YaruAccent.olive,
-  'Yaru-olive-dark': YaruAccent.olive,
-  'Yaru-viridian': YaruAccent.viridian,
-  'Yaru-viridian-dark': YaruAccent.viridian,
-  'Yaru-prussiangreen': YaruAccent.prussianGreen,
-  'Yaru-prussiangreen-dark': YaruAccent.prussianGreen,
-  'Yaru-blue': YaruAccent.blue,
-  'Yaru-blue-dark': YaruAccent.blue,
-  'Yaru-purple': YaruAccent.purple,
-  'Yaru-purple-dark': YaruAccent.purple,
-  'Yaru-magenta': YaruAccent.magenta,
-  'Yaru-magenta-dark': YaruAccent.magenta,
-  'Yaru-red': YaruAccent.red,
-  'Yaru-red-dark': YaruAccent.red,
-};
-
 /// Applies Yaru theme to descendant widgets.
 ///
 /// Descendant widgets obtain the current theme's [YaruThemeData] object using
@@ -146,10 +123,29 @@ class _YaruThemeState extends State<YaruTheme> {
     }
   }
 
+  // "Yaru-prussiangreen-dark" => YaruAccent.prussianGreen
+  YaruAccent? resolveAccent(String name) {
+    if (name.endsWith('-dark')) {
+      name = name.substring(0, name.length - 5);
+    }
+    if (name.startsWith('Yaru-')) {
+      name = name.substring(5);
+    }
+    if (name == 'Yaru') {
+      return YaruAccent.orange;
+    }
+    for (var value in YaruAccent.values) {
+      if (value.name.toLowerCase() == name.toLowerCase()) {
+        return value;
+      }
+    }
+    return null;
+  }
+
   Future<void> updateAccent() async {
     assert(!kIsWeb && widget._platform.isLinux);
     final name = await _settings?.get('gtk-theme') as DBusString;
-    setState(() => _accent = _yaruAccents[name.value]);
+    setState(() => _accent = resolveAccent(name.value));
   }
 
   ThemeMode resolveMode() {

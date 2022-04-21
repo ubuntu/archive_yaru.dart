@@ -34,6 +34,28 @@ void main() {
       final settings = MockGSettings();
       when(settings.keysChanged).thenAnswer((_) => Stream.empty());
       when(settings.get('gtk-theme'))
+          .thenAnswer((_) async => DBusString('Yaru'));
+
+      await tester.pumpTheme(settings: settings);
+      final context = tester.element(find.byType(Container));
+      expect(YaruTheme.of(context).accent, YaruAccent.orange);
+    });
+
+    testWidgets('dark', (tester) async {
+      final settings = MockGSettings();
+      when(settings.keysChanged).thenAnswer((_) => Stream.empty());
+      when(settings.get('gtk-theme'))
+          .thenAnswer((_) async => DBusString('Yaru-dark'));
+
+      await tester.pumpTheme(settings: settings);
+      final context = tester.element(find.byType(Container));
+      expect(YaruTheme.of(context).accent, YaruAccent.orange);
+    });
+
+    testWidgets('color', (tester) async {
+      final settings = MockGSettings();
+      when(settings.keysChanged).thenAnswer((_) => Stream.empty());
+      when(settings.get('gtk-theme'))
           .thenAnswer((_) async => DBusString('Yaru-blue'));
 
       await tester.pumpTheme(settings: settings);
