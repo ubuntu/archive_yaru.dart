@@ -10,8 +10,17 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  dbus: ^0.7.3
   flutter:
     sdk: flutter
+  gsettings: ^0.2.5
+  platform: ^3.1.0
+
+dev_dependencies:
+  build_runner: ^2.1.10
+  flutter_test:
+    sdk: flutter
+  mockito: ^5.1.0
 
 flutter:
   fonts:
