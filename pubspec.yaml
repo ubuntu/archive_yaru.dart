@@ -18,6 +18,8 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.1.10
+  code_builder: ^4.1.0
+  dart_style: ^2.2.3
   flutter_test:
     sdk: flutter
   mockito: ^5.1.0
