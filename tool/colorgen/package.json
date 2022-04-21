@@ -1,0 +1,7 @@
+{
+  "name": "colorgen",
+  "main": "colorgen.js",
+  "dependencies": {
+    "material-color-tool": "^1.1.0"
+  }
+}
