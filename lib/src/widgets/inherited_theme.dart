@@ -8,27 +8,6 @@ import 'package:platform/platform.dart';
 
 import 'package:yaru/yaru.dart';
 
-/// Available Yaru flavors.
-enum YaruFlavor {
-  /// Ubuntu Budgie
-  budgie,
-
-  /// Kubuntu
-  kubuntu,
-
-  /// Lubuntu
-  lubuntu,
-
-  /// Ubuntu MATE
-  mate,
-
-  /// Ubuntu
-  ubuntu,
-
-  /// Xubuntu
-  xubuntu,
-}
-
 YaruFlavor? _detectYaruFlavor(Platform platform) {
   final desktop = !kIsWeb
       ? platform.environment['XDG_CURRENT_DESKTOP']?.toUpperCase()
