@@ -47,8 +47,7 @@ class ColorsView extends StatelessWidget {
                 child: colorPaletteExample(
                     'prussianGreen', YaruColors.prussianGreen)),
             SizedBox(width: 25.0),
-            Expanded(
-                child: colorPaletteExample('warmGrey', YaruColors.warmGrey)),
+            Spacer(),
             SizedBox(width: 25.0),
             Spacer(),
           ],
@@ -93,7 +92,7 @@ class ColorsView extends StatelessWidget {
 
   Widget colorPaletteExample(String colorName, MaterialColor color) {
     Map<String, MaterialColor> _color = {colorName: color};
-    int _shade = 0;
+    int _shade = 50;
     TextStyle _textStyle(int _shade) => TextStyle(
           color: (_color.values.first[_shade]!.computeLuminance() > 0.4)
               ? Colors.black
@@ -101,10 +100,9 @@ class ColorsView extends StatelessWidget {
           fontSize: 9.0,
         );
     List<Widget> _colorItem = [];
-    for (int i = 0; i < 5; i++) {
-      _shade += 100;
+    for (int i = 1; i <= 10; i++) {
       _colorItem.add(Container(
-        height: 45.0,
+        height: 40.0,
         color: _color.values.first[_shade],
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -133,6 +131,7 @@ class ColorsView extends StatelessWidget {
           ),
         ),
       ));
+      _shade = i * 100;
     }
     return Column(
       children: _colorItem,
