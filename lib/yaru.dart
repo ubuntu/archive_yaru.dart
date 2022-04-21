@@ -6,6 +6,7 @@ export 'package:yaru/src/themes/common_themes.dart';
 export 'package:yaru/src/themes/high_contrast.dart';
 export 'package:yaru/src/themes/yaru_accents.dart';
 export 'package:yaru/src/themes/yaru_dark.dart';
+export 'package:yaru/src/themes/yaru_flavors.dart';
 export 'package:yaru/src/themes/yaru_kubuntu_dark.dart';
 export 'package:yaru/src/themes/yaru_kubuntu_light.dart';
 export 'package:yaru/src/themes/yaru_light.dart';
