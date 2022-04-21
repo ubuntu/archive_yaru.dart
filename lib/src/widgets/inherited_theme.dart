@@ -13,11 +13,11 @@ YaruFlavor? _detectYaruFlavor(Platform platform) {
       ? platform.environment['XDG_CURRENT_DESKTOP']?.toUpperCase()
       : null;
   if (desktop != null) {
-    if (desktop.contains('BUDGIE')) return YaruFlavor.budgie;
+    if (desktop.contains('BUDGIE')) return YaruFlavor.ubuntuBudgie;
     if (desktop.contains('GNOME')) return YaruFlavor.ubuntu;
     if (desktop.contains('KDE')) return YaruFlavor.kubuntu;
     if (desktop.contains('LXQT')) return YaruFlavor.lubuntu;
-    if (desktop.contains('MATE')) return YaruFlavor.mate;
+    if (desktop.contains('MATE')) return YaruFlavor.ubuntuMate;
     if (desktop.contains('XFCE')) return YaruFlavor.xubuntu;
   }
   return null;
@@ -155,13 +155,13 @@ class _YaruThemeState extends State<YaruTheme> {
     }
 
     switch (data.flavor) {
-      case YaruFlavor.budgie:
+      case YaruFlavor.ubuntuBudgie:
         return dark ? yaruUbuntuBudgieDark : yaruUbuntuBudgieLight;
       case YaruFlavor.kubuntu:
         return dark ? yaruKubuntuDark : yaruKubuntuLight;
       case YaruFlavor.lubuntu:
         return dark ? yaruLubuntuDark : yaruLubuntuLight;
-      case YaruFlavor.mate:
+      case YaruFlavor.ubuntuMate:
         return dark ? yaruMateDark : yaruMateLight;
       case YaruFlavor.xubuntu:
         return dark ? yaruXubuntuDark : yaruXubuntuLight;

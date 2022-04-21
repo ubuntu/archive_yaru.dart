@@ -99,7 +99,7 @@ void main() {
     testWidgets('budgie', (tester) async {
       await tester.pumpTheme(desktop: 'budgie-desktop');
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, YaruFlavor.budgie);
+      expect(YaruTheme.of(context).flavor, YaruFlavor.ubuntuBudgie);
     });
 
     testWidgets('ubuntu', (tester) async {
@@ -123,7 +123,7 @@ void main() {
     testWidgets('mate', (tester) async {
       await tester.pumpTheme(desktop: 'MATE');
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, YaruFlavor.mate);
+      expect(YaruTheme.of(context).flavor, YaruFlavor.ubuntuMate);
     });
 
     testWidgets('xubuntu', (tester) async {

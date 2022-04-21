@@ -12,37 +12,40 @@ class YaruFlavor {
   /// The primary color of the flavor.
   final MaterialColor color;
 
-  /// Ubuntu Budgie
-  static const budgie = YaruFlavor._('budgie', FlavorColors.ubuntuBudgieBlue);
-
   /// Kubuntu
   static const kubuntu = YaruFlavor._('kubuntu', FlavorColors.kubuntuBlue);
 
   /// Lubuntu
   static const lubuntu = YaruFlavor._('lubuntu', FlavorColors.lubuntuBlue);
 
-  /// Ubuntu MATE
-  static const mate = YaruFlavor._('mate', FlavorColors.ubuntuMateGreen);
-
-  /// Ubuntu Studio
-  static const studio = YaruFlavor._('studio', FlavorColors.ubuntuStudioBlue);
-
   /// Ubuntu
   ///
   /// **Note**: Ubuntu supports multiple accent colors. See [YaruAccent].
   static const ubuntu = YaruFlavor._('ubuntu', YaruColors.ubuntuOrange);
+
+  /// Ubuntu Budgie
+  static const ubuntuBudgie =
+      YaruFlavor._('ubuntuBudgie', FlavorColors.ubuntuBudgieBlue);
+
+  /// Ubuntu MATE
+  static const ubuntuMate =
+      YaruFlavor._('ubuntuMate', FlavorColors.ubuntuMateGreen);
+
+  /// Ubuntu Studio
+  static const ubuntuStudio =
+      YaruFlavor._('ubuntuStudio', FlavorColors.ubuntuStudioBlue);
 
   /// Xubuntu
   static const xubuntu = YaruFlavor._('xubuntu', FlavorColors.xubuntuBlue);
 
   /// Available Yaru flavors.
   static const List<YaruFlavor> values = [
-    budgie,
     kubuntu,
     lubuntu,
-    mate,
-    studio,
     ubuntu,
+    ubuntuMate,
+    ubuntuBudgie,
+    ubuntuStudio,
     xubuntu,
   ];
 }
