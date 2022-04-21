@@ -14,32 +14,30 @@ class ColorsView extends StatelessWidget {
             Expanded(
                 child: colorPaletteExample('orange', YaruColors.ubuntuOrange)),
             SizedBox(width: 25.0),
-            Expanded(child: colorPaletteExample('olive', oliveMaterialColor)),
+            Expanded(child: colorPaletteExample('olive', YaruColors.olive)),
             SizedBox(width: 25.0),
-            Expanded(child: colorPaletteExample('bark', barkMaterialColor)),
+            Expanded(child: colorPaletteExample('bark', YaruColors.bark)),
           ],
         ),
         Divider(height: 50.0),
         Row(
           children: [
             Expanded(
-                child: colorPaletteExample('viridian', viridianMaterialColor)),
+                child: colorPaletteExample('viridian', YaruColors.viridian)),
             SizedBox(width: 25.0),
-            Expanded(child: colorPaletteExample('purple', purpleMaterialColor)),
+            Expanded(child: colorPaletteExample('purple', YaruColors.purple)),
             SizedBox(width: 25.0),
-            Expanded(child: colorPaletteExample('red', lightRedMaterialColor)),
+            Expanded(child: colorPaletteExample('red', YaruColors.lightRed)),
           ],
         ),
         Divider(height: 50.0),
         Row(
           children: [
-            Expanded(child: colorPaletteExample('blue', blueMaterialColor)),
+            Expanded(child: colorPaletteExample('blue', YaruColors.blue)),
             SizedBox(width: 25.0),
-            Expanded(
-                child: colorPaletteExample('magenta', magentaMaterialColor)),
+            Expanded(child: colorPaletteExample('magenta', YaruColors.magenta)),
             SizedBox(width: 25.0),
-            Expanded(
-                child: colorPaletteExample('sageMaterial', sageMaterialColor)),
+            Expanded(child: colorPaletteExample('sage', YaruColors.sage)),
           ],
         ),
         Divider(height: 50.0),
@@ -47,14 +45,12 @@ class ColorsView extends StatelessWidget {
           children: [
             Expanded(
                 child: colorPaletteExample(
-                    'prussianGreen', prussianGreenMaterialColor)),
-            SizedBox(width: 25.0),
-            Expanded(
-                child: colorPaletteExample(
-                    'jet', YaruColors.createMaterialColor(YaruColors.jet))),
+                    'prussianGreen', YaruColors.prussianGreen)),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample('warmGrey', YaruColors.warmGrey)),
+            SizedBox(width: 25.0),
+            Spacer(),
           ],
         ),
       ],
