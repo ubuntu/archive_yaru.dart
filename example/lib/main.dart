@@ -1,40 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:yaru/yaru.dart';
 import 'package:yaru_example/view/home_page.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => LightTheme(yaruLight)),
-      ChangeNotifierProvider(create: (_) => DarkTheme(yaruDark)),
-      ChangeNotifierProvider(create: (_) => AppTheme(ThemeMode.light)),
-    ],
-    child: MyApp(),
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: Builder(builder: (context) {
+        return YaruTheme(
+          data: AppTheme.of(context),
+          child: HomePage(),
+        );
+      }),
       debugShowCheckedModeBanner: false,
-      themeMode: context.watch<AppTheme>().value,
-      theme: context.watch<LightTheme>().value,
-      darkTheme: context.watch<DarkTheme>().value,
     );
   }
 }
 
-class LightTheme extends ValueNotifier<ThemeData> {
-  LightTheme(ThemeData value) : super(value);
-}
+class AppTheme {
+  static YaruThemeData of(BuildContext context) {
+    return SharedAppData.getValue(context, 'theme', () => YaruThemeData());
+  }
 
-class DarkTheme extends ValueNotifier<ThemeData> {
-  DarkTheme(ThemeData value) : super(value);
-}
-
-class AppTheme extends ValueNotifier<ThemeMode> {
-  AppTheme(ThemeMode value) : super(value);
+  static void apply(
+    BuildContext context, {
+    YaruAccent? accent,
+    YaruFlavor? flavor,
+    bool? highContrast,
+    ThemeMode? themeMode,
+  }) {
+    SharedAppData.setValue(
+      context,
+      'theme',
+      AppTheme.of(context).copyWith(
+        themeMode: themeMode,
+        accent: accent,
+        flavor: flavor,
+        highContrast: highContrast,
+      ),
+    );
+  }
 }

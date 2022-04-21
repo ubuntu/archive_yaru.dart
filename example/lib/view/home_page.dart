@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:yaru/yaru.dart';
 import 'package:yaru_example/main.dart';
 import 'package:yaru_example/view/color_disk.dart';
@@ -41,9 +40,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = context.watch<AppTheme>();
-    final lightTheme = context.read<LightTheme>();
-    final darkTheme = context.read<DarkTheme>();
+    final theme = YaruTheme.of(context);
     return Scaffold(
       appBar: AppBar(
         leading: SizedBox(
@@ -54,34 +51,29 @@ class _HomePageState extends State<HomePage> {
                 style: TextButton.styleFrom(
                     padding: const EdgeInsets.all(0),
                     shape: const CircleBorder()),
-                onPressed: () => themeMode.value == ThemeMode.light
-                    ? themeMode.value = ThemeMode.dark
-                    : themeMode.value = ThemeMode.light,
-                child: Icon(themeMode.value == ThemeMode.light
+                onPressed: () => AppTheme.apply(context,
+                    themeMode: theme.themeMode == ThemeMode.light
+                        ? ThemeMode.dark
+                        : ThemeMode.light),
+                child: Icon(theme.themeMode == ThemeMode.light
                     ? Icons.dark_mode
                     : Icons.light_mode)),
           ),
         ),
         actions: [
           ColorDisk(
-              color: themeMode.value == ThemeMode.light
+              color: theme.themeMode == ThemeMode.light
                   ? Colors.black
                   : Colors.white,
-              selected: (lightTheme.value == yaruHighContrastLight ||
-                  darkTheme.value == yaruHighContrastDark),
-              onPressed: () {
-                lightTheme.value = yaruHighContrastLight;
-                darkTheme.value = yaruHighContrastDark;
-              }),
+              selected: theme.highContrast == true,
+              onPressed: () => AppTheme.apply(context, highContrast: true)),
           for (final accent in YaruAccent.values)
             ColorDisk(
-                color: getYaruLightTheme(accent).primaryColor,
-                selected: Theme.of(context).primaryColor ==
-                    getYaruLightTheme(accent).primaryColor,
-                onPressed: () {
-                  lightTheme.value = getYaruLightTheme(accent);
-                  darkTheme.value = getYaruDarkTheme(accent);
-                }),
+              color: getYaruLightTheme(accent).primaryColor,
+              selected: accent == theme.accent && theme.highContrast != true,
+              onPressed: () =>
+                  AppTheme.apply(context, accent: accent, highContrast: false),
+            ),
           SizedBox(
             width: 20,
           ),

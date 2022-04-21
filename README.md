@@ -13,31 +13,36 @@ To be able to use this package follow this steps:
     ```dart
     import 'package:yaru/yaru.dart';
     ```
-3. Inside your `MaterialApp` set `theme` to `yarulight` which is the standard light theme and `darkTheme` to `yaruDark` to get the yaru dark theme. The `darkTheme` property is used when you toggle your system theme to dark:
+3. Create `YaruTheme`
    
     ```dart
     MaterialApp(
-          theme: yaruLight,
-          darkTheme: yaruDark,
-          home: Scaffold(
-            appBar: AppBar(
-              title: Text('Yaru Theme'),
-            ),
-            body: Container(),
+      home: YaruTheme(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Yaru Theme'),
           ),
-        );
+          body: Container(),
+        ),
+      ),
+    );
     ```
 
-## yaru.dart flavors
+## Flavors and accent colors
 
-Yaru comes in 7x2 different versions:
-- `yaruLight` & `yaruDark`
-- `yaruXubuntuLight` & `yaruXubuntuDark`
-- `yaruKubuntuLight` & `yaruKubuntuDark`
-- `yaruLubuntuLight` & `yaruLubuntuDark`
-- `yaruUbuntuStudioLight` & `yaruUbuntuStudioDark`
-- `yaruMateLight` & `yaruMateDark`
-- `yaruUbuntuBudgieLight` & `yaruUbuntuBudgieDark`
+Yaru comes in several flavors and accent colors. The `YaruTheme` widget detects
+the appropriate flavor and accent color from the system on Linux, and defaults
+to `YaruFlavor.ubuntu` and `YaruAccent.orange` on other platforms. Applications
+may choose a specific flavor and accent color by manually setting the `accent`
+and `flavor` properties, respectively.
+
+   ```dart
+   YaruTheme(
+     accent: YaruAccent.red,
+     flavor: YaruFlavor.ubuntu,
+     child: ...
+   )
+   ```
 
 ## Contributing to yaru.dart
 
