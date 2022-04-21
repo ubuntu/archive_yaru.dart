@@ -4,17 +4,36 @@ import 'package:yaru/src/themes/common_themes.dart';
 import 'package:yaru/src/themes/yaru_dark.dart';
 import 'package:yaru/src/themes/yaru_light.dart';
 
-enum YaruAccent {
-  orange,
-  bark,
-  sage,
-  olive,
-  viridian,
-  prussianGreen,
-  blue,
-  purple,
-  magenta,
-  red,
+class YaruAccent {
+  const YaruAccent._(this.name, this.color);
+
+  final String name;
+  final MaterialColor color;
+
+  static const orange = YaruAccent._('orange', YaruColors.ubuntuOrange);
+  static const bark = YaruAccent._('bark', YaruColors.bark);
+  static const sage = YaruAccent._('sage', YaruColors.sage);
+  static const olive = YaruAccent._('olive', YaruColors.olive);
+  static const viridian = YaruAccent._('viridian', YaruColors.viridian);
+  static const prussianGreen =
+      YaruAccent._('prussianGreen', YaruColors.prussianGreen);
+  static const blue = YaruAccent._('blue', YaruColors.blue);
+  static const purple = YaruAccent._('purple', YaruColors.purple);
+  static const magenta = YaruAccent._('magenta', YaruColors.magenta);
+  static const red = YaruAccent._('red', YaruColors.lightRed);
+
+  static const List<YaruAccent> values = [
+    orange,
+    bark,
+    sage,
+    olive,
+    viridian,
+    prussianGreen,
+    blue,
+    purple,
+    magenta,
+    red,
+  ];
 }
 
 ThemeData getYaruLightTheme(YaruAccent accent) {
