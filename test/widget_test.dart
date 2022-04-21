@@ -160,7 +160,10 @@ extension ThemeTester on WidgetTester {
       home: YaruTheme(
         child: Container(),
         data: data,
-        platform: FakePlatform(environment: {'XDG_CURRENT_DESKTOP': desktop}),
+        platform: FakePlatform(
+          operatingSystem: Platform.linux,
+          environment: {'XDG_CURRENT_DESKTOP': desktop},
+        ),
         settings: settings,
       ),
     ));
