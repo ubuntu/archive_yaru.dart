@@ -98,7 +98,7 @@ class ColorsView extends StatelessWidget {
           color: (_color.values.first[_shade]!.computeLuminance() > 0.4)
               ? Colors.black
               : Colors.white,
-          fontSize: 10.0,
+          fontSize: 9.0,
         );
     List<Widget> _colorItem = [];
     for (int i = 0; i < 5; i++) {
