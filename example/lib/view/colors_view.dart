@@ -7,7 +7,7 @@ class ColorsView extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(15.0),
       children: <Widget>[
-        Text('Yaru Colors', style: Theme.of(context).textTheme.headline4),
+        Text('Accent Colors', style: Theme.of(context).textTheme.headline4),
         const SizedBox(height: 15.0),
         Row(
           children: [
@@ -53,6 +53,40 @@ class ColorsView extends StatelessWidget {
             Spacer(),
           ],
         ),
+        const SizedBox(height: 15.0),
+        Text('Flavor Colors', style: Theme.of(context).textTheme.headline4),
+        const SizedBox(height: 15.0),
+        Row(
+          children: [
+            Expanded(
+                child: colorPaletteExample(
+                    'kubuntuBlue', FlavorColors.kubuntuBlue)),
+            SizedBox(width: 25.0),
+            Expanded(
+                child: colorPaletteExample(
+                    'lubuntuBlue', FlavorColors.lubuntuBlue)),
+            SizedBox(width: 25.0),
+            Expanded(
+                child: colorPaletteExample(
+                    'ubuntuBudgieBlue', FlavorColors.ubuntuBudgieBlue)),
+          ],
+        ),
+        Divider(height: 50.0),
+        Row(
+          children: [
+            Expanded(
+                child: colorPaletteExample(
+                    'ubuntuMateGreen', FlavorColors.ubuntuMateGreen)),
+            SizedBox(width: 25.0),
+            Expanded(
+                child: colorPaletteExample(
+                    'ubuntuStudioBlue', FlavorColors.ubuntuStudioBlue)),
+            SizedBox(width: 25.0),
+            Expanded(
+                child: colorPaletteExample(
+                    'xubuntuBlue', FlavorColors.xubuntuBlue)),
+          ],
+        ),
       ],
     );
   }
@@ -64,7 +98,7 @@ class ColorsView extends StatelessWidget {
           color: (_color.values.first[_shade]!.computeLuminance() > 0.4)
               ? Colors.black
               : Colors.white,
-          fontSize: 10.0,
+          fontSize: 9.0,
         );
     List<Widget> _colorItem = [];
     for (int i = 0; i < 5; i++) {
