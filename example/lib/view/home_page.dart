@@ -67,12 +67,12 @@ class _HomePageState extends State<HomePage> {
                   : Colors.white,
               selected: theme.highContrast == true,
               onPressed: () => AppTheme.apply(context, highContrast: true)),
-          for (final accent in YaruAccent.values)
+          for (final variant in YaruVariant.values.take(10)) // skip flavors
             ColorDisk(
-              color: accent.color,
-              selected: accent == theme.accent && theme.highContrast != true,
-              onPressed: () =>
-                  AppTheme.apply(context, accent: accent, highContrast: false),
+              color: variant.color,
+              selected: variant == theme.variant && theme.highContrast != true,
+              onPressed: () => AppTheme.apply(context,
+                  variant: variant, highContrast: false),
             ),
           SizedBox(
             width: 20,

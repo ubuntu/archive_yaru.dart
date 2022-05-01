@@ -8,17 +8,17 @@ import 'package:platform/platform.dart';
 
 import 'package:yaru/yaru.dart';
 
-YaruFlavor? _detectYaruFlavor(Platform platform) {
+YaruVariant? _detectYaruVariant(Platform platform) {
   final desktop = !kIsWeb
       ? platform.environment['XDG_CURRENT_DESKTOP']?.toUpperCase()
       : null;
   if (desktop != null) {
-    if (desktop.contains('BUDGIE')) return YaruFlavor.ubuntuBudgie;
-    if (desktop.contains('GNOME')) return YaruFlavor.ubuntu;
-    if (desktop.contains('KDE')) return YaruFlavor.kubuntu;
-    if (desktop.contains('LXQT')) return YaruFlavor.lubuntu;
-    if (desktop.contains('MATE')) return YaruFlavor.ubuntuMate;
-    if (desktop.contains('XFCE')) return YaruFlavor.xubuntu;
+    if (desktop.contains('BUDGIE')) return YaruVariant.ubuntuBudgieBlue;
+    if (desktop.contains('GNOME')) return YaruVariant.orange;
+    if (desktop.contains('KDE')) return YaruVariant.kubuntuBlue;
+    if (desktop.contains('LXQT')) return YaruVariant.lubuntuBlue;
+    if (desktop.contains('MATE')) return YaruVariant.ubuntuMateGreen;
+    if (desktop.contains('XFCE')) return YaruVariant.xubuntuBlue;
   }
   return null;
 }
@@ -71,25 +71,21 @@ class YaruTheme extends StatefulWidget {
 }
 
 class _YaruThemeState extends State<YaruTheme> {
-  YaruAccent? _accent;
-  YaruFlavor? _flavor;
+  YaruVariant? _variant;
   GSettings? _settings;
   StreamSubscription<List<String>>? _subscription;
 
   @override
   void initState() {
     super.initState();
-    if (widget.data.accent == null && !kIsWeb && widget._platform.isLinux) {
+    if (widget.data.variant == null && !kIsWeb && widget._platform.isLinux) {
       _settings = widget._settings ?? GSettings('org.gnome.desktop.interface');
       _subscription = _settings!.keysChanged.listen((keys) {
         if (keys.contains('gtk-theme')) {
-          updateAccent();
+          updateVariant();
         }
       });
-      updateAccent();
-    }
-    if (widget.data.flavor == null) {
-      _flavor = _detectYaruFlavor(widget._platform);
+      updateVariant();
     }
   }
 
@@ -103,7 +99,7 @@ class _YaruThemeState extends State<YaruTheme> {
   }
 
   // "Yaru-prussiangreen-dark" => YaruAccent.prussianGreen
-  YaruAccent? resolveAccent(String name) {
+  YaruVariant? resolveVariant(String name) {
     if (name.endsWith('-dark')) {
       name = name.substring(0, name.length - 5);
     }
@@ -111,20 +107,20 @@ class _YaruThemeState extends State<YaruTheme> {
       name = name.substring(5);
     }
     if (name == 'Yaru') {
-      return YaruAccent.orange;
+      return YaruVariant.orange;
     }
-    for (var value in YaruAccent.values) {
+    for (var value in YaruVariant.values) {
       if (value.name.toLowerCase() == name.toLowerCase()) {
         return value;
       }
     }
-    return null;
+    return _detectYaruVariant(widget._platform);
   }
 
-  Future<void> updateAccent() async {
+  Future<void> updateVariant() async {
     assert(!kIsWeb && widget._platform.isLinux);
     final name = await _settings?.get('gtk-theme') as DBusString;
-    setState(() => _accent = resolveAccent(name.value));
+    setState(() => _variant = resolveVariant(name.value));
   }
 
   ThemeMode resolveMode() {
@@ -139,8 +135,7 @@ class _YaruThemeState extends State<YaruTheme> {
 
   YaruThemeData resolveData() {
     return YaruThemeData(
-      accent: widget.data.accent ?? _accent,
-      flavor: widget.data.flavor ?? _flavor,
+      variant: widget.data.variant ?? _variant,
       highContrast:
           widget.data.highContrast ?? MediaQuery.highContrastOf(context),
       themeMode: resolveMode(),
@@ -154,21 +149,8 @@ class _YaruThemeState extends State<YaruTheme> {
       return dark ? yaruHighContrastDark : yaruHighContrastLight;
     }
 
-    switch (data.flavor) {
-      case YaruFlavor.ubuntuBudgie:
-        return dark ? yaruUbuntuBudgieDark : yaruUbuntuBudgieLight;
-      case YaruFlavor.kubuntu:
-        return dark ? yaruKubuntuDark : yaruKubuntuLight;
-      case YaruFlavor.lubuntu:
-        return dark ? yaruLubuntuDark : yaruLubuntuLight;
-      case YaruFlavor.ubuntuMate:
-        return dark ? yaruMateDark : yaruMateLight;
-      case YaruFlavor.xubuntu:
-        return dark ? yaruXubuntuDark : yaruXubuntuLight;
-      default:
-        final accent = data.accent ?? YaruAccent.orange;
-        return dark ? getYaruDarkTheme(accent) : getYaruLightTheme(accent);
-    }
+    final variant = data.variant ?? YaruVariant.orange;
+    return dark ? variant.darkTheme : variant.theme;
   }
 
   @override
@@ -187,18 +169,13 @@ class _YaruThemeState extends State<YaruTheme> {
 @immutable
 class YaruThemeData with Diagnosticable {
   const YaruThemeData({
-    this.accent,
-    this.flavor,
+    this.variant,
     this.highContrast,
     this.themeMode,
   });
 
-  /// Specifies the accent color. Only applicaple if [flavor] is
-  /// `YaruFlavor.ubuntu`.
-  final YaruAccent? accent;
-
-  /// Specifies the theme flavor.
-  final YaruFlavor? flavor;
+  /// Specifies the theme variant.
+  final YaruVariant? variant;
 
   /// Whether to use high contrast colors.
   final bool? highContrast;
@@ -208,14 +185,12 @@ class YaruThemeData with Diagnosticable {
 
   /// Creates a copy of this [YaruThemeData] with the provided values.
   YaruThemeData copyWith({
-    YaruAccent? accent,
-    YaruFlavor? flavor,
+    YaruVariant? variant,
     bool? highContrast,
     ThemeMode? themeMode,
   }) {
     return YaruThemeData(
-      accent: accent ?? this.accent,
-      flavor: flavor ?? this.flavor,
+      variant: variant ?? this.variant,
       highContrast: highContrast ?? this.highContrast,
       themeMode: themeMode ?? this.themeMode,
     );
@@ -224,8 +199,7 @@ class YaruThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<YaruAccent>('accent', accent));
-    properties.add(DiagnosticsProperty<YaruFlavor>('flavor', flavor));
+    properties.add(DiagnosticsProperty<YaruVariant>('variant', variant));
     properties.add(DiagnosticsProperty<bool>('highContrast', highContrast));
     properties.add(DiagnosticsProperty<ThemeMode>('themeMode', themeMode));
   }
@@ -234,14 +208,13 @@ class YaruThemeData with Diagnosticable {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     return other is YaruThemeData &&
-        other.accent == accent &&
-        other.flavor == flavor &&
+        other.variant == variant &&
         other.highContrast == highContrast &&
         other.themeMode == themeMode;
   }
 
   @override
-  int get hashCode => Object.hash(accent, flavor, highContrast, themeMode);
+  int get hashCode => Object.hash(variant, highContrast, themeMode);
 }
 
 class _YaruInheritedTheme extends InheritedTheme {

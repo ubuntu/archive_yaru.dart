@@ -28,8 +28,7 @@ class AppTheme {
 
   static void apply(
     BuildContext context, {
-    YaruAccent? accent,
-    YaruFlavor? flavor,
+    YaruVariant? variant,
     bool? highContrast,
     ThemeMode? themeMode,
   }) {
@@ -38,8 +37,7 @@ class AppTheme {
       'theme',
       AppTheme.of(context).copyWith(
         themeMode: themeMode,
-        accent: accent,
-        flavor: flavor,
+        variant: variant,
         highContrast: highContrast,
       ),
     );
