@@ -149,8 +149,8 @@ class _YaruThemeState extends State<YaruTheme> {
       return dark ? yaruHighContrastDark : yaruHighContrastLight;
     }
 
-    final accent = data.variant ?? YaruVariant.orange;
-    return dark ? getYaruDarkTheme(accent) : getYaruLightTheme(accent);
+    final variant = data.variant ?? YaruVariant.orange;
+    return dark ? variant.darkTheme : variant.theme;
   }
 
   @override

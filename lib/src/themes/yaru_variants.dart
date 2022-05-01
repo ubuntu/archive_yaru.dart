@@ -27,6 +27,12 @@ class YaruVariant {
   /// The primary color of the variant.
   final MaterialColor color;
 
+  /// A light theme for the variant.
+  ThemeData get theme => _yaruLightThemes[this]!;
+
+  /// A dark theme for the variant.
+  ThemeData get darkTheme => _yaruDarkThemes[this]!;
+
   static const orange = YaruVariant._('orange', YaruColors.ubuntuOrange);
   static const bark = YaruVariant._('bark', YaruColors.bark);
   static const sage = YaruVariant._('sage', YaruColors.sage);
@@ -79,14 +85,6 @@ class YaruVariant {
     ubuntuStudioBlue,
     xubuntuBlue,
   ];
-}
-
-ThemeData getYaruLightTheme(YaruVariant accent) {
-  return _yaruLightThemes[accent] ?? yaruLight;
-}
-
-ThemeData getYaruDarkTheme(YaruVariant accent) {
-  return _yaruDarkThemes[accent] ?? yaruDark;
 }
 
 final _yaruLightThemes = <YaruVariant, ThemeData>{
