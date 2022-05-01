@@ -13,123 +13,114 @@ import 'widget_test.mocks.dart';
 
 @GenerateMocks([GSettings])
 void main() {
-  group('accent', () {
-    testWidgets('explicit', (tester) async {
-      await tester.pumpTheme(accent: YaruAccent.blue);
-      final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).accent, YaruAccent.blue);
-    });
+  testWidgets('variant', (tester) async {
+    await tester.pumpTheme(variant: YaruVariant.blue);
+    final context = tester.element(find.byType(Container));
+    expect(YaruTheme.of(context).variant, YaruVariant.blue);
+  });
 
+  group('gtk-theme', () {
     testWidgets('unknown', (tester) async {
-      final settings = MockGSettings();
-      when(settings.keysChanged).thenAnswer((_) => Stream.empty());
-      when(settings.get('gtk-theme')).thenAnswer((_) async => DBusString(''));
-
+      final settings = createMockGSettings(theme: '');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).accent, null);
+      expect(YaruTheme.of(context).variant, null);
     });
 
     testWidgets('yaru', (tester) async {
-      final settings = MockGSettings();
-      when(settings.keysChanged).thenAnswer((_) => Stream.empty());
-      when(settings.get('gtk-theme'))
-          .thenAnswer((_) async => DBusString('Yaru'));
-
+      final settings = createMockGSettings(theme: 'Yaru');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).accent, YaruAccent.orange);
+      expect(YaruTheme.of(context).variant, YaruVariant.orange);
     });
 
     testWidgets('dark', (tester) async {
-      final settings = MockGSettings();
-      when(settings.keysChanged).thenAnswer((_) => Stream.empty());
-      when(settings.get('gtk-theme'))
-          .thenAnswer((_) async => DBusString('Yaru-dark'));
-
+      final settings = createMockGSettings(theme: 'Yaru-dark');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).accent, YaruAccent.orange);
+      expect(YaruTheme.of(context).variant, YaruVariant.orange);
     });
 
     testWidgets('color', (tester) async {
-      final settings = MockGSettings();
-      when(settings.keysChanged).thenAnswer((_) => Stream.empty());
-      when(settings.get('gtk-theme'))
-          .thenAnswer((_) async => DBusString('Yaru-blue'));
-
+      final settings = createMockGSettings(theme: 'Yaru-blue');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).accent, YaruAccent.blue);
+      expect(YaruTheme.of(context).variant, YaruVariant.blue);
     });
 
     testWidgets('change', (tester) async {
-      final settings = MockGSettings();
+      final settings = createMockGSettings(theme: 'Yaru-blue');
       final keysChanged = StreamController<List<String>>(sync: true);
       addTearDown(keysChanged.close);
       when(settings.keysChanged).thenAnswer((_) => keysChanged.stream);
-      when(settings.get('gtk-theme'))
-          .thenAnswer((_) async => DBusString('Yaru-blue'));
 
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).accent, YaruAccent.blue);
+      expect(YaruTheme.of(context).variant, YaruVariant.blue);
 
       when(settings.get('gtk-theme'))
           .thenAnswer((_) async => DBusString('Yaru-red'));
       keysChanged.add(['gtk-theme']);
       await tester.pump();
-      expect(YaruTheme.of(context).accent, YaruAccent.red);
+      expect(YaruTheme.of(context).variant, YaruVariant.red);
     });
   });
 
-  group('flavor', () {
-    testWidgets('explicit', (tester) async {
-      await tester.pumpTheme(flavor: YaruFlavor.ubuntu);
-      final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, YaruFlavor.ubuntu);
-    });
-
+  group('desktop', () {
     testWidgets('unknown', (tester) async {
-      await tester.pumpTheme(desktop: 'unknown');
+      final settings = createMockGSettings();
+      await tester.pumpTheme(desktop: 'unknown', settings: settings);
+      await untilCalled(settings.get('gtk-theme'));
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, isNull);
+      expect(YaruTheme.of(context).variant, isNull);
     });
 
     testWidgets('budgie', (tester) async {
-      await tester.pumpTheme(desktop: 'budgie-desktop');
+      final settings = createMockGSettings();
+      await tester.pumpTheme(desktop: 'budgie-desktop', settings: settings);
+      await untilCalled(settings.get('gtk-theme'));
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, YaruFlavor.ubuntuBudgie);
+      expect(YaruTheme.of(context).variant, YaruVariant.ubuntuBudgieBlue);
     });
 
     testWidgets('ubuntu', (tester) async {
-      await tester.pumpTheme(desktop: 'GNOME:ubuntu');
+      final settings = createMockGSettings();
+      await tester.pumpTheme(desktop: 'GNOME:ubuntu', settings: settings);
+      await untilCalled(settings.get('gtk-theme'));
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, YaruFlavor.ubuntu);
+      expect(YaruTheme.of(context).variant, YaruVariant.orange);
     });
 
     testWidgets('kde', (tester) async {
-      await tester.pumpTheme(desktop: 'KDE');
+      final settings = createMockGSettings();
+      await tester.pumpTheme(desktop: 'KDE', settings: settings);
+      await untilCalled(settings.get('gtk-theme'));
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, YaruFlavor.kubuntu);
+      expect(YaruTheme.of(context).variant, YaruVariant.kubuntuBlue);
     });
 
     testWidgets('lubuntu', (tester) async {
-      await tester.pumpTheme(desktop: 'LXQt');
+      final settings = createMockGSettings();
+      await tester.pumpTheme(desktop: 'LXQt', settings: settings);
+      await untilCalled(settings.get('gtk-theme'));
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, YaruFlavor.lubuntu);
+      expect(YaruTheme.of(context).variant, YaruVariant.lubuntuBlue);
     });
 
     testWidgets('mate', (tester) async {
-      await tester.pumpTheme(desktop: 'MATE');
+      final settings = createMockGSettings();
+      await tester.pumpTheme(desktop: 'MATE', settings: settings);
+      await untilCalled(settings.get('gtk-theme'));
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, YaruFlavor.ubuntuMate);
+      expect(YaruTheme.of(context).variant, YaruVariant.ubuntuMateGreen);
     });
 
     testWidgets('xubuntu', (tester) async {
-      await tester.pumpTheme(desktop: 'XFCE');
+      final settings = createMockGSettings();
+      await tester.pumpTheme(desktop: 'XFCE', settings: settings);
+      await untilCalled(settings.get('gtk-theme'));
       final context = tester.element(find.byType(Container));
-      expect(YaruTheme.of(context).flavor, YaruFlavor.xubuntu);
+      expect(YaruTheme.of(context).variant, YaruVariant.xubuntuBlue);
     });
   });
 
@@ -162,18 +153,23 @@ void main() {
   });
 }
 
+MockGSettings createMockGSettings({String theme = ''}) {
+  final settings = MockGSettings();
+  when(settings.keysChanged).thenAnswer((_) => Stream.empty());
+  when(settings.get('gtk-theme')).thenAnswer((_) async => DBusString(theme));
+  return settings;
+}
+
 extension ThemeTester on WidgetTester {
   Future<void> pumpTheme({
-    YaruAccent? accent,
-    YaruFlavor? flavor,
+    YaruVariant? variant,
     bool? highContrast,
     ThemeMode? themeMode,
     String desktop = '',
     GSettings? settings,
   }) async {
     final data = YaruThemeData(
-      accent: accent,
-      flavor: flavor,
+      variant: variant,
       highContrast: highContrast,
       themeMode: themeMode,
     );

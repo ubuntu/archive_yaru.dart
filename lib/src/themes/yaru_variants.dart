@@ -1,28 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:yaru/src/colors/flavor_colors.dart';
 import 'package:yaru/src/colors/yaru_colors.dart';
 import 'package:yaru/src/themes/common_themes.dart';
 import 'package:yaru/src/themes/yaru_dark.dart';
+import 'package:yaru/src/themes/yaru_kubuntu_dark.dart';
+import 'package:yaru/src/themes/yaru_kubuntu_light.dart';
 import 'package:yaru/src/themes/yaru_light.dart';
+import 'package:yaru/src/themes/yaru_lubuntu_dark.dart';
+import 'package:yaru/src/themes/yaru_lubuntu_light.dart';
+import 'package:yaru/src/themes/yaru_mate_dark.dart';
+import 'package:yaru/src/themes/yaru_mate_light.dart';
+import 'package:yaru/src/themes/yaru_ubuntu_budgie_dark.dart';
+import 'package:yaru/src/themes/yaru_ubuntu_budgie_light.dart';
+import 'package:yaru/src/themes/yaru_ubuntu_studio_dark.dart';
+import 'package:yaru/src/themes/yaru_ubuntu_studio_light.dart';
+import 'package:yaru/src/themes/yaru_xubuntu_dark.dart';
+import 'package:yaru/src/themes/yaru_xubuntu_light.dart';
 
-class YaruAccent {
-  const YaruAccent._(this.name, this.color);
+/// Describes a Yaru variant and its primary color.
+class YaruVariant {
+  const YaruVariant._(this.name, this.color);
 
+  /// The name of the variant.
   final String name;
+
+  /// The primary color of the variant.
   final MaterialColor color;
 
-  static const orange = YaruAccent._('orange', YaruColors.ubuntuOrange);
-  static const bark = YaruAccent._('bark', YaruColors.bark);
-  static const sage = YaruAccent._('sage', YaruColors.sage);
-  static const olive = YaruAccent._('olive', YaruColors.olive);
-  static const viridian = YaruAccent._('viridian', YaruColors.viridian);
+  static const orange = YaruVariant._('orange', YaruColors.ubuntuOrange);
+  static const bark = YaruVariant._('bark', YaruColors.bark);
+  static const sage = YaruVariant._('sage', YaruColors.sage);
+  static const olive = YaruVariant._('olive', YaruColors.olive);
+  static const viridian = YaruVariant._('viridian', YaruColors.viridian);
   static const prussianGreen =
-      YaruAccent._('prussianGreen', YaruColors.prussianGreen);
-  static const blue = YaruAccent._('blue', YaruColors.blue);
-  static const purple = YaruAccent._('purple', YaruColors.purple);
-  static const magenta = YaruAccent._('magenta', YaruColors.magenta);
-  static const red = YaruAccent._('red', YaruColors.lightRed);
+      YaruVariant._('prussianGreen', YaruColors.prussianGreen);
+  static const blue = YaruVariant._('blue', YaruColors.blue);
+  static const purple = YaruVariant._('purple', YaruColors.purple);
+  static const magenta = YaruVariant._('magenta', YaruColors.magenta);
+  static const red = YaruVariant._('red', YaruColors.lightRed);
 
-  static const List<YaruAccent> values = [
+  /// Kubuntu
+  static const kubuntuBlue = YaruVariant._('kubuntu', FlavorColors.kubuntuBlue);
+
+  /// Lubuntu
+  static const lubuntuBlue = YaruVariant._('lubuntu', FlavorColors.lubuntuBlue);
+
+  /// Ubuntu Budgie
+  static const ubuntuBudgieBlue =
+      YaruVariant._('ubuntuBudgie', FlavorColors.ubuntuBudgieBlue);
+
+  /// Ubuntu MATE
+  static const ubuntuMateGreen =
+      YaruVariant._('ubuntuMate', FlavorColors.ubuntuMateGreen);
+
+  /// Ubuntu Studio
+  static const ubuntuStudioBlue =
+      YaruVariant._('ubuntuStudio', FlavorColors.ubuntuStudioBlue);
+
+  /// Xubuntu
+  static const xubuntuBlue = YaruVariant._('xubuntu', FlavorColors.xubuntuBlue);
+
+  /// Available Yaru variants.
+  static const List<YaruVariant> values = [
     orange,
     bark,
     sage,
@@ -33,41 +72,59 @@ class YaruAccent {
     purple,
     magenta,
     red,
+    kubuntuBlue,
+    lubuntuBlue,
+    ubuntuBudgieBlue,
+    ubuntuMateGreen,
+    ubuntuStudioBlue,
+    xubuntuBlue,
   ];
 }
 
-ThemeData getYaruLightTheme(YaruAccent accent) {
+ThemeData getYaruLightTheme(YaruVariant accent) {
   return _yaruLightThemes[accent] ?? yaruLight;
 }
 
-ThemeData getYaruDarkTheme(YaruAccent accent) {
+ThemeData getYaruDarkTheme(YaruVariant accent) {
   return _yaruDarkThemes[accent] ?? yaruDark;
 }
 
-final _yaruLightThemes = <YaruAccent, ThemeData>{
-  YaruAccent.orange: yaruLight,
-  YaruAccent.bark: yaruBarkLight,
-  YaruAccent.sage: yaruSageLight,
-  YaruAccent.olive: yaruOliveLight,
-  YaruAccent.viridian: yaruViridianLight,
-  YaruAccent.prussianGreen: yaruPrussianGreenLight,
-  YaruAccent.blue: yaruBlueLight,
-  YaruAccent.purple: yaruPurpleLight,
-  YaruAccent.magenta: yaruMagentaLight,
-  YaruAccent.red: yaruRedLight,
+final _yaruLightThemes = <YaruVariant, ThemeData>{
+  YaruVariant.orange: yaruLight,
+  YaruVariant.bark: yaruBarkLight,
+  YaruVariant.sage: yaruSageLight,
+  YaruVariant.olive: yaruOliveLight,
+  YaruVariant.viridian: yaruViridianLight,
+  YaruVariant.prussianGreen: yaruPrussianGreenLight,
+  YaruVariant.blue: yaruBlueLight,
+  YaruVariant.purple: yaruPurpleLight,
+  YaruVariant.magenta: yaruMagentaLight,
+  YaruVariant.red: yaruRedLight,
+  YaruVariant.kubuntuBlue: yaruKubuntuLight,
+  YaruVariant.lubuntuBlue: yaruLubuntuLight,
+  YaruVariant.ubuntuBudgieBlue: yaruUbuntuBudgieLight,
+  YaruVariant.ubuntuMateGreen: yaruMateLight,
+  YaruVariant.ubuntuStudioBlue: yaruUbuntuStudioLight,
+  YaruVariant.xubuntuBlue: yaruXubuntuLight,
 };
 
-final _yaruDarkThemes = <YaruAccent, ThemeData>{
-  YaruAccent.orange: yaruDark,
-  YaruAccent.bark: yaruBarkDark,
-  YaruAccent.sage: yaruSageDark,
-  YaruAccent.olive: yaruOliveDark,
-  YaruAccent.viridian: yaruViridianDark,
-  YaruAccent.prussianGreen: yaruPrussianGreenDark,
-  YaruAccent.blue: yaruBlueDark,
-  YaruAccent.purple: yaruPurpleDark,
-  YaruAccent.magenta: yaruMagentaDark,
-  YaruAccent.red: yaruRedDark,
+final _yaruDarkThemes = <YaruVariant, ThemeData>{
+  YaruVariant.orange: yaruDark,
+  YaruVariant.bark: yaruBarkDark,
+  YaruVariant.sage: yaruSageDark,
+  YaruVariant.olive: yaruOliveDark,
+  YaruVariant.viridian: yaruViridianDark,
+  YaruVariant.prussianGreen: yaruPrussianGreenDark,
+  YaruVariant.blue: yaruBlueDark,
+  YaruVariant.purple: yaruPurpleDark,
+  YaruVariant.magenta: yaruMagentaDark,
+  YaruVariant.red: yaruRedDark,
+  YaruVariant.kubuntuBlue: yaruKubuntuDark,
+  YaruVariant.lubuntuBlue: yaruLubuntuDark,
+  YaruVariant.ubuntuBudgieBlue: yaruUbuntuBudgieDark,
+  YaruVariant.ubuntuMateGreen: yaruMateDark,
+  YaruVariant.ubuntuStudioBlue: yaruUbuntuStudioDark,
+  YaruVariant.xubuntuBlue: yaruXubuntuDark,
 };
 
 final yaruSageLight = createYaruLightTheme(
