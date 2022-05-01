@@ -59,7 +59,7 @@ void main() {
       expect(YaruTheme.of(context).variant, YaruVariant.blue);
 
       when(settings.get('gtk-theme'))
-          .thenAnswer((_) async => DBusString('Yaru-red'));
+          .thenAnswer((_) async => const DBusString('Yaru-red'));
       keysChanged.add(['gtk-theme']);
       await tester.pump();
       expect(YaruTheme.of(context).variant, YaruVariant.red);
@@ -155,7 +155,7 @@ void main() {
 
 MockGSettings createMockGSettings({String theme = ''}) {
   final settings = MockGSettings();
-  when(settings.keysChanged).thenAnswer((_) => Stream.empty());
+  when(settings.keysChanged).thenAnswer((_) => const Stream.empty());
   when(settings.get('gtk-theme')).thenAnswer((_) async => DBusString(theme));
   return settings;
 }
