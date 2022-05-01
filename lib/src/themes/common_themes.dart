@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/colors/yaru_colors.dart';
+import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/themes/constants.dart';
 
 // AppBar
@@ -18,7 +18,7 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
       fontWeight: FontWeight.normal,
     ),
     iconTheme: IconThemeData(color: colorScheme.onSurface),
-    actionsIconTheme: IconThemeData(color: YaruColors.inkstone),
+    actionsIconTheme: const IconThemeData(color: YaruColors.inkstone),
   );
 }
 
@@ -44,7 +44,8 @@ final inputDecorationTheme = InputDecorationTheme(
 
 // Buttons
 
-final _commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
+final _commonButtonStyle =
+    const ButtonStyle(visualDensity: VisualDensity.standard);
 
 final _buttonThemeData = ButtonThemeData(
   shape: RoundedRectangleBorder(
@@ -94,7 +95,7 @@ ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   ));
 }
 
-final _toggleButtonsTheme = ToggleButtonsThemeData(
+final _toggleButtonsTheme = const ToggleButtonsThemeData(
     borderRadius: BorderRadius.all(Radius.circular(kButtonRadius)));
 
 // Dialogs

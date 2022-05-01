@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:yaru/src/colors/flavor_colors.dart';
 import 'package:yaru/src/colors/yaru_colors.dart';
 import 'package:yaru/src/themes/kubuntu.dart';
-import 'package:yaru/src/themes/yaru.dart';
 import 'package:yaru/src/themes/lubuntu.dart';
 import 'package:yaru/src/themes/ubuntu_budgie.dart';
 import 'package:yaru/src/themes/ubuntu_mate.dart';
 import 'package:yaru/src/themes/ubuntu_studio.dart';
 import 'package:yaru/src/themes/xubuntu.dart';
+import 'package:yaru/src/themes/yaru.dart';
 
 /// Describes a Yaru variant and its primary color.
 class YaruVariant {

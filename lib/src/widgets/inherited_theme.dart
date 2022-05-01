@@ -109,7 +109,7 @@ class _YaruThemeState extends State<YaruTheme> {
     if (name == 'Yaru') {
       return YaruVariant.orange;
     }
-    for (var value in YaruVariant.values) {
+    for (final value in YaruVariant.values) {
       if (value.name.toLowerCase() == name.toLowerCase()) {
         return value;
       }
