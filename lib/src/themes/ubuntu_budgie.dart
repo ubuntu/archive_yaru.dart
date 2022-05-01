@@ -17,3 +17,16 @@ final _lightColorScheme = ColorScheme.fromSwatch(
 
 final yaruUbuntuBudgieLight = createYaruLightTheme(
     colorScheme: _lightColorScheme, primaryColor: _primaryColor);
+
+final _darkColorScheme = ColorScheme.fromSwatch(
+  primarySwatch: _primaryColor,
+  primaryColorDark: YaruColors.coolGrey,
+  accentColor: _primaryColor,
+  cardColor: YaruColors.jet,
+  backgroundColor: YaruColors.jet,
+  errorColor: YaruColors.red,
+  brightness: Brightness.dark,
+);
+
+final yaruUbuntuBudgieDark = createYaruDarkTheme(
+    colorScheme: _darkColorScheme, primaryColor: _primaryColor);

@@ -3,7 +3,20 @@ import 'package:yaru/src/colors/flavor_colors.dart';
 import 'package:yaru/src/colors/yaru_colors.dart';
 import 'package:yaru/src/themes/common_themes.dart';
 
-const _primaryColor = FlavorColors.xubuntuBlue;
+const _primaryColor = FlavorColors.ubuntuStudioBlue;
+
+final _lightColorScheme = ColorScheme.fromSwatch(
+  primarySwatch: _primaryColor,
+  primaryColorDark: YaruColors.coolGrey,
+  accentColor: _primaryColor,
+  cardColor: Colors.white,
+  backgroundColor: YaruColors.porcelain,
+  errorColor: YaruColors.red,
+  brightness: Brightness.light,
+);
+
+final yaruUbuntuStudioLight = createYaruLightTheme(
+    colorScheme: _lightColorScheme, primaryColor: _primaryColor);
 
 final _darkColorScheme = ColorScheme.fromSwatch(
   primarySwatch: _primaryColor,
@@ -15,5 +28,5 @@ final _darkColorScheme = ColorScheme.fromSwatch(
   brightness: Brightness.dark,
 );
 
-final yaruXubuntuDark = createYaruDarkTheme(
+final yaruUbuntuStudioDark = createYaruDarkTheme(
     colorScheme: _darkColorScheme, primaryColor: _primaryColor);
