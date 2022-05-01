@@ -28,18 +28,16 @@ To be able to use this package follow this steps:
     );
     ```
 
-## Flavors and accent colors
+## Variants
 
-Yaru comes in several flavors and accent colors. The `YaruTheme` widget detects
-the appropriate flavor and accent color from the system on Linux, and defaults
-to `YaruFlavor.ubuntu` and `YaruAccent.orange` on other platforms. Applications
-may choose a specific flavor and accent color by manually setting the `accent`
-and `flavor` properties, respectively.
+Yaru comes in several variants. The `YaruTheme` widget detects the appropriate
+flavor and accent color from the system on Linux, and defaults to `YaruVariant.orange`
+on other platforms. Applications may choose a specific variant by manually
+setting the `variant` propert.
 
    ```dart
    YaruTheme(
-     accent: YaruAccent.red,
-     flavor: YaruFlavor.ubuntu,
+     variant: YaruVariant.red,
      child: ...
    )
    ```
