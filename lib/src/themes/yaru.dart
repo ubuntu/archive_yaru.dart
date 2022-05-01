@@ -1,129 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:yaru/src/colors/flavor_colors.dart';
 import 'package:yaru/src/colors/yaru_colors.dart';
 import 'package:yaru/src/themes/common_themes.dart';
-import 'package:yaru/src/themes/yaru_dark.dart';
-import 'package:yaru/src/themes/yaru_kubuntu_dark.dart';
-import 'package:yaru/src/themes/yaru_kubuntu_light.dart';
-import 'package:yaru/src/themes/yaru_light.dart';
-import 'package:yaru/src/themes/yaru_lubuntu_dark.dart';
-import 'package:yaru/src/themes/yaru_lubuntu_light.dart';
-import 'package:yaru/src/themes/yaru_mate_dark.dart';
-import 'package:yaru/src/themes/yaru_mate_light.dart';
-import 'package:yaru/src/themes/yaru_ubuntu_budgie_dark.dart';
-import 'package:yaru/src/themes/yaru_ubuntu_budgie_light.dart';
-import 'package:yaru/src/themes/yaru_ubuntu_studio_dark.dart';
-import 'package:yaru/src/themes/yaru_ubuntu_studio_light.dart';
-import 'package:yaru/src/themes/yaru_xubuntu_dark.dart';
-import 'package:yaru/src/themes/yaru_xubuntu_light.dart';
 
-/// Describes a Yaru variant and its primary color.
-class YaruVariant {
-  const YaruVariant._(this.name, this.color);
+const _primaryColor = YaruColors.ubuntuOrange;
 
-  /// The name of the variant.
-  final String name;
+final _lightColorScheme = ColorScheme.fromSwatch(
+  primarySwatch: _primaryColor,
+  primaryColorDark: YaruColors.coolGrey,
+  accentColor: _primaryColor,
+  cardColor: Colors.white,
+  backgroundColor: YaruColors.porcelain,
+  errorColor: YaruColors.red,
+  brightness: Brightness.light,
+);
 
-  /// The primary color of the variant.
-  final MaterialColor color;
+final yaruLight = createYaruLightTheme(
+    colorScheme: _lightColorScheme,
+    primaryColor: _primaryColor,
+    elevatedButtonColor: YaruColors.green);
 
-  /// A light theme for the variant.
-  ThemeData get theme => _yaruLightThemes[this]!;
+final _darkColorScheme = ColorScheme.fromSwatch(
+  primarySwatch: _primaryColor,
+  primaryColorDark: YaruColors.coolGrey,
+  accentColor: _primaryColor,
+  cardColor: YaruColors.jet,
+  backgroundColor: YaruColors.jet,
+  errorColor: YaruColors.red,
+  brightness: Brightness.dark,
+);
 
-  /// A dark theme for the variant.
-  ThemeData get darkTheme => _yaruDarkThemes[this]!;
-
-  static const orange = YaruVariant._('orange', YaruColors.ubuntuOrange);
-  static const bark = YaruVariant._('bark', YaruColors.bark);
-  static const sage = YaruVariant._('sage', YaruColors.sage);
-  static const olive = YaruVariant._('olive', YaruColors.olive);
-  static const viridian = YaruVariant._('viridian', YaruColors.viridian);
-  static const prussianGreen =
-      YaruVariant._('prussianGreen', YaruColors.prussianGreen);
-  static const blue = YaruVariant._('blue', YaruColors.blue);
-  static const purple = YaruVariant._('purple', YaruColors.purple);
-  static const magenta = YaruVariant._('magenta', YaruColors.magenta);
-  static const red = YaruVariant._('red', YaruColors.lightRed);
-
-  /// Kubuntu
-  static const kubuntuBlue = YaruVariant._('kubuntu', FlavorColors.kubuntuBlue);
-
-  /// Lubuntu
-  static const lubuntuBlue = YaruVariant._('lubuntu', FlavorColors.lubuntuBlue);
-
-  /// Ubuntu Budgie
-  static const ubuntuBudgieBlue =
-      YaruVariant._('ubuntuBudgie', FlavorColors.ubuntuBudgieBlue);
-
-  /// Ubuntu MATE
-  static const ubuntuMateGreen =
-      YaruVariant._('ubuntuMate', FlavorColors.ubuntuMateGreen);
-
-  /// Ubuntu Studio
-  static const ubuntuStudioBlue =
-      YaruVariant._('ubuntuStudio', FlavorColors.ubuntuStudioBlue);
-
-  /// Xubuntu
-  static const xubuntuBlue = YaruVariant._('xubuntu', FlavorColors.xubuntuBlue);
-
-  /// Available Yaru variants.
-  static const List<YaruVariant> values = [
-    orange,
-    bark,
-    sage,
-    olive,
-    viridian,
-    prussianGreen,
-    blue,
-    purple,
-    magenta,
-    red,
-    kubuntuBlue,
-    lubuntuBlue,
-    ubuntuBudgieBlue,
-    ubuntuMateGreen,
-    ubuntuStudioBlue,
-    xubuntuBlue,
-  ];
-}
-
-final _yaruLightThemes = <YaruVariant, ThemeData>{
-  YaruVariant.orange: yaruLight,
-  YaruVariant.bark: yaruBarkLight,
-  YaruVariant.sage: yaruSageLight,
-  YaruVariant.olive: yaruOliveLight,
-  YaruVariant.viridian: yaruViridianLight,
-  YaruVariant.prussianGreen: yaruPrussianGreenLight,
-  YaruVariant.blue: yaruBlueLight,
-  YaruVariant.purple: yaruPurpleLight,
-  YaruVariant.magenta: yaruMagentaLight,
-  YaruVariant.red: yaruRedLight,
-  YaruVariant.kubuntuBlue: yaruKubuntuLight,
-  YaruVariant.lubuntuBlue: yaruLubuntuLight,
-  YaruVariant.ubuntuBudgieBlue: yaruUbuntuBudgieLight,
-  YaruVariant.ubuntuMateGreen: yaruMateLight,
-  YaruVariant.ubuntuStudioBlue: yaruUbuntuStudioLight,
-  YaruVariant.xubuntuBlue: yaruXubuntuLight,
-};
-
-final _yaruDarkThemes = <YaruVariant, ThemeData>{
-  YaruVariant.orange: yaruDark,
-  YaruVariant.bark: yaruBarkDark,
-  YaruVariant.sage: yaruSageDark,
-  YaruVariant.olive: yaruOliveDark,
-  YaruVariant.viridian: yaruViridianDark,
-  YaruVariant.prussianGreen: yaruPrussianGreenDark,
-  YaruVariant.blue: yaruBlueDark,
-  YaruVariant.purple: yaruPurpleDark,
-  YaruVariant.magenta: yaruMagentaDark,
-  YaruVariant.red: yaruRedDark,
-  YaruVariant.kubuntuBlue: yaruKubuntuDark,
-  YaruVariant.lubuntuBlue: yaruLubuntuDark,
-  YaruVariant.ubuntuBudgieBlue: yaruUbuntuBudgieDark,
-  YaruVariant.ubuntuMateGreen: yaruMateDark,
-  YaruVariant.ubuntuStudioBlue: yaruUbuntuStudioDark,
-  YaruVariant.xubuntuBlue: yaruXubuntuDark,
-};
+final yaruDark = createYaruDarkTheme(
+    colorScheme: _darkColorScheme,
+    primaryColor: _primaryColor,
+    elevatedButtonColor: YaruColors.green);
 
 final yaruSageLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(
