@@ -93,7 +93,7 @@ final _yaruLightThemes = <YaruVariant, ThemeData>{
   YaruVariant.kubuntuBlue: yaruKubuntuLight,
   YaruVariant.lubuntuBlue: yaruLubuntuLight,
   YaruVariant.ubuntuBudgieBlue: yaruUbuntuBudgieLight,
-  YaruVariant.ubuntuMateGreen: yaruMateLight,
+  YaruVariant.ubuntuMateGreen: yaruUbuntuMateLight,
   YaruVariant.ubuntuStudioBlue: yaruUbuntuStudioLight,
   YaruVariant.xubuntuBlue: yaruXubuntuLight,
 };
@@ -112,7 +112,7 @@ final _yaruDarkThemes = <YaruVariant, ThemeData>{
   YaruVariant.kubuntuBlue: yaruKubuntuDark,
   YaruVariant.lubuntuBlue: yaruLubuntuDark,
   YaruVariant.ubuntuBudgieBlue: yaruUbuntuBudgieDark,
-  YaruVariant.ubuntuMateGreen: yaruMateDark,
+  YaruVariant.ubuntuMateGreen: yaruUbuntuMateDark,
   YaruVariant.ubuntuStudioBlue: yaruUbuntuStudioDark,
   YaruVariant.xubuntuBlue: yaruXubuntuDark,
 };

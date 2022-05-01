@@ -15,7 +15,10 @@ final _lightColorScheme = ColorScheme.fromSwatch(
   brightness: Brightness.light,
 );
 
-final yaruMateLight = createYaruLightTheme(
+@Deprecated('Use yaruUbuntuMateLight instead')
+final yaruMateLight = yaruUbuntuMateLight;
+
+final yaruUbuntuMateLight = createYaruLightTheme(
     colorScheme: _lightColorScheme, primaryColor: _primaryColor);
 
 final _darkColorScheme = ColorScheme.fromSwatch(
@@ -28,5 +31,8 @@ final _darkColorScheme = ColorScheme.fromSwatch(
   brightness: Brightness.dark,
 );
 
-final yaruMateDark = createYaruDarkTheme(
+@Deprecated('Use yaruUbuntuMateDark instead')
+final yaruMateDark = yaruUbuntuMateDark;
+
+final yaruUbuntuMateDark = createYaruDarkTheme(
     colorScheme: _darkColorScheme, primaryColor: _primaryColor);
