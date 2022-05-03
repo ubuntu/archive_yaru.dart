@@ -1,7 +1,5 @@
 library yaru;
 
-export 'package:yaru/src/colors/flavor_colors.dart';
-export 'package:yaru/src/colors/yaru_colors.dart';
 export 'package:yaru/src/themes/common_themes.dart';
 export 'package:yaru/src/themes/high_contrast.dart';
 export 'package:yaru/src/themes/kubuntu.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yaru/src/colors/flavor_colors.dart';
-import 'package:yaru/src/colors/yaru_colors.dart';
+import 'package:yaru_colors/yaru_colors.dart';
 import 'package:yaru/src/themes/kubuntu.dart';
 import 'package:yaru/src/themes/lubuntu.dart';
 import 'package:yaru/src/themes/ubuntu_budgie.dart';
@@ -25,7 +24,7 @@ class YaruVariant {
   /// A dark theme for the variant.
   ThemeData get darkTheme => _yaruDarkThemes[this]!;
 
-  static const orange = YaruVariant._('orange', YaruColors.ubuntuOrange);
+  static const orange = YaruVariant._('orange', YaruColors.orange);
   static const bark = YaruVariant._('bark', YaruColors.bark);
   static const sage = YaruVariant._('sage', YaruColors.sage);
   static const olive = YaruVariant._('olive', YaruColors.olive);
@@ -35,28 +34,28 @@ class YaruVariant {
   static const blue = YaruVariant._('blue', YaruColors.blue);
   static const purple = YaruVariant._('purple', YaruColors.purple);
   static const magenta = YaruVariant._('magenta', YaruColors.magenta);
-  static const red = YaruVariant._('red', YaruColors.lightRed);
+  static const red = YaruVariant._('red', YaruColors.red);
 
   /// Kubuntu
-  static const kubuntuBlue = YaruVariant._('kubuntu', FlavorColors.kubuntuBlue);
+  static const kubuntuBlue = YaruVariant._('kubuntu', YaruColors.kubuntuBlue);
 
   /// Lubuntu
-  static const lubuntuBlue = YaruVariant._('lubuntu', FlavorColors.lubuntuBlue);
+  static const lubuntuBlue = YaruVariant._('lubuntu', YaruColors.lubuntuBlue);
 
   /// Ubuntu Budgie
   static const ubuntuBudgieBlue =
-      YaruVariant._('ubuntuBudgie', FlavorColors.ubuntuBudgieBlue);
+      YaruVariant._('ubuntuBudgie', YaruColors.ubuntuBudgieBlue);
 
   /// Ubuntu MATE
   static const ubuntuMateGreen =
-      YaruVariant._('ubuntuMate', FlavorColors.ubuntuMateGreen);
+      YaruVariant._('ubuntuMate', YaruColors.ubuntuMateGreen);
 
   /// Ubuntu Studio
   static const ubuntuStudioBlue =
-      YaruVariant._('ubuntuStudio', FlavorColors.ubuntuStudioBlue);
+      YaruVariant._('ubuntuStudio', YaruColors.ubuntuStudioBlue);
 
   /// Xubuntu
-  static const xubuntuBlue = YaruVariant._('xubuntu', FlavorColors.xubuntuBlue);
+  static const xubuntuBlue = YaruVariant._('xubuntu', YaruColors.xubuntuBlue);
 
   /// Available Yaru variants.
   static const List<YaruVariant> values = [

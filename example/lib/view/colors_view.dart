@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yaru/yaru.dart';
+import 'package:yaru_colors/yaru_colors.dart';
 
 class ColorsView extends StatelessWidget {
   @override
@@ -11,8 +11,7 @@ class ColorsView extends StatelessWidget {
         const SizedBox(height: 15.0),
         Row(
           children: [
-            Expanded(
-                child: colorPaletteExample('orange', YaruColors.ubuntuOrange)),
+            Expanded(child: colorPaletteExample('orange', YaruColors.orange)),
             SizedBox(width: 25.0),
             Expanded(child: colorPaletteExample('olive', YaruColors.olive)),
             SizedBox(width: 25.0),
@@ -27,7 +26,7 @@ class ColorsView extends StatelessWidget {
             SizedBox(width: 25.0),
             Expanded(child: colorPaletteExample('purple', YaruColors.purple)),
             SizedBox(width: 25.0),
-            Expanded(child: colorPaletteExample('red', YaruColors.lightRed)),
+            Expanded(child: colorPaletteExample('red', YaruColors.red)),
           ],
         ),
         Divider(height: 50.0),
@@ -58,16 +57,16 @@ class ColorsView extends StatelessWidget {
         Row(
           children: [
             Expanded(
-                child: colorPaletteExample(
-                    'kubuntuBlue', FlavorColors.kubuntuBlue)),
+                child:
+                    colorPaletteExample('kubuntuBlue', YaruColors.kubuntuBlue)),
+            SizedBox(width: 25.0),
+            Expanded(
+                child:
+                    colorPaletteExample('lubuntuBlue', YaruColors.lubuntuBlue)),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample(
-                    'lubuntuBlue', FlavorColors.lubuntuBlue)),
-            SizedBox(width: 25.0),
-            Expanded(
-                child: colorPaletteExample(
-                    'ubuntuBudgieBlue', FlavorColors.ubuntuBudgieBlue)),
+                    'ubuntuBudgieBlue', YaruColors.ubuntuBudgieBlue)),
           ],
         ),
         Divider(height: 50.0),
@@ -75,15 +74,15 @@ class ColorsView extends StatelessWidget {
           children: [
             Expanded(
                 child: colorPaletteExample(
-                    'ubuntuMateGreen', FlavorColors.ubuntuMateGreen)),
+                    'ubuntuMateGreen', YaruColors.ubuntuMateGreen)),
             SizedBox(width: 25.0),
             Expanded(
                 child: colorPaletteExample(
-                    'ubuntuStudioBlue', FlavorColors.ubuntuStudioBlue)),
+                    'ubuntuStudioBlue', YaruColors.ubuntuStudioBlue)),
             SizedBox(width: 25.0),
             Expanded(
-                child: colorPaletteExample(
-                    'xubuntuBlue', FlavorColors.xubuntuBlue)),
+                child:
+                    colorPaletteExample('xubuntuBlue', YaruColors.xubuntuBlue)),
           ],
         ),
       ],
