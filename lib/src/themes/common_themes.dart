@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yaru/src/colors/yaru_colors.dart';
+import 'package:yaru_colors/yaru_colors.dart';
 import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/themes/constants.dart';
 
@@ -125,7 +125,7 @@ Color _getSwitchThumbColor(
     Set<MaterialState> states, Color selectedColor, Brightness brightness) {
   if (states.contains(MaterialState.disabled)) {
     return brightness == Brightness.dark
-        ? YaruColors.disabledGreyDark
+        ? kDisabledGreyDark
         : YaruColors.warmGrey.shade200;
   } else {
     if (states.contains(MaterialState.selected)) {
@@ -140,7 +140,7 @@ Color _getSwitchTrackColor(
     Set<MaterialState> states, Color selectedColor, Brightness brightness) {
   if (states.contains(MaterialState.disabled)) {
     return brightness == Brightness.dark
-        ? YaruColors.disabledGreyDark.withAlpha(120)
+        ? kDisabledGreyDark.withAlpha(120)
         : YaruColors.warmGrey.shade200;
   } else {
     if (states.contains(MaterialState.selected)) {
