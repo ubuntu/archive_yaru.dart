@@ -10,7 +10,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  dbus: ^0.7.3
+  dbus: ^0.7.0
   flutter:
     sdk: flutter
   gsettings: ^0.2.5
