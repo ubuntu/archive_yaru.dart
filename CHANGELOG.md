@@ -1,5 +1,29 @@
 # Changelog
 
+# 0.3.0
+* [jpnurmi](https://github.com/jpnurmi)
+  * Relax dbus version constraint (#168)
+  * Add successColor and warningColor extensions for ThemeData (#167)
+  * Use yaru_colors (#166)
+  * Enable flutter_lints/recommended and fix findings (#165)
+  * Rename yaruMate to yaruUbuntuMate for consistency (#164)
+  * Reorganize themes/*.dart (#163)
+  * Merge accents and flavors to variants (#162)
+  * Material colors (#159)
+  * example: present complete color palettes (#158)
+  * Make flavor names consistent with color names (#157)
+  * Add missing Ubuntu Font license (#156)
+  * Pair YaruFlavor with its flavor color (#155)
+  * Pair YaruAccent with its accent color (#154)
+  * CI: enable tests (#153)
+  * Example: show flavor colors in the palette tab (#152)
+  * Specify accent colors as MaterialColor constants (#151)
+  * Introduce YaruTheme widget (#150)
+  * Add YaruAccent enum and getYaruXxxTheme(accent) getter (#149)
+  * Let Flutter help with high-contrast colors (#148)
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Example: use handy_window (#161)
+
 # 0.2.5
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Add high contrast themes (#144)
