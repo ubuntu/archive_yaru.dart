@@ -8,6 +8,9 @@ import 'package:yaru/src/themes/constants.dart';
 
 AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
   return AppBarTheme(
+    shadowColor: colorScheme.onSurface,
+    scrolledUnderElevation: kAppBarElevation,
+    surfaceTintColor: colorScheme.background,
     toolbarHeight: kAppBarHeight,
     elevation: kAppBarElevation,
     systemOverlayStyle: SystemUiOverlayStyle.light,
@@ -24,6 +27,9 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
 
 AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
+    shadowColor: colorScheme.background,
+    scrolledUnderElevation: kAppBarElevation,
+    surfaceTintColor: colorScheme.background,
     toolbarHeight: kAppBarHeight,
     elevation: kAppBarElevation,
     systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -62,6 +68,7 @@ final _buttonThemeData = ButtonThemeData(
 
 final _outlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
+  side: const BorderSide(color: Colors.black38, width: 0.3),
   visualDensity: _commonButtonStyle.visualDensity,
   primary: YaruColors.textGrey,
   shape: RoundedRectangleBorder(
@@ -71,6 +78,7 @@ final _outlinedButtonThemeData = OutlinedButtonThemeData(
 
 final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
+  side: const BorderSide(color: Colors.white38, width: 0.3),
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(kButtonRadius),
   ),
@@ -213,6 +221,7 @@ ThemeData createYaruLightTheme(
     required Color primaryColor,
     Color? elevatedButtonColor}) {
   return ThemeData(
+    useMaterial3: true,
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
     dialogTheme: _dialogThemeLight,
     brightness: Brightness.light,
@@ -257,6 +266,7 @@ ThemeData createYaruDarkTheme(
     required Color primaryColor,
     Color? elevatedButtonColor}) {
   return ThemeData(
+    useMaterial3: true,
     tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
     dialogTheme: _dialogThemeDark,
     brightness: Brightness.dark,
