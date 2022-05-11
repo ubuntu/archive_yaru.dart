@@ -36,11 +36,19 @@ AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   );
 }
 
+// TextField
 final inputDecorationTheme = InputDecorationTheme(
   border:
       OutlineInputBorder(borderRadius: BorderRadius.circular(kButtonRadius)),
   isDense: true,
 );
+
+TextSelectionThemeData _createTextSelectionTheme(ColorScheme colorScheme) {
+  return TextSelectionThemeData(
+    cursorColor: colorScheme.primary,
+    selectionColor: colorScheme.primary.withOpacity(0.40),
+  );
+}
 
 // Buttons
 
@@ -240,6 +248,7 @@ ThemeData createYaruLightTheme(
     ),
     inputDecorationTheme: inputDecorationTheme,
     toggleButtonsTheme: _toggleButtonsTheme,
+    textSelectionTheme: _createTextSelectionTheme(colorScheme),
   );
 }
 
@@ -284,5 +293,6 @@ ThemeData createYaruDarkTheme(
     ),
     inputDecorationTheme: inputDecorationTheme,
     toggleButtonsTheme: _toggleButtonsTheme,
+    textSelectionTheme: _createTextSelectionTheme(colorScheme),
   );
 }
