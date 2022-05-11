@@ -44,8 +44,7 @@ final inputDecorationTheme = InputDecorationTheme(
 
 // Buttons
 
-final _commonButtonStyle =
-    const ButtonStyle(visualDensity: VisualDensity.standard);
+const _commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
 
 final _buttonThemeData = ButtonThemeData(
   shape: RoundedRectangleBorder(
@@ -95,7 +94,7 @@ ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   ));
 }
 
-final _toggleButtonsTheme = const ToggleButtonsThemeData(
+const _toggleButtonsTheme = ToggleButtonsThemeData(
     borderRadius: BorderRadius.all(Radius.circular(kButtonRadius)));
 
 // Dialogs
