@@ -68,13 +68,10 @@ const textTheme = TextTheme(
 
 class _UbuntuTextStyle extends TextStyle {
   const _UbuntuTextStyle({
-    double? fontSize,
-    double? letterSpacing,
-    FontWeight? fontWeight,
+    super.fontSize,
+    super.letterSpacing,
+    super.fontWeight,
   }) : super(
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          letterSpacing: letterSpacing,
           fontFamily: 'Ubuntu',
           package: 'yaru',
         );
