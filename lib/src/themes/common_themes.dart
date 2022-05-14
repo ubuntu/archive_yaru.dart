@@ -216,12 +216,14 @@ RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
 }
 
 /// Helper function to create a new Yaru light theme
-ThemeData createYaruLightTheme(
-    {required ColorScheme colorScheme,
-    required Color primaryColor,
-    Color? elevatedButtonColor}) {
+ThemeData createYaruLightTheme({
+  required ColorScheme colorScheme,
+  required Color primaryColor,
+  Color? elevatedButtonColor,
+  bool? useMaterial3 = false,
+}) {
   return ThemeData(
-    useMaterial3: true,
+    useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
     dialogTheme: _dialogThemeLight,
     brightness: Brightness.light,
@@ -261,12 +263,14 @@ ThemeData createYaruLightTheme(
 }
 
 /// Helper function to create a new Yaru dark theme
-ThemeData createYaruDarkTheme(
-    {required ColorScheme colorScheme,
-    required Color primaryColor,
-    Color? elevatedButtonColor}) {
+ThemeData createYaruDarkTheme({
+  required ColorScheme colorScheme,
+  required Color primaryColor,
+  Color? elevatedButtonColor,
+  bool? useMaterial3 = false,
+}) {
   return ThemeData(
-    useMaterial3: true,
+    useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
     dialogTheme: _dialogThemeDark,
     brightness: Brightness.dark,
