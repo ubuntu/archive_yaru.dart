@@ -10,12 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Builder(builder: (context) {
-        return YaruTheme(
+      home: Builder(
+        builder: (context) => YaruTheme(
           data: AppTheme.of(context),
           child: HomePage(),
-        );
-      }),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
