@@ -1,5 +1,15 @@
 # Changelog
 
+# 0.3.1
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Default to cupertino page transitions (#175)
+  * Material3 fixes (#172)
+* [jpnurmi](https://github.com/jpnurmi)
+  * Upgrade to Flutter 3.0 & Dart 2.17 (#174)
+  * Enable the `prefer_const_declarations` lint and fix findings (#171)
+  * Add text selection theme (#170)
+
 # 0.3.0
 * [jpnurmi](https://github.com/jpnurmi)
   * Relax dbus version constraint (#168)
