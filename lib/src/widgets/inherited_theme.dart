@@ -36,14 +36,13 @@ class YaruTheme extends StatefulWidget {
   ///
   /// The [data] and [child] arguments must not be null.
   const YaruTheme({
-    Key? key,
+    super.key,
     required this.child,
     this.data = const YaruThemeData(),
     @visibleForTesting Platform? platform,
     @visibleForTesting GSettings? settings,
   })  : _platform = platform ?? const LocalPlatform(),
-        _settings = settings,
-        super(key: key);
+        _settings = settings;
 
   /// The widget below this widget in the tree.
   final Widget child;
@@ -219,10 +218,9 @@ class YaruThemeData with Diagnosticable {
 
 class _YaruInheritedTheme extends InheritedTheme {
   const _YaruInheritedTheme({
-    Key? key,
     required this.data,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   final YaruThemeData? data;
 
