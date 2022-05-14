@@ -215,6 +215,12 @@ RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
           (states) => _getCheckFillColor(states, primaryColor, brightness)));
 }
 
+const _pageTransitionTheme = PageTransitionsTheme(
+  builders: {
+    TargetPlatform.linux: CupertinoPageTransitionsBuilder(),
+  },
+);
+
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
   required ColorScheme colorScheme,
@@ -223,6 +229,7 @@ ThemeData createYaruLightTheme({
   bool? useMaterial3 = false,
 }) {
   return ThemeData(
+    pageTransitionsTheme: _pageTransitionTheme,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
     dialogTheme: _dialogThemeLight,
@@ -270,6 +277,7 @@ ThemeData createYaruDarkTheme({
   bool? useMaterial3 = false,
 }) {
   return ThemeData(
+    pageTransitionsTheme: _pageTransitionTheme,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
     dialogTheme: _dialogThemeDark,
