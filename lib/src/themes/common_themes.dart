@@ -221,6 +221,18 @@ const _pageTransitionTheme = PageTransitionsTheme(
   },
 );
 
+NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) =>
+    NavigationRailThemeData(
+      backgroundColor: colorScheme.background,
+      selectedIconTheme: IconThemeData(
+        color: colorScheme.onSurface.withOpacity(0.8),
+      ),
+      unselectedIconTheme: IconThemeData(
+        color: colorScheme.onSurface.withOpacity(0.5),
+      ),
+      indicatorColor: colorScheme.onSurface.withOpacity(0.1),
+    );
+
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
   required ColorScheme colorScheme,
@@ -229,6 +241,7 @@ ThemeData createYaruLightTheme({
   bool? useMaterial3 = true,
 }) {
   return ThemeData(
+    navigationRailTheme: _createNavigationRailTheme(colorScheme),
     pageTransitionsTheme: _pageTransitionTheme,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
@@ -279,6 +292,7 @@ ThemeData createYaruDarkTheme({
   return ThemeData(
     pageTransitionsTheme: _pageTransitionTheme,
     useMaterial3: useMaterial3,
+    navigationRailTheme: _createNavigationRailTheme(colorScheme),
     tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
     dialogTheme: _dialogThemeDark,
     brightness: Brightness.dark,
