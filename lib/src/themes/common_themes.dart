@@ -226,7 +226,7 @@ ThemeData createYaruLightTheme({
   required ColorScheme colorScheme,
   required Color primaryColor,
   Color? elevatedButtonColor,
-  bool? useMaterial3 = false,
+  bool? useMaterial3 = true,
 }) {
   return ThemeData(
     pageTransitionsTheme: _pageTransitionTheme,
@@ -274,7 +274,7 @@ ThemeData createYaruDarkTheme({
   required ColorScheme colorScheme,
   required Color primaryColor,
   Color? elevatedButtonColor,
-  bool? useMaterial3 = false,
+  bool? useMaterial3 = true,
 }) {
   return ThemeData(
     pageTransitionsTheme: _pageTransitionTheme,
