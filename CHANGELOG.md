@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.3.2
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * enable material3 (#177)
+
 # 0.3.1
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
