@@ -217,9 +217,24 @@ RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
 
 const _pageTransitionTheme = PageTransitionsTheme(
   builders: {
-    TargetPlatform.linux: CupertinoPageTransitionsBuilder(),
+    TargetPlatform.linux: NoTransitionsBuilder(),
   },
 );
+
+class NoTransitionsBuilder extends PageTransitionsBuilder {
+  const NoTransitionsBuilder();
+
+  @override
+  Widget buildTransitions<T>(
+    PageRoute<T>? route,
+    BuildContext? context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    return child;
+  }
+}
 
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
