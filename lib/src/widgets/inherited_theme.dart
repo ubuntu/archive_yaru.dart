@@ -29,6 +29,49 @@ YaruVariant? _detectYaruVariant(Platform platform) {
 /// [YaruTheme.of]. When a widget uses [YaruTheme.of], it is automatically
 /// rebuilt if the theme later changes, so that the changes can be applied.
 ///
+/// There are two ways to use [YaruTheme] - with a child widget or as a builder.
+///
+/// ### Child widget
+///
+/// The simplest way to use [YaruTheme] is to wrap a child widget in it.
+///
+/// ```dart
+/// MaterialApp(
+///   home: YaruTheme(
+///     child: ...
+///   ),
+/// )
+/// ```
+///
+/// **Note**: [YaruTheme] must be a _descendant_ of [MaterialApp] to avoid that
+/// [MaterialApp] overrides [YaruTheme].
+///
+/// When used like this, [YaruTheme] internally creates an [AnimatedTheme]
+/// widget populated with the appropriate Yaru theme data. Moreover, The child
+/// widget gets automatically rebuilt whenever the system theme changes.
+///
+/// ### Builder
+///
+/// An alternative way to use [YaruTheme] is to use it as a builder.
+///
+/// ```dart
+/// YaruTheme(
+///   builder: (context, yaru, child) {
+///     return MaterialApp(
+///       theme: yaru.variant?.theme,
+///       darkTheme: yaru.variant?.darkTheme,
+///       home: ...
+///     );
+///   },
+/// )
+/// ```
+///
+/// When used like this, [YaruTheme] does not create an [AnimatedTheme] widget.
+/// Instead, it passes a [YaruThemeData] object to the [builder] function to
+/// allow passing the desired values to [MaterialApp]. This has the advantage
+/// that any widget created by [MaterialApp], such as the built-in [Navigator],
+/// gains Yaru-theme as well.
+///
 /// See also:
 ///  * [YaruThemeData]
 class YaruTheme extends StatefulWidget {
@@ -37,15 +80,21 @@ class YaruTheme extends StatefulWidget {
   /// The [data] and [child] arguments must not be null.
   const YaruTheme({
     super.key,
-    required this.child,
+    this.builder,
+    this.child,
     this.data = const YaruThemeData(),
     @visibleForTesting Platform? platform,
     @visibleForTesting GSettings? settings,
-  })  : _platform = platform ?? const LocalPlatform(),
+  })  : assert(builder != null || child != null,
+            'Either builder or child must be provided'),
+        _platform = platform ?? const LocalPlatform(),
         _settings = settings;
 
+  /// Builds the widget below this widget in the tree.
+  final ValueWidgetBuilder<YaruThemeData>? builder;
+
   /// The widget below this widget in the tree.
-  final Widget child;
+  final Widget? child;
 
   /// Specifies the theme for descendant widgets.
   final YaruThemeData data;
@@ -157,10 +206,11 @@ class _YaruThemeState extends State<YaruTheme> {
     final data = resolveData();
     return _YaruInheritedTheme(
       data: data,
-      child: AnimatedTheme(
-        data: resolveTheme(data),
-        child: widget.child,
-      ),
+      child: widget.builder?.call(context, data, widget.child) ??
+          AnimatedTheme(
+            data: resolveTheme(data),
+            child: widget.child!,
+          ),
     );
   }
 }
