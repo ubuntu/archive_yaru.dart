@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.3.3
+* [jpnurmi](https://github.com/jpnurmi)
+  * YaruTheme: add builder method (#181)
+
 # 0.3.2
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * enable material3 (#177)
