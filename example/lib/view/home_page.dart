@@ -61,21 +61,41 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: [
-          ColorDisk(
-              color: theme.themeMode == ThemeMode.light
-                  ? Colors.black
-                  : Colors.white,
-              selected: theme.highContrast == true,
-              onPressed: () => AppTheme.apply(context, highContrast: true)),
-          for (final variant in YaruVariant.values.take(10)) // skip flavors
-            ColorDisk(
-              color: variant.color,
-              selected: variant == theme.variant && theme.highContrast != true,
-              onPressed: () => AppTheme.apply(context,
-                  variant: variant, highContrast: false),
+          PopupMenuButton<Color>(
+            onSelected: (value) {},
+            child: SizedBox(
+              width: 40,
+              child: Icon(
+                Icons.color_lens,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
-          SizedBox(
-            width: 20,
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(
+                  onTap: () => AppTheme.apply(context, highContrast: true),
+                  child: ColorDisk(
+                    color: theme.themeMode == ThemeMode.light
+                        ? Colors.black
+                        : Colors.white,
+                    selected: theme.highContrast == true,
+                    onPressed: () {},
+                  ),
+                ),
+                for (final variant
+                    in YaruVariant.values.take(10)) // skip flavors
+                  PopupMenuItem(
+                    onTap: () => AppTheme.apply(context,
+                        variant: variant, highContrast: false),
+                    child: ColorDisk(
+                      color: variant.color,
+                      selected: variant == theme.variant &&
+                          theme.highContrast != true,
+                      onPressed: () {},
+                    ),
+                  )
+              ];
+            },
           ),
         ],
       ),
