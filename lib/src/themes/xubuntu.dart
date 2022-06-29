@@ -15,7 +15,9 @@ final _lightColorScheme = ColorScheme.fromSwatch(
 );
 
 final yaruXubuntuLight = createYaruLightTheme(
-    colorScheme: _lightColorScheme, primaryColor: _primaryColor);
+  colorScheme: _lightColorScheme,
+  primaryColor: _primaryColor,
+);
 
 final _darkColorScheme = ColorScheme.fromSwatch(
   primarySwatch: _primaryColor,
@@ -28,4 +30,6 @@ final _darkColorScheme = ColorScheme.fromSwatch(
 );
 
 final yaruXubuntuDark = createYaruDarkTheme(
-    colorScheme: _darkColorScheme, primaryColor: _primaryColor);
+  colorScheme: _darkColorScheme,
+  primaryColor: _primaryColor,
+);

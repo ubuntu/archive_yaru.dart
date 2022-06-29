@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ControlsView extends StatefulWidget {
+  const ControlsView({super.key});
+
   @override
   State<ControlsView> createState() => _ControlsViewState();
 }
@@ -19,24 +21,27 @@ class _ControlsViewState extends State<ControlsView>
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TabBar(controller: tabController, tabs: [
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text('Buttons'),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text('Checks'),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text('Switches'),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text('Progress'),
-          )
-        ]),
+        TabBar(
+          controller: tabController,
+          tabs: const [
+            Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Text('Buttons'),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Text('Checks'),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Text('Switches'),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Text('Progress'),
+            )
+          ],
+        ),
         Expanded(
           child: TabBarView(
             controller: tabController,
@@ -47,49 +52,55 @@ class _ControlsViewState extends State<ControlsView>
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Row(children: <Widget>[
-                        SizedBox(
-                          width: 95,
-                          child: TextButton(
-                            onPressed: () => print('FlatButton'),
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 95,
+                            child: TextButton(
+                              onPressed: () {},
+                              child: const Text('Click me!'),
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          const TextButton(
+                            onPressed: null,
+                            autofocus: true,
+                            child: Text("Can't click me!"),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: <Widget>[
+                          OutlinedButton(
+                            onPressed: () {},
                             child: const Text('Click me!'),
                           ),
-                        ),
-                        const SizedBox(width: 15),
-                        TextButton(
-                          onPressed: null,
-                          child: const Text("Can't click me!"),
-                          autofocus: true,
-                        ),
-                      ]),
+                          const SizedBox(width: 15),
+                          const OutlinedButton(
+                            onPressed: null,
+                            child: Text("Can't click me!"),
+                          ),
+                        ],
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Row(children: <Widget>[
-                        OutlinedButton(
-                          onPressed: () => print('OutlinedButton'),
-                          child: const Text('Click me!'),
-                        ),
-                        const SizedBox(width: 15),
-                        OutlinedButton(
-                          onPressed: null,
-                          child: const Text("Can't click me!"),
-                        ),
-                      ]),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(children: <Widget>[
-                        ElevatedButton(
-                          onPressed: () => print('RaisedButton'),
-                          child: const Text('Click me!'),
-                        ),
-                        const SizedBox(width: 15),
-                        ElevatedButton(
-                          onPressed: null,
-                          child: const Text("Can't click me!"),
-                        ),
-                      ]),
+                      child: Row(
+                        children: <Widget>[
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Click me!'),
+                          ),
+                          const SizedBox(width: 15),
+                          const ElevatedButton(
+                            onPressed: null,
+                            child: Text("Can't click me!"),
+                          ),
+                        ],
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -98,14 +109,22 @@ class _ControlsViewState extends State<ControlsView>
                         child: Row(
                           children: [
                             ToggleButtons(
-                              children: [Text('Yes'), Text('No'), Text('No')],
-                              isSelected: [true, false, false],
+                              isSelected: const [true, false, false],
                               onPressed: (v) {},
+                              children: const [
+                                Text('Yes'),
+                                Text('No'),
+                                Text('No')
+                              ],
                             ),
                             const SizedBox(width: 15),
                             ToggleButtons(
-                              children: [Text('Yes'), Text('No'), Text('No')],
-                              isSelected: [true, false, false],
+                              isSelected: const [true, false, false],
+                              children: const [
+                                Text('Yes'),
+                                Text('No'),
+                                Text('No')
+                              ],
                             ),
                           ],
                         ),
@@ -116,16 +135,21 @@ class _ControlsViewState extends State<ControlsView>
                       child: Row(
                         children: <Widget>[
                           DropdownButton<int>(
-                            onChanged: (value) =>
-                                print('DropdownButton $value'),
+                            onChanged: (value) {},
                             value: 1,
-                            items: <DropdownMenuItem<int>>[
+                            items: const <DropdownMenuItem<int>>[
                               DropdownMenuItem(
-                                  value: 1, child: const Text('One')),
+                                value: 1,
+                                child: Text('One'),
+                              ),
                               DropdownMenuItem(
-                                  value: 2, child: const Text('Two')),
+                                value: 2,
+                                child: Text('Two'),
+                              ),
                               DropdownMenuItem(
-                                  value: 3, child: const Text('Three')),
+                                value: 3,
+                                child: Text('Three'),
+                              ),
                             ],
                           ),
                         ],
@@ -134,28 +158,29 @@ class _ControlsViewState extends State<ControlsView>
                     Row(
                       children: [
                         IconButton(
-                            splashRadius: 20,
-                            onPressed: () => showDialog(
-                                context: context,
-                                builder: (context) => SimpleDialog(
-                                      title:
-                                          Center(child: Text('Dialog Title')),
-                                      titlePadding: EdgeInsets.only(top: 15),
-                                      children: [
-                                        Center(
-                                            child: Column(
-                                          children: [
-                                            for (var i = 0; i < 10; i++)
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text('Content'),
-                                              ),
-                                          ],
-                                        )),
-                                      ],
-                                    )),
-                            icon: Icon(Icons.account_circle_rounded)),
+                          splashRadius: 20,
+                          onPressed: () => showDialog(
+                            context: context,
+                            builder: (context) => SimpleDialog(
+                              title: const Center(child: Text('Dialog Title')),
+                              titlePadding: const EdgeInsets.only(top: 15),
+                              children: [
+                                Center(
+                                  child: Column(
+                                    children: [
+                                      for (var i = 0; i < 10; i++)
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text('Content'),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          icon: const Icon(Icons.account_circle_rounded),
+                        ),
                       ],
                     )
                   ],
@@ -163,40 +188,44 @@ class _ControlsViewState extends State<ControlsView>
               ),
               ListView(
                 shrinkWrap: true,
-                padding: EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(15.0),
                 children: <Widget>[
                   Row(
                     children: <Widget>[
                       Column(
                         children: [
-                          Text('Checkbox'),
+                          const Text('Checkbox'),
                           Row(
                             children: [
                               Checkbox(value: true, onChanged: (_) {}),
                               Checkbox(value: false, onChanged: (_) {}),
-                              Checkbox(value: true, onChanged: null),
-                              Checkbox(value: false, onChanged: null),
+                              const Checkbox(value: true, onChanged: null),
+                              const Checkbox(value: false, onChanged: null),
                             ],
                           ),
-                          Text('Radio'),
+                          const Text('Radio'),
                           Row(
                             children: [
                               Radio(
-                                  value: true,
-                                  groupValue: true,
-                                  onChanged: (_) {}),
+                                value: true,
+                                groupValue: true,
+                                onChanged: (_) {},
+                              ),
                               Radio(
-                                  value: false,
-                                  groupValue: true,
-                                  onChanged: (_) {}),
-                              Radio(
-                                  value: true,
-                                  groupValue: true,
-                                  onChanged: null),
-                              Radio(
-                                  value: false,
-                                  groupValue: true,
-                                  onChanged: null),
+                                value: false,
+                                groupValue: true,
+                                onChanged: (_) {},
+                              ),
+                              const Radio(
+                                value: true,
+                                groupValue: true,
+                                onChanged: null,
+                              ),
+                              const Radio(
+                                value: false,
+                                groupValue: true,
+                                onChanged: null,
+                              ),
                             ],
                           ),
                         ],
@@ -224,21 +253,21 @@ class _ControlsViewState extends State<ControlsView>
                       ],
                     ),
                     Row(
-                      children: <Widget>[
+                      children: const <Widget>[
                         Switch(
                           value: true,
                           onChanged: null,
                         ),
-                        const Text('Disabled Yes'),
+                        Text('Disabled Yes'),
                       ],
                     ),
                     Row(
-                      children: <Widget>[
+                      children: const <Widget>[
                         Switch(
                           value: false,
                           onChanged: null,
                         ),
-                        const Text('Disabled No'),
+                        Text('Disabled No'),
                       ],
                     ),
                   ],
@@ -249,13 +278,13 @@ class _ControlsViewState extends State<ControlsView>
                   Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: Row(
-                      children: [
+                      children: const [
                         CircularProgressIndicator(),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
+                  const Padding(
+                    padding: EdgeInsets.all(18.0),
                     child: LinearProgressIndicator(),
                   ),
                 ],

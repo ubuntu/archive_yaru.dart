@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class FontsView extends StatelessWidget {
+  const FontsView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(15.0),
       children: <Widget>[
         Text(
           'headline1',

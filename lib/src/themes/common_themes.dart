@@ -67,24 +67,26 @@ final _buttonThemeData = ButtonThemeData(
 );
 
 final _outlinedButtonThemeData = OutlinedButtonThemeData(
-    style: OutlinedButton.styleFrom(
-  side: const BorderSide(color: Colors.black38, width: 0.3),
-  visualDensity: _commonButtonStyle.visualDensity,
-  primary: YaruColors.textGrey,
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(kButtonRadius),
+  style: OutlinedButton.styleFrom(
+    side: const BorderSide(color: Colors.black38, width: 0.3),
+    visualDensity: _commonButtonStyle.visualDensity,
+    primary: YaruColors.textGrey,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(kButtonRadius),
+    ),
   ),
-));
+);
 
 final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
-    style: OutlinedButton.styleFrom(
-  side: const BorderSide(color: Colors.white38, width: 0.3),
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(kButtonRadius),
+  style: OutlinedButton.styleFrom(
+    side: const BorderSide(color: Colors.white38, width: 0.3),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(kButtonRadius),
+    ),
+    visualDensity: _commonButtonStyle.visualDensity,
+    primary: Colors.white,
   ),
-  visualDensity: _commonButtonStyle.visualDensity,
-  primary: Colors.white,
-));
+);
 
 final _textButtonThemeData = TextButtonThemeData(
   style: TextButton.styleFrom(
@@ -97,47 +99,58 @@ final _textButtonThemeData = TextButtonThemeData(
 
 ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   return ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-    primary: color,
-    onPrimary: ThemeData.estimateBrightnessForColor(color) == Brightness.light
-        ? Colors.black
-        : Colors.white,
-    visualDensity: _commonButtonStyle.visualDensity,
-    elevation: 0,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(kButtonRadius),
+    style: ElevatedButton.styleFrom(
+      primary: color,
+      onPrimary: ThemeData.estimateBrightnessForColor(color) == Brightness.light
+          ? Colors.black
+          : Colors.white,
+      visualDensity: _commonButtonStyle.visualDensity,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kButtonRadius),
+      ),
     ),
-  ));
+  );
 }
 
 const _toggleButtonsTheme = ToggleButtonsThemeData(
-    borderRadius: BorderRadius.all(Radius.circular(kButtonRadius)));
+  borderRadius: BorderRadius.all(Radius.circular(kButtonRadius)),
+);
 
 // Dialogs
 
 final _dialogThemeDark = DialogTheme(
-    backgroundColor: YaruColors.coolGrey,
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(kWindowRadius),
-        side: BorderSide(color: Colors.white.withOpacity(0.2))));
+  backgroundColor: YaruColors.coolGrey,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(kWindowRadius),
+    side: BorderSide(color: Colors.white.withOpacity(0.2)),
+  ),
+);
 
 final _dialogThemeLight = DialogTheme(
-    shape: RoundedRectangleBorder(
-  borderRadius: BorderRadius.circular(kWindowRadius),
-));
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(kWindowRadius),
+  ),
+);
 
 // Switches
 
 SwitchThemeData _getSwitchThemeData(Color primaryColor, Brightness brightness) {
   return SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith(
-          (states) => _getSwitchThumbColor(states, primaryColor, brightness)),
-      trackColor: MaterialStateProperty.resolveWith(
-          (states) => _getSwitchTrackColor(states, primaryColor, brightness)));
+    thumbColor: MaterialStateProperty.resolveWith(
+      (states) => _getSwitchThumbColor(states, primaryColor, brightness),
+    ),
+    trackColor: MaterialStateProperty.resolveWith(
+      (states) => _getSwitchTrackColor(states, primaryColor, brightness),
+    ),
+  );
 }
 
 Color _getSwitchThumbColor(
-    Set<MaterialState> states, Color selectedColor, Brightness brightness) {
+  Set<MaterialState> states,
+  Color selectedColor,
+  Brightness brightness,
+) {
   if (states.contains(MaterialState.disabled)) {
     return brightness == Brightness.dark
         ? kDisabledGreyDark
@@ -152,7 +165,10 @@ Color _getSwitchThumbColor(
 }
 
 Color _getSwitchTrackColor(
-    Set<MaterialState> states, Color selectedColor, Brightness brightness) {
+  Set<MaterialState> states,
+  Color selectedColor,
+  Brightness brightness,
+) {
   if (states.contains(MaterialState.disabled)) {
     return brightness == Brightness.dark
         ? kDisabledGreyDark.withAlpha(120)
@@ -173,7 +189,10 @@ Color _getSwitchTrackColor(
 // Checks & Radios
 
 Color _getCheckFillColor(
-    Set<MaterialState> states, Color selectedColor, Brightness brightness) {
+  Set<MaterialState> states,
+  Color selectedColor,
+  Brightness brightness,
+) {
   if (!states.contains(MaterialState.disabled)) {
     if (states.contains(MaterialState.selected)) {
       return selectedColor;
@@ -197,22 +216,28 @@ Color _getCheckColor(Set<MaterialState> states, Color color) {
 }
 
 CheckboxThemeData _getCheckBoxThemeData(
-    Color primaryColor, Brightness brightness) {
+  Color primaryColor,
+  Brightness brightness,
+) {
   return CheckboxThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(kCheckRadius),
     ),
     fillColor: MaterialStateProperty.resolveWith(
-        (states) => _getCheckFillColor(states, primaryColor, brightness)),
+      (states) => _getCheckFillColor(states, primaryColor, brightness),
+    ),
     checkColor: MaterialStateProperty.resolveWith(
-        (states) => _getCheckColor(states, primaryColor)),
+      (states) => _getCheckColor(states, primaryColor),
+    ),
   );
 }
 
 RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
   return RadioThemeData(
-      fillColor: MaterialStateProperty.resolveWith(
-          (states) => _getCheckFillColor(states, primaryColor, brightness)));
+    fillColor: MaterialStateProperty.resolveWith(
+      (states) => _getCheckFillColor(states, primaryColor, brightness),
+    ),
+  );
 }
 
 const _pageTransitionTheme = PageTransitionsTheme(
