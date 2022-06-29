@@ -11,11 +11,11 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  _HomePageState();
+class HomePageState extends State<HomePage> {
+  HomePageState();
   int _counter = 0;
 
   void incrementCounter() {
@@ -27,15 +27,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   final textController = TextEditingController(
-      text:
-          'My code fails, I do not know why.\nMy code works, I do not know why.\nText in other scripts: Tamaziɣt Taqbaylit, 中文(简体), Čeština, Беларуская, Ελληνικά, עברית, Русский, བོད་ཡིག, Norsk bokmål.');
+    text:
+        'My code fails, I do not know why.\nMy code works, I do not know why.\nText in other scripts: Tamaziɣt Taqbaylit, 中文(简体), Čeština, Беларуская, Ελληνικά, עברית, Русский, བོད་ཡིག, Norsk bokmål.',
+  );
 
   int _selectedIndex = 0;
-  final List<Widget> _views = <Widget>[
-    FontsView(),
-    ControlsView(),
+  final List<Widget> _views = [
+    const FontsView(),
+    const ControlsView(),
     InputsView(),
-    ColorsView()
+    const ColorsView()
   ];
 
   @override
@@ -48,16 +49,22 @@ class _HomePageState extends State<HomePage> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextButton(
-                style: TextButton.styleFrom(
-                    padding: const EdgeInsets.all(0),
-                    shape: const CircleBorder()),
-                onPressed: () => AppTheme.apply(context,
-                    themeMode: theme.themeMode == ThemeMode.light
-                        ? ThemeMode.dark
-                        : ThemeMode.light),
-                child: Icon(theme.themeMode == ThemeMode.light
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.all(0),
+                shape: const CircleBorder(),
+              ),
+              onPressed: () => AppTheme.apply(
+                context,
+                themeMode: theme.themeMode == ThemeMode.light
+                    ? ThemeMode.dark
+                    : ThemeMode.light,
+              ),
+              child: Icon(
+                theme.themeMode == ThemeMode.light
                     ? Icons.dark_mode
-                    : Icons.light_mode)),
+                    : Icons.light_mode,
+              ),
+            ),
           ),
         ),
         actions: [
@@ -85,8 +92,11 @@ class _HomePageState extends State<HomePage> {
                 for (final variant
                     in YaruVariant.values.take(10)) // skip flavors
                   PopupMenuItem(
-                    onTap: () => AppTheme.apply(context,
-                        variant: variant, highContrast: false),
+                    onTap: () => AppTheme.apply(
+                      context,
+                      variant: variant,
+                      highContrast: false,
+                    ),
                     child: ColorDisk(
                       color: variant.color,
                       selected: variant == theme.variant &&
@@ -110,30 +120,34 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
-        items: [
+        items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.font_download_outlined),
-              activeIcon: Icon(Icons.font_download),
-              label: 'Fonts'),
+            icon: Icon(Icons.font_download_outlined),
+            activeIcon: Icon(Icons.font_download),
+            label: 'Fonts',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.radio_button_checked_outlined),
-              activeIcon: Icon(Icons.radio_button_checked),
-              label: 'Controls'),
+            icon: Icon(Icons.radio_button_checked_outlined),
+            activeIcon: Icon(Icons.radio_button_checked),
+            label: 'Controls',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.text_fields),
-              activeIcon: Icon(Icons.text_fields_outlined),
-              label: 'Text Fields'),
+            icon: Icon(Icons.text_fields),
+            activeIcon: Icon(Icons.text_fields_outlined),
+            label: 'Text Fields',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.color_lens_outlined),
-              activeIcon: Icon(Icons.color_lens),
-              label: 'Palette')
+            icon: Icon(Icons.color_lens_outlined),
+            activeIcon: Icon(Icons.color_lens),
+            label: 'Palette',
+          )
         ],
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {incrementCounter()},
-        child: Icon(Icons.plus_one),
+        child: const Icon(Icons.plus_one),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,

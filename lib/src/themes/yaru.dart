@@ -15,9 +15,10 @@ final _lightColorScheme = ColorScheme.fromSwatch(
 );
 
 final yaruLight = createYaruLightTheme(
-    colorScheme: _lightColorScheme,
-    primaryColor: _primaryColor,
-    elevatedButtonColor: YaruColors.success);
+  colorScheme: _lightColorScheme,
+  primaryColor: _primaryColor,
+  elevatedButtonColor: YaruColors.success,
+);
 
 final _darkColorScheme = ColorScheme.fromSwatch(
   primarySwatch: _primaryColor,
@@ -30,9 +31,10 @@ final _darkColorScheme = ColorScheme.fromSwatch(
 );
 
 final yaruDark = createYaruDarkTheme(
-    colorScheme: _darkColorScheme,
-    primaryColor: _primaryColor,
-    elevatedButtonColor: YaruColors.success);
+  colorScheme: _darkColorScheme,
+  primaryColor: _primaryColor,
+  elevatedButtonColor: YaruColors.success,
+);
 
 final yaruSageLight = createYaruLightTheme(
   colorScheme: ColorScheme.fromSwatch(

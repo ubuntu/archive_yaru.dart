@@ -173,18 +173,20 @@ extension ThemeTester on WidgetTester {
       highContrast: highContrast,
       themeMode: themeMode,
     );
-    await pumpWidget(MaterialApp(
-      key: ValueKey(data),
-      home: YaruTheme(
-        child: Container(),
-        data: data,
-        platform: FakePlatform(
-          operatingSystem: Platform.linux,
-          environment: {'XDG_CURRENT_DESKTOP': desktop},
+    await pumpWidget(
+      MaterialApp(
+        key: ValueKey(data),
+        home: YaruTheme(
+          child: Container(),
+          data: data,
+          platform: FakePlatform(
+            operatingSystem: Platform.linux,
+            environment: {'XDG_CURRENT_DESKTOP': desktop},
+          ),
+          settings: settings,
         ),
-        settings: settings,
       ),
-    ));
+    );
     return pump();
   }
 }

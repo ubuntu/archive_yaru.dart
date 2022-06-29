@@ -85,8 +85,10 @@ class YaruTheme extends StatefulWidget {
     this.data = const YaruThemeData(),
     @visibleForTesting Platform? platform,
     @visibleForTesting GSettings? settings,
-  })  : assert(builder != null || child != null,
-            'Either builder or child must be provided'),
+  })  : assert(
+          builder != null || child != null,
+          'Either builder or child must be provided',
+        ),
         _platform = platform ?? const LocalPlatform(),
         _settings = settings;
 
