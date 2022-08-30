@@ -11,7 +11,7 @@ import 'package:yaru/yaru.dart';
 
 import 'widget_test.mocks.dart';
 
-@GenerateMocks([XdgDesktopPortalClient])
+@GenerateMocks([XdgSettingsPortal])
 void main() {
   testWidgets('variant', (tester) async {
     await tester.pumpTheme(variant: YaruVariant.blue);
@@ -21,46 +21,53 @@ void main() {
 
   group('gtk-theme', () {
     testWidgets('unknown', (tester) async {
-      final settings = createMockXdgDesktopPortalClient(theme: '');
+      final settings = createMockXdgSettingsPortal(theme: '');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, null);
     });
 
     testWidgets('yaru', (tester) async {
-      final settings = createMockXdgDesktopPortalClient(theme: 'Yaru');
+      final settings = createMockXdgSettingsPortal(theme: 'Yaru');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.orange);
     });
 
     testWidgets('dark', (tester) async {
-      final settings = createMockXdgDesktopPortalClient(theme: 'Yaru-dark');
+      final settings = createMockXdgSettingsPortal(theme: 'Yaru-dark');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.orange);
     });
 
     testWidgets('color', (tester) async {
-      final settings = createMockXdgDesktopPortalClient(theme: 'Yaru-blue');
+      final settings = createMockXdgSettingsPortal(theme: 'Yaru-blue');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.blue);
     });
 
     testWidgets('change', (tester) async {
-      final settings = createMockXdgDesktopPortalClient(theme: 'Yaru-blue');
-      final keysChanged = StreamController<List<String>>(sync: true);
-      addTearDown(keysChanged.close);
-      when(settings.keysChanged).thenAnswer((_) => keysChanged.stream);
+      final settings = createMockXdgSettingsPortal(theme: 'Yaru-blue');
+      final settingChanged =
+          StreamController<XdgSettingChangeEvent>(sync: true);
+      addTearDown(settingChanged.close);
+      when(settings.settingChanged).thenAnswer((_) => settingChanged.stream);
 
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.blue);
 
-      when(settings.get('gtk-theme'))
+      when(settings.read('org.gnome.desktop.interface', 'gtk-theme'))
           .thenAnswer((_) async => const DBusString('Yaru-red'));
-      keysChanged.add(['gtk-theme']);
+      settingChanged.add(
+        const XdgSettingChangeEvent(
+          'org.gnome.desktop.interface',
+          'gtk-theme',
+          DBusString('Yaru-red'),
+        ),
+      );
       await tester.pump();
       expect(YaruTheme.of(context).variant, YaruVariant.red);
     });
@@ -68,57 +75,71 @@ void main() {
 
   group('desktop', () {
     testWidgets('unknown', (tester) async {
-      final settings = createMockXdgDesktopPortalClient();
+      final settings = createMockXdgSettingsPortal();
       await tester.pumpTheme(desktop: 'unknown', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(
+        settings.read('org.gnome.desktop.interface', 'gtk-theme'),
+      );
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, isNull);
     });
 
     testWidgets('budgie', (tester) async {
-      final settings = createMockXdgDesktopPortalClient();
+      final settings = createMockXdgSettingsPortal();
       await tester.pumpTheme(desktop: 'budgie-desktop', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(
+        settings.read('org.gnome.desktop.interface', 'gtk-theme'),
+      );
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.ubuntuBudgieBlue);
     });
 
     testWidgets('ubuntu', (tester) async {
-      final settings = createMockXdgDesktopPortalClient();
+      final settings = createMockXdgSettingsPortal();
       await tester.pumpTheme(desktop: 'GNOME:ubuntu', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(
+        settings.read('org.gnome.desktop.interface', 'gtk-theme'),
+      );
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.orange);
     });
 
     testWidgets('kde', (tester) async {
-      final settings = createMockXdgDesktopPortalClient();
+      final settings = createMockXdgSettingsPortal();
       await tester.pumpTheme(desktop: 'KDE', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(
+        settings.read('org.gnome.desktop.interface', 'gtk-theme'),
+      );
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.kubuntuBlue);
     });
 
     testWidgets('lubuntu', (tester) async {
-      final settings = createMockXdgDesktopPortalClient();
+      final settings = createMockXdgSettingsPortal();
       await tester.pumpTheme(desktop: 'LXQt', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(
+        settings.read('org.gnome.desktop.interface', 'gtk-theme'),
+      );
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.lubuntuBlue);
     });
 
     testWidgets('mate', (tester) async {
-      final settings = createMockXdgDesktopPortalClient();
+      final settings = createMockXdgSettingsPortal();
       await tester.pumpTheme(desktop: 'MATE', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(
+        settings.read('org.gnome.desktop.interface', 'gtk-theme'),
+      );
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.ubuntuMateGreen);
     });
 
     testWidgets('xubuntu', (tester) async {
-      final settings = createMockXdgDesktopPortalClient();
+      final settings = createMockXdgSettingsPortal();
       await tester.pumpTheme(desktop: 'XFCE', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(
+        settings.read('org.gnome.desktop.interface', 'gtk-theme'),
+      );
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.xubuntuBlue);
     });
@@ -153,13 +174,12 @@ void main() {
   });
 }
 
-MockXdgDesktopPortalClient createMockXdgDesktopPortalClient(
-    {String theme = ''}) {
-  final client = MockXdgPortalClient();
-  when(client.settings.settingChanged).thenAnswer((_) => const Stream.empty());
-  when(client.settings.get('org.gnome.desktop.interface', 'gtk-theme'))
+MockXdgSettingsPortal createMockXdgSettingsPortal({String theme = ''}) {
+  final settings = MockXdgSettingsPortal();
+  when(settings.settingChanged).thenAnswer((_) => const Stream.empty());
+  when(settings.read('org.gnome.desktop.interface', 'gtk-theme'))
       .thenAnswer((_) async => DBusString(theme));
-  return client;
+  return settings;
 }
 
 extension ThemeTester on WidgetTester {
@@ -168,7 +188,7 @@ extension ThemeTester on WidgetTester {
     bool? highContrast,
     ThemeMode? themeMode,
     String desktop = '',
-    XdgDesktopPortalClient? portalClient,
+    XdgSettingsPortal? settings,
   }) async {
     final data = YaruThemeData(
       variant: variant,
