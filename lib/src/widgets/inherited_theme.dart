@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:dbus/dbus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gsettings/gsettings.dart';
+import 'package:xdg_desktop_portal/xdg_desktop_portal.dart';
 import 'package:platform/platform.dart';
 
 import 'package:yaru/yaru.dart';
@@ -84,13 +84,13 @@ class YaruTheme extends StatefulWidget {
     this.child,
     this.data = const YaruThemeData(),
     @visibleForTesting Platform? platform,
-    @visibleForTesting GSettings? settings,
+    @visibleForTesting XdgDesktopPortalClient? portalClient,
   })  : assert(
           builder != null || child != null,
           'Either builder or child must be provided',
         ),
         _platform = platform ?? const LocalPlatform(),
-        _settings = settings;
+        _portalClient = portalClient;
 
   /// Builds the widget below this widget in the tree.
   final ValueWidgetBuilder<YaruThemeData>? builder;
@@ -102,7 +102,7 @@ class YaruTheme extends StatefulWidget {
   final YaruThemeData data;
 
   final Platform _platform;
-  final GSettings? _settings;
+  final XdgDesktopPortalClient? _portalClient;
 
   /// The data from the closest [YaruTheme] instance that encloses the given
   /// context.
@@ -122,16 +122,17 @@ class YaruTheme extends StatefulWidget {
 
 class _YaruThemeState extends State<YaruTheme> {
   YaruVariant? _variant;
-  GSettings? _settings;
+  XdgDesktopPortalClient? _portalClient;
   StreamSubscription<List<String>>? _subscription;
 
   @override
   void initState() {
     super.initState();
     if (widget.data.variant == null && !kIsWeb && widget._platform.isLinux) {
-      _settings = widget._settings ?? GSettings('org.gnome.desktop.interface');
-      _subscription = _settings!.keysChanged.listen((keys) {
-        if (keys.contains('gtk-theme')) {
+      _portalClient = widget._portalClient ?? XdgDesktopPortalClient();
+      _subscription = _portalClient!.settings.settingChanged.listen((event) {
+        if (event.namespace == 'org.gnome.desktop.interface' &&
+            event.key == 'gtk-theme') {
           updateVariant();
         }
       });
@@ -143,8 +144,8 @@ class _YaruThemeState extends State<YaruTheme> {
   void dispose() {
     super.dispose();
     _subscription?.cancel();
-    if (widget._settings == null) {
-      _settings?.close();
+    if (widget._portalClient == null) {
+      _portalClient?.close();
     }
   }
 
@@ -169,8 +170,10 @@ class _YaruThemeState extends State<YaruTheme> {
 
   Future<void> updateVariant() async {
     assert(!kIsWeb && widget._platform.isLinux);
-    final name = await _settings?.get('gtk-theme') as DBusString;
-    setState(() => _variant = resolveVariant(name.value));
+    final name = await _portalClient!.settings
+        .read('org.gnome.desktop.interface', 'gtk-theme')
+        .asString();
+    setState(() => _variant = resolveVariant(name));
   }
 
   ThemeMode resolveMode() {

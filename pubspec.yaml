@@ -13,8 +13,8 @@ dependencies:
   dbus: ^0.7.0
   flutter:
     sdk: flutter
-  gsettings: ^0.2.5
   platform: ^3.1.0
+  xdg_desktop_portal: ^0.1.12
   yaru_colors: ^0.1.0
 
 dev_dependencies:
