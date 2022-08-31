@@ -70,7 +70,7 @@ final _outlinedButtonThemeData = OutlinedButtonThemeData(
   style: OutlinedButton.styleFrom(
     side: const BorderSide(color: Colors.black38, width: 0.3),
     visualDensity: _commonButtonStyle.visualDensity,
-    primary: YaruColors.textGrey,
+    foregroundColor: YaruColors.textGrey,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(kButtonRadius),
     ),
@@ -84,7 +84,7 @@ final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
       borderRadius: BorderRadius.circular(kButtonRadius),
     ),
     visualDensity: _commonButtonStyle.visualDensity,
-    primary: Colors.white,
+    foregroundColor: Colors.white,
   ),
 );
 
@@ -100,10 +100,11 @@ final _textButtonThemeData = TextButtonThemeData(
 ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   return ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      primary: color,
-      onPrimary: ThemeData.estimateBrightnessForColor(color) == Brightness.light
-          ? Colors.black
-          : Colors.white,
+      backgroundColor: color,
+      foregroundColor:
+          ThemeData.estimateBrightnessForColor(color) == Brightness.light
+              ? Colors.black
+              : Colors.white,
       visualDensity: _commonButtonStyle.visualDensity,
       elevation: 0,
       shape: RoundedRectangleBorder(
