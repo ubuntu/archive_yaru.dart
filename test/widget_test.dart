@@ -60,7 +60,7 @@ void main() {
       expect(YaruTheme.of(context).variant, YaruVariant.blue);
 
       when(settings.read('org.gnome.desktop.interface', 'gtk-theme'))
-          .thenAnswer((_) async => const DBusString('Yaru-red'));
+          .thenAnswer((_) async => const DBusVariant(DBusString('Yaru-red')));
       settingChanged.add(
         const XdgSettingChangeEvent(
           'org.gnome.desktop.interface',
@@ -178,7 +178,7 @@ MockXdgSettingsPortal createMockXdgSettingsPortal({String theme = ''}) {
   final settings = MockXdgSettingsPortal();
   when(settings.settingChanged).thenAnswer((_) => const Stream.empty());
   when(settings.read('org.gnome.desktop.interface', 'gtk-theme'))
-      .thenAnswer((_) async => DBusString(theme));
+      .thenAnswer((_) async => DBusVariant(DBusString(theme)));
   return settings;
 }
 

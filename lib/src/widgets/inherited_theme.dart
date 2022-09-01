@@ -176,7 +176,7 @@ class _YaruThemeState extends State<YaruTheme> {
     assert(!kIsWeb && widget._platform.isLinux);
     final name =
         await _getSettings().read('org.gnome.desktop.interface', 'gtk-theme');
-    setState(() => _variant = resolveVariant(name.asString()));
+    setState(() => _variant = resolveVariant(name.asVariant().asString()));
   }
 
   ThemeMode resolveMode() {
