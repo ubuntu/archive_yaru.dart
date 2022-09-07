@@ -10,10 +10,8 @@ environment:
   flutter: ">=3.0.0"
 
 dependencies:
-  dbus: ^0.7.0
   flutter:
     sdk: flutter
-  gsettings: ^0.2.5
   platform: ^3.1.0
   yaru_colors: ^0.1.0
 
@@ -48,3 +46,7 @@ flutter:
         - asset: packages/yaru/src/text/fonts/Ubuntu-BI.ttf
           weight: 700
           style: italic
+  plugin:
+    platforms:
+      linux:
+        pluginClass: YaruPlugin

@@ -1,11 +1,9 @@
 import 'dart:async';
 
-import 'package:dbus/dbus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gsettings/gsettings.dart';
 import 'package:platform/platform.dart';
-
+import 'package:yaru/src/settings.dart';
 import 'package:yaru/yaru.dart';
 
 YaruVariant? _detectYaruVariant(Platform platform) {
@@ -84,7 +82,7 @@ class YaruTheme extends StatefulWidget {
     this.child,
     this.data = const YaruThemeData(),
     @visibleForTesting Platform? platform,
-    @visibleForTesting GSettings? settings,
+    @visibleForTesting YaruSettings? settings,
   })  : assert(
           builder != null || child != null,
           'Either builder or child must be provided',
@@ -102,7 +100,7 @@ class YaruTheme extends StatefulWidget {
   final YaruThemeData data;
 
   final Platform _platform;
-  final GSettings? _settings;
+  final YaruSettings? _settings;
 
   /// The data from the closest [YaruTheme] instance that encloses the given
   /// context.
@@ -122,18 +120,16 @@ class YaruTheme extends StatefulWidget {
 
 class _YaruThemeState extends State<YaruTheme> {
   YaruVariant? _variant;
-  GSettings? _settings;
-  StreamSubscription<List<String>>? _subscription;
+  YaruSettings? _settings;
+  StreamSubscription<String?>? _subscription;
 
   @override
   void initState() {
     super.initState();
     if (widget.data.variant == null && !kIsWeb && widget._platform.isLinux) {
-      _settings = widget._settings ?? GSettings('org.gnome.desktop.interface');
-      _subscription = _settings!.keysChanged.listen((keys) {
-        if (keys.contains('gtk-theme')) {
-          updateVariant();
-        }
+      _settings = widget._settings ?? const YaruSettings();
+      _subscription = _settings!.themeNameChanged.listen((name) {
+        updateVariant(name);
       });
       updateVariant();
     }
@@ -143,34 +139,31 @@ class _YaruThemeState extends State<YaruTheme> {
   void dispose() {
     super.dispose();
     _subscription?.cancel();
-    if (widget._settings == null) {
-      _settings?.close();
-    }
   }
 
   // "Yaru-prussiangreen-dark" => YaruAccent.prussianGreen
-  YaruVariant? resolveVariant(String name) {
-    if (name.endsWith('-dark')) {
-      name = name.substring(0, name.length - 5);
+  YaruVariant? resolveVariant(String? name) {
+    if (name?.endsWith('-dark') == true) {
+      name = name!.substring(0, name.length - 5);
     }
-    if (name.startsWith('Yaru-')) {
-      name = name.substring(5);
+    if (name?.startsWith('Yaru-') == true) {
+      name = name!.substring(5);
     }
     if (name == 'Yaru') {
       return YaruVariant.orange;
     }
     for (final value in YaruVariant.values) {
-      if (value.name.toLowerCase() == name.toLowerCase()) {
+      if (value.name.toLowerCase() == name?.toLowerCase()) {
         return value;
       }
     }
     return _detectYaruVariant(widget._platform);
   }
 
-  Future<void> updateVariant() async {
+  Future<void> updateVariant([String? value]) async {
     assert(!kIsWeb && widget._platform.isLinux);
-    final name = await _settings?.get('gtk-theme') as DBusString;
-    setState(() => _variant = resolveVariant(name.value));
+    final name = value ?? await _settings?.getThemeName();
+    setState(() => _variant = resolveVariant(name));
   }
 
   ThemeMode resolveMode() {
