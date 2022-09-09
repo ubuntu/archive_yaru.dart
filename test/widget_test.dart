@@ -1,17 +1,16 @@
 import 'dart:async';
 
-import 'package:dbus/dbus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gsettings/gsettings.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:platform/platform.dart';
 import 'package:yaru/yaru.dart';
+import 'package:yaru/src/settings.dart';
 
 import 'widget_test.mocks.dart';
 
-@GenerateMocks([GSettings])
+@GenerateMocks([YaruSettings])
 void main() {
   testWidgets('variant', (tester) async {
     await tester.pumpTheme(variant: YaruVariant.blue);
@@ -21,46 +20,45 @@ void main() {
 
   group('gtk-theme', () {
     testWidgets('unknown', (tester) async {
-      final settings = createMockGSettings(theme: '');
+      final settings = createMockSettings(theme: '');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, null);
     });
 
     testWidgets('yaru', (tester) async {
-      final settings = createMockGSettings(theme: 'Yaru');
+      final settings = createMockSettings(theme: 'Yaru');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.orange);
     });
 
     testWidgets('dark', (tester) async {
-      final settings = createMockGSettings(theme: 'Yaru-dark');
+      final settings = createMockSettings(theme: 'Yaru-dark');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.orange);
     });
 
     testWidgets('color', (tester) async {
-      final settings = createMockGSettings(theme: 'Yaru-blue');
+      final settings = createMockSettings(theme: 'Yaru-blue');
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.blue);
     });
 
     testWidgets('change', (tester) async {
-      final settings = createMockGSettings(theme: 'Yaru-blue');
-      final keysChanged = StreamController<List<String>>(sync: true);
-      addTearDown(keysChanged.close);
-      when(settings.keysChanged).thenAnswer((_) => keysChanged.stream);
+      final settings = createMockSettings(theme: 'Yaru-blue');
+      final themeNameChanged = StreamController<String>(sync: true);
+      addTearDown(themeNameChanged.close);
+      when(settings.themeNameChanged)
+          .thenAnswer((_) => themeNameChanged.stream);
 
       await tester.pumpTheme(settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.blue);
 
-      when(settings.get('gtk-theme'))
-          .thenAnswer((_) async => const DBusString('Yaru-red'));
-      keysChanged.add(['gtk-theme']);
+      themeNameChanged.add('Yaru-red');
       await tester.pump();
       expect(YaruTheme.of(context).variant, YaruVariant.red);
     });
@@ -68,57 +66,57 @@ void main() {
 
   group('desktop', () {
     testWidgets('unknown', (tester) async {
-      final settings = createMockGSettings();
+      final settings = createMockSettings();
       await tester.pumpTheme(desktop: 'unknown', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(settings.getThemeName());
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, isNull);
     });
 
     testWidgets('budgie', (tester) async {
-      final settings = createMockGSettings();
+      final settings = createMockSettings();
       await tester.pumpTheme(desktop: 'budgie-desktop', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(settings.getThemeName());
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.ubuntuBudgieBlue);
     });
 
     testWidgets('ubuntu', (tester) async {
-      final settings = createMockGSettings();
+      final settings = createMockSettings();
       await tester.pumpTheme(desktop: 'GNOME:ubuntu', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(settings.getThemeName());
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.orange);
     });
 
     testWidgets('kde', (tester) async {
-      final settings = createMockGSettings();
+      final settings = createMockSettings();
       await tester.pumpTheme(desktop: 'KDE', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(settings.getThemeName());
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.kubuntuBlue);
     });
 
     testWidgets('lubuntu', (tester) async {
-      final settings = createMockGSettings();
+      final settings = createMockSettings();
       await tester.pumpTheme(desktop: 'LXQt', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(settings.getThemeName());
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.lubuntuBlue);
     });
 
     testWidgets('mate', (tester) async {
-      final settings = createMockGSettings();
+      final settings = createMockSettings();
       await tester.pumpTheme(desktop: 'MATE', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(settings.getThemeName());
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.ubuntuMateGreen);
     });
 
     testWidgets('xubuntu', (tester) async {
-      final settings = createMockGSettings();
+      final settings = createMockSettings();
       await tester.pumpTheme(desktop: 'XFCE', settings: settings);
-      await untilCalled(settings.get('gtk-theme'));
+      await untilCalled(settings.getThemeName());
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.xubuntuBlue);
     });
@@ -153,10 +151,10 @@ void main() {
   });
 }
 
-MockGSettings createMockGSettings({String theme = ''}) {
-  final settings = MockGSettings();
-  when(settings.keysChanged).thenAnswer((_) => const Stream.empty());
-  when(settings.get('gtk-theme')).thenAnswer((_) async => DBusString(theme));
+MockYaruSettings createMockSettings({String theme = ''}) {
+  final settings = MockYaruSettings();
+  when(settings.themeNameChanged).thenAnswer((_) => const Stream.empty());
+  when(settings.getThemeName()).thenAnswer((_) async => theme);
   return settings;
 }
 
@@ -166,7 +164,7 @@ extension ThemeTester on WidgetTester {
     bool? highContrast,
     ThemeMode? themeMode,
     String desktop = '',
-    GSettings? settings,
+    YaruSettings? settings,
   }) async {
     final data = YaruThemeData(
       variant: variant,
