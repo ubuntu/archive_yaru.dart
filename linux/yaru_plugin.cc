@@ -15,6 +15,10 @@ G_DEFINE_TYPE(YaruPlugin, yaru_plugin, g_object_get_type())
 
 static FlValue* get_theme_name() {
   GtkSettings* settings = gtk_settings_get_default();
+  if (settings == nullptr) {
+    return fl_value_new_null();
+  }
+
   g_autofree gchar* value = nullptr;
   g_object_get(settings, "gtk-theme-name", &value, nullptr);
   return fl_value_new_string(value);
@@ -85,7 +89,7 @@ static FlMethodErrorResponse* cancel_events_cb(FlEventChannel* channel,
 }
 
 void yaru_plugin_register_with_registrar(FlPluginRegistrar* registrar) {
-  YaruPlugin* plugin =
+  g_autoptr(YaruPlugin) plugin =
       YARU_PLUGIN(g_object_new(yaru_plugin_get_type(), nullptr));
 
   g_autoptr(FlStandardMethodCodec) codec = fl_standard_method_codec_new();
@@ -101,6 +105,4 @@ void yaru_plugin_register_with_registrar(FlPluginRegistrar* registrar) {
   fl_event_channel_set_stream_handlers(event_channel, listen_events_cb,
                                        cancel_events_cb, g_object_ref(plugin),
                                        g_object_unref);
-
-  g_object_unref(plugin);
 }
