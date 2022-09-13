@@ -16,7 +16,7 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
     systemOverlayStyle: SystemUiOverlayStyle.light,
     backgroundColor: colorScheme.background,
     foregroundColor: colorScheme.onSurface,
-    titleTextStyle: textTheme.headline6!.copyWith(
+    titleTextStyle: textTheme.titleLarge!.copyWith(
       color: colorScheme.onSurface,
       fontWeight: FontWeight.normal,
     ),
@@ -35,7 +35,7 @@ AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     backgroundColor: colorScheme.surface,
     foregroundColor: colorScheme.onSurface,
-    titleTextStyle: textTheme.headline6!.copyWith(
+    titleTextStyle: textTheme.titleLarge!.copyWith(
       color: colorScheme.onSurface,
       fontWeight: FontWeight.normal,
     ),
@@ -263,16 +263,12 @@ ThemeData createYaruLightTheme({
     primaryColor: colorScheme.primary,
     canvasColor: colorScheme.background,
     scaffoldBackgroundColor: colorScheme.background,
-    bottomAppBarColor: colorScheme.surface,
     cardColor: colorScheme.surface,
     dividerColor: colorScheme.onSurface.withOpacity(0.12),
-    backgroundColor: colorScheme.background,
     dialogBackgroundColor: colorScheme.background,
-    errorColor: colorScheme.error,
     textTheme: textTheme,
     indicatorColor: colorScheme.secondary,
     applyElevationOverlayColor: false,
-    colorScheme: colorScheme,
     buttonTheme: _buttonThemeData,
     outlinedButtonTheme: _outlinedButtonThemeData,
     elevatedButtonTheme:
@@ -292,6 +288,10 @@ ThemeData createYaruLightTheme({
     inputDecorationTheme: inputDecorationTheme,
     toggleButtonsTheme: _toggleButtonsTheme,
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
+    bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
+    colorScheme: colorScheme
+        .copyWith(error: colorScheme.error)
+        .copyWith(background: colorScheme.background),
   );
 }
 
@@ -311,16 +311,12 @@ ThemeData createYaruDarkTheme({
     primaryColor: colorScheme.primary,
     canvasColor: colorScheme.background,
     scaffoldBackgroundColor: colorScheme.background,
-    bottomAppBarColor: colorScheme.surface,
     cardColor: colorScheme.surface,
     dividerColor: colorScheme.onSurface.withOpacity(0.12),
-    backgroundColor: colorScheme.background,
     dialogBackgroundColor: colorScheme.background,
-    errorColor: colorScheme.error,
     textTheme: textTheme,
     indicatorColor: colorScheme.secondary,
     applyElevationOverlayColor: true,
-    colorScheme: colorScheme,
     buttonTheme: _buttonThemeData,
     textButtonTheme: _textButtonThemeData,
     elevatedButtonTheme:
@@ -341,5 +337,9 @@ ThemeData createYaruDarkTheme({
     inputDecorationTheme: inputDecorationTheme,
     toggleButtonsTheme: _toggleButtonsTheme,
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
+    bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
+    colorScheme: colorScheme
+        .copyWith(error: colorScheme.error)
+        .copyWith(background: colorScheme.background),
   );
 }

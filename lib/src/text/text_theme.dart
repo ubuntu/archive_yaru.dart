@@ -1,65 +1,65 @@
 import 'package:flutter/material.dart';
 
 const textTheme = TextTheme(
-  headline1: _UbuntuTextStyle(
+  displayLarge: _UbuntuTextStyle(
     fontSize: 96,
     letterSpacing: -1.5,
     fontWeight: FontWeight.w300,
   ),
-  headline2: _UbuntuTextStyle(
+  displayMedium: _UbuntuTextStyle(
     fontSize: 60,
     letterSpacing: -0.5,
     fontWeight: FontWeight.w300,
   ),
-  headline3: _UbuntuTextStyle(
+  displaySmall: _UbuntuTextStyle(
     fontSize: 48,
     fontWeight: FontWeight.normal,
   ),
-  headline4: _UbuntuTextStyle(
+  headlineMedium: _UbuntuTextStyle(
     fontSize: 34,
     fontWeight: FontWeight.normal,
   ),
-  headline5: _UbuntuTextStyle(
+  headlineSmall: _UbuntuTextStyle(
     fontSize: 24,
     letterSpacing: -0.18,
     fontWeight: FontWeight.normal,
   ),
-  headline6: _UbuntuTextStyle(
+  titleLarge: _UbuntuTextStyle(
     fontSize: 20,
     letterSpacing: 0.15,
     fontWeight: FontWeight.w500,
   ),
-  subtitle1: _UbuntuTextStyle(
+  titleMedium: _UbuntuTextStyle(
     fontSize: 16,
     letterSpacing: 0.15,
     fontWeight: FontWeight.normal,
   ),
-  subtitle2: _UbuntuTextStyle(
+  titleSmall: _UbuntuTextStyle(
     fontSize: 14,
     letterSpacing: 0.1,
     fontWeight: FontWeight.w500,
   ),
-  bodyText1: _UbuntuTextStyle(
+  bodyLarge: _UbuntuTextStyle(
     fontSize: 16,
     letterSpacing: 0.5,
     fontWeight: FontWeight.normal,
   ),
-  bodyText2: _UbuntuTextStyle(
+  bodyMedium: _UbuntuTextStyle(
     fontSize: 14,
     letterSpacing: 0.25,
     fontWeight: FontWeight.normal,
   ),
-  button: _UbuntuTextStyle(
+  labelLarge: _UbuntuTextStyle(
     fontSize: 14,
     letterSpacing: 0.25,
     fontWeight: FontWeight.w500,
   ),
-  caption: _UbuntuTextStyle(
+  bodySmall: _UbuntuTextStyle(
     fontSize: 12,
     letterSpacing: 0.4,
     fontWeight: FontWeight.normal,
   ),
-  overline: _UbuntuTextStyle(
+  labelSmall: _UbuntuTextStyle(
     fontSize: 10,
     letterSpacing: 1.5,
     fontWeight: FontWeight.normal,
