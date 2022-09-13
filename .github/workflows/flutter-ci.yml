@@ -32,3 +32,10 @@ jobs:
     
     - name: Check for any analyzer issues
       run: flutter analyze .
+
+    - name: Install dependencies
+      run: sudo apt install clang cmake curl ninja-build libgtk-3-dev pkg-config unzip
+
+    - name: Build example
+      run: flutter build linux -v
+      working-directory: example/
