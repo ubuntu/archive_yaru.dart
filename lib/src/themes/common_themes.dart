@@ -241,9 +241,13 @@ RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
   );
 }
 
+const _desktopPageTransitionsBuilder = CupertinoPageTransitionsBuilder();
+
 const _pageTransitionTheme = PageTransitionsTheme(
   builders: {
-    TargetPlatform.linux: CupertinoPageTransitionsBuilder(),
+    TargetPlatform.linux: _desktopPageTransitionsBuilder,
+    TargetPlatform.macOS: _desktopPageTransitionsBuilder,
+    TargetPlatform.windows: _desktopPageTransitionsBuilder,
   },
 );
 
