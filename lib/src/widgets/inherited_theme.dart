@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:platform/platform.dart';
@@ -56,8 +57,8 @@ YaruVariant? _detectYaruVariant(Platform platform) {
 /// YaruTheme(
 ///   builder: (context, yaru, child) {
 ///     return MaterialApp(
-///       theme: yaru.variant?.theme,
-///       darkTheme: yaru.variant?.darkTheme,
+///       theme: yaru.theme,
+///       darkTheme: yaru.darkTheme,
 ///       home: ...
 ///     );
 ///   },
@@ -69,6 +70,28 @@ YaruVariant? _detectYaruVariant(Platform platform) {
 /// allow passing the desired values to [MaterialApp]. This has the advantage
 /// that any widget created by [MaterialApp], such as the built-in [Navigator],
 /// gains Yaru-theme as well.
+///
+/// ### Theme data overrides
+///
+/// The [data] property can be used to override parts of the default theme data.
+/// For example, the following code overrides the default page transitions and
+/// visual density:
+///
+/// ```dart
+/// YaruTheme(
+///   data: YaruThemeData(
+///    pageTransitionsTheme: PageTransitionsTheme(/*...*/),
+///    visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+///  ),
+///   builder: (context, yaru, child) {
+///     return MaterialApp(
+///       theme: yaru.theme,
+///       darkTheme: yaru.darkTheme,
+///       home: ...
+///     );
+///   },
+/// )
+/// ```
 ///
 /// See also:
 ///  * [YaruThemeData]
@@ -177,7 +200,7 @@ class _YaruThemeState extends State<YaruTheme> {
   }
 
   YaruThemeData resolveData() {
-    return YaruThemeData(
+    return widget.data.copyWith(
       variant: widget.data.variant ?? _variant,
       highContrast:
           widget.data.highContrast ?? MediaQuery.highContrastOf(context),
@@ -193,7 +216,7 @@ class _YaruThemeState extends State<YaruTheme> {
     }
 
     final variant = data.variant ?? YaruVariant.orange;
-    return dark ? variant.darkTheme : variant.theme;
+    return (dark ? variant.darkTheme : variant.theme).overrideWith(data);
   }
 
   @override
@@ -216,6 +239,10 @@ class YaruThemeData with Diagnosticable {
     this.variant,
     this.highContrast,
     this.themeMode,
+    this.extensions,
+    this.pageTransitionsTheme,
+    this.useMaterial3,
+    this.visualDensity,
   });
 
   /// Specifies the theme variant.
@@ -227,16 +254,45 @@ class YaruThemeData with Diagnosticable {
   /// Whether a light or dark theme is used.
   final ThemeMode? themeMode;
 
+  /// Overrides [ThemeData.extensions].
+  final Iterable<ThemeExtension<dynamic>>? extensions;
+
+  /// Overrides [ThemeData.pageTransitionsTheme].
+  final PageTransitionsTheme? pageTransitionsTheme;
+
+  /// Overrides [ThemeData.useMaterial3].
+  final bool? useMaterial3;
+
+  /// Overrides [ThemeData.visualDensity].
+  final VisualDensity? visualDensity;
+
+  /// The light theme of [variant] (or [yaruLight] if not available) merged with
+  /// the `YaruThemeData` overrides.
+  ThemeData? get theme => (variant?.theme ?? yaruLight).overrideWith(this);
+
+  /// The dark theme of [variant] (or [yaruDark] if not available) merged with
+  /// the `YaruThemeData` overrides.
+  ThemeData? get darkTheme =>
+      (variant?.darkTheme ?? yaruDark).overrideWith(this);
+
   /// Creates a copy of this [YaruThemeData] with the provided values.
   YaruThemeData copyWith({
     YaruVariant? variant,
     bool? highContrast,
     ThemeMode? themeMode,
+    Iterable<ThemeExtension<dynamic>>? extensions,
+    PageTransitionsTheme? pageTransitionsTheme,
+    bool? useMaterial3,
+    VisualDensity? visualDensity,
   }) {
     return YaruThemeData(
       variant: variant ?? this.variant,
       highContrast: highContrast ?? this.highContrast,
       themeMode: themeMode ?? this.themeMode,
+      extensions: extensions ?? this.extensions,
+      pageTransitionsTheme: pageTransitionsTheme ?? this.pageTransitionsTheme,
+      useMaterial3: useMaterial3 ?? this.useMaterial3,
+      visualDensity: visualDensity ?? this.visualDensity,
     );
   }
 
@@ -246,19 +302,39 @@ class YaruThemeData with Diagnosticable {
     properties.add(DiagnosticsProperty<YaruVariant>('variant', variant));
     properties.add(DiagnosticsProperty<bool>('highContrast', highContrast));
     properties.add(DiagnosticsProperty<ThemeMode>('themeMode', themeMode));
+    properties.add(IterableProperty('extensions', extensions));
+    properties
+        .add(DiagnosticsProperty('pageTransitionsTheme', pageTransitionsTheme));
+    properties.add(DiagnosticsProperty('useMaterial3', useMaterial3));
+    properties.add(DiagnosticsProperty('visualDensity', visualDensity));
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
+    final iterableEquals = const IterableEquality().equals;
     return other is YaruThemeData &&
         other.variant == variant &&
         other.highContrast == highContrast &&
-        other.themeMode == themeMode;
+        other.themeMode == themeMode &&
+        iterableEquals(other.extensions, extensions) &&
+        other.pageTransitionsTheme == pageTransitionsTheme &&
+        other.useMaterial3 == useMaterial3 &&
+        other.visualDensity == visualDensity;
   }
 
   @override
-  int get hashCode => Object.hash(variant, highContrast, themeMode);
+  int get hashCode {
+    return Object.hash(
+      variant,
+      highContrast,
+      themeMode,
+      extensions,
+      pageTransitionsTheme,
+      useMaterial3,
+      visualDensity,
+    );
+  }
 }
 
 class _YaruInheritedTheme extends InheritedTheme {
@@ -277,5 +353,16 @@ class _YaruInheritedTheme extends InheritedTheme {
   @override
   Widget wrap(BuildContext context, Widget child) {
     return _YaruInheritedTheme(data: data, child: child);
+  }
+}
+
+extension _YaruThemeDataX on ThemeData {
+  ThemeData overrideWith(YaruThemeData data) {
+    return copyWith(
+      extensions: data.extensions,
+      pageTransitionsTheme: data.pageTransitionsTheme,
+      useMaterial3: data.useMaterial3,
+      visualDensity: data.visualDensity,
+    );
   }
 }

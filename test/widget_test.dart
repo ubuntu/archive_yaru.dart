@@ -149,6 +149,24 @@ void main() {
       expect(YaruTheme.of(context).themeMode, ThemeMode.dark);
     });
   });
+
+  testWidgets('theme data overrides', (tester) async {
+    const extensions = <ThemeExtension>[];
+    const pageTransitionsTheme = PageTransitionsTheme();
+    const visualDensity = VisualDensity(horizontal: -4, vertical: -4);
+    await tester.pumpTheme(
+      extensions: extensions,
+      pageTransitionsTheme: pageTransitionsTheme,
+      useMaterial3: false,
+      visualDensity: visualDensity,
+    );
+    final context = tester.element(find.byType(Container));
+    final theme = YaruTheme.of(context);
+    expect(theme.extensions, same(extensions));
+    expect(theme.pageTransitionsTheme, same(pageTransitionsTheme));
+    expect(theme.useMaterial3, isFalse);
+    expect(theme.visualDensity, visualDensity);
+  });
 }
 
 MockYaruSettings createMockSettings({String theme = ''}) {
@@ -163,6 +181,10 @@ extension ThemeTester on WidgetTester {
     YaruVariant? variant,
     bool? highContrast,
     ThemeMode? themeMode,
+    Iterable<ThemeExtension<dynamic>>? extensions,
+    PageTransitionsTheme? pageTransitionsTheme,
+    bool? useMaterial3,
+    VisualDensity? visualDensity,
     String desktop = '',
     YaruSettings? settings,
   }) async {
@@ -170,6 +192,10 @@ extension ThemeTester on WidgetTester {
       variant: variant,
       highContrast: highContrast,
       themeMode: themeMode,
+      extensions: extensions,
+      pageTransitionsTheme: pageTransitionsTheme,
+      useMaterial3: useMaterial3,
+      visualDensity: visualDensity,
     );
     await pumpWidget(
       MaterialApp(
