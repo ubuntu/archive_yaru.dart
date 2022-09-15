@@ -5,6 +5,7 @@ export 'package:yaru/src/themes/extensions.dart';
 export 'package:yaru/src/themes/high_contrast.dart';
 export 'package:yaru/src/themes/kubuntu.dart';
 export 'package:yaru/src/themes/lubuntu.dart';
+export 'package:yaru/src/themes/page_transitions.dart';
 export 'package:yaru/src/themes/ubuntu_budgie.dart';
 export 'package:yaru/src/themes/ubuntu_mate.dart';
 export 'package:yaru/src/themes/ubuntu_studio.dart';

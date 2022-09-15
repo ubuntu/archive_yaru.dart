@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:yaru_colors/yaru_colors.dart';
 import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/themes/constants.dart';
+import 'package:yaru/src/themes/page_transitions.dart';
 
 // AppBar
 
@@ -241,16 +242,6 @@ RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
   );
 }
 
-const _desktopPageTransitionsBuilder = CupertinoPageTransitionsBuilder();
-
-const _pageTransitionTheme = PageTransitionsTheme(
-  builders: {
-    TargetPlatform.linux: _desktopPageTransitionsBuilder,
-    TargetPlatform.macOS: _desktopPageTransitionsBuilder,
-    TargetPlatform.windows: _desktopPageTransitionsBuilder,
-  },
-);
-
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
   required ColorScheme colorScheme,
@@ -259,7 +250,7 @@ ThemeData createYaruLightTheme({
   bool? useMaterial3 = true,
 }) {
   return ThemeData(
-    pageTransitionsTheme: _pageTransitionTheme,
+    pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
     dialogTheme: _dialogThemeLight,
@@ -307,7 +298,7 @@ ThemeData createYaruDarkTheme({
   bool? useMaterial3 = true,
 }) {
   return ThemeData(
-    pageTransitionsTheme: _pageTransitionTheme,
+    pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
     dialogTheme: _dialogThemeDark,
