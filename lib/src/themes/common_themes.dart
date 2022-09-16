@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yaru_colors/yaru_colors.dart';
 import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/themes/constants.dart';
 import 'package:yaru/src/themes/page_transitions.dart';
+import 'package:yaru_colors/yaru_colors.dart';
 
 // AppBar
 
@@ -287,6 +287,7 @@ ThemeData createYaruLightTheme({
     inputDecorationTheme: inputDecorationTheme,
     toggleButtonsTheme: _toggleButtonsTheme,
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
+    popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
   );
 }
 
@@ -336,5 +337,25 @@ ThemeData createYaruDarkTheme({
     inputDecorationTheme: inputDecorationTheme,
     toggleButtonsTheme: _toggleButtonsTheme,
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
+    popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
+  );
+}
+
+PopupMenuThemeData _createPopupMenuThemeData(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
+  return PopupMenuThemeData(
+    color: brightness == Brightness.dark
+        ? const Color.fromARGB(255, 34, 34, 34)
+        : Colors.white,
+    shape: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(
+        color: colorScheme.onSurface
+            .withOpacity(brightness == Brightness.light ? 0.3 : 0.2),
+        width: 1,
+      ),
+    ),
   );
 }
