@@ -11,10 +11,7 @@ G_BEGIN_DECLS
 #define FLUTTER_PLUGIN_EXPORT
 #endif
 
-typedef struct _YaruPlugin YaruPlugin;
-typedef struct {
-  GObjectClass parent_class;
-} YaruPluginClass;
+G_DECLARE_FINAL_TYPE(YaruPlugin, yaru_plugin, YARU, PLUGIN, GObject)
 
 FLUTTER_PLUGIN_EXPORT GType yaru_plugin_get_type();
 
