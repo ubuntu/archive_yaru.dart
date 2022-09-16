@@ -287,6 +287,7 @@ ThemeData createYaruLightTheme({
     inputDecorationTheme: inputDecorationTheme,
     toggleButtonsTheme: _toggleButtonsTheme,
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
+    popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
   );
 }
 
@@ -336,5 +337,23 @@ ThemeData createYaruDarkTheme({
     inputDecorationTheme: inputDecorationTheme,
     toggleButtonsTheme: _toggleButtonsTheme,
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
+    popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
   );
+}
+
+PopupMenuThemeData _createPopupMenuThemeData(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
+  var popupMenuThemeData = PopupMenuThemeData(
+    shape: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(
+        color: colorScheme.onSurface
+            .withOpacity(brightness == Brightness.light ? 0.3 : 0.2),
+        width: 1,
+      ),
+    ),
+  );
+  return popupMenuThemeData;
 }

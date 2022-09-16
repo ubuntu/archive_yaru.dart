@@ -179,7 +179,24 @@ class _ControlsViewState extends State<ControlsView>
                               ],
                             ),
                           ),
-                          icon: const Icon(Icons.account_circle_rounded),
+                          icon: const Text('Show Dialog'),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        PopupMenuButton<String>(
+                          icon: const Text('Show Popup-menu'),
+                          initialValue: 'Hello',
+                          itemBuilder: (context) {
+                            return [
+                              for (final string in ['a', 'b', 'c'])
+                                PopupMenuItem(
+                                  value: string,
+                                  child: Text(string),
+                                )
+                            ];
+                          },
                         ),
                       ],
                     )
