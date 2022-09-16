@@ -345,7 +345,8 @@ PopupMenuThemeData _createPopupMenuThemeData(
   ColorScheme colorScheme,
   Brightness brightness,
 ) {
-  var popupMenuThemeData = PopupMenuThemeData(
+  return PopupMenuThemeData(
+    color: brightness == Brightness.dark ? YaruColors.coolGrey : Colors.white,
     shape: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
@@ -355,5 +356,4 @@ PopupMenuThemeData _createPopupMenuThemeData(
       ),
     ),
   );
-  return popupMenuThemeData;
 }
