@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.4.1
+
+* [J-P Nurmi](https://github.com/jpnurmi)
+  * Use G_DECLARE_FINAL_TYPE to fix build with flutter-snap (#211)
+
 # 0.4.0
 
 * [jpnurmi](https://github.com/jpnurmi)
