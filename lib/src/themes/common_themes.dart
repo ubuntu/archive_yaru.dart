@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yaru_colors/yaru_colors.dart';
 import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/themes/constants.dart';
 import 'package:yaru/src/themes/page_transitions.dart';
+import 'package:yaru_colors/yaru_colors.dart';
 
 // AppBar
 
@@ -346,7 +346,9 @@ PopupMenuThemeData _createPopupMenuThemeData(
   Brightness brightness,
 ) {
   return PopupMenuThemeData(
-    color: brightness == Brightness.dark ? YaruColors.coolGrey : Colors.white,
+    color: brightness == Brightness.dark
+        ? const Color.fromARGB(255, 34, 34, 34)
+        : Colors.white,
     shape: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
