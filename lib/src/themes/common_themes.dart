@@ -28,7 +28,7 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
 
 AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
-    shadowColor: colorScheme.background,
+    shadowColor: colorScheme.onSurface.withOpacity(0.2),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.background,
     toolbarHeight: kAppBarHeight,
