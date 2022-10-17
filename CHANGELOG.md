@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.4.2
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Dark AppBar: make border bright (#213)
+
 # 0.4.1
 
 * [J-P Nurmi](https://github.com/jpnurmi)
