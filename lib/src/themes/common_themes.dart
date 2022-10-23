@@ -9,7 +9,9 @@ import 'package:yaru_colors/yaru_colors.dart';
 
 AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
   return AppBarTheme(
-    shadowColor: colorScheme.onSurface,
+    shape: Border(
+      bottom: BorderSide(color: colorScheme.onSurface.withOpacity(0.2)),
+    ),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.background,
     toolbarHeight: kAppBarHeight,
@@ -28,7 +30,9 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
 
 AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
-    shadowColor: colorScheme.onSurface.withOpacity(0.2),
+    shape: Border(
+      bottom: BorderSide(color: colorScheme.onSurface.withOpacity(0.2)),
+    ),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.background,
     toolbarHeight: kAppBarHeight,
