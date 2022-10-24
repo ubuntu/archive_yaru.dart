@@ -166,7 +166,7 @@ Color _getSwitchThumbColor(
         : YaruColors.warmGrey.shade200;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return selectedColor;
+      return Colors.white;
     } else {
       return brightness == Brightness.dark ? YaruColors.warmGrey : Colors.white;
     }
@@ -181,16 +181,14 @@ Color _getSwitchTrackColor(
   if (states.contains(MaterialState.disabled)) {
     return brightness == Brightness.dark
         ? kDisabledGreyDark.withAlpha(120)
-        : YaruColors.warmGrey.shade200;
+        : YaruColors.warmGrey.shade400;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return brightness == Brightness.dark
-          ? selectedColor.withAlpha(160)
-          : selectedColor.withAlpha(180);
+      return selectedColor;
     } else {
       return brightness == Brightness.dark
           ? YaruColors.warmGrey.withAlpha(80)
-          : YaruColors.warmGrey.shade300;
+          : YaruColors.warmGrey;
     }
   }
 }
