@@ -48,11 +48,20 @@ AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
 }
 
 // TextField
-final inputDecorationTheme = InputDecorationTheme(
-  border:
-      OutlineInputBorder(borderRadius: BorderRadius.circular(kButtonRadius)),
-  isDense: true,
-);
+
+InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
+  return InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderSide: BorderSide(
+        width: 1,
+        color: colorScheme.onSurface.withOpacity(0.3),
+        style: BorderStyle.solid,
+      ),
+      borderRadius: BorderRadius.circular(kButtonRadius),
+    ),
+    isDense: true,
+  );
+}
 
 TextSelectionThemeData _createTextSelectionTheme(ColorScheme colorScheme) {
   return TextSelectionThemeData(
@@ -285,7 +294,7 @@ ThemeData createYaruLightTheme({
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
     ),
-    inputDecorationTheme: inputDecorationTheme,
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
     toggleButtonsTheme: _toggleButtonsTheme,
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
@@ -335,7 +344,7 @@ ThemeData createYaruDarkTheme({
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: Colors.white.withOpacity(0.8),
     ),
-    inputDecorationTheme: inputDecorationTheme,
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
     toggleButtonsTheme: _toggleButtonsTheme,
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
