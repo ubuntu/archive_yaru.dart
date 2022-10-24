@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.4.3
+
+* [J-P Nurmi](https://github.com/jpnurmi)
+  * Fix AppBar border (#217)
+
 # 0.4.2
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
