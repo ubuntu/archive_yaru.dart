@@ -3,11 +3,6 @@
 #include <flutter_linux/flutter_linux.h>
 #include <gtk/gtk.h>
 
-#define YARU_PLUGIN(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), yaru_plugin_get_type(), YaruPlugin))
-
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(YaruPlugin, g_object_unref)
-
 struct _YaruPlugin {
   GObject parent_instance;
   gint theme_name_changed_id;

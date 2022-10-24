@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yaru_colors/yaru_colors.dart';
 import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/themes/constants.dart';
+import 'package:yaru/src/themes/page_transitions.dart';
+import 'package:yaru_colors/yaru_colors.dart';
 
 // AppBar
 
 AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
   return AppBarTheme(
-    shadowColor: colorScheme.onSurface,
+    shape: Border(
+      bottom: BorderSide(color: colorScheme.onSurface.withOpacity(0.2)),
+    ),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.background,
     toolbarHeight: kAppBarHeight,
@@ -27,7 +30,9 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
 
 AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
-    shadowColor: colorScheme.background,
+    shape: Border(
+      bottom: BorderSide(color: colorScheme.onSurface.withOpacity(0.2)),
+    ),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.background,
     toolbarHeight: kAppBarHeight,
@@ -241,12 +246,6 @@ RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
   );
 }
 
-const _pageTransitionTheme = PageTransitionsTheme(
-  builders: {
-    TargetPlatform.linux: CupertinoPageTransitionsBuilder(),
-  },
-);
-
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
   required ColorScheme colorScheme,
@@ -255,7 +254,7 @@ ThemeData createYaruLightTheme({
   bool? useMaterial3 = true,
 }) {
   return ThemeData(
-    pageTransitionsTheme: _pageTransitionTheme,
+    pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
     dialogTheme: _dialogThemeLight,
@@ -292,6 +291,7 @@ ThemeData createYaruLightTheme({
     colorScheme: colorScheme
         .copyWith(error: colorScheme.error)
         .copyWith(background: colorScheme.background),
+    popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
   );
 }
 
@@ -303,7 +303,7 @@ ThemeData createYaruDarkTheme({
   bool? useMaterial3 = true,
 }) {
   return ThemeData(
-    pageTransitionsTheme: _pageTransitionTheme,
+    pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
     dialogTheme: _dialogThemeDark,
@@ -341,5 +341,25 @@ ThemeData createYaruDarkTheme({
     colorScheme: colorScheme
         .copyWith(error: colorScheme.error)
         .copyWith(background: colorScheme.background),
+    popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
+  );
+}
+
+PopupMenuThemeData _createPopupMenuThemeData(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
+  return PopupMenuThemeData(
+    color: brightness == Brightness.dark
+        ? const Color.fromARGB(255, 34, 34, 34)
+        : Colors.white,
+    shape: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(
+        color: colorScheme.onSurface
+            .withOpacity(brightness == Brightness.light ? 0.3 : 0.2),
+        width: 1,
+      ),
+    ),
   );
 }

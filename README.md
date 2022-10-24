@@ -18,15 +18,19 @@ To be able to use this package follow this steps:
 3. Create `YaruTheme`
    
     ```dart
-    MaterialApp(
-      home: YaruTheme(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Yaru Theme'),
+    YaruTheme(
+      builder: (context, yaru, child) {
+        return MaterialApp(
+          theme: yaru.theme,
+          darkTheme: yaru.darkTheme,
+          home: Scaffold(
+            appBar: AppBar(
+              title: Text('Yaru Theme'),
+            ),
+            body: Container(),
           ),
-          body: Container(),
-        ),
-      ),
+        );
+      }
     );
     ```
 
@@ -39,7 +43,9 @@ setting the `variant` propert.
 
    ```dart
    YaruTheme(
-     variant: YaruVariant.red,
+     data: YaruThemeData(
+       variant: YaruVariant.red,
+     ),
      child: ...
    )
    ```
@@ -47,24 +53,3 @@ setting the `variant` propert.
 ## Contributing to yaru.dart
 
 We welcome contributions! See the [contribution guide](CONTRIBUTING.md) for more details.
-
-## Flutter Version
-
-Ubuntu Yaru Style requires Flutter 2. If you get an error about the current Dart SDK version similar to
-
-
-```
-[yaru.dart] flutter pub get
-Running "flutter pub get" in yaru.dart...                       
-The current Dart SDK version is 2.12.0-281.0.dev.
-
-Because yaru requires SDK version >=2.12.0 <3.0.0, version solving failed.
-pub get failed (1; Because yaru requires SDK version >=2.12.0 <3.0.0, version solving failed.)
-exit code 1
-```
-
-please try upgrading to Flutter 2 by running 
-
-```
-flutter upgrade
-```

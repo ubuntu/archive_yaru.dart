@@ -1,5 +1,47 @@
 # Changelog
 
+# 0.4.3
+
+* [J-P Nurmi](https://github.com/jpnurmi)
+  * Fix AppBar border (#217)
+
+# 0.4.2
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Dark AppBar: make border bright (#213)
+
+# 0.4.1
+
+* [J-P Nurmi](https://github.com/jpnurmi)
+  * Use G_DECLARE_FINAL_TYPE to fix build with flutter-snap (#211)
+
+# 0.4.0
+
+* [jpnurmi](https://github.com/jpnurmi)
+  * Update README.md (#207)
+  * Page transitions (#206)
+  * Introduce theme data overrides
+  * Parallel CI jobs (#201)
+  * CI: install packages required for build
+  * YaruPlugin: define autoptr cleanup func
+  * CI: build the example to catch build issues
+  * CI: switch to stable channel (#196)
+  * Replace GSettings with GtkSettings (#193)
+  * Set minimum Flutter version to 3.3.0 (#194)
+* [Carlos Nihelton](https://github.com/CarlosNihelton)
+  * Page transitions consistency on desktop platforms (#203)
+* [Paul Kepinski](https://github.com/Jupi007)
+  * Add correct web icons from yaru_widgets.dart
+* [Robert Ancell](https://github.com/robert-ancell)
+  * Replace deprecated arguments with replacements (#191)
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Add PopupMenuTheme and improve example (#208)
+  * Add common lint rules (#189)
+  * Make color selection UI screen size adaptive (#187)
+  * Update README.md
+  * Update publish.yml
+  * Setup publish to GitHub Pages (#185)
+
 # 0.3.3
 * [jpnurmi](https://github.com/jpnurmi)
   * YaruTheme: add builder method (#181)
