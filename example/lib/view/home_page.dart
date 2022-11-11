@@ -81,27 +81,34 @@ class HomePageState extends State<HomePage> {
               return [
                 PopupMenuItem(
                   onTap: () => AppTheme.apply(context, highContrast: true),
-                  child: ColorDisk(
-                    color: theme.themeMode == ThemeMode.light
-                        ? Colors.black
-                        : Colors.white,
-                    selected: theme.highContrast == true,
-                    onPressed: () {},
+                  child: Row(
+                    children: [
+                      ColorDisk(
+                        color: theme.themeMode == ThemeMode.light
+                            ? Colors.black
+                            : Colors.white,
+                        selected: theme.highContrast == true,
+                      ),
+                      const Text('highContrast')
+                    ],
                   ),
                 ),
-                for (final variant
-                    in YaruVariant.values.take(10)) // skip flavors
+                for (final variant in YaruVariant.values) // skip flavors
                   PopupMenuItem(
                     onTap: () => AppTheme.apply(
                       context,
                       variant: variant,
                       highContrast: false,
                     ),
-                    child: ColorDisk(
-                      color: variant.color,
-                      selected: variant == theme.variant &&
-                          theme.highContrast != true,
-                      onPressed: () {},
+                    child: Row(
+                      children: [
+                        ColorDisk(
+                          color: variant.color,
+                          selected: variant == theme.variant &&
+                              theme.highContrast != true,
+                        ),
+                        Text(variant.name)
+                      ],
                     ),
                   )
               ];
