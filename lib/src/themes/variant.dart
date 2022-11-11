@@ -3,6 +3,7 @@ import 'package:yaru_colors/yaru_colors.dart';
 import 'package:yaru/src/themes/kubuntu.dart';
 import 'package:yaru/src/themes/lubuntu.dart';
 import 'package:yaru/src/themes/ubuntu_budgie.dart';
+import 'package:yaru/src/themes/ubuntu_butterfly.dart';
 import 'package:yaru/src/themes/ubuntu_mate.dart';
 import 'package:yaru/src/themes/ubuntu_studio.dart';
 import 'package:yaru/src/themes/xubuntu.dart';
@@ -29,6 +30,9 @@ enum YaruVariant {
 
   /// Ubuntu Budgie
   ubuntuBudgieBlue(YaruColors.ubuntuBudgieBlue),
+
+  /// Ubuntu Butterfly
+  ubuntuButterflyPink(YaruColors.ubuntuButterflyPink),
 
   /// Ubuntu MATE
   ubuntuMateGreen(YaruColors.ubuntuMateGreen),
@@ -65,6 +69,7 @@ final _yaruLightThemes = <YaruVariant, ThemeData>{
   YaruVariant.kubuntuBlue: yaruKubuntuLight,
   YaruVariant.lubuntuBlue: yaruLubuntuLight,
   YaruVariant.ubuntuBudgieBlue: yaruUbuntuBudgieLight,
+  YaruVariant.ubuntuButterflyPink: yaruUbuntuButterflyLight,
   YaruVariant.ubuntuMateGreen: yaruUbuntuMateLight,
   YaruVariant.ubuntuStudioBlue: yaruUbuntuStudioLight,
   YaruVariant.xubuntuBlue: yaruXubuntuLight,
@@ -84,6 +89,7 @@ final _yaruDarkThemes = <YaruVariant, ThemeData>{
   YaruVariant.kubuntuBlue: yaruKubuntuDark,
   YaruVariant.lubuntuBlue: yaruLubuntuDark,
   YaruVariant.ubuntuBudgieBlue: yaruUbuntuBudgieDark,
+  YaruVariant.ubuntuButterflyPink: yaruUbuntuButterflyDark,
   YaruVariant.ubuntuMateGreen: yaruUbuntuMateDark,
   YaruVariant.ubuntuStudioBlue: yaruUbuntuStudioDark,
   YaruVariant.xubuntuBlue: yaruXubuntuDark,
