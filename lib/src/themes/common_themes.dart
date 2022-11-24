@@ -112,6 +112,7 @@ ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
               : Colors.white,
       visualDensity: _commonButtonStyle.visualDensity,
       elevation: 0,
+      shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
