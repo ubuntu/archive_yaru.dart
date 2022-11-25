@@ -119,9 +119,14 @@ ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   );
 }
 
-const _toggleButtonsTheme = ToggleButtonsThemeData(
-  borderRadius: BorderRadius.all(Radius.circular(kButtonRadius)),
-);
+ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
+  return ToggleButtonsThemeData(
+    borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
+    selectedColor: colorScheme.onSurface,
+    fillColor: colorScheme.onSurface.withOpacity(.15),
+    hoverColor: colorScheme.onSurface.withOpacity(.05),
+  );
+}
 
 // Dialogs
 
@@ -289,7 +294,7 @@ ThemeData createYaruLightTheme({
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
     ),
     inputDecorationTheme: inputDecorationTheme,
-    toggleButtonsTheme: _toggleButtonsTheme,
+    toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
   );
@@ -339,7 +344,7 @@ ThemeData createYaruDarkTheme({
       unselectedItemColor: Colors.white.withOpacity(0.8),
     ),
     inputDecorationTheme: inputDecorationTheme,
-    toggleButtonsTheme: _toggleButtonsTheme,
+    toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
   );
