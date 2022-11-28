@@ -17,6 +17,14 @@ class InputsView extends StatelessWidget {
           const TextField(
             autofocus: true,
             decoration: InputDecoration(
+              prefix: Padding(
+                padding: EdgeInsets.only(right: 5),
+                child: Icon(
+                  Icons.text_fields,
+                  size: 16,
+                ),
+              ),
+              prefixIconConstraints: BoxConstraints(minHeight: 100),
               hintText: 'Awesome Textfield',
               labelText: 'All TextFields have a border in Yaru',
             ),
