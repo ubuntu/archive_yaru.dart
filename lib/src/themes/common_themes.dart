@@ -56,7 +56,7 @@ final inputDecorationTheme = InputDecorationTheme(
 
 TextSelectionThemeData _createTextSelectionTheme(ColorScheme colorScheme) {
   return TextSelectionThemeData(
-    cursorColor: colorScheme.primary,
+    cursorColor: colorScheme.onSurface,
     selectionColor: colorScheme.primary.withOpacity(0.40),
   );
 }
