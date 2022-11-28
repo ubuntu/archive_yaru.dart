@@ -1,5 +1,15 @@
 # Changelog
 
+# 0.4.4
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  * Text inputs: change cursor and icon color to onSurface (#229)
+* [Paul Kepinski](https://github.com/Jupi007) 
+  * Improve toggle buttons look (#226)
+  * Require yaru_colors 0.1.1 (#227)
+* [Yannick Mauray](https://github.com/frenchguych)
+  * feat: Ubuntu Butterfly variant (#220)
+
 # 0.4.3
 
 * [J-P Nurmi](https://github.com/jpnurmi)
