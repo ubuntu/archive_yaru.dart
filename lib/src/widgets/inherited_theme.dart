@@ -159,8 +159,8 @@ class _YaruThemeState extends State<YaruTheme> {
 
   @override
   void dispose() {
-    super.dispose();
     _subscription?.cancel();
+    super.dispose();
   }
 
   // "Yaru-prussiangreen-dark" => YaruAccent.prussianGreen
