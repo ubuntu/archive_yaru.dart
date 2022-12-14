@@ -124,13 +124,15 @@ void main() {
 
   group('high contrast', () {
     testWidgets('on', (tester) async {
-      await tester.pumpTheme(highContrast: true);
+      final settings = createMockSettings();
+      await tester.pumpTheme(highContrast: true, settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).highContrast, isTrue);
     });
 
     testWidgets('off', (tester) async {
-      await tester.pumpTheme(highContrast: false);
+      final settings = createMockSettings();
+      await tester.pumpTheme(highContrast: false, settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).highContrast, isFalse);
     });
@@ -138,19 +140,22 @@ void main() {
 
   group('theme mode', () {
     testWidgets('light', (tester) async {
-      await tester.pumpTheme(themeMode: ThemeMode.light);
+      final settings = createMockSettings();
+      await tester.pumpTheme(themeMode: ThemeMode.light, settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).themeMode, ThemeMode.light);
     });
 
     testWidgets('dark', (tester) async {
-      await tester.pumpTheme(themeMode: ThemeMode.dark);
+      final settings = createMockSettings();
+      await tester.pumpTheme(themeMode: ThemeMode.dark, settings: settings);
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).themeMode, ThemeMode.dark);
     });
   });
 
   testWidgets('theme data overrides', (tester) async {
+    final settings = createMockSettings();
     const extensions = <ThemeExtension>[];
     const pageTransitionsTheme = PageTransitionsTheme();
     const visualDensity = VisualDensity(horizontal: -4, vertical: -4);
@@ -159,6 +164,7 @@ void main() {
       pageTransitionsTheme: pageTransitionsTheme,
       useMaterial3: false,
       visualDensity: visualDensity,
+      settings: settings,
     );
     final context = tester.element(find.byType(Container));
     final theme = YaruTheme.of(context);

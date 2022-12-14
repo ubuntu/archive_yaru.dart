@@ -151,10 +151,9 @@ class _YaruThemeState extends State<YaruTheme> {
     super.initState();
     if (widget.data.variant == null && !kIsWeb && widget._platform.isLinux) {
       _settings = widget._settings ?? const YaruSettings();
-      _subscription = _settings!.themeNameChanged.listen((name) {
-        updateVariant(name);
+      updateVariant().then((_) {
+        _subscription = _settings!.themeNameChanged.listen(updateVariant);
       });
-      updateVariant();
     }
   }
 
@@ -221,6 +220,9 @@ class _YaruThemeState extends State<YaruTheme> {
 
   @override
   Widget build(BuildContext context) {
+    if (_settings != null && _subscription == null) {
+      return const SizedBox.shrink(); // #231
+    }
     final data = resolveData();
     return _YaruInheritedTheme(
       data: data,
