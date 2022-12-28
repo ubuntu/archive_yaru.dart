@@ -64,6 +64,10 @@ TextSelectionThemeData _createTextSelectionTheme(ColorScheme colorScheme) {
   );
 }
 
+const _tooltipThemeData = TooltipThemeData(
+  waitDuration: Duration(milliseconds: 500),
+);
+
 // Buttons
 
 const _commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
@@ -300,6 +304,7 @@ ThemeData createYaruLightTheme({
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
+    tooltipTheme: _tooltipThemeData,
   );
 }
 
@@ -350,6 +355,7 @@ ThemeData createYaruDarkTheme({
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
+    tooltipTheme: _tooltipThemeData,
   );
 }
 
