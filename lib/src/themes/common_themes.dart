@@ -137,19 +137,19 @@ ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
 
 // Dialogs
 
-final _dialogThemeDark = DialogTheme(
-  backgroundColor: YaruColors.coolGrey,
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(kWindowRadius),
-    side: BorderSide(color: Colors.white.withOpacity(0.2)),
-  ),
-);
-
-final _dialogThemeLight = DialogTheme(
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(kWindowRadius),
-  ),
-);
+DialogTheme _createDialogTheme(Brightness brightness) {
+  return DialogTheme(
+    backgroundColor: brightness == Brightness.dark
+        ? YaruColors.coolGrey
+        : YaruColors.porcelain,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(kWindowRadius),
+      side: brightness == Brightness.dark
+          ? BorderSide(color: Colors.white.withOpacity(0.2))
+          : BorderSide.none,
+    ),
+  );
+}
 
 // Switches
 
@@ -269,7 +269,7 @@ ThemeData createYaruLightTheme({
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
-    dialogTheme: _dialogThemeLight,
+    dialogTheme: _createDialogTheme(Brightness.light),
     brightness: Brightness.light,
     primaryColor: colorScheme.primary,
     canvasColor: colorScheme.background,
@@ -319,7 +319,7 @@ ThemeData createYaruDarkTheme({
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
-    dialogTheme: _dialogThemeDark,
+    dialogTheme: _createDialogTheme(Brightness.dark),
     brightness: Brightness.dark,
     primaryColor: colorScheme.primary,
     canvasColor: colorScheme.background,
