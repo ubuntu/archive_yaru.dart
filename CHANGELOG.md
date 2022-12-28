@@ -1,5 +1,13 @@
 # Changelog
 
+# 0.4.5
+
+* [J-P Nurmi](https://github.com/jpnurmi)
+  * YaruTheme widget: build empty during accent color initialiation (#232)
+  * YaruTheme widget: fix dispose() order (#233)
+  * 500ms wait duration for tooltips (#236)
+  * Add missing light dialog theme background color (#235)
+
 # 0.4.4
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
