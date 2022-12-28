@@ -146,6 +146,7 @@ final _dialogThemeDark = DialogTheme(
 );
 
 final _dialogThemeLight = DialogTheme(
+  backgroundColor: YaruColors.porcelain,
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(kWindowRadius),
   ),
