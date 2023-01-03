@@ -18,6 +18,12 @@ void main() {
     expect(YaruTheme.of(context).variant, YaruVariant.blue);
   });
 
+  testWidgets('flutter test', (tester) async {
+    await tester.pumpTheme(environment: {'FLUTTER_TEST': '1'});
+    final context = tester.element(find.byType(Container));
+    expect(YaruTheme.of(context).variant, isNull);
+  });
+
   group('gtk-theme', () {
     testWidgets('unknown', (tester) async {
       final settings = createMockSettings(theme: '');
@@ -193,6 +199,7 @@ extension ThemeTester on WidgetTester {
     VisualDensity? visualDensity,
     String desktop = '',
     YaruSettings? settings,
+    Map<String, String>? environment,
   }) async {
     final data = YaruThemeData(
       variant: variant,
@@ -211,7 +218,10 @@ extension ThemeTester on WidgetTester {
           data: data,
           platform: FakePlatform(
             operatingSystem: Platform.linux,
-            environment: {'XDG_CURRENT_DESKTOP': desktop},
+            environment: {
+              'XDG_CURRENT_DESKTOP': desktop,
+              ...?environment,
+            },
           ),
           settings: settings,
         ),
