@@ -149,7 +149,7 @@ class _YaruThemeState extends State<YaruTheme> {
   @override
   void initState() {
     super.initState();
-    if (widget.data.variant == null && !kIsWeb && widget._platform.isLinux) {
+    if (widget.data.variant == null && canDetectVariant()) {
       _settings = widget._settings ?? const YaruSettings();
       updateVariant().then((_) {
         _subscription = _settings!.themeNameChanged.listen(updateVariant);
@@ -161,6 +161,12 @@ class _YaruThemeState extends State<YaruTheme> {
   void dispose() {
     _subscription?.cancel();
     super.dispose();
+  }
+
+  bool canDetectVariant() {
+    return !kIsWeb &&
+        widget._platform.isLinux &&
+        !widget._platform.environment.containsKey('FLUTTER_TEST');
   }
 
   // "Yaru-prussiangreen-dark" => YaruAccent.prussianGreen
@@ -183,7 +189,7 @@ class _YaruThemeState extends State<YaruTheme> {
   }
 
   Future<void> updateVariant([String? value]) async {
-    assert(!kIsWeb && widget._platform.isLinux);
+    assert(canDetectVariant());
     final name = value ?? await _settings?.getThemeName();
     setState(() => _variant = resolveVariant(name));
   }
