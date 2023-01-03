@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.4.6
+
+* [J-P Nurmi](https://github.com/jpnurmi)
+  * Disable theme variant detection in tests (#238)
+
 # 0.4.5
 
 * [J-P Nurmi](https://github.com/jpnurmi)
