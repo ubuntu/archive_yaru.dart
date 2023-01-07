@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.4.7
+
+* [Frederik Feichtmeier](https://github.com/Feichtmeier)
+  *  Dark theme borders: reduce opacity (#240)
+
 # 0.4.6
 
 * [J-P Nurmi](https://github.com/jpnurmi)
