@@ -31,7 +31,7 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
 AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
     shape: Border(
-      bottom: BorderSide(color: colorScheme.onSurface.withOpacity(0.2)),
+      bottom: BorderSide(color: colorScheme.onSurface.withOpacity(0.07)),
     ),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.background,
@@ -326,7 +326,7 @@ ThemeData createYaruDarkTheme({
     scaffoldBackgroundColor: colorScheme.background,
     bottomAppBarColor: colorScheme.surface,
     cardColor: colorScheme.surface,
-    dividerColor: colorScheme.onSurface.withOpacity(0.12),
+    dividerColor: colorScheme.onSurface.withOpacity(0.07),
     backgroundColor: colorScheme.background,
     dialogBackgroundColor: colorScheme.background,
     errorColor: colorScheme.error,
