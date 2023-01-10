@@ -54,6 +54,7 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
     ),
     isDense: true,
     iconColor: colorScheme.onSurface,
+    contentPadding: const EdgeInsets.all(12),
   );
 }
 
