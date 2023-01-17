@@ -49,5 +49,10 @@ flutter:
           style: italic
   plugin:
     platforms:
+      android:
+      ios:
       linux:
         pluginClass: YaruPlugin
+      macos:
+      web:
+      windows:
