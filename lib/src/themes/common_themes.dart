@@ -48,9 +48,26 @@ AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
 }
 
 InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
+  final radius = BorderRadius.circular(kButtonRadius);
+  const width = 0.0;
   return InputDecorationTheme(
+    filled: true,
+    fillColor: colorScheme.onSurface.withOpacity(0.05),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(kButtonRadius),
+      borderSide: const BorderSide(width: width, color: Colors.transparent),
+      borderRadius: radius,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(width: width, color: colorScheme.primary),
+      borderRadius: radius,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(width: width, color: Colors.transparent),
+      borderRadius: radius,
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(width: width, color: colorScheme.error),
+      borderRadius: radius,
     ),
     isDense: true,
     iconColor: colorScheme.onSurface,

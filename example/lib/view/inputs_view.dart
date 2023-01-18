@@ -26,7 +26,7 @@ class InputsView extends StatelessWidget {
               ),
               prefixIconConstraints: BoxConstraints(minHeight: 100),
               hintText: 'Awesome Textfield',
-              labelText: 'All TextFields have a border in Yaru',
+              labelText: 'Awesome Textfield',
             ),
           ),
           const SizedBox(height: 15),
