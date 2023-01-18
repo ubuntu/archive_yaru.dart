@@ -51,3 +51,11 @@ flutter:
     platforms:
       linux:
         pluginClass: YaruPlugin
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
