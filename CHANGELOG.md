@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.8
+
+* Adjust TextField content padding by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/242
+* Reduce AppBar height by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/243
+* Remove elevation on hover from ElevatedButton by @Jupi007 in https://github.com/ubuntu/yaru.dart/pull/228
+* pubspec.yaml: try adding entries for all supported platforms by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/247
+* CHANGELOG.md: fix formatting by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/248
+
 ## 0.4.7
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
