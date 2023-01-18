@@ -1,16 +1,16 @@
 # Changelog
 
-# 0.4.7
+## 0.4.7
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   *  Dark theme borders: reduce opacity (#240)
 
-# 0.4.6
+## 0.4.6
 
 * [J-P Nurmi](https://github.com/jpnurmi)
   * Disable theme variant detection in tests (#238)
 
-# 0.4.5
+## 0.4.5
 
 * [J-P Nurmi](https://github.com/jpnurmi)
   * YaruTheme widget: build empty during accent color initialiation (#232)
@@ -18,7 +18,7 @@
   * 500ms wait duration for tooltips (#236)
   * Add missing light dialog theme background color (#235)
 
-# 0.4.4
+## 0.4.4
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Text inputs: change cursor and icon color to onSurface (#229)
@@ -28,22 +28,22 @@
 * [Yannick Mauray](https://github.com/frenchguych)
   * feat: Ubuntu Butterfly variant (#220)
 
-# 0.4.3
+## 0.4.3
 
 * [J-P Nurmi](https://github.com/jpnurmi)
   * Fix AppBar border (#217)
 
-# 0.4.2
+## 0.4.2
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Dark AppBar: make border bright (#213)
 
-# 0.4.1
+## 0.4.1
 
 * [J-P Nurmi](https://github.com/jpnurmi)
   * Use G_DECLARE_FINAL_TYPE to fix build with flutter-snap (#211)
 
-# 0.4.0
+## 0.4.0
 
 * [jpnurmi](https://github.com/jpnurmi)
   * Update README.md (#207)
@@ -70,15 +70,15 @@
   * Update publish.yml
   * Setup publish to GitHub Pages (#185)
 
-# 0.3.3
+## 0.3.3
 * [jpnurmi](https://github.com/jpnurmi)
   * YaruTheme: add builder method (#181)
 
-# 0.3.2
+## 0.3.2
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * enable material3 (#177)
 
-# 0.3.1
+## 0.3.1
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Default to cupertino page transitions (#175)
@@ -88,7 +88,7 @@
   * Enable the `prefer_const_declarations` lint and fix findings (#171)
   * Add text selection theme (#170)
 
-# 0.3.0
+## 0.3.0
 * [jpnurmi](https://github.com/jpnurmi)
   * Relax dbus version constraint (#168)
   * Add successColor and warningColor extensions for ThemeData (#167)
@@ -112,19 +112,19 @@
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Example: use handy_window (#161)
 
-# 0.2.5
+## 0.2.5
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Add high contrast themes (#144)
 
-# 0.2.4
+## 0.2.4
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Two more accent colors (#141)
 
-# 0.2.3
+## 0.2.3
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Add new accent colors from https://github.com/ubuntu/yaru/pull/3486 (#137)
 
-# 0.2.2
+## 0.2.2
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * ToggleButtons: round toggle buttons (#135)
@@ -133,7 +133,7 @@
   * BorderRadius: increase to match yaru gnome
   * Example: display dialog on AppBar button click
 
-# 0.2.1
+## 0.2.1
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Fix AppBar text and icon color in the light theme (#129)
@@ -149,17 +149,17 @@
 [Alberto Bonacina](https://github.com/polilluminato)
   * Fix Typos in the yaru.dart flavors and Example (#114)
 
-# 0.2.0
+## 0.2.0
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   *  Reorganize yaru and add yaru flavor themes (#110)
 
-# 0.1.8
+## 0.1.8
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * AppBar title: use normal font-weight (#107)
 
-# 0.1.7
+## 0.1.7
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   *  Clean-ups: update generated files, including a wayland window option and a test, remove unnecessary imports (#103)
@@ -168,75 +168,75 @@
 * [Paul Kepinski](https://github.com/Jupi007)
   *  Make dark theme bg darker (#101)
 
-# 0.1.6
+## 0.1.6
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   *  Make the checkmarks a bit rounded (#98)
   *  Remove the fallback fonts (#99)
 
-# 0.1.5
+## 0.1.5
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Dark theme: Brighten up check and radios and adapt dark dialogs to gtk/shell theme (#95)
 
-# 0.1.4
+## 0.1.4
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   *  Make red 10% lighter (#91)
 
-# 0.1.3
+## 0.1.3
 
 * [mivoligo](https://github.com/mivoligo)
   * Replace deprecated properties in AppBarTheme (#88)
 
-# 0.1.2
+## 0.1.2
 
 * [jpnurmi](https://github.com/jpnurmi)
   * Add missing input decoration border in dark theme (#82)
 
-# 0.1.1
+## 0.1.1
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * All TextFields should have a border in Yaru (#80)
-# 0.1.0
+## 0.1.0
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * ColorTheme: darken the green (#78)
 
-# 0.0.9
+## 0.0.9
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * ElevatedButton: improve and simplify (#76)
 
-# 0.0.8
+## 0.0.8
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * AppBar: reduce elevation, adapt the text theme (#73) 
 
-# 0.0.7
+## 0.0.7
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Replace lightAubergine with orange (#70)
 
-# 0.0.6
+## 0.0.6
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Do not style progress indicators (yet) (#68)
   * Update readme instructions (#65)
 
-# 0.0.5
+## 0.0.5
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Reduce themes to 2 and update light/dark mode button (#63)
   * Fixes and improvements for Flutter 2.3 (#64)
 
-# 0.0.4
+## 0.0.4
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Improve dark and light theme contrast (#61)
   * Button theme fixes (#60)
 
-# 0.0.3
+## 0.0.3
 
 * [Frederik Feichtmeier](https://github.com/Feichtmeier)
   * Example: add FAB and snackbar (#56)
