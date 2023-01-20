@@ -54,7 +54,8 @@ InputDecorationTheme _createInputDecorationTheme(
   final radius = BorderRadius.circular(kButtonRadius);
   const width = 1.0;
   final light = brightness == Brightness.light;
-  final fill = light ? const Color(0xFFededed) : const Color(0xFF363636);
+  final fill =
+      light ? const Color(0xFFededed) : const Color.fromARGB(255, 71, 71, 71);
   return InputDecorationTheme(
     filled: true,
     fillColor: fill,
