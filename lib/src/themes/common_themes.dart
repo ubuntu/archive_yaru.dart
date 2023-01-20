@@ -47,14 +47,22 @@ AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   );
 }
 
-InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
+InputDecorationTheme _createInputDecorationTheme(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
   final radius = BorderRadius.circular(kButtonRadius);
-  const width = 0.0;
+  const width = 1.0;
+  final light = brightness == Brightness.light;
+  final fill = light ? const Color(0xFFededed) : const Color(0xFF363636);
   return InputDecorationTheme(
     filled: true,
-    fillColor: colorScheme.onSurface.withOpacity(0.05),
+    fillColor: fill,
     border: OutlineInputBorder(
-      borderSide: const BorderSide(width: width, color: Colors.transparent),
+      borderSide: BorderSide(
+        width: width,
+        color: fill,
+      ),
       borderRadius: radius,
     ),
     focusedBorder: OutlineInputBorder(
@@ -62,7 +70,10 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
       borderRadius: radius,
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: const BorderSide(width: width, color: Colors.transparent),
+      borderSide: BorderSide(
+        width: width,
+        color: fill,
+      ),
       borderRadius: radius,
     ),
     errorBorder: OutlineInputBorder(
@@ -319,7 +330,8 @@ ThemeData createYaruLightTheme({
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
     ),
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
+    inputDecorationTheme:
+        _createInputDecorationTheme(colorScheme, Brightness.light),
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
@@ -370,7 +382,8 @@ ThemeData createYaruDarkTheme({
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: Colors.white.withOpacity(0.8),
     ),
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
+    inputDecorationTheme:
+        _createInputDecorationTheme(colorScheme, Brightness.dark),
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
