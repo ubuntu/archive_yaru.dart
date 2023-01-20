@@ -24,6 +24,15 @@ class InputsView extends StatelessWidget {
             width: 10,
           ),
           const Expanded(
+            child: OutlinedButton(
+              onPressed: null,
+              child: Text('Outlined Button'),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          const Expanded(
             child: TextField(
               autofocus: true,
               decoration: InputDecoration(
