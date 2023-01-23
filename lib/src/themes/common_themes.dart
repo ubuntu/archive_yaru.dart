@@ -55,14 +55,17 @@ InputDecorationTheme _createInputDecorationTheme(
   const width = 1.0;
   final light = brightness == Brightness.light;
   final fill =
-      light ? const Color(0xFFededed) : const Color.fromARGB(255, 71, 71, 71);
+      light ? const Color(0xFFededed) : const Color.fromARGB(255, 56, 56, 56);
+  final border = light
+      ? const Color.fromARGB(255, 226, 226, 226)
+      : const Color.fromARGB(255, 83, 83, 83);
   return InputDecorationTheme(
     filled: true,
     fillColor: fill,
     border: OutlineInputBorder(
       borderSide: BorderSide(
         width: width,
-        color: fill,
+        color: border,
       ),
       borderRadius: radius,
     ),
@@ -73,7 +76,7 @@ InputDecorationTheme _createInputDecorationTheme(
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(
         width: width,
-        color: fill,
+        color: border,
       ),
       borderRadius: radius,
     ),
