@@ -150,10 +150,9 @@ class _YaruThemeState extends State<YaruTheme> {
   void initState() {
     super.initState();
     if (widget.data.variant == null && canDetectVariant()) {
-      _settings = widget._settings ?? const YaruSettings();
-      updateVariant().then((_) {
-        _subscription = _settings!.themeNameChanged.listen(updateVariant);
-      });
+      _settings = widget._settings ?? YaruSettings();
+      _variant = resolveVariant(_settings?.getThemeName());
+      _subscription = _settings!.themeNameChanged.listen(updateVariant);
     }
   }
 
@@ -188,9 +187,9 @@ class _YaruThemeState extends State<YaruTheme> {
     return _detectYaruVariant(widget._platform);
   }
 
-  Future<void> updateVariant([String? value]) async {
+  void updateVariant([String? value]) {
     assert(canDetectVariant());
-    final name = value ?? await _settings?.getThemeName();
+    final name = value ?? _settings?.getThemeName();
     setState(() => _variant = resolveVariant(name));
   }
 

@@ -1,48 +1,33 @@
-import 'package:flutter/services.dart';
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gtk/gtk.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:yaru/src/settings.dart';
 
-void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
+import 'settings_test.mocks.dart';
 
+@GenerateMocks([GtkSettings])
+void main() {
   test('getThemeName', () async {
-    const settings = YaruMethodChannel();
-    settings.methodChannel.setMockMethodCallHandler((methodCall) async {
-      expect(methodCall, isMethodCall('getThemeName', arguments: null));
-      return 'foo';
-    });
-    expect(await settings.getThemeName(), 'foo');
+    final gtk = MockGtkSettings();
+    when(gtk.getProperty(kGtkThemeName)).thenReturn('foo');
+
+    final settings = YaruGtkSettings(gtk);
+    expect(settings.getThemeName(), 'foo');
   });
 
   test('themeNameChanged', () async {
-    const settings = YaruMethodChannel();
+    final themeChanged = StreamController<String?>(sync: true);
 
-    const codec = StandardMethodCodec();
-    final channel = settings.eventChannel.name;
-    final messenger =
-        TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger;
+    final gtk = MockGtkSettings();
+    when(gtk.notifyProperty(kGtkThemeName))
+        .thenAnswer((_) => themeChanged.stream);
 
-    Future<ByteData?> emitEvent(Object? event) {
-      return messenger.handlePlatformMessage(
-        channel,
-        codec.encodeSuccessEnvelope(event),
-        (_) {},
-      );
-    }
-
-    messenger.setMockMessageHandler(channel, (message) async {
-      expect(
-        codec.decodeMethodCall(message),
-        anyOf([
-          isMethodCall('listen', arguments: 'themeNameChanged'),
-          isMethodCall('cancel', arguments: null),
-        ]),
-      );
-      return codec.encodeSuccessEnvelope(null);
-    });
-
+    final settings = YaruGtkSettings(gtk);
     settings.themeNameChanged.listen(expectAsync1((ev) => expect(ev, 'bar')));
 
-    await emitEvent('bar');
+    themeChanged.add('bar');
   });
 }

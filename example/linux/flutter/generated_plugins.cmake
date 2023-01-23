@@ -3,8 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  gtk
   handy_window
-  yaru
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

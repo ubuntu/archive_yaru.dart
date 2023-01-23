@@ -1,32 +1,28 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:gtk/gtk.dart';
 
 abstract class YaruSettings {
   const YaruSettings._();
-  const factory YaruSettings() = YaruMethodChannel;
+  factory YaruSettings() = YaruGtkSettings;
 
-  Future<String?> getThemeName();
+  String? getThemeName();
   Stream<String?> get themeNameChanged;
 }
 
-class YaruMethodChannel extends YaruSettings {
-  const YaruMethodChannel() : super._();
+class YaruGtkSettings extends YaruSettings {
+  YaruGtkSettings([@visibleForTesting GtkSettings? settings])
+      : _settings = settings ?? GtkSettings(),
+        super._();
 
-  @visibleForTesting
-  final methodChannel = const MethodChannel('yaru');
-
-  @visibleForTesting
-  final eventChannel = const EventChannel('yaru/events');
+  final GtkSettings _settings;
 
   @override
-  Future<String?> getThemeName() async {
-    return methodChannel.invokeMethod<String>('getThemeName');
+  String? getThemeName() {
+    return _settings.getProperty(kGtkThemeName) as String?;
   }
 
   @override
   Stream<String?> get themeNameChanged {
-    return eventChannel
-        .receiveBroadcastStream('themeNameChanged')
-        .map((event) => event as String?);
+    return _settings.notifyProperty(kGtkThemeName).cast<String?>();
   }
 }
