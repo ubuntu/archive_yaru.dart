@@ -10,7 +10,10 @@ class ColorsView extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(15.0),
       children: <Widget>[
-        Text('Accent Colors', style: Theme.of(context).textTheme.headlineMedium),
+        Text(
+          'Accent Colors',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
         const SizedBox(height: 15.0),
         Row(
           children: [
@@ -59,7 +62,10 @@ class ColorsView extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 15.0),
-        Text('Flavor Colors', style: Theme.of(context).textTheme.headlineMedium),
+        Text(
+          'Flavor Colors',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
         const SizedBox(height: 15.0),
         Row(
           children: [

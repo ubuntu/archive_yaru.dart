@@ -302,7 +302,11 @@ ThemeData createYaruLightTheme({
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
-    tooltipTheme: _tooltipThemeData, bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface), colorScheme: colorScheme.copyWith(background: colorScheme.background).copyWith(error: colorScheme.error),
+    tooltipTheme: _tooltipThemeData,
+    bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
+    colorScheme: colorScheme
+        .copyWith(background: colorScheme.background)
+        .copyWith(error: colorScheme.error),
   );
 }
 
@@ -349,7 +353,11 @@ ThemeData createYaruDarkTheme({
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
-    tooltipTheme: _tooltipThemeData, bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface), colorScheme: colorScheme.copyWith(background: colorScheme.background).copyWith(error: colorScheme.error),
+    tooltipTheme: _tooltipThemeData,
+    bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
+    colorScheme: colorScheme
+        .copyWith(background: colorScheme.background)
+        .copyWith(error: colorScheme.error),
   );
 }
 
