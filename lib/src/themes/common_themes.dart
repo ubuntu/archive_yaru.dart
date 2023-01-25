@@ -47,10 +47,49 @@ AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
   );
 }
 
-InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
+InputDecorationTheme _createInputDecorationTheme(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
+  final radius = BorderRadius.circular(kButtonRadius);
+  const width = 1.0;
+  final light = brightness == Brightness.light;
+  final fill =
+      light ? const Color(0xFFededed) : const Color.fromARGB(255, 56, 56, 56);
+  final border = light
+      ? const Color.fromARGB(255, 226, 226, 226)
+      : const Color.fromARGB(255, 83, 83, 83);
+  final disabledBorder = light
+      ? const Color.fromARGB(255, 237, 237, 237)
+      : const Color.fromARGB(255, 67, 67, 67);
   return InputDecorationTheme(
+    filled: true,
+    fillColor: fill,
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(kButtonRadius),
+      borderSide: BorderSide(
+        width: width,
+        color: border,
+      ),
+      borderRadius: radius,
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(width: width, color: colorScheme.primary),
+      borderRadius: radius,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(
+        width: width,
+        color: border,
+      ),
+      borderRadius: radius,
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(width: width, color: colorScheme.error),
+      borderRadius: radius,
+    ),
+    disabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(width: width, color: disabledBorder),
+      borderRadius: radius,
     ),
     isDense: true,
     iconColor: colorScheme.onSurface,
@@ -301,7 +340,8 @@ ThemeData createYaruLightTheme({
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
     ),
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
+    inputDecorationTheme:
+        _createInputDecorationTheme(colorScheme, Brightness.light),
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
@@ -354,7 +394,8 @@ ThemeData createYaruDarkTheme({
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: Colors.white.withOpacity(0.8),
     ),
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
+    inputDecorationTheme:
+        _createInputDecorationTheme(colorScheme, Brightness.dark),
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),

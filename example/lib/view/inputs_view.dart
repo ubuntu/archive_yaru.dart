@@ -9,30 +9,66 @@ class InputsView extends StatelessWidget {
   InputsView({super.key});
   @override
   Widget build(BuildContext context) {
+    final buttonTextFieldRow = SizedBox(
+      width: 500,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            child: OutlinedButton(
+              onPressed: () {},
+              child: const Text('Outlined Button'),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          const Expanded(
+            child: OutlinedButton(
+              onPressed: null,
+              child: Text('Outlined Button'),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          const Expanded(
+            child: TextField(
+              autofocus: true,
+              decoration: InputDecoration(
+                prefix: Padding(
+                  padding: EdgeInsets.only(right: 5),
+                  child: Icon(
+                    Icons.text_fields,
+                    size: 16,
+                  ),
+                ),
+                prefixIconConstraints: BoxConstraints(minHeight: 100),
+                hintText: 'Awesome Textfield',
+                labelText: 'Awesome Textfield',
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: ListView(
         children: [
-          const SizedBox(height: 15),
-          const TextField(
-            autofocus: true,
-            decoration: InputDecoration(
-              prefix: Padding(
-                padding: EdgeInsets.only(right: 5),
-                child: Icon(
-                  Icons.text_fields,
-                  size: 16,
-                ),
-              ),
-              prefixIconConstraints: BoxConstraints(minHeight: 100),
-              hintText: 'Awesome Textfield',
-              labelText: 'All TextFields have a border in Yaru',
-            ),
-          ),
+          buttonTextFieldRow,
           const SizedBox(height: 15),
           const TextField(
             decoration: InputDecoration(
               labelText: 'Username',
+            ),
+          ),
+          const SizedBox(height: 15),
+          const TextField(
+            enabled: false,
+            onChanged: null,
+            decoration: InputDecoration(
+              labelText: 'Disabled',
             ),
           ),
           const SizedBox(height: 15),
@@ -56,6 +92,18 @@ class InputsView extends StatelessWidget {
             maxLines: 5,
           ),
           const SizedBox(height: 15),
+          OutlinedButton(
+            onPressed: () => showDialog(
+              context: context,
+              builder: (context) {
+                return SimpleDialog(
+                  contentPadding: const EdgeInsets.all(20),
+                  children: [buttonTextFieldRow],
+                );
+              },
+            ),
+            child: const Text('Check in dialog'),
+          )
         ],
       ),
     );
