@@ -140,14 +140,20 @@ final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
   ),
 );
 
-final _textButtonThemeData = TextButtonThemeData(
-  style: TextButton.styleFrom(
-    visualDensity: _commonButtonStyle.visualDensity,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(kButtonRadius),
+TextButtonThemeData _createTextButtonThemeData(
+  ColorScheme colorScheme,
+) {
+  return TextButtonThemeData(
+    style: TextButton.styleFrom(
+      iconColor: colorScheme.primary,
+      foregroundColor: colorScheme.primary,
+      visualDensity: _commonButtonStyle.visualDensity,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kButtonRadius),
+      ),
     ),
-  ),
-);
+  );
+}
 
 ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   return ElevatedButtonThemeData(
@@ -218,7 +224,7 @@ Color _getSwitchThumbColor(
         : YaruColors.warmGrey.shade200;
   } else {
     if (states.contains(MaterialState.selected)) {
-      return selectedColor;
+      return Colors.white;
     } else {
       return brightness == Brightness.dark ? YaruColors.warmGrey : Colors.white;
     }
@@ -301,6 +307,13 @@ RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
   );
 }
 
+TabBarTheme _createTabBarTheme(ColorScheme colorScheme, Brightness brightness) {
+  return TabBarTheme(
+    labelColor: Colors.white.withOpacity(0.8),
+    indicatorColor: colorScheme.primary,
+  );
+}
+
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
   required ColorScheme colorScheme,
@@ -315,9 +328,8 @@ ThemeData createYaruLightTheme({
     colorScheme: ColorScheme.fromSeed(
       seedColor: primaryColor,
       brightness: Brightness.light,
-      background: YaruColors.porcelain,
-      onBackground: YaruColors.inkstone,
-      onSurface: YaruColors.inkstone,
+      error: colorScheme.error,
+      onPrimaryContainer: Colors.white,
     ),
   ).copyWith(
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
@@ -337,7 +349,7 @@ ThemeData createYaruLightTheme({
     outlinedButtonTheme: _outlinedButtonThemeData,
     elevatedButtonTheme:
         _getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
-    textButtonTheme: _textButtonThemeData,
+    textButtonTheme: _createTextButtonThemeData(colorScheme),
     checkboxTheme: _getCheckBoxThemeData(primaryColor, Brightness.light),
     radioTheme: _getRadioThemeData(primaryColor, Brightness.light),
     appBarTheme: _createLightAppBar(colorScheme),
@@ -370,15 +382,21 @@ ThemeData createYaruDarkTheme({
     useMaterial3: useMaterial3,
     colorScheme: ColorScheme.fromSeed(
       seedColor: primaryColor,
+      error: colorScheme.error,
       brightness: Brightness.dark,
-      background: YaruColors.inkstone,
-      onBackground: YaruColors.porcelain,
-      onSurface: YaruColors.porcelain,
     ),
   ).copyWith(
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        foregroundColor: colorScheme.primary,
+        highlightColor: colorScheme.primary,
+        surfaceTintColor: colorScheme.primary,
+      ),
+    ),
+    iconTheme: IconThemeData(color: colorScheme.primary),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
-    tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
+    tabBarTheme: _createTabBarTheme(colorScheme, Brightness.dark),
     dialogTheme: _createDialogTheme(Brightness.dark),
     brightness: Brightness.dark,
     primaryColor: colorScheme.primary,
@@ -387,11 +405,11 @@ ThemeData createYaruDarkTheme({
     cardColor: colorScheme.surface,
     dividerColor: dividerColor,
     dialogBackgroundColor: colorScheme.background,
-    textTheme: createTextTheme(YaruColors.porcelain),
-    indicatorColor: colorScheme.secondary,
+    textTheme: createTextTheme(colorScheme.onSurface),
+    indicatorColor: colorScheme.primary,
     applyElevationOverlayColor: true,
     buttonTheme: _buttonThemeData,
-    textButtonTheme: _textButtonThemeData,
+    textButtonTheme: _createTextButtonThemeData(colorScheme),
     elevatedButtonTheme:
         _getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
     outlinedButtonTheme: _darkOutlinedButtonThemeData,
