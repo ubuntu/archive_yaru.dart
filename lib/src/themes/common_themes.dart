@@ -349,6 +349,13 @@ ThemeData createYaruLightTheme({
       error: colorScheme.error,
     ),
   ).copyWith(
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        foregroundColor: colorScheme.onSurface,
+        highlightColor: colorScheme.onSurface.withOpacity(0.05),
+        surfaceTintColor: colorScheme.background,
+      ),
+    ),
     iconTheme: IconThemeData(color: colorScheme.onSurface),
     primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
     progressIndicatorTheme:
@@ -413,9 +420,9 @@ ThemeData createYaruDarkTheme({
   ).copyWith(
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
-        foregroundColor: colorScheme.primary,
-        highlightColor: colorScheme.primary,
-        surfaceTintColor: colorScheme.primary,
+        foregroundColor: colorScheme.onSurface,
+        highlightColor: colorScheme.onSurface.withOpacity(0.05),
+        surfaceTintColor: colorScheme.background,
       ),
     ),
     progressIndicatorTheme:
