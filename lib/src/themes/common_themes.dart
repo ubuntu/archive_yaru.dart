@@ -140,10 +140,12 @@ ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
 // Dialogs
 
 DialogTheme _createDialogTheme(Brightness brightness) {
+  final bgColor = brightness == Brightness.dark
+      ? YaruColors.coolGrey
+      : YaruColors.porcelain;
   return DialogTheme(
-    backgroundColor: brightness == Brightness.dark
-        ? YaruColors.coolGrey
-        : YaruColors.porcelain,
+    backgroundColor: bgColor,
+    surfaceTintColor: bgColor,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(kWindowRadius),
       side: brightness == Brightness.dark
@@ -365,10 +367,12 @@ PopupMenuThemeData _createPopupMenuThemeData(
   ColorScheme colorScheme,
   Brightness brightness,
 ) {
+  final bgColor = brightness == Brightness.dark
+      ? const Color.fromARGB(255, 34, 34, 34)
+      : Colors.white;
   return PopupMenuThemeData(
-    color: brightness == Brightness.dark
-        ? const Color.fromARGB(255, 34, 34, 34)
-        : Colors.white,
+    color: bgColor,
+    surfaceTintColor: bgColor,
     shape: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
