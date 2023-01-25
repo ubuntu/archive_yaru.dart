@@ -269,7 +269,7 @@ ThemeData createYaruLightTheme({
   Color? elevatedButtonColor,
   bool? useMaterial3 = true,
 }) {
-  final dividerColor = colorScheme.onSurface.withOpacity(0.12);
+  const dividerColor = Color(0xffdcdcdc);
   return ThemeData(
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
@@ -321,7 +321,7 @@ ThemeData createYaruDarkTheme({
   Color? elevatedButtonColor,
   bool? useMaterial3 = true,
 }) {
-  final dividerColor = colorScheme.onSurface.withOpacity(0.07);
+  const dividerColor = Color(0xff3a3a3a);
   return ThemeData(
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
