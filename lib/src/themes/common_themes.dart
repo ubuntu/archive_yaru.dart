@@ -314,6 +314,17 @@ TabBarTheme _createTabBarTheme(ColorScheme colorScheme, Brightness brightness) {
   );
 }
 
+ProgressIndicatorThemeData _createProgressIndicatorTheme(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
+  return ProgressIndicatorThemeData(
+    circularTrackColor: colorScheme.primary.withOpacity(0.3),
+    linearTrackColor: colorScheme.primary.withOpacity(0.3),
+    color: colorScheme.primary,
+  );
+}
+
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
   required ColorScheme colorScheme,
@@ -332,6 +343,8 @@ ThemeData createYaruLightTheme({
       onPrimaryContainer: Colors.white,
     ),
   ).copyWith(
+    progressIndicatorTheme:
+        _createProgressIndicatorTheme(colorScheme, Brightness.light),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
     dialogTheme: _createDialogTheme(Brightness.light),
@@ -393,6 +406,8 @@ ThemeData createYaruDarkTheme({
         surfaceTintColor: colorScheme.primary,
       ),
     ),
+    progressIndicatorTheme:
+        _createProgressIndicatorTheme(colorScheme, Brightness.dark),
     iconTheme: IconThemeData(color: colorScheme.primary),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
