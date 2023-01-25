@@ -65,6 +65,14 @@ class InputsView extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           const TextField(
+            enabled: false,
+            onChanged: null,
+            decoration: InputDecoration(
+              labelText: 'Disabled',
+            ),
+          ),
+          const SizedBox(height: 15),
+          const TextField(
             obscureText: true,
             decoration: InputDecoration(
               labelText: 'Password',

@@ -59,6 +59,9 @@ InputDecorationTheme _createInputDecorationTheme(
   final border = light
       ? const Color.fromARGB(255, 226, 226, 226)
       : const Color.fromARGB(255, 83, 83, 83);
+  final disabledBorder = light
+      ? const Color.fromARGB(255, 237, 237, 237)
+      : const Color.fromARGB(255, 67, 67, 67);
   return InputDecorationTheme(
     filled: true,
     fillColor: fill,
@@ -82,6 +85,10 @@ InputDecorationTheme _createInputDecorationTheme(
     ),
     errorBorder: OutlineInputBorder(
       borderSide: BorderSide(width: width, color: colorScheme.error),
+      borderRadius: radius,
+    ),
+    disabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(width: width, color: disabledBorder),
       borderRadius: radius,
     ),
     isDense: true,
