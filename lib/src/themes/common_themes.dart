@@ -347,7 +347,6 @@ ThemeData createYaruLightTheme({
       seedColor: primaryColor,
       brightness: Brightness.light,
       error: colorScheme.error,
-      onPrimaryContainer: Colors.white,
     ),
   ).copyWith(
     iconTheme: IconThemeData(color: colorScheme.onSurface),
@@ -378,6 +377,7 @@ ThemeData createYaruLightTheme({
     appBarTheme: _createLightAppBar(colorScheme),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: elevatedButtonColor ?? primaryColor,
+      foregroundColor: Colors.white,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
@@ -448,6 +448,7 @@ ThemeData createYaruDarkTheme({
     appBarTheme: _createDarkAppBarTheme(colorScheme),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: elevatedButtonColor ?? primaryColor,
+      foregroundColor: Colors.white,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
