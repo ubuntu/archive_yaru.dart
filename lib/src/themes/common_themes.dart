@@ -534,6 +534,7 @@ DropdownMenuThemeData _createDropdownMenuTheme(
   Brightness brightness,
 ) {
   return DropdownMenuThemeData(
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme, brightness),
     menuStyle: _createMenuStyle(colorScheme, brightness),
   );
 }
