@@ -19,10 +19,10 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
     systemOverlayStyle: SystemUiOverlayStyle.light,
     backgroundColor: colorScheme.background,
     foregroundColor: colorScheme.onSurface,
-    titleTextStyle: textTheme.titleLarge!.copyWith(
-      color: colorScheme.onSurface,
-      fontWeight: FontWeight.normal,
-    ),
+    titleTextStyle: createTextTheme(YaruColors.inkstone).titleLarge!.copyWith(
+          color: colorScheme.onSurface,
+          fontWeight: FontWeight.normal,
+        ),
     iconTheme: IconThemeData(color: colorScheme.onSurface),
     actionsIconTheme: const IconThemeData(color: YaruColors.inkstone),
   );
@@ -40,10 +40,10 @@ AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     backgroundColor: colorScheme.surface,
     foregroundColor: colorScheme.onSurface,
-    titleTextStyle: textTheme.titleLarge!.copyWith(
-      color: colorScheme.onSurface,
-      fontWeight: FontWeight.normal,
-    ),
+    titleTextStyle: createTextTheme(YaruColors.porcelain).titleLarge!.copyWith(
+          color: colorScheme.onSurface,
+          fontWeight: FontWeight.normal,
+        ),
   );
 }
 
@@ -309,9 +309,18 @@ ThemeData createYaruLightTheme({
   bool? useMaterial3 = true,
 }) {
   const dividerColor = Color(0xffdcdcdc);
-  return ThemeData(
-    pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
+
+  return ThemeData.from(
     useMaterial3: useMaterial3,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: primaryColor,
+      brightness: Brightness.light,
+      background: YaruColors.porcelain,
+      onBackground: YaruColors.inkstone,
+      onSurface: YaruColors.inkstone,
+    ),
+  ).copyWith(
+    pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
     dialogTheme: _createDialogTheme(Brightness.light),
     brightness: Brightness.light,
@@ -321,7 +330,7 @@ ThemeData createYaruLightTheme({
     cardColor: colorScheme.surface,
     dividerColor: dividerColor,
     dialogBackgroundColor: colorScheme.background,
-    textTheme: textTheme,
+    textTheme: createTextTheme(YaruColors.inkstone),
     indicatorColor: colorScheme.secondary,
     applyElevationOverlayColor: false,
     buttonTheme: _buttonThemeData,
@@ -329,7 +338,6 @@ ThemeData createYaruLightTheme({
     elevatedButtonTheme:
         _getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
     textButtonTheme: _textButtonThemeData,
-    switchTheme: _getSwitchThemeData(primaryColor, Brightness.light),
     checkboxTheme: _getCheckBoxThemeData(primaryColor, Brightness.light),
     radioTheme: _getRadioThemeData(primaryColor, Brightness.light),
     appBarTheme: _createLightAppBar(colorScheme),
@@ -347,10 +355,6 @@ ThemeData createYaruLightTheme({
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
-    colorScheme: colorScheme
-        .copyWith(background: colorScheme.background)
-        .copyWith(error: colorScheme.error)
-        .copyWith(outlineVariant: dividerColor),
   );
 }
 
@@ -362,7 +366,16 @@ ThemeData createYaruDarkTheme({
   bool? useMaterial3 = true,
 }) {
   const dividerColor = Color(0xff3a3a3a);
-  return ThemeData(
+  return ThemeData.from(
+    useMaterial3: useMaterial3,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: primaryColor,
+      brightness: Brightness.dark,
+      background: YaruColors.inkstone,
+      onBackground: YaruColors.porcelain,
+      onSurface: YaruColors.porcelain,
+    ),
+  ).copyWith(
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
     tabBarTheme: TabBarTheme(labelColor: Colors.white.withOpacity(0.8)),
@@ -374,7 +387,7 @@ ThemeData createYaruDarkTheme({
     cardColor: colorScheme.surface,
     dividerColor: dividerColor,
     dialogBackgroundColor: colorScheme.background,
-    textTheme: textTheme,
+    textTheme: createTextTheme(YaruColors.porcelain),
     indicatorColor: colorScheme.secondary,
     applyElevationOverlayColor: true,
     buttonTheme: _buttonThemeData,
@@ -401,10 +414,6 @@ ThemeData createYaruDarkTheme({
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
-    colorScheme: colorScheme
-        .copyWith(background: colorScheme.background)
-        .copyWith(error: colorScheme.error)
-        .copyWith(outlineVariant: dividerColor),
   );
 }
 
