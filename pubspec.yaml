@@ -13,6 +13,7 @@ dependencies:
   collection: ^1.16.0
   flutter:
     sdk: flutter
+  gtk: ^2.0.0
   platform: ^3.1.0
   yaru_colors: ^0.1.1
 
@@ -47,15 +48,3 @@ flutter:
         - asset: packages/yaru/src/text/fonts/Ubuntu-BI.ttf
           weight: 700
           style: italic
-  plugin:
-    platforms:
-      linux:
-        pluginClass: YaruPlugin
-
-platforms:
-  android:
-  ios:
-  linux:
-  macos:
-  web:
-  windows:

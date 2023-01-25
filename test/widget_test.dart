@@ -184,7 +184,7 @@ void main() {
 MockYaruSettings createMockSettings({String theme = ''}) {
   final settings = MockYaruSettings();
   when(settings.themeNameChanged).thenAnswer((_) => const Stream.empty());
-  when(settings.getThemeName()).thenAnswer((_) async => theme);
+  when(settings.getThemeName()).thenReturn(theme);
   return settings;
 }
 
