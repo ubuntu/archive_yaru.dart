@@ -269,6 +269,7 @@ ThemeData createYaruLightTheme({
   Color? elevatedButtonColor,
   bool? useMaterial3 = true,
 }) {
+  const dividerColor = Color(0xffdcdcdc);
   return ThemeData(
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
@@ -279,7 +280,7 @@ ThemeData createYaruLightTheme({
     canvasColor: colorScheme.background,
     scaffoldBackgroundColor: colorScheme.background,
     cardColor: colorScheme.surface,
-    dividerColor: colorScheme.onSurface.withOpacity(0.12),
+    dividerColor: dividerColor,
     dialogBackgroundColor: colorScheme.background,
     textTheme: textTheme,
     indicatorColor: colorScheme.secondary,
@@ -308,7 +309,8 @@ ThemeData createYaruLightTheme({
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
     colorScheme: colorScheme
         .copyWith(background: colorScheme.background)
-        .copyWith(error: colorScheme.error),
+        .copyWith(error: colorScheme.error)
+        .copyWith(outlineVariant: dividerColor),
   );
 }
 
@@ -319,6 +321,7 @@ ThemeData createYaruDarkTheme({
   Color? elevatedButtonColor,
   bool? useMaterial3 = true,
 }) {
+  const dividerColor = Color(0xff3a3a3a);
   return ThemeData(
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
@@ -329,7 +332,7 @@ ThemeData createYaruDarkTheme({
     canvasColor: colorScheme.background,
     scaffoldBackgroundColor: colorScheme.background,
     cardColor: colorScheme.surface,
-    dividerColor: colorScheme.onSurface.withOpacity(0.07),
+    dividerColor: dividerColor,
     dialogBackgroundColor: colorScheme.background,
     textTheme: textTheme,
     indicatorColor: colorScheme.secondary,
@@ -359,7 +362,8 @@ ThemeData createYaruDarkTheme({
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
     colorScheme: colorScheme
         .copyWith(background: colorScheme.background)
-        .copyWith(error: colorScheme.error),
+        .copyWith(error: colorScheme.error)
+        .copyWith(outlineVariant: dividerColor),
   );
 }
 
