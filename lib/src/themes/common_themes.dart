@@ -350,6 +350,8 @@ ThemeData createYaruLightTheme({
       onPrimaryContainer: Colors.white,
     ),
   ).copyWith(
+    iconTheme: IconThemeData(color: colorScheme.onSurface),
+    primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
     progressIndicatorTheme:
         _createProgressIndicatorTheme(colorScheme, Brightness.light),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
@@ -385,6 +387,8 @@ ThemeData createYaruLightTheme({
         _createInputDecorationTheme(colorScheme, Brightness.light),
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
+    dropdownMenuTheme: _createDropdownMenuTheme(colorScheme, Brightness.light),
+    menuTheme: _createMenuTheme(colorScheme, Brightness.light),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
@@ -416,7 +420,8 @@ ThemeData createYaruDarkTheme({
     ),
     progressIndicatorTheme:
         _createProgressIndicatorTheme(colorScheme, Brightness.dark),
-    iconTheme: IconThemeData(color: colorScheme.primary),
+    iconTheme: IconThemeData(color: colorScheme.onSurface),
+    primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
     tabBarTheme: _createTabBarTheme(colorScheme, Brightness.dark, dividerColor),
@@ -452,6 +457,8 @@ ThemeData createYaruDarkTheme({
         _createInputDecorationTheme(colorScheme, Brightness.dark),
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
+    dropdownMenuTheme: _createDropdownMenuTheme(colorScheme, Brightness.dark),
+    menuTheme: _createMenuTheme(colorScheme, Brightness.dark),
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
@@ -476,5 +483,49 @@ PopupMenuThemeData _createPopupMenuThemeData(
         width: 1,
       ),
     ),
+  );
+}
+
+MenuStyle _createMenuStyle(ColorScheme colorScheme, Brightness brightness) {
+  final bgColor = brightness == Brightness.dark
+      ? const Color.fromARGB(255, 34, 34, 34)
+      : Colors.white;
+
+  return MenuStyle(
+    surfaceTintColor: MaterialStateColor.resolveWith((states) => bgColor),
+    shape: MaterialStateProperty.resolveWith(
+      (states) => RoundedRectangleBorder(
+        side: BorderSide(
+          color: colorScheme.onSurface
+              .withOpacity(brightness == Brightness.light ? 0.3 : 0.2),
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+    side: MaterialStateBorderSide.resolveWith(
+      (states) => BorderSide(
+        color: colorScheme.onSurface
+            .withOpacity(brightness == Brightness.light ? 0.3 : 0.2),
+        width: 1,
+      ),
+    ),
+    elevation: MaterialStateProperty.resolveWith((states) => 1),
+    backgroundColor: MaterialStateProperty.resolveWith((states) => bgColor),
+  );
+}
+
+MenuThemeData _createMenuTheme(ColorScheme colorScheme, Brightness brightness) {
+  return MenuThemeData(
+    style: _createMenuStyle(colorScheme, brightness),
+  );
+}
+
+DropdownMenuThemeData _createDropdownMenuTheme(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
+  return DropdownMenuThemeData(
+    menuStyle: _createMenuStyle(colorScheme, brightness),
   );
 }
