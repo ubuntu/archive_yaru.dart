@@ -10,18 +10,18 @@ extension YaruThemeDataExtension on ThemeData {
   /// ```
   ///
   /// See also:
-  ///  * [ThemeData.errorColor]
+  ///  * [ThemeData.colorScheme.error]
   Color get successColor => YaruColors.success;
 
   /// A color to indicate warnings.
   ///
-  /// This is the counterpart of [ThemeData.errorColor].
+  /// This is the counterpart of [ThemeData.colorScheme.error].
   ///
   /// ```dart
   /// Theme.of(context).warningColor
   /// ```
   ///
   /// See also:
-  ///  * [ThemeData.errorColor]
+  ///  * [ThemeData.colorScheme.error]
   Color get warningColor => YaruColors.warning;
 }
