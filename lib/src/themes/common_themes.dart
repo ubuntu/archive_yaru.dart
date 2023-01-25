@@ -307,10 +307,17 @@ RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
   );
 }
 
-TabBarTheme _createTabBarTheme(ColorScheme colorScheme, Brightness brightness) {
+TabBarTheme _createTabBarTheme(
+  ColorScheme colorScheme,
+  Brightness brightness,
+  Color dividerColor,
+) {
   return TabBarTheme(
-    labelColor: Colors.white.withOpacity(0.8),
+    labelColor: brightness == Brightness.light
+        ? colorScheme.onSurface
+        : Colors.white.withOpacity(0.8),
     indicatorColor: colorScheme.primary,
+    dividerColor: dividerColor,
   );
 }
 
@@ -346,7 +353,8 @@ ThemeData createYaruLightTheme({
     progressIndicatorTheme:
         _createProgressIndicatorTheme(colorScheme, Brightness.light),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
-    tabBarTheme: TabBarTheme(labelColor: colorScheme.onSurface),
+    tabBarTheme:
+        _createTabBarTheme(colorScheme, Brightness.light, dividerColor),
     dialogTheme: _createDialogTheme(Brightness.light),
     brightness: Brightness.light,
     primaryColor: colorScheme.primary,
@@ -411,7 +419,7 @@ ThemeData createYaruDarkTheme({
     iconTheme: IconThemeData(color: colorScheme.primary),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
-    tabBarTheme: _createTabBarTheme(colorScheme, Brightness.dark),
+    tabBarTheme: _createTabBarTheme(colorScheme, Brightness.dark, dividerColor),
     dialogTheme: _createDialogTheme(Brightness.dark),
     brightness: Brightness.dark,
     primaryColor: colorScheme.primary,
