@@ -178,7 +178,7 @@ FilledButtonThemeData _getFilledButtonThemeData(
   Color foregroundColor,
 ) {
   return FilledButtonThemeData(
-    style: ElevatedButton.styleFrom(
+    style: FilledButton.styleFrom(
       backgroundColor: backgroundColor.withOpacity(0.3),
       foregroundColor: foregroundColor,
       visualDensity: _commonButtonStyle.visualDensity,
