@@ -125,32 +125,32 @@ class HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
-        items: const [
-          BottomNavigationBarItem(
+      bottomNavigationBar: NavigationBar(
+        destinations: const [
+          NavigationDestination(
             icon: Icon(Icons.font_download_outlined),
-            activeIcon: Icon(Icons.font_download),
+            selectedIcon: Icon(Icons.font_download),
             label: 'Fonts',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.radio_button_checked_outlined),
-            activeIcon: Icon(Icons.radio_button_checked),
+            selectedIcon: Icon(Icons.radio_button_checked),
             label: 'Controls',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.text_fields),
-            activeIcon: Icon(Icons.text_fields_outlined),
+            selectedIcon: Icon(Icons.text_fields_outlined),
             label: 'Text Fields',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.color_lens_outlined),
-            activeIcon: Icon(Icons.color_lens),
+            selectedIcon: Icon(Icons.color_lens),
             label: 'Palette',
           )
         ],
-        currentIndex: _selectedIndex,
-        onTap: (index) => setState(() => _selectedIndex = index),
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (index) =>
+            setState(() => _selectedIndex = index),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {incrementCounter()},

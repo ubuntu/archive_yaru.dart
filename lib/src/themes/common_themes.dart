@@ -421,6 +421,8 @@ ThemeData createYaruLightTheme({
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
+    navigationBarTheme:
+        _createNavigationBarTheme(colorScheme, Brightness.light),
   );
 }
 
@@ -496,6 +498,7 @@ ThemeData createYaruDarkTheme({
     popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
+    navigationBarTheme: _createNavigationBarTheme(colorScheme, Brightness.dark),
   );
 }
 
@@ -562,5 +565,19 @@ DropdownMenuThemeData _createDropdownMenuTheme(
   return DropdownMenuThemeData(
     inputDecorationTheme: _createInputDecorationTheme(colorScheme, brightness),
     menuStyle: _createMenuStyle(colorScheme, brightness),
+  );
+}
+
+NavigationBarThemeData _createNavigationBarTheme(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
+  return NavigationBarThemeData(
+    backgroundColor: colorScheme.surface,
+    surfaceTintColor: colorScheme.background,
+    indicatorColor: colorScheme.onSurface.withOpacity(0.1),
+    iconTheme: MaterialStateProperty.resolveWith(
+      (states) => IconThemeData(color: colorScheme.onSurface),
+    ),
   );
 }
