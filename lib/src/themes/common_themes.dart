@@ -275,25 +275,25 @@ Color _getSwitchTrackColor(
 
 Color _getCheckFillColor(
   Set<MaterialState> states,
-  Color selectedColor,
+  ColorScheme colorScheme,
   Brightness brightness,
 ) {
   if (!states.contains(MaterialState.disabled)) {
     if (states.contains(MaterialState.selected)) {
-      return selectedColor;
+      return colorScheme.primary;
     }
-    return brightness == Brightness.dark
-        ? YaruColors.warmGrey.shade400
-        : YaruColors.warmGrey;
+    return colorScheme.onSurface.withOpacity(0.9);
   }
-  return brightness == Brightness.dark
-      ? YaruColors.warmGrey.withOpacity(0.4)
-      : YaruColors.warmGrey.shade300;
+  if (states.contains(MaterialState.selected)) {
+    return colorScheme.onSurface.withOpacity(0.2);
+  }
+  return colorScheme.onSurface.withOpacity(0.2);
 }
 
-Color _getCheckColor(Set<MaterialState> states, Color color) {
+Color _getCheckColor(Set<MaterialState> states, ColorScheme colorScheme) {
   if (!states.contains(MaterialState.disabled)) {
-    return ThemeData.estimateBrightnessForColor(color) == Brightness.light
+    return ThemeData.estimateBrightnessForColor(colorScheme.primary) ==
+            Brightness.light
         ? Colors.black
         : Colors.white;
   }
@@ -301,7 +301,7 @@ Color _getCheckColor(Set<MaterialState> states, Color color) {
 }
 
 CheckboxThemeData _getCheckBoxThemeData(
-  Color primaryColor,
+  ColorScheme colorScheme,
   Brightness brightness,
 ) {
   return CheckboxThemeData(
@@ -309,18 +309,21 @@ CheckboxThemeData _getCheckBoxThemeData(
       borderRadius: BorderRadius.circular(kCheckRadius),
     ),
     fillColor: MaterialStateProperty.resolveWith(
-      (states) => _getCheckFillColor(states, primaryColor, brightness),
+      (states) => _getCheckFillColor(states, colorScheme, brightness),
     ),
     checkColor: MaterialStateProperty.resolveWith(
-      (states) => _getCheckColor(states, primaryColor),
+      (states) => _getCheckColor(states, colorScheme),
     ),
   );
 }
 
-RadioThemeData _getRadioThemeData(Color primaryColor, Brightness brightness) {
+RadioThemeData _getRadioThemeData(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
   return RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(
-      (states) => _getCheckFillColor(states, primaryColor, brightness),
+      (states) => _getCheckFillColor(states, colorScheme, brightness),
     ),
   );
 }
@@ -401,8 +404,8 @@ ThemeData createYaruLightTheme({
       colorScheme.onSurface,
     ),
     textButtonTheme: _createTextButtonThemeData(colorScheme),
-    checkboxTheme: _getCheckBoxThemeData(primaryColor, Brightness.light),
-    radioTheme: _getRadioThemeData(primaryColor, Brightness.light),
+    checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.light),
+    radioTheme: _getRadioThemeData(colorScheme, Brightness.light),
     appBarTheme: _createLightAppBar(colorScheme),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: elevatedButtonColor ?? primaryColor,
@@ -482,8 +485,8 @@ ThemeData createYaruDarkTheme({
         _getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
     outlinedButtonTheme: _darkOutlinedButtonThemeData,
     switchTheme: _getSwitchThemeData(primaryColor, Brightness.dark),
-    checkboxTheme: _getCheckBoxThemeData(primaryColor, Brightness.dark),
-    radioTheme: _getRadioThemeData(primaryColor, Brightness.dark),
+    checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.dark),
+    radioTheme: _getRadioThemeData(colorScheme, Brightness.dark),
     primaryColorDark: primaryColor,
     appBarTheme: _createDarkAppBarTheme(colorScheme),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
