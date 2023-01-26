@@ -587,7 +587,9 @@ NavigationBarThemeData _createNavigationBarTheme(
     surfaceTintColor: colorScheme.background,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
     iconTheme: MaterialStateProperty.resolveWith(
-      (states) => IconThemeData(color: colorScheme.onSurface),
+      (states) => states.contains(MaterialState.selected)
+          ? IconThemeData(color: colorScheme.onSurface)
+          : IconThemeData(color: colorScheme.onSurface.withOpacity(0.8)),
     ),
   );
 }
@@ -599,5 +601,9 @@ NavigationRailThemeData _createNavigationRailTheme(
   return NavigationRailThemeData(
     backgroundColor: colorScheme.background,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
+    selectedIconTheme: IconThemeData(color: colorScheme.onSurface),
+    unselectedIconTheme: IconThemeData(
+      color: colorScheme.onSurface.withOpacity(0.8),
+    ),
   );
 }
