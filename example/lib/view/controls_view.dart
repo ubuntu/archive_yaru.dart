@@ -90,6 +90,38 @@ class _ControlsViewState extends State<ControlsView>
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: <Widget>[
+                          FilledButton.tonal(
+                            onPressed: () {},
+                            child: const Text('Click me!'),
+                          ),
+                          const SizedBox(width: 15),
+                          const FilledButton(
+                            onPressed: null,
+                            child: Text("Can't click me!"),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: <Widget>[
+                          FilledButton(
+                            onPressed: () {},
+                            child: const Text('Click me!'),
+                          ),
+                          const SizedBox(width: 15),
+                          const FilledButton(
+                            onPressed: null,
+                            child: Text("Can't click me!"),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: <Widget>[
                           ElevatedButton(
                             onPressed: () {},
                             child: const Text('Click me!'),

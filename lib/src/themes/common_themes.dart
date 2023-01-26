@@ -173,6 +173,24 @@ ElevatedButtonThemeData _getElevatedButtonThemeData(Color color) {
   );
 }
 
+FilledButtonThemeData _getFilledButtonThemeData(
+  Color backgroundColor,
+  Color foregroundColor,
+) {
+  return FilledButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: backgroundColor.withOpacity(0.3),
+      foregroundColor: foregroundColor,
+      visualDensity: _commonButtonStyle.visualDensity,
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kButtonRadius),
+      ),
+    ),
+  );
+}
+
 ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
   return ToggleButtonsThemeData(
     borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
@@ -378,6 +396,10 @@ ThemeData createYaruLightTheme({
     outlinedButtonTheme: _outlinedButtonThemeData,
     elevatedButtonTheme:
         _getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
+    filledButtonTheme: _getFilledButtonThemeData(
+      elevatedButtonColor ?? primaryColor,
+      colorScheme.onSurface,
+    ),
     textButtonTheme: _createTextButtonThemeData(colorScheme),
     checkboxTheme: _getCheckBoxThemeData(primaryColor, Brightness.light),
     radioTheme: _getRadioThemeData(primaryColor, Brightness.light),
@@ -445,6 +467,10 @@ ThemeData createYaruDarkTheme({
     applyElevationOverlayColor: true,
     buttonTheme: _buttonThemeData,
     textButtonTheme: _createTextButtonThemeData(colorScheme),
+    filledButtonTheme: _getFilledButtonThemeData(
+      elevatedButtonColor ?? primaryColor,
+      colorScheme.onSurface,
+    ),
     elevatedButtonTheme:
         _getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
     outlinedButtonTheme: _darkOutlinedButtonThemeData,
