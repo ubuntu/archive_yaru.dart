@@ -220,53 +220,51 @@ DialogTheme _createDialogTheme(Brightness brightness) {
 
 // Switches
 
-SwitchThemeData _getSwitchThemeData(Color primaryColor, Brightness brightness) {
+SwitchThemeData _getSwitchThemeData(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
   return SwitchThemeData(
     thumbColor: MaterialStateProperty.resolveWith(
-      (states) => _getSwitchThumbColor(states, primaryColor, brightness),
+      (states) => _getSwitchThumbColor(states, colorScheme, brightness),
     ),
     trackColor: MaterialStateProperty.resolveWith(
-      (states) => _getSwitchTrackColor(states, primaryColor, brightness),
+      (states) => _getSwitchTrackColor(states, colorScheme, brightness),
     ),
   );
 }
 
 Color _getSwitchThumbColor(
   Set<MaterialState> states,
-  Color selectedColor,
+  ColorScheme colorScheme,
   Brightness brightness,
 ) {
   if (states.contains(MaterialState.disabled)) {
-    return brightness == Brightness.dark
-        ? kDisabledGreyDark
-        : YaruColors.warmGrey.shade200;
+    if (states.contains(MaterialState.selected)) {
+      return colorScheme.onSurface.withOpacity(0.5);
+    }
+    return colorScheme.onSurface.withOpacity(0.5);
   } else {
     if (states.contains(MaterialState.selected)) {
       return Colors.white;
     } else {
-      return brightness == Brightness.dark ? YaruColors.warmGrey : Colors.white;
+      return colorScheme.onSurface.withOpacity(0.7);
     }
   }
 }
 
 Color _getSwitchTrackColor(
   Set<MaterialState> states,
-  Color selectedColor,
+  ColorScheme colorScheme,
   Brightness brightness,
 ) {
   if (states.contains(MaterialState.disabled)) {
-    return brightness == Brightness.dark
-        ? kDisabledGreyDark.withAlpha(120)
-        : YaruColors.warmGrey.shade200;
+    return colorScheme.onSurface.withOpacity(0.15);
   } else {
     if (states.contains(MaterialState.selected)) {
-      return brightness == Brightness.dark
-          ? selectedColor.withAlpha(160)
-          : selectedColor.withAlpha(180);
+      return colorScheme.primary;
     } else {
-      return brightness == Brightness.dark
-          ? YaruColors.warmGrey.withAlpha(80)
-          : YaruColors.warmGrey.shade300;
+      return colorScheme.onSurface.withOpacity(0.1);
     }
   }
 }
@@ -404,6 +402,7 @@ ThemeData createYaruLightTheme({
       colorScheme.onSurface,
     ),
     textButtonTheme: _createTextButtonThemeData(colorScheme),
+    switchTheme: _getSwitchThemeData(colorScheme, Brightness.light),
     checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.light),
     radioTheme: _getRadioThemeData(colorScheme, Brightness.light),
     appBarTheme: _createLightAppBar(colorScheme),
@@ -484,7 +483,7 @@ ThemeData createYaruDarkTheme({
     elevatedButtonTheme:
         _getElevatedButtonThemeData(elevatedButtonColor ?? primaryColor),
     outlinedButtonTheme: _darkOutlinedButtonThemeData,
-    switchTheme: _getSwitchThemeData(primaryColor, Brightness.dark),
+    switchTheme: _getSwitchThemeData(colorScheme, Brightness.dark),
     checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.dark),
     radioTheme: _getRadioThemeData(colorScheme, Brightness.dark),
     primaryColorDark: primaryColor,
