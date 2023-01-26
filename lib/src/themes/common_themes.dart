@@ -423,6 +423,11 @@ ThemeData createYaruLightTheme({
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
     navigationBarTheme:
         _createNavigationBarTheme(colorScheme, Brightness.light),
+    navigationRailTheme:
+        _createNavigationRailTheme(colorScheme, Brightness.light),
+    dividerTheme: const DividerThemeData(
+      color: dividerColor,
+    ),
   );
 }
 
@@ -499,6 +504,11 @@ ThemeData createYaruDarkTheme({
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
     navigationBarTheme: _createNavigationBarTheme(colorScheme, Brightness.dark),
+    navigationRailTheme:
+        _createNavigationRailTheme(colorScheme, Brightness.dark),
+    dividerTheme: const DividerThemeData(
+      color: dividerColor,
+    ),
   );
 }
 
@@ -573,11 +583,21 @@ NavigationBarThemeData _createNavigationBarTheme(
   Brightness brightness,
 ) {
   return NavigationBarThemeData(
-    backgroundColor: colorScheme.surface,
+    backgroundColor: colorScheme.background,
     surfaceTintColor: colorScheme.background,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
     iconTheme: MaterialStateProperty.resolveWith(
       (states) => IconThemeData(color: colorScheme.onSurface),
     ),
+  );
+}
+
+NavigationRailThemeData _createNavigationRailTheme(
+  ColorScheme colorScheme,
+  Brightness brightness,
+) {
+  return NavigationRailThemeData(
+    backgroundColor: colorScheme.background,
+    indicatorColor: colorScheme.onSurface.withOpacity(0.1),
   );
 }

@@ -116,48 +116,83 @@ class HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Center(
-              child: _views[_selectedIndex],
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.font_download_outlined),
-            selectedIcon: Icon(Icons.font_download),
-            label: 'Fonts',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.radio_button_checked_outlined),
-            selectedIcon: Icon(Icons.radio_button_checked),
-            label: 'Controls',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.text_fields),
-            selectedIcon: Icon(Icons.text_fields_outlined),
-            label: 'Text Fields',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.color_lens_outlined),
-            selectedIcon: Icon(Icons.color_lens),
-            label: 'Palette',
-          )
-        ],
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) =>
-            setState(() => _selectedIndex = index),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 800) {
+            return Row(
+              children: [
+                NavigationRail(
+                  destinations: const [
+                    NavigationRailDestination(
+                      icon: Icon(Icons.font_download_outlined),
+                      selectedIcon: Icon(Icons.font_download),
+                      label: Text('Fonts'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.radio_button_checked_outlined),
+                      selectedIcon: Icon(Icons.radio_button_checked),
+                      label: Text('Controls'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.color_lens_outlined),
+                      selectedIcon: Icon(Icons.color_lens),
+                      label: Text('Palette'),
+                    )
+                  ],
+                  selectedIndex: _selectedIndex,
+                  onDestinationSelected: (index) =>
+                      setState(() => _selectedIndex = index),
+                ),
+                const VerticalDivider(
+                  width: 0.0,
+                ),
+                Expanded(child: Center(child: _views[_selectedIndex]))
+              ],
+            );
+          } else {
+            return Column(
+              children: [
+                Expanded(child: Center(child: _views[_selectedIndex])),
+                const Divider(
+                  height: 0.0,
+                ),
+                NavigationBar(
+                  destinations: const [
+                    NavigationDestination(
+                      icon: Icon(Icons.font_download_outlined),
+                      selectedIcon: Icon(Icons.font_download),
+                      label: 'Fonts',
+                    ),
+                    NavigationDestination(
+                      icon: Icon(Icons.radio_button_checked_outlined),
+                      selectedIcon: Icon(Icons.radio_button_checked),
+                      label: 'Controls',
+                    ),
+                    NavigationDestination(
+                      icon: Icon(Icons.text_fields),
+                      selectedIcon: Icon(Icons.text_fields_outlined),
+                      label: 'Text Fields',
+                    ),
+                    NavigationDestination(
+                      icon: Icon(Icons.color_lens_outlined),
+                      selectedIcon: Icon(Icons.color_lens),
+                      label: 'Palette',
+                    )
+                  ],
+                  selectedIndex: _selectedIndex,
+                  onDestinationSelected: (index) =>
+                      setState(() => _selectedIndex = index),
+                ),
+              ],
+            );
+          }
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {incrementCounter()},
         child: const Icon(Icons.plus_one),
       ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
