@@ -140,6 +140,11 @@ class HomePageState extends State<HomePage> {
                       label: Text('Controls'),
                     ),
                     NavigationRailDestination(
+                      icon: Icon(Icons.text_fields),
+                      selectedIcon: Icon(Icons.text_fields_outlined),
+                      label: Text('Text Fields'),
+                    ),
+                    NavigationRailDestination(
                       icon: Icon(Icons.color_lens_outlined),
                       selectedIcon: Icon(Icons.color_lens),
                       label: Text('Palette'),
