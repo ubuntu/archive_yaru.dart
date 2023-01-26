@@ -90,6 +90,22 @@ class _ControlsViewState extends State<ControlsView>
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: <Widget>[
+                          FilledButton(
+                            onPressed: () {},
+                            child: const Text('Click me!'),
+                          ),
+                          const SizedBox(width: 15),
+                          const FilledButton(
+                            onPressed: null,
+                            child: Text("Can't click me!"),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: <Widget>[
                           ElevatedButton(
                             onPressed: () {},
                             child: const Text('Click me!'),
@@ -152,6 +168,20 @@ class _ControlsViewState extends State<ControlsView>
                               ),
                             ],
                           ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        children: const [
+                          DropdownMenu(
+                            dropdownMenuEntries: [
+                              DropdownMenuEntry(value: 1, label: '1'),
+                              DropdownMenuEntry(value: 2, label: '2'),
+                              DropdownMenuEntry(value: 3, label: '3')
+                            ],
+                          )
                         ],
                       ),
                     ),
