@@ -7,9 +7,130 @@ class ColorsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return ListView(
       padding: const EdgeInsets.all(15.0),
       children: <Widget>[
+        Text(
+          'Colors',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        const SizedBox(height: 15.0),
+        _themeColorRow(
+          theme.primaryColor,
+          'primaryColor',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.primary,
+          'colorScheme.primary',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.onPrimary,
+          'colorScheme.onPrimary',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.onPrimaryContainer,
+          'colorScheme.onPrimaryContainer',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.secondary,
+          'colorScheme.secondary',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.onSecondary,
+          'colorScheme.onSecondary',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.secondaryContainer,
+          'colorScheme.secondaryContainer',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.onSecondaryContainer,
+          'colorScheme.onSecondaryContainer',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.tertiary,
+          'colorScheme.tertiary',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.onTertiary,
+          'colorScheme.onTertiary',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.tertiaryContainer,
+          'colorScheme.tertiaryContainer',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.onTertiaryContainer,
+          'colorScheme.onTertiaryContainer',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.surface,
+          'colorScheme.surface',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.surfaceTint,
+          'colorScheme.surfaceTint',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.surfaceVariant,
+          'colorScheme.surfaceVariant',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.background,
+          'colorScheme.background',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.onBackground,
+          'colorScheme.onBackground',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.inversePrimary,
+          'colorScheme.inversePrimary',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.inverseSurface,
+          'colorScheme.inverseSurface',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.error,
+          'colorScheme.error',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.errorContainer,
+          'colorScheme.errorContainer',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.onError,
+          'colorScheme.onError',
+          theme.brightness,
+        ),
+        _themeColorRow(
+          theme.colorScheme.scrim,
+          'colorScheme.scrim',
+          theme.brightness,
+        ),
         Text(
           'Accent Colors',
           style: Theme.of(context).textTheme.headlineMedium,
@@ -106,6 +227,35 @@ class ColorsView extends StatelessWidget {
               child: colorPaletteExample('xubuntuBlue', YaruColors.xubuntuBlue),
             ),
           ],
+        ),
+      ],
+    );
+  }
+
+  Row _themeColorRow(Color color, String label, Brightness brightness) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            color: color,
+            height: 40,
+            child: Center(
+              child: Text(
+                label,
+                style: TextStyle(
+                  color: Colors.white,
+                  shadows: [
+                    BoxShadow(
+                      offset: const Offset(1, 1),
+                      color: Colors.black.withOpacity(0.8),
+                      spreadRadius: 3,
+                      blurRadius: 3,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
       ],
     );
