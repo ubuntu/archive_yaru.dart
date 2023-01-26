@@ -5,6 +5,9 @@ import 'package:yaru/src/themes/constants.dart';
 import 'package:yaru/src/themes/page_transitions.dart';
 import 'package:yaru_colors/yaru_colors.dart';
 
+const kDividerColorDark = Color(0xff3a3a3a);
+const kDividerColorLight = Color(0xffdcdcdc);
+
 // AppBar
 
 AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
@@ -264,7 +267,9 @@ Color _getSwitchTrackColor(
     if (states.contains(MaterialState.selected)) {
       return colorScheme.primary;
     } else {
-      return colorScheme.onSurface.withOpacity(0.1);
+      return brightness == Brightness.dark
+          ? kDividerColorDark
+          : kDividerColorLight;
     }
   }
 }
@@ -353,20 +358,44 @@ ProgressIndicatorThemeData _createProgressIndicatorTheme(
 
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
-  required ColorScheme colorScheme,
   required Color primaryColor,
   Color? elevatedButtonColor,
   bool? useMaterial3 = true,
 }) {
-  const dividerColor = Color(0xffdcdcdc);
+  final colorScheme = ColorScheme.fromSeed(
+    seedColor: primaryColor,
+    error: YaruColors.error,
+    brightness: Brightness.light,
+    primary: primaryColor,
+    onPrimary: Colors.white,
+    primaryContainer: YaruColors.porcelain,
+    onPrimaryContainer: YaruColors.inkstone,
+    inversePrimary: YaruColors.inkstone,
+    secondary: elevatedButtonColor ?? primaryColor,
+    onSecondary: Colors.white,
+    secondaryContainer: elevatedButtonColor ?? YaruColors.porcelain,
+    onSecondaryContainer:
+        elevatedButtonColor != null ? Colors.white : YaruColors.inkstone,
+    background: Colors.white,
+    onBackground: YaruColors.inkstone,
+    surface: YaruColors.porcelain,
+    onSurface: YaruColors.inkstone,
+    inverseSurface: YaruColors.jet,
+    onInverseSurface: YaruColors.porcelain,
+    surfaceTint: YaruColors.warmGrey,
+    surfaceVariant: YaruColors.warmGrey,
+    tertiary: const Color(0xFF18b6ec),
+    onTertiary: Colors.white,
+    tertiaryContainer: const Color(0xFF18b6ec),
+    onTertiaryContainer: Colors.white,
+    onSurfaceVariant: YaruColors.coolGrey,
+    outline: kDividerColorLight,
+    scrim: Colors.black,
+  );
 
   return ThemeData.from(
     useMaterial3: useMaterial3,
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: primaryColor,
-      brightness: Brightness.light,
-      error: colorScheme.error,
-    ),
+    colorScheme: colorScheme,
   ).copyWith(
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
@@ -381,14 +410,14 @@ ThemeData createYaruLightTheme({
         _createProgressIndicatorTheme(colorScheme, Brightness.light),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     tabBarTheme:
-        _createTabBarTheme(colorScheme, Brightness.light, dividerColor),
+        _createTabBarTheme(colorScheme, Brightness.light, kDividerColorLight),
     dialogTheme: _createDialogTheme(Brightness.light),
     brightness: Brightness.light,
     primaryColor: colorScheme.primary,
     canvasColor: colorScheme.background,
     scaffoldBackgroundColor: colorScheme.background,
     cardColor: colorScheme.surface,
-    dividerColor: dividerColor,
+    dividerColor: kDividerColorLight,
     dialogBackgroundColor: colorScheme.background,
     textTheme: createTextTheme(YaruColors.inkstone),
     indicatorColor: colorScheme.secondary,
@@ -428,7 +457,7 @@ ThemeData createYaruLightTheme({
     navigationRailTheme:
         _createNavigationRailTheme(colorScheme, Brightness.light),
     dividerTheme: const DividerThemeData(
-      color: dividerColor,
+      color: kDividerColorLight,
     ),
     badgeTheme: BadgeThemeData(
       backgroundColor: elevatedButtonColor ?? colorScheme.primary,
@@ -439,19 +468,44 @@ ThemeData createYaruLightTheme({
 
 /// Helper function to create a new Yaru dark theme
 ThemeData createYaruDarkTheme({
-  required ColorScheme colorScheme,
   required Color primaryColor,
   Color? elevatedButtonColor,
   bool? useMaterial3 = true,
+  bool highcontrast = false,
 }) {
-  const dividerColor = Color(0xff3a3a3a);
+  final colorScheme = ColorScheme.fromSeed(
+    seedColor: primaryColor,
+    error: YaruColors.error,
+    brightness: Brightness.dark,
+    primary: primaryColor,
+    primaryContainer: YaruColors.coolGrey,
+    onPrimary: YaruColors.porcelain,
+    onPrimaryContainer: YaruColors.porcelain,
+    inversePrimary: YaruColors.porcelain,
+    secondary: elevatedButtonColor ?? primaryColor,
+    onSecondary: Colors.white,
+    secondaryContainer: elevatedButtonColor ?? YaruColors.inkstone,
+    onSecondaryContainer:
+        elevatedButtonColor != null ? Colors.white : YaruColors.inkstone,
+    background: YaruColors.jet,
+    onBackground: YaruColors.porcelain,
+    surface: YaruColors.jet,
+    onSurface: YaruColors.porcelain,
+    inverseSurface: YaruColors.porcelain,
+    onInverseSurface: YaruColors.inkstone,
+    surfaceTint: YaruColors.coolGrey,
+    surfaceVariant: YaruColors.inkstone,
+    tertiary: const Color(0xFF18b6ec),
+    onTertiary: YaruColors.porcelain,
+    tertiaryContainer: const Color(0xFF18b6ec),
+    onTertiaryContainer: YaruColors.porcelain,
+    onSurfaceVariant: YaruColors.warmGrey,
+    outline: kDividerColorDark,
+    scrim: Colors.black,
+  );
   return ThemeData.from(
     useMaterial3: useMaterial3,
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: primaryColor,
-      error: colorScheme.error,
-      brightness: Brightness.dark,
-    ),
+    colorScheme: colorScheme,
   ).copyWith(
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
@@ -466,14 +520,15 @@ ThemeData createYaruDarkTheme({
     primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
     useMaterial3: useMaterial3,
-    tabBarTheme: _createTabBarTheme(colorScheme, Brightness.dark, dividerColor),
+    tabBarTheme:
+        _createTabBarTheme(colorScheme, Brightness.dark, kDividerColorDark),
     dialogTheme: _createDialogTheme(Brightness.dark),
     brightness: Brightness.dark,
     primaryColor: colorScheme.primary,
     canvasColor: colorScheme.background,
     scaffoldBackgroundColor: colorScheme.background,
     cardColor: colorScheme.surface,
-    dividerColor: dividerColor,
+    dividerColor: kDividerColorDark,
     dialogBackgroundColor: colorScheme.background,
     textTheme: createTextTheme(colorScheme.onSurface),
     indicatorColor: colorScheme.primary,
@@ -494,7 +549,7 @@ ThemeData createYaruDarkTheme({
     appBarTheme: _createDarkAppBarTheme(colorScheme),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: elevatedButtonColor ?? primaryColor,
-      foregroundColor: Colors.white,
+      foregroundColor: highcontrast ? Colors.black : Colors.white,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
@@ -513,11 +568,11 @@ ThemeData createYaruDarkTheme({
     navigationRailTheme:
         _createNavigationRailTheme(colorScheme, Brightness.dark),
     dividerTheme: const DividerThemeData(
-      color: dividerColor,
+      color: kDividerColorDark,
     ),
     badgeTheme: BadgeThemeData(
       backgroundColor: elevatedButtonColor ?? colorScheme.primary,
-      textColor: Colors.white,
+      textColor: highcontrast ? Colors.black : Colors.white,
     ),
   );
 }
