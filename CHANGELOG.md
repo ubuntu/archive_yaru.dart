@@ -1,5 +1,21 @@
 # Changelog
 
+# 0.5.0
+
+* Fix button view
+* Fix secondary containers and chips (#264)
+* Rework all themes with from seed (#263)
+* fix example (#262)
+* M3 fixes (#261)
+* Use GtkSettings from gtk.dart (#254)
+* Bump minimum Flutter version to 3.7.0 (#260)
+* Button vs. text field borders (#250)
+* Fix white dividers (M3 / Flutter 3.7.0) (#259)
+* CI: no need to run tests when publishing to GH pages (#257)
+* Example: add macos (#258)
+* Fix M3 dialogs and popups (Flutter 3.7.0) (#256)
+* Fix deprecated_member_use (Flutter 3.7.0) (#255)
+
 ## 0.4.8
 
 * Adjust TextField content padding by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/242
