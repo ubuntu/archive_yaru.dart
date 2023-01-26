@@ -7,5 +7,6 @@ final yaruHighContrastLight = createYaruLightTheme(
 
 final yaruHighContrastDark = createYaruDarkTheme(
   primaryColor: Colors.white,
-  highcontrast: true,
+  highContrast: true,
+  elevatedButtonTextColor: Colors.black,
 );
