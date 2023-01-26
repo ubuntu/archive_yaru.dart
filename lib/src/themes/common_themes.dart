@@ -430,6 +430,10 @@ ThemeData createYaruLightTheme({
     dividerTheme: const DividerThemeData(
       color: dividerColor,
     ),
+    badgeTheme: BadgeThemeData(
+      backgroundColor: elevatedButtonColor ?? colorScheme.primary,
+      textColor: Colors.white,
+    ),
   );
 }
 
@@ -510,6 +514,10 @@ ThemeData createYaruDarkTheme({
         _createNavigationRailTheme(colorScheme, Brightness.dark),
     dividerTheme: const DividerThemeData(
       color: dividerColor,
+    ),
+    badgeTheme: BadgeThemeData(
+      backgroundColor: elevatedButtonColor ?? colorScheme.primary,
+      textColor: Colors.white,
     ),
   );
 }

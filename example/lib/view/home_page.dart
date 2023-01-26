@@ -124,8 +124,14 @@ class HomePageState extends State<HomePage> {
                 NavigationRail(
                   destinations: const [
                     NavigationRailDestination(
-                      icon: Icon(Icons.font_download_outlined),
-                      selectedIcon: Icon(Icons.font_download),
+                      icon: Badge(
+                        label: Text('123'),
+                        child: Icon(Icons.font_download_outlined),
+                      ),
+                      selectedIcon: Badge(
+                        label: Text('123'),
+                        child: Icon(Icons.font_download),
+                      ),
                       label: Text('Fonts'),
                     ),
                     NavigationRailDestination(
@@ -159,8 +165,14 @@ class HomePageState extends State<HomePage> {
                 NavigationBar(
                   destinations: const [
                     NavigationDestination(
-                      icon: Icon(Icons.font_download_outlined),
-                      selectedIcon: Icon(Icons.font_download),
+                      icon: Badge(
+                        label: Text('123'),
+                        child: Icon(Icons.font_download_outlined),
+                      ),
+                      selectedIcon: Badge(
+                        label: Text('123'),
+                        child: Icon(Icons.font_download),
+                      ),
                       label: 'Fonts',
                     ),
                     NavigationDestination(
