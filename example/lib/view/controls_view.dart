@@ -229,6 +229,58 @@ class _ControlsViewState extends State<ControlsView>
                           },
                         ),
                       ],
+                    ),
+                    Row(
+                      children: [
+                        const Chip(label: Text('Ch-ch-ch-Chip n Dale ')),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Chip(
+                          label: const Text('Rescue Rangers'),
+                          onDeleted: () {},
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        const ChoiceChip(
+                          label: Text('Ch-ch-ch-Chip n Dale '),
+                          selected: false,
+                          onSelected: null,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        ChoiceChip(
+                          label: const Text('When there s danger '),
+                          selected: true,
+                          onSelected: (value) {},
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        const ChoiceChip(
+                          label: Text('No,no it never fails'),
+                          selected: true,
+                          onSelected: null,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        ChoiceChip(
+                          label: const Text('Once they re involved'),
+                          selected: false,
+                          onSelected: (value) {},
+                        )
+                      ],
                     )
                   ],
                 ),
