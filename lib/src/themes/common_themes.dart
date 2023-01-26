@@ -280,7 +280,7 @@ Color _getCheckFillColor(
     if (states.contains(MaterialState.selected)) {
       return colorScheme.primary;
     }
-    return colorScheme.onSurface.withOpacity(0.9);
+    return colorScheme.onSurface.withOpacity(0.75);
   }
   if (states.contains(MaterialState.selected)) {
     return colorScheme.onSurface.withOpacity(0.2);
