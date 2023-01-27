@@ -1,6 +1,6 @@
 [![Pub Package](https://img.shields.io/pub/v/yaru.svg)](https://pub.dev/packages/yaru)
 
-Ubuntu [Yaru](https://github.com/ubuntu/yaru) Style - Distinct look and feel of the Ubuntu Desktop
+[yaru.dart](https://github.com/ubuntu/yaru.dart) implements the Ubuntu [Yaru](https://github.com/ubuntu/yaru) design and [Canonical Vanilla Design](https://vanillaframework.io/) as a [Flutter](https://flutter.dev/) theme for [material.dart](https://api.flutter.dev/flutter/material/material-library.html).
 
 [Test the theme in your browser - HERE](https://ubuntu.github.io/yaru.dart)
 
