@@ -165,10 +165,7 @@ ElevatedButtonThemeData _getElevatedButtonThemeData({
   return ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: color,
-      foregroundColor: textColor ??
-          (ThemeData.estimateBrightnessForColor(color) == Brightness.light
-              ? Colors.black
-              : Colors.white),
+      foregroundColor: textColor ?? contrastColor(color),
       visualDensity: _commonButtonStyle.visualDensity,
       elevation: 0,
       shadowColor: Colors.transparent,
@@ -371,12 +368,12 @@ ThemeData createYaruLightTheme({
     error: YaruColors.error,
     brightness: Brightness.light,
     primary: primaryColor,
-    onPrimary: Colors.white,
+    onPrimary: contrastColor(primaryColor),
     primaryContainer: YaruColors.porcelain,
     onPrimaryContainer: YaruColors.inkstone,
     inversePrimary: YaruColors.inkstone,
     secondary: elevatedButtonColor ?? primaryColor,
-    onSecondary: Colors.white,
+    onSecondary: contrastColor(elevatedButtonColor ?? primaryColor),
     secondaryContainer:
         elevatedButtonColor?.withOpacity(0.4) ?? primaryColor.withOpacity(0.4),
     onSecondaryContainer: elevatedButtonTextColor ?? YaruColors.jet,
@@ -443,7 +440,7 @@ ThemeData createYaruLightTheme({
     appBarTheme: _createLightAppBar(colorScheme),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: elevatedButtonColor ?? primaryColor,
-      foregroundColor: elevatedButtonTextColor ?? Colors.white,
+      foregroundColor: contrastColor(elevatedButtonColor ?? primaryColor),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
@@ -467,7 +464,7 @@ ThemeData createYaruLightTheme({
     ),
     badgeTheme: BadgeThemeData(
       backgroundColor: elevatedButtonColor ?? colorScheme.primary,
-      textColor: elevatedButtonTextColor ?? Colors.white,
+      textColor: contrastColor(elevatedButtonColor ?? primaryColor),
     ),
   );
 }
@@ -486,11 +483,11 @@ ThemeData createYaruDarkTheme({
     brightness: Brightness.dark,
     primary: primaryColor,
     primaryContainer: YaruColors.coolGrey,
-    onPrimary: YaruColors.porcelain,
+    onPrimary: contrastColor(primaryColor),
     onPrimaryContainer: YaruColors.porcelain,
     inversePrimary: YaruColors.porcelain,
     secondary: elevatedButtonColor ?? primaryColor,
-    onSecondary: Colors.white,
+    onSecondary: contrastColor(elevatedButtonColor ?? primaryColor),
     secondaryContainer:
         elevatedButtonColor?.withOpacity(0.4) ?? primaryColor.withOpacity(0.4),
     onSecondaryContainer:
@@ -559,7 +556,7 @@ ThemeData createYaruDarkTheme({
     appBarTheme: _createDarkAppBarTheme(colorScheme),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: elevatedButtonColor ?? primaryColor,
-      foregroundColor: elevatedButtonTextColor ?? Colors.white,
+      foregroundColor: contrastColor(elevatedButtonColor ?? primaryColor),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
@@ -582,10 +579,17 @@ ThemeData createYaruDarkTheme({
     ),
     badgeTheme: BadgeThemeData(
       backgroundColor: elevatedButtonColor ?? colorScheme.primary,
-      textColor: elevatedButtonTextColor ?? Colors.white,
+      textColor: contrastColor(elevatedButtonColor ?? primaryColor),
     ),
   );
 }
+
+Color contrastColor(Color color) => ThemeData.estimateBrightnessForColor(
+          color,
+        ) ==
+        Brightness.light
+    ? Colors.black
+    : Colors.white;
 
 PopupMenuThemeData _createPopupMenuThemeData(
   ColorScheme colorScheme,
