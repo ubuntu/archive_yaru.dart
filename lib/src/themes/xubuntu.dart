@@ -8,5 +8,5 @@ final yaruXubuntuLight = createYaruLightTheme(
 );
 
 final yaruXubuntuDark = createYaruDarkTheme(
-  primaryColor: _primaryColor,
+  primaryColor: _primaryColor.shade500,
 );

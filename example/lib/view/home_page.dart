@@ -69,13 +69,9 @@ class HomePageState extends State<HomePage> {
         ),
         actions: [
           PopupMenuButton<Color>(
-            onSelected: (value) {},
-            child: SizedBox(
-              width: 40,
-              child: Icon(
-                Icons.color_lens,
-                color: Theme.of(context).primaryColor,
-              ),
+            icon: Icon(
+              Icons.color_lens,
+              color: Theme.of(context).primaryColor,
             ),
             itemBuilder: (context) {
               return [

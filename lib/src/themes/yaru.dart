@@ -18,7 +18,7 @@ final yaruSageLight = createYaruLightTheme(
 );
 
 final yaruSageDark = createYaruDarkTheme(
-  primaryColor: YaruColors.sage,
+  primaryColor: YaruColors.sage.shade500,
 );
 
 final yaruPrussianGreenLight = createYaruLightTheme(
