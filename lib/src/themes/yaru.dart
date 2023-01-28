@@ -42,7 +42,7 @@ final yaruBarkLight = createYaruLightTheme(
 );
 
 final yaruBarkDark = createYaruDarkTheme(
-  primaryColor: YaruColors.bark,
+  primaryColor: YaruColors.bark.shade500,
 );
 
 final yaruViridianLight = createYaruLightTheme(
