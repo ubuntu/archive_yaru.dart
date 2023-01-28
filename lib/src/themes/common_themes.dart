@@ -165,10 +165,7 @@ ElevatedButtonThemeData _getElevatedButtonThemeData({
   return ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: color,
-      foregroundColor: textColor ??
-          (ThemeData.estimateBrightnessForColor(color) == Brightness.light
-              ? Colors.black
-              : Colors.white),
+      foregroundColor: textColor ?? contrastColor(color),
       visualDensity: _commonButtonStyle.visualDensity,
       elevation: 0,
       shadowColor: Colors.transparent,
