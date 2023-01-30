@@ -10,6 +10,15 @@ class ControlsView extends StatefulWidget {
 class _ControlsViewState extends State<ControlsView>
     with TickerProviderStateMixin {
   late TabController tabController;
+  int _counter = 0;
+
+  void incrementCounter() {
+    setState(() {
+      _counter++;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Yay! $_counter ❤️ for Yaru')));
+    });
+  }
 
   @override
   void initState() {
@@ -144,6 +153,17 @@ class _ControlsViewState extends State<ControlsView>
                             ),
                           ],
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          FloatingActionButton(
+                            onPressed: () => {incrementCounter()},
+                            child: const Icon(Icons.plus_one),
+                          ),
+                        ],
                       ),
                     ),
                     Padding(

@@ -3,6 +3,7 @@ import 'package:yaru/yaru.dart';
 import 'package:yaru_example/main.dart';
 import 'package:yaru_example/view/color_disk.dart';
 import 'package:yaru_example/view/colors_view.dart';
+import 'package:yaru_example/view/containers_view.dart';
 import 'package:yaru_example/view/controls_view.dart';
 import 'package:yaru_example/view/fonts_view.dart';
 import 'package:yaru_example/view/inputs_view.dart';
@@ -16,15 +17,6 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   HomePageState();
-  int _counter = 0;
-
-  void incrementCounter() {
-    setState(() {
-      _counter++;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Yay! $_counter ❤️ for Yaru')));
-    });
-  }
 
   final textController = TextEditingController(
     text:
@@ -36,7 +28,8 @@ class HomePageState extends State<HomePage> {
     const FontsView(),
     const ControlsView(),
     InputsView(),
-    const ColorsView()
+    const ColorsView(),
+    const ContainersView()
   ];
 
   @override
@@ -144,6 +137,11 @@ class HomePageState extends State<HomePage> {
                       icon: Icon(Icons.color_lens_outlined),
                       selectedIcon: Icon(Icons.color_lens),
                       label: Text('Palette'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.square_outlined),
+                      selectedIcon: Icon(Icons.square),
+                      label: Text('Containers'),
                     )
                   ],
                   selectedIndex: _selectedIndex,
@@ -190,7 +188,12 @@ class HomePageState extends State<HomePage> {
                       icon: Icon(Icons.color_lens_outlined),
                       selectedIcon: Icon(Icons.color_lens),
                       label: 'Palette',
-                    )
+                    ),
+                    NavigationDestination(
+                      icon: Icon(Icons.square_outlined),
+                      selectedIcon: Icon(Icons.square),
+                      label: 'Containers',
+                    ),
                   ],
                   selectedIndex: _selectedIndex,
                   onDestinationSelected: (index) =>
@@ -201,11 +204,6 @@ class HomePageState extends State<HomePage> {
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {incrementCounter()},
-        child: const Icon(Icons.plus_one),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
