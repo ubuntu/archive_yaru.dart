@@ -27,7 +27,7 @@ class HomePageState extends State<HomePage> {
   final List<Widget> _views = [
     const FontsView(),
     const ControlsView(),
-    InputsView(),
+    const InputsView(),
     const ColorsView(),
     const ContainersView()
   ];
