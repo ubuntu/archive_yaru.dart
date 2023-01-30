@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.5.1
+
+* Example fix inputs view not having a const constructor (#271)
+* Fix Light theme: surface and background got incorrectly switched in 0.5.0 (#270)
+
 # 0.5.0
 
 * Fix button view
