@@ -16,11 +16,11 @@ AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
       bottom: BorderSide(color: colorScheme.onSurface.withOpacity(0.2)),
     ),
     scrolledUnderElevation: kAppBarElevation,
-    surfaceTintColor: colorScheme.background,
+    surfaceTintColor: colorScheme.surface,
     toolbarHeight: kAppBarHeight,
     elevation: kAppBarElevation,
     systemOverlayStyle: SystemUiOverlayStyle.light,
-    backgroundColor: colorScheme.background,
+    backgroundColor: colorScheme.surface,
     foregroundColor: colorScheme.onSurface,
     titleTextStyle: createTextTheme(YaruColors.inkstone).titleLarge!.copyWith(
           color: colorScheme.onSurface,
@@ -121,27 +121,21 @@ final _buttonThemeData = ButtonThemeData(
   ),
 );
 
-final _outlinedButtonThemeData = OutlinedButtonThemeData(
-  style: OutlinedButton.styleFrom(
-    side: const BorderSide(color: Colors.black38, width: 0.3),
-    visualDensity: _commonButtonStyle.visualDensity,
-    foregroundColor: YaruColors.textGrey,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(kButtonRadius),
+OutlinedButtonThemeData _createOutlinedButtonThemeData(
+  ColorScheme colorScheme,
+) {
+  return OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      side: BorderSide(color: colorScheme.outline),
+      visualDensity: _commonButtonStyle.visualDensity,
+      // backgroundColor: colorScheme.surface, // defaults to transparent
+      foregroundColor: colorScheme.onSurface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kButtonRadius),
+      ),
     ),
-  ),
-);
-
-final _darkOutlinedButtonThemeData = OutlinedButtonThemeData(
-  style: OutlinedButton.styleFrom(
-    side: const BorderSide(color: Colors.white38, width: 0.3),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(kButtonRadius),
-    ),
-    visualDensity: _commonButtonStyle.visualDensity,
-    foregroundColor: Colors.white,
-  ),
-);
+  );
+}
 
 TextButtonThemeData _createTextButtonThemeData(
   ColorScheme colorScheme,
@@ -197,8 +191,9 @@ FilledButtonThemeData _getFilledButtonThemeData(
 ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
   return ToggleButtonsThemeData(
     borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
+    borderColor: colorScheme.outline,
     selectedColor: colorScheme.onSurface,
-    fillColor: colorScheme.onSurface.withOpacity(.15),
+    fillColor: colorScheme.outline,
     hoverColor: colorScheme.onSurface.withOpacity(.05),
   );
 }
@@ -377,9 +372,9 @@ ThemeData createYaruLightTheme({
     secondaryContainer:
         elevatedButtonColor?.withOpacity(0.4) ?? primaryColor.withOpacity(0.4),
     onSecondaryContainer: elevatedButtonTextColor ?? YaruColors.jet,
-    background: Colors.white,
+    background: YaruColors.porcelain,
     onBackground: YaruColors.inkstone,
-    surface: YaruColors.porcelain,
+    surface: Colors.white,
     onSurface: YaruColors.inkstone,
     inverseSurface: YaruColors.jet,
     onInverseSurface: YaruColors.porcelain,
@@ -424,7 +419,7 @@ ThemeData createYaruLightTheme({
     indicatorColor: colorScheme.secondary,
     applyElevationOverlayColor: false,
     buttonTheme: _buttonThemeData,
-    outlinedButtonTheme: _outlinedButtonThemeData,
+    outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
     elevatedButtonTheme: _getElevatedButtonThemeData(
       color: elevatedButtonColor ?? primaryColor,
       textColor: elevatedButtonTextColor,
@@ -548,7 +543,7 @@ ThemeData createYaruDarkTheme({
       color: elevatedButtonColor ?? primaryColor,
       textColor: elevatedButtonTextColor,
     ),
-    outlinedButtonTheme: _darkOutlinedButtonThemeData,
+    outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
     switchTheme: _getSwitchThemeData(colorScheme, Brightness.dark),
     checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.dark),
     radioTheme: _getRadioThemeData(colorScheme, Brightness.dark),
@@ -662,8 +657,8 @@ NavigationBarThemeData _createNavigationBarTheme(
   Brightness brightness,
 ) {
   return NavigationBarThemeData(
-    backgroundColor: colorScheme.background,
-    surfaceTintColor: colorScheme.background,
+    backgroundColor: colorScheme.surface,
+    surfaceTintColor: colorScheme.surface,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
     iconTheme: MaterialStateProperty.resolveWith(
       (states) => states.contains(MaterialState.selected)
@@ -678,7 +673,7 @@ NavigationRailThemeData _createNavigationRailTheme(
   Brightness brightness,
 ) {
   return NavigationRailThemeData(
-    backgroundColor: colorScheme.background,
+    backgroundColor: colorScheme.surface,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
     selectedIconTheme: IconThemeData(color: colorScheme.onSurface),
     unselectedIconTheme: IconThemeData(
