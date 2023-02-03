@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.5.2
+
+* Relax Flutter version constraint to allow beta (#274)
+* Regenerate package metadata (#273)
+
 # 0.5.1
 
 * Example fix inputs view not having a const constructor (#271)
