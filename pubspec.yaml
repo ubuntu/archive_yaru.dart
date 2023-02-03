@@ -9,6 +9,14 @@ environment:
   sdk: ">=2.17.0 <3.0.0"
   flutter: ">=3.7.0-0"
 
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
+
 dependencies:
   collection: ^1.16.0
   flutter:
