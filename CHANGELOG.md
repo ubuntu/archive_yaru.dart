@@ -1,9 +1,5 @@
 # Changelog
 
-# 0.5.2+1
-
-* pubspec.yaml: restore platform map (#276)
-
 # 0.5.2
 
 * Relax Flutter version constraint to allow beta (#274)
