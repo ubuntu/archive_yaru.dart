@@ -351,6 +351,15 @@ ProgressIndicatorThemeData _createProgressIndicatorTheme(
   );
 }
 
+FloatingActionButtonThemeData _getFloatingActionButtonThemeData(
+  ColorScheme colorScheme,
+) =>
+    FloatingActionButtonThemeData(
+      backgroundColor: colorScheme.inverseSurface,
+      foregroundColor: colorScheme.onInverseSurface,
+      shape: const CircleBorder(),
+    );
+
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
   required Color primaryColor,
@@ -433,10 +442,7 @@ ThemeData createYaruLightTheme({
     checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.light),
     radioTheme: _getRadioThemeData(colorScheme, Brightness.light),
     appBarTheme: _createLightAppBar(colorScheme),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: elevatedButtonColor ?? primaryColor,
-      foregroundColor: contrastColor(elevatedButtonColor ?? primaryColor),
-    ),
+    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
@@ -549,10 +555,7 @@ ThemeData createYaruDarkTheme({
     radioTheme: _getRadioThemeData(colorScheme, Brightness.dark),
     primaryColorDark: primaryColor,
     appBarTheme: _createDarkAppBarTheme(colorScheme),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: elevatedButtonColor ?? primaryColor,
-      foregroundColor: contrastColor(elevatedButtonColor ?? primaryColor),
-    ),
+    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: Colors.white.withOpacity(0.8),
