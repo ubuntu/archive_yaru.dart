@@ -211,15 +211,40 @@ class ColorsView extends StatelessWidget {
           children: [
             Expanded(
               child: colorPaletteExample(
-                'ubuntuMateGreen',
-                YaruColors.ubuntuMateGreen,
+                'ubuntuButterflyPink',
+                YaruColors.ubuntuButterflyPink,
               ),
             ),
             const SizedBox(width: 25.0),
             Expanded(
               child: colorPaletteExample(
+                'ubuntuCinnamonBrown',
+                YaruColors.ubuntuCinnamonBrown,
+              ),
+            ),
+            const SizedBox(width: 25.0),
+            Expanded(
+              child: colorPaletteExample(
+                'ubuntuMateGreen',
+                YaruColors.ubuntuMateGreen,
+              ),
+            ),
+          ],
+        ),
+        const Divider(height: 50.0),
+        Row(
+          children: [
+            Expanded(
+              child: colorPaletteExample(
                 'ubuntuStudioBlue',
                 YaruColors.ubuntuStudioBlue,
+              ),
+            ),
+            const SizedBox(width: 25.0),
+            Expanded(
+              child: colorPaletteExample(
+                'ubuntuUnityPurple',
+                YaruColors.ubuntuUnityPurple,
               ),
             ),
             const SizedBox(width: 25.0),
