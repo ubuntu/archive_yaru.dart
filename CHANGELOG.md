@@ -1,5 +1,12 @@
 # Changelog
 
+# 0.5.3
+
+* Improve FAB style (#280)
+* pubspec.yaml: restore platform map (#276)
+* pubspec: add issue tracker link (#277)
+* Add missing flavors & update example (#279)
+
 # 0.5.2
 
 * Relax Flutter version constraint to allow beta (#274)
