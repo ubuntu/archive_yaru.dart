@@ -353,12 +353,22 @@ ProgressIndicatorThemeData _createProgressIndicatorTheme(
 
 FloatingActionButtonThemeData _getFloatingActionButtonThemeData(
   ColorScheme colorScheme,
-) =>
-    FloatingActionButtonThemeData(
-      backgroundColor: colorScheme.inverseSurface,
-      foregroundColor: colorScheme.onInverseSurface,
-      shape: const CircleBorder(),
-    );
+  Brightness brightness,
+) {
+  final light = brightness == Brightness.light;
+  const elevation = 3.0;
+
+  return FloatingActionButtonThemeData(
+    backgroundColor: colorScheme.surface.scale(lightness: light ? -0.10 : 0.20),
+    foregroundColor: colorScheme.onSurface,
+    shape: const CircleBorder(),
+    elevation: elevation,
+    focusElevation: elevation,
+    hoverElevation: elevation,
+    disabledElevation: elevation,
+    highlightElevation: elevation,
+  );
+}
 
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
@@ -442,7 +452,8 @@ ThemeData createYaruLightTheme({
     checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.light),
     radioTheme: _getRadioThemeData(colorScheme, Brightness.light),
     appBarTheme: _createLightAppBar(colorScheme),
-    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
+    floatingActionButtonTheme:
+        _getFloatingActionButtonThemeData(colorScheme, Brightness.light),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
@@ -555,7 +566,8 @@ ThemeData createYaruDarkTheme({
     radioTheme: _getRadioThemeData(colorScheme, Brightness.dark),
     primaryColorDark: primaryColor,
     appBarTheme: _createDarkAppBarTheme(colorScheme),
-    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
+    floatingActionButtonTheme:
+        _getFloatingActionButtonThemeData(colorScheme, Brightness.dark),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: Colors.white.withOpacity(0.8),
