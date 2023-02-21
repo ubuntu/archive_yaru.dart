@@ -5,7 +5,7 @@ import 'package:yaru/src/themes/constants.dart';
 import 'package:yaru/src/themes/page_transitions.dart';
 import 'package:yaru_colors/yaru_colors.dart';
 
-const kDividerColorDark = Color(0xff3a3a3a);
+const kDividerColorDark = Color.fromARGB(255, 65, 65, 65);
 const kDividerColorLight = Color(0xffdcdcdc);
 
 // AppBar
@@ -58,10 +58,8 @@ InputDecorationTheme _createInputDecorationTheme(
   const width = 1.0;
   final light = brightness == Brightness.light;
   final fill =
-      light ? const Color(0xFFededed) : const Color.fromARGB(255, 56, 56, 56);
-  final border = light
-      ? const Color.fromARGB(255, 226, 226, 226)
-      : const Color.fromARGB(255, 83, 83, 83);
+      light ? const Color(0xFFededed) : const Color.fromARGB(255, 40, 40, 40);
+  final border = light ? kDividerColorLight : kDividerColorDark;
   final disabledBorder = light
       ? const Color.fromARGB(255, 237, 237, 237)
       : const Color.fromARGB(255, 67, 67, 67);
@@ -201,9 +199,8 @@ ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
 // Dialogs
 
 DialogTheme _createDialogTheme(Brightness brightness) {
-  final bgColor = brightness == Brightness.dark
-      ? YaruColors.coolGrey
-      : YaruColors.porcelain;
+  final bgColor =
+      brightness == Brightness.dark ? YaruColors.jet : YaruColors.porcelain;
   return DialogTheme(
     backgroundColor: bgColor,
     surfaceTintColor: bgColor,
