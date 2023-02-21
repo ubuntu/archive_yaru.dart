@@ -57,8 +57,7 @@ InputDecorationTheme _createInputDecorationTheme(
   final radius = BorderRadius.circular(kButtonRadius);
   const width = 1.0;
   final light = brightness == Brightness.light;
-  final fill =
-      light ? const Color(0xFFededed) : const Color.fromARGB(255, 40, 40, 40);
+  final fill = light ? const Color(0xFFededed) : const Color(0xFF1a1a1a);
   final border = light ? kDividerColorLight : kDividerColorDark;
   final disabledBorder = light
       ? const Color.fromARGB(255, 237, 237, 237)
