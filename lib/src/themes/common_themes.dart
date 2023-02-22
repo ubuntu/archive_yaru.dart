@@ -59,7 +59,7 @@ InputDecorationTheme _createInputDecorationTheme(
   final light = brightness == Brightness.light;
   final fill =
       light ? const Color(0xFFededed) : const Color.fromARGB(255, 40, 40, 40);
-  final border = light ? kDividerColorLight : kDividerColorDark;
+  final border = colorScheme.outline;
   final disabledBorder = light
       ? const Color.fromARGB(255, 237, 237, 237)
       : const Color.fromARGB(255, 67, 67, 67);
@@ -259,9 +259,7 @@ Color _getSwitchTrackColor(
     if (states.contains(MaterialState.selected)) {
       return colorScheme.primary;
     } else {
-      return brightness == Brightness.dark
-          ? kDividerColorDark
-          : kDividerColorLight;
+      return colorScheme.outline;
     }
   }
 }
@@ -401,7 +399,7 @@ ThemeData createYaruLightTheme({
     tertiaryContainer: const Color(0xFF18b6ec),
     onTertiaryContainer: Colors.white,
     onSurfaceVariant: YaruColors.coolGrey,
-    outline: kDividerColorLight,
+    outline: const Color(0xFFCBCBCB),
     scrim: Colors.black,
   );
 
@@ -514,7 +512,7 @@ ThemeData createYaruDarkTheme({
     tertiaryContainer: const Color(0xFF18b6ec),
     onTertiaryContainer: YaruColors.porcelain,
     onSurfaceVariant: YaruColors.warmGrey,
-    outline: kDividerColorDark,
+    outline: const Color(0xFF585858),
     scrim: Colors.black,
   );
   return ThemeData.from(
