@@ -48,7 +48,7 @@ class _ContainersViewState extends State<ContainersView> {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Theme.of(context).colorScheme.outline),
+              border: Border.all(color: Theme.of(context).dividerColor),
             ),
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 70, vertical: 50),
