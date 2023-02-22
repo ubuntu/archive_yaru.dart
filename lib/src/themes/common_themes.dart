@@ -168,18 +168,20 @@ ElevatedButtonThemeData _getElevatedButtonThemeData({
   );
 }
 
-FilledButtonThemeData _getFilledButtonThemeData(
-  Color backgroundColor,
-  Color foregroundColor,
+FilledButtonThemeData _createFilledButtonThemeData(
+  ColorScheme colorScheme,
 ) {
   return FilledButtonThemeData(
     style: FilledButton.styleFrom(
-      backgroundColor: backgroundColor.withOpacity(0.3),
-      foregroundColor: foregroundColor,
+      disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.06),
+      backgroundColor: colorScheme.onSurface.withOpacity(0.05),
+      surfaceTintColor: colorScheme.onSurface.withOpacity(0.05),
+      foregroundColor: colorScheme.onSurface,
       visualDensity: _commonButtonStyle.visualDensity,
       elevation: 0,
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
+        side: BorderSide(color: colorScheme.outline),
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
     ),
@@ -438,9 +440,8 @@ ThemeData createYaruLightTheme({
       color: elevatedButtonColor ?? primaryColor,
       textColor: elevatedButtonTextColor,
     ),
-    filledButtonTheme: _getFilledButtonThemeData(
-      elevatedButtonColor ?? primaryColor,
-      colorScheme.onSurface,
+    filledButtonTheme: _createFilledButtonThemeData(
+      colorScheme,
     ),
     textButtonTheme: _createTextButtonThemeData(colorScheme),
     switchTheme: _getSwitchThemeData(colorScheme, Brightness.light),
@@ -547,9 +548,8 @@ ThemeData createYaruDarkTheme({
     applyElevationOverlayColor: true,
     buttonTheme: _buttonThemeData,
     textButtonTheme: _createTextButtonThemeData(colorScheme),
-    filledButtonTheme: _getFilledButtonThemeData(
-      elevatedButtonColor ?? primaryColor,
-      colorScheme.onSurface,
+    filledButtonTheme: _createFilledButtonThemeData(
+      colorScheme,
     ),
     elevatedButtonTheme: _getElevatedButtonThemeData(
       color: elevatedButtonColor ?? primaryColor,
