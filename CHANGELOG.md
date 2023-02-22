@@ -1,5 +1,12 @@
 # Changelog
 
+# 0.5.4
+
+* Use filled buttons with a grey fill and an outline (#288)
+* Separate outline and divider colors (#287)
+* Dark theme: lighten borders, darken input fills (#284)
+* FAB colors have too high contrast (#283)
+
 # 0.5.3
 
 * Improve FAB style (#280)
