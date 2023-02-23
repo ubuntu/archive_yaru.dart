@@ -401,7 +401,7 @@ ThemeData createYaruLightTheme({
     tertiaryContainer: const Color(0xFF18b6ec),
     onTertiaryContainer: Colors.white,
     onSurfaceVariant: YaruColors.coolGrey,
-    outline: const Color(0xFFCBCBCB),
+    outline: const Color.fromARGB(255, 221, 221, 221),
     scrim: Colors.black,
   );
 
@@ -513,7 +513,7 @@ ThemeData createYaruDarkTheme({
     tertiaryContainer: const Color(0xFF18b6ec),
     onTertiaryContainer: YaruColors.porcelain,
     onSurfaceVariant: YaruColors.warmGrey,
-    outline: const Color(0xFF585858),
+    outline: const Color.fromARGB(255, 68, 68, 68),
     scrim: Colors.black,
   );
   return ThemeData.from(
