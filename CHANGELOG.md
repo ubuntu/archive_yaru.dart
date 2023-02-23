@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.5.5
+
+* Tone down outline borders (#292)
+
 # 0.5.4
 
 * Use filled buttons with a grey fill and an outline (#288)
