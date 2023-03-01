@@ -173,15 +173,14 @@ FilledButtonThemeData _createFilledButtonThemeData(
 ) {
   return FilledButtonThemeData(
     style: FilledButton.styleFrom(
-      disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.06),
-      backgroundColor: colorScheme.onSurface.withOpacity(0.05),
-      surfaceTintColor: colorScheme.onSurface.withOpacity(0.05),
+      disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.1),
+      backgroundColor: colorScheme.onSurface.withOpacity(0.1),
+      surfaceTintColor: colorScheme.onSurface.withOpacity(0.1),
       foregroundColor: colorScheme.onSurface,
       visualDensity: _commonButtonStyle.visualDensity,
       elevation: 0,
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: colorScheme.outline),
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
     ),
