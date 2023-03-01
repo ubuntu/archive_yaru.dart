@@ -19,6 +19,11 @@ TextTheme createTextTheme(Color textColor) {
       fontWeight: FontWeight.normal,
       textColor: textColor,
     ),
+    headlineLarge: _UbuntuTextStyle(
+      fontSize: 40,
+      fontWeight: FontWeight.normal,
+      textColor: textColor,
+    ),
     headlineMedium: _UbuntuTextStyle(
       fontSize: 34,
       fontWeight: FontWeight.normal,
@@ -60,15 +65,21 @@ TextTheme createTextTheme(Color textColor) {
       fontWeight: FontWeight.normal,
       textColor: textColor,
     ),
+    bodySmall: _UbuntuTextStyle(
+      fontSize: 12,
+      letterSpacing: 0.4,
+      fontWeight: FontWeight.normal,
+      textColor: textColor,
+    ),
     labelLarge: _UbuntuTextStyle(
       fontSize: 14,
       letterSpacing: 0.25,
       fontWeight: FontWeight.w500,
       textColor: textColor,
     ),
-    bodySmall: _UbuntuTextStyle(
+    labelMedium: _UbuntuTextStyle(
       fontSize: 12,
-      letterSpacing: 0.4,
+      letterSpacing: 0.25,
       fontWeight: FontWeight.normal,
       textColor: textColor,
     ),
