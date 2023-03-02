@@ -173,7 +173,7 @@ FilledButtonThemeData _createFilledButtonThemeData(
 ) {
   return FilledButtonThemeData(
     style: FilledButton.styleFrom(
-      disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.1),
+      disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
       backgroundColor: colorScheme.onSurface.withOpacity(0.1),
       surfaceTintColor: colorScheme.onSurface.withOpacity(0.1),
       foregroundColor: colorScheme.onSurface,
