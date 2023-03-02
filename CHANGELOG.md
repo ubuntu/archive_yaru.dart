@@ -1,5 +1,11 @@
 # Changelog
 
+# 0.5.6
+
+* TextTheme: add missing headlineLarge and labelMedium (#297)
+* Example: attempt to clarify the buttons (#296)
+* FilledButton proposal (#298)
+
 # 0.5.5
 
 * Tone down outline borders (#292)
