@@ -67,14 +67,40 @@ class _ControlsViewState extends State<ControlsView>
                             width: 95,
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text('Click me!'),
+                              child: const Text('Text'),
                             ),
                           ),
                           const SizedBox(width: 15),
-                          const TextButton(
-                            onPressed: null,
-                            autofocus: true,
-                            child: Text("Can't click me!"),
+                          const SizedBox(
+                            width: 95,
+                            child: TextButton(
+                              onPressed: null,
+                              autofocus: true,
+                              child: Text('Disabled'),
+                            ),
+                          ),
+                          const Spacer(),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 95,
+                            child: OutlinedButton(
+                              onPressed: () {},
+                              child: const Text('Outlined'),
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          const SizedBox(
+                            width: 95,
+                            child: OutlinedButton(
+                              onPressed: null,
+                              child: Text('Disabled'),
+                            ),
                           ),
                         ],
                       ),
@@ -83,14 +109,20 @@ class _ControlsViewState extends State<ControlsView>
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: <Widget>[
-                          OutlinedButton(
-                            onPressed: () {},
-                            child: const Text('Click me!'),
+                          SizedBox(
+                            width: 95,
+                            child: FilledButton(
+                              onPressed: () {},
+                              child: const Text('Filled'),
+                            ),
                           ),
                           const SizedBox(width: 15),
-                          const OutlinedButton(
-                            onPressed: null,
-                            child: Text("Can't click me!"),
+                          const SizedBox(
+                            width: 95,
+                            child: FilledButton(
+                              onPressed: null,
+                              child: Text('Disabled'),
+                            ),
                           ),
                         ],
                       ),
@@ -99,30 +131,20 @@ class _ControlsViewState extends State<ControlsView>
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: <Widget>[
-                          FilledButton(
-                            onPressed: () {},
-                            child: const Text('Click me!'),
+                          SizedBox(
+                            width: 95,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: const Text('Elevated'),
+                            ),
                           ),
                           const SizedBox(width: 15),
-                          const FilledButton(
-                            onPressed: null,
-                            child: Text("Can't click me!"),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: <Widget>[
-                          ElevatedButton(
-                            onPressed: () {},
-                            child: const Text('Click me!'),
-                          ),
-                          const SizedBox(width: 15),
-                          const ElevatedButton(
-                            onPressed: null,
-                            child: Text("Can't click me!"),
+                          const SizedBox(
+                            width: 95,
+                            child: ElevatedButton(
+                              onPressed: null,
+                              child: Text('Disabled'),
+                            ),
                           ),
                         ],
                       ),
