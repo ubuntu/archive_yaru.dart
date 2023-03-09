@@ -446,6 +446,7 @@ ThemeData createYaruLightTheme({
     switchTheme: _getSwitchThemeData(colorScheme, Brightness.light),
     checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.light),
     radioTheme: _getRadioThemeData(colorScheme, Brightness.light),
+    primaryColorDark: null,
     appBarTheme: _createLightAppBar(colorScheme),
     floatingActionButtonTheme:
         _getFloatingActionButtonThemeData(colorScheme, Brightness.light),
@@ -526,12 +527,11 @@ ThemeData createYaruDarkTheme({
         surfaceTintColor: colorScheme.background,
       ),
     ),
-    progressIndicatorTheme:
-        _createProgressIndicatorTheme(colorScheme, Brightness.dark),
     iconTheme: IconThemeData(color: colorScheme.onSurface),
     primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
+    progressIndicatorTheme:
+        _createProgressIndicatorTheme(colorScheme, Brightness.dark),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
-    useMaterial3: useMaterial3,
     tabBarTheme:
         _createTabBarTheme(colorScheme, Brightness.dark, kDividerColorDark),
     dialogTheme: _createDialogTheme(Brightness.dark),
@@ -546,15 +546,15 @@ ThemeData createYaruDarkTheme({
     indicatorColor: colorScheme.primary,
     applyElevationOverlayColor: true,
     buttonTheme: _buttonThemeData,
-    textButtonTheme: _createTextButtonThemeData(colorScheme),
-    filledButtonTheme: _createFilledButtonThemeData(
-      colorScheme,
-    ),
+    outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
     elevatedButtonTheme: _getElevatedButtonThemeData(
       color: elevatedButtonColor ?? primaryColor,
       textColor: elevatedButtonTextColor,
     ),
-    outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
+    filledButtonTheme: _createFilledButtonThemeData(
+      colorScheme,
+    ),
+    textButtonTheme: _createTextButtonThemeData(colorScheme),
     switchTheme: _getSwitchThemeData(colorScheme, Brightness.dark),
     checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.dark),
     radioTheme: _getRadioThemeData(colorScheme, Brightness.dark),
