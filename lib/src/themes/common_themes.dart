@@ -10,43 +10,29 @@ const kDividerColorLight = Color(0xffdcdcdc);
 
 // AppBar
 
-AppBarTheme _createLightAppBar(ColorScheme colorScheme) {
+AppBarTheme _createAppBarTheme(ColorScheme colorScheme, Brightness brightness) {
   return AppBarTheme(
     shape: Border(
-      bottom: BorderSide(color: colorScheme.onSurface.withOpacity(0.2)),
+      bottom: BorderSide(
+        color: colorScheme.onSurface
+            .withOpacity(brightness == Brightness.light ? 0.2 : 0.07),
+      ),
     ),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.surface,
     toolbarHeight: kAppBarHeight,
     elevation: kAppBarElevation,
-    systemOverlayStyle: SystemUiOverlayStyle.light,
+    systemOverlayStyle: brightness == Brightness.light
+        ? SystemUiOverlayStyle.light
+        : SystemUiOverlayStyle.dark,
     backgroundColor: colorScheme.surface,
     foregroundColor: colorScheme.onSurface,
-    titleTextStyle: createTextTheme(YaruColors.inkstone).titleLarge!.copyWith(
+    titleTextStyle: createTextTheme(colorScheme.onSurface).titleLarge!.copyWith(
           color: colorScheme.onSurface,
           fontWeight: FontWeight.normal,
         ),
     iconTheme: IconThemeData(color: colorScheme.onSurface),
-    actionsIconTheme: const IconThemeData(color: YaruColors.inkstone),
-  );
-}
-
-AppBarTheme _createDarkAppBarTheme(ColorScheme colorScheme) {
-  return AppBarTheme(
-    shape: Border(
-      bottom: BorderSide(color: colorScheme.onSurface.withOpacity(0.07)),
-    ),
-    scrolledUnderElevation: kAppBarElevation,
-    surfaceTintColor: colorScheme.background,
-    toolbarHeight: kAppBarHeight,
-    elevation: kAppBarElevation,
-    systemOverlayStyle: SystemUiOverlayStyle.dark,
-    backgroundColor: colorScheme.surface,
-    foregroundColor: colorScheme.onSurface,
-    titleTextStyle: createTextTheme(YaruColors.porcelain).titleLarge!.copyWith(
-          color: colorScheme.onSurface,
-          fontWeight: FontWeight.normal,
-        ),
+    actionsIconTheme: IconThemeData(color: colorScheme.onSurface),
   );
 }
 
@@ -447,7 +433,7 @@ ThemeData createYaruLightTheme({
     checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.light),
     radioTheme: _getRadioThemeData(colorScheme, Brightness.light),
     primaryColorDark: null,
-    appBarTheme: _createLightAppBar(colorScheme),
+    appBarTheme: _createAppBarTheme(colorScheme, Brightness.light),
     floatingActionButtonTheme:
         _getFloatingActionButtonThemeData(colorScheme, Brightness.light),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -559,7 +545,7 @@ ThemeData createYaruDarkTheme({
     checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.dark),
     radioTheme: _getRadioThemeData(colorScheme, Brightness.dark),
     primaryColorDark: primaryColor,
-    appBarTheme: _createDarkAppBarTheme(colorScheme),
+    appBarTheme: _createAppBarTheme(colorScheme, Brightness.dark),
     floatingActionButtonTheme:
         _getFloatingActionButtonThemeData(colorScheme, Brightness.dark),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
