@@ -550,7 +550,7 @@ ThemeData createYaruDarkTheme({
         _getFloatingActionButtonThemeData(colorScheme, Brightness.dark),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
-      unselectedItemColor: Colors.white.withOpacity(0.8),
+      unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
     ),
     inputDecorationTheme:
         _createInputDecorationTheme(colorScheme, Brightness.dark),
