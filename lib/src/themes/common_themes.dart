@@ -417,7 +417,7 @@ ThemeData createYaruLightTheme({
     dividerColor: kDividerColorLight,
     dialogBackgroundColor: colorScheme.background,
     textTheme: createTextTheme(YaruColors.inkstone),
-    indicatorColor: colorScheme.secondary,
+    indicatorColor: colorScheme.primary,
     applyElevationOverlayColor: false,
     buttonTheme: _buttonThemeData,
     outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
