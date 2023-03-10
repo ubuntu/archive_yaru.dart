@@ -324,6 +324,81 @@ FloatingActionButtonThemeData _getFloatingActionButtonThemeData(
   );
 }
 
+/// Helper function to create a new Yaru theme
+ThemeData createYaruTheme({
+  required ColorScheme colorScheme,
+  Color? dividerColor,
+  Color? elevatedButtonColor,
+  Color? elevatedButtonTextColor,
+  bool? useMaterial3 = true,
+}) {
+  dividerColor ??= colorScheme.outline;
+  return ThemeData.from(
+    useMaterial3: useMaterial3,
+    colorScheme: colorScheme,
+  ).copyWith(
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        foregroundColor: colorScheme.onSurface,
+        highlightColor: colorScheme.onSurface.withOpacity(0.05),
+        surfaceTintColor: colorScheme.background,
+      ),
+    ),
+    iconTheme: IconThemeData(color: colorScheme.onSurface),
+    primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
+    progressIndicatorTheme: _createProgressIndicatorTheme(colorScheme),
+    pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
+    tabBarTheme: _createTabBarTheme(colorScheme, dividerColor),
+    dialogTheme: _createDialogTheme(colorScheme),
+    brightness: colorScheme.brightness,
+    primaryColor: colorScheme.primary,
+    canvasColor: colorScheme.background,
+    scaffoldBackgroundColor: colorScheme.background,
+    cardColor: colorScheme.surface,
+    dividerColor: dividerColor,
+    dialogBackgroundColor: colorScheme.background,
+    textTheme: createTextTheme(colorScheme.onSurface),
+    indicatorColor: colorScheme.primary,
+    applyElevationOverlayColor: colorScheme.brightness == Brightness.dark,
+    buttonTheme: _buttonThemeData,
+    outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
+    elevatedButtonTheme: _getElevatedButtonThemeData(
+      color: elevatedButtonColor ?? colorScheme.primary,
+      textColor: elevatedButtonTextColor,
+    ),
+    filledButtonTheme: _createFilledButtonThemeData(
+      colorScheme,
+    ),
+    textButtonTheme: _createTextButtonThemeData(colorScheme),
+    switchTheme: _getSwitchThemeData(colorScheme),
+    checkboxTheme: _getCheckBoxThemeData(colorScheme),
+    radioTheme: _getRadioThemeData(colorScheme),
+    primaryColorDark:
+        colorScheme.brightness == Brightness.dark ? colorScheme.primary : null,
+    appBarTheme: _createAppBarTheme(colorScheme),
+    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: colorScheme.primary,
+      unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
+    ),
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
+    toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
+    textSelectionTheme: _createTextSelectionTheme(colorScheme),
+    dropdownMenuTheme: _createDropdownMenuTheme(colorScheme),
+    menuTheme: _createMenuTheme(colorScheme),
+    popupMenuTheme: _createPopupMenuThemeData(colorScheme),
+    tooltipTheme: _tooltipThemeData,
+    bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
+    navigationBarTheme: _createNavigationBarTheme(colorScheme),
+    navigationRailTheme: _createNavigationRailTheme(colorScheme),
+    dividerTheme: DividerThemeData(color: dividerColor),
+    badgeTheme: BadgeThemeData(
+      backgroundColor: elevatedButtonColor ?? colorScheme.primary,
+      textColor: contrastColor(elevatedButtonColor ?? colorScheme.primary),
+    ),
+  );
+}
+
 /// Helper function to create a new Yaru light theme
 ThemeData createYaruLightTheme({
   required Color primaryColor,
@@ -361,71 +436,12 @@ ThemeData createYaruLightTheme({
     outline: const Color.fromARGB(255, 221, 221, 221),
     scrim: Colors.black,
   );
-
-  return ThemeData.from(
-    useMaterial3: useMaterial3,
+  return createYaruTheme(
     colorScheme: colorScheme,
-  ).copyWith(
-    iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(
-        foregroundColor: colorScheme.onSurface,
-        highlightColor: colorScheme.onSurface.withOpacity(0.05),
-        surfaceTintColor: colorScheme.background,
-      ),
-    ),
-    iconTheme: IconThemeData(color: colorScheme.onSurface),
-    primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
-    progressIndicatorTheme: _createProgressIndicatorTheme(colorScheme),
-    pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
-    tabBarTheme: _createTabBarTheme(colorScheme, kDividerColorLight),
-    dialogTheme: _createDialogTheme(colorScheme),
-    brightness: colorScheme.brightness,
-    primaryColor: colorScheme.primary,
-    canvasColor: colorScheme.background,
-    scaffoldBackgroundColor: colorScheme.background,
-    cardColor: colorScheme.surface,
     dividerColor: kDividerColorLight,
-    dialogBackgroundColor: colorScheme.background,
-    textTheme: createTextTheme(YaruColors.inkstone),
-    indicatorColor: colorScheme.primary,
-    applyElevationOverlayColor: false,
-    buttonTheme: _buttonThemeData,
-    outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
-    elevatedButtonTheme: _getElevatedButtonThemeData(
-      color: elevatedButtonColor ?? primaryColor,
-      textColor: elevatedButtonTextColor,
-    ),
-    filledButtonTheme: _createFilledButtonThemeData(
-      colorScheme,
-    ),
-    textButtonTheme: _createTextButtonThemeData(colorScheme),
-    switchTheme: _getSwitchThemeData(colorScheme),
-    checkboxTheme: _getCheckBoxThemeData(colorScheme),
-    radioTheme: _getRadioThemeData(colorScheme),
-    primaryColorDark: null,
-    appBarTheme: _createAppBarTheme(colorScheme),
-    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: colorScheme.primary,
-      unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
-    ),
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
-    toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
-    textSelectionTheme: _createTextSelectionTheme(colorScheme),
-    dropdownMenuTheme: _createDropdownMenuTheme(colorScheme),
-    menuTheme: _createMenuTheme(colorScheme),
-    popupMenuTheme: _createPopupMenuThemeData(colorScheme),
-    tooltipTheme: _tooltipThemeData,
-    bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
-    navigationBarTheme: _createNavigationBarTheme(colorScheme),
-    navigationRailTheme: _createNavigationRailTheme(colorScheme),
-    dividerTheme: const DividerThemeData(
-      color: kDividerColorLight,
-    ),
-    badgeTheme: BadgeThemeData(
-      backgroundColor: elevatedButtonColor ?? colorScheme.primary,
-      textColor: contrastColor(elevatedButtonColor ?? primaryColor),
-    ),
+    elevatedButtonColor: elevatedButtonColor,
+    elevatedButtonTextColor: elevatedButtonTextColor,
+    useMaterial3: useMaterial3,
   );
 }
 
@@ -468,70 +484,12 @@ ThemeData createYaruDarkTheme({
     outline: const Color.fromARGB(255, 68, 68, 68),
     scrim: Colors.black,
   );
-  return ThemeData.from(
-    useMaterial3: useMaterial3,
+  return createYaruTheme(
     colorScheme: colorScheme,
-  ).copyWith(
-    iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(
-        foregroundColor: colorScheme.onSurface,
-        highlightColor: colorScheme.onSurface.withOpacity(0.05),
-        surfaceTintColor: colorScheme.background,
-      ),
-    ),
-    iconTheme: IconThemeData(color: colorScheme.onSurface),
-    primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
-    progressIndicatorTheme: _createProgressIndicatorTheme(colorScheme),
-    pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
-    tabBarTheme: _createTabBarTheme(colorScheme, kDividerColorDark),
-    dialogTheme: _createDialogTheme(colorScheme),
-    brightness: colorScheme.brightness,
-    primaryColor: colorScheme.primary,
-    canvasColor: colorScheme.background,
-    scaffoldBackgroundColor: colorScheme.background,
-    cardColor: colorScheme.surface,
     dividerColor: kDividerColorDark,
-    dialogBackgroundColor: colorScheme.background,
-    textTheme: createTextTheme(colorScheme.onSurface),
-    indicatorColor: colorScheme.primary,
-    applyElevationOverlayColor: true,
-    buttonTheme: _buttonThemeData,
-    outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
-    elevatedButtonTheme: _getElevatedButtonThemeData(
-      color: elevatedButtonColor ?? primaryColor,
-      textColor: elevatedButtonTextColor,
-    ),
-    filledButtonTheme: _createFilledButtonThemeData(
-      colorScheme,
-    ),
-    textButtonTheme: _createTextButtonThemeData(colorScheme),
-    switchTheme: _getSwitchThemeData(colorScheme),
-    checkboxTheme: _getCheckBoxThemeData(colorScheme),
-    radioTheme: _getRadioThemeData(colorScheme),
-    primaryColorDark: primaryColor,
-    appBarTheme: _createAppBarTheme(colorScheme),
-    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: colorScheme.primary,
-      unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
-    ),
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
-    toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
-    textSelectionTheme: _createTextSelectionTheme(colorScheme),
-    dropdownMenuTheme: _createDropdownMenuTheme(colorScheme),
-    menuTheme: _createMenuTheme(colorScheme),
-    popupMenuTheme: _createPopupMenuThemeData(colorScheme),
-    tooltipTheme: _tooltipThemeData,
-    bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
-    navigationBarTheme: _createNavigationBarTheme(colorScheme),
-    navigationRailTheme: _createNavigationRailTheme(colorScheme),
-    dividerTheme: const DividerThemeData(
-      color: kDividerColorDark,
-    ),
-    badgeTheme: BadgeThemeData(
-      backgroundColor: elevatedButtonColor ?? colorScheme.primary,
-      textColor: contrastColor(elevatedButtonColor ?? primaryColor),
-    ),
+    elevatedButtonColor: elevatedButtonColor,
+    elevatedButtonTextColor: elevatedButtonTextColor,
+    useMaterial3: useMaterial3,
   );
 }
 
