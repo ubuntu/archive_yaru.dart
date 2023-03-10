@@ -10,19 +10,20 @@ const kDividerColorLight = Color(0xffdcdcdc);
 
 // AppBar
 
-AppBarTheme _createAppBarTheme(ColorScheme colorScheme, Brightness brightness) {
+AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
     shape: Border(
       bottom: BorderSide(
-        color: colorScheme.onSurface
-            .withOpacity(brightness == Brightness.light ? 0.2 : 0.07),
+        color: colorScheme.onSurface.withOpacity(
+          colorScheme.brightness == Brightness.light ? 0.2 : 0.07,
+        ),
       ),
     ),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.surface,
     toolbarHeight: kAppBarHeight,
     elevation: kAppBarElevation,
-    systemOverlayStyle: brightness == Brightness.light
+    systemOverlayStyle: colorScheme.brightness == Brightness.light
         ? SystemUiOverlayStyle.light
         : SystemUiOverlayStyle.dark,
     backgroundColor: colorScheme.surface,
@@ -36,13 +37,10 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme, Brightness brightness) {
   );
 }
 
-InputDecorationTheme _createInputDecorationTheme(
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
   final radius = BorderRadius.circular(kButtonRadius);
   const width = 1.0;
-  final light = brightness == Brightness.light;
+  final light = colorScheme.brightness == Brightness.light;
   final fill =
       light ? const Color(0xFFededed) : const Color.fromARGB(255, 40, 40, 40);
   final border = colorScheme.outline;
@@ -185,15 +183,16 @@ ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
 
 // Dialogs
 
-DialogTheme _createDialogTheme(Brightness brightness) {
-  final bgColor =
-      brightness == Brightness.dark ? YaruColors.jet : YaruColors.porcelain;
+DialogTheme _createDialogTheme(ColorScheme colorScheme) {
+  final bgColor = colorScheme.brightness == Brightness.dark
+      ? YaruColors.jet
+      : YaruColors.porcelain;
   return DialogTheme(
     backgroundColor: bgColor,
     surfaceTintColor: bgColor,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(kWindowRadius),
-      side: brightness == Brightness.dark
+      side: colorScheme.brightness == Brightness.dark
           ? BorderSide(color: Colors.white.withOpacity(0.2))
           : BorderSide.none,
     ),
@@ -202,25 +201,18 @@ DialogTheme _createDialogTheme(Brightness brightness) {
 
 // Switches
 
-SwitchThemeData _getSwitchThemeData(
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+SwitchThemeData _getSwitchThemeData(ColorScheme colorScheme) {
   return SwitchThemeData(
     thumbColor: MaterialStateProperty.resolveWith(
-      (states) => _getSwitchThumbColor(states, colorScheme, brightness),
+      (states) => _getSwitchThumbColor(states, colorScheme),
     ),
     trackColor: MaterialStateProperty.resolveWith(
-      (states) => _getSwitchTrackColor(states, colorScheme, brightness),
+      (states) => _getSwitchTrackColor(states, colorScheme),
     ),
   );
 }
 
-Color _getSwitchThumbColor(
-  Set<MaterialState> states,
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+Color _getSwitchThumbColor(Set<MaterialState> states, ColorScheme colorScheme) {
   if (states.contains(MaterialState.disabled)) {
     if (states.contains(MaterialState.selected)) {
       return colorScheme.onSurface.withOpacity(0.5);
@@ -235,11 +227,7 @@ Color _getSwitchThumbColor(
   }
 }
 
-Color _getSwitchTrackColor(
-  Set<MaterialState> states,
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+Color _getSwitchTrackColor(Set<MaterialState> states, ColorScheme colorScheme) {
   if (states.contains(MaterialState.disabled)) {
     return colorScheme.onSurface.withOpacity(0.15);
   } else {
@@ -253,11 +241,7 @@ Color _getSwitchTrackColor(
 
 // Checks & Radios
 
-Color _getCheckFillColor(
-  Set<MaterialState> states,
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+Color _getCheckFillColor(Set<MaterialState> states, ColorScheme colorScheme) {
   if (!states.contains(MaterialState.disabled)) {
     if (states.contains(MaterialState.selected)) {
       return colorScheme.primary;
@@ -280,16 +264,13 @@ Color _getCheckColor(Set<MaterialState> states, ColorScheme colorScheme) {
   return YaruColors.warmGrey;
 }
 
-CheckboxThemeData _getCheckBoxThemeData(
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+CheckboxThemeData _getCheckBoxThemeData(ColorScheme colorScheme) {
   return CheckboxThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(kCheckRadius),
     ),
     fillColor: MaterialStateProperty.resolveWith(
-      (states) => _getCheckFillColor(states, colorScheme, brightness),
+      (states) => _getCheckFillColor(states, colorScheme),
     ),
     checkColor: MaterialStateProperty.resolveWith(
       (states) => _getCheckColor(states, colorScheme),
@@ -297,24 +278,17 @@ CheckboxThemeData _getCheckBoxThemeData(
   );
 }
 
-RadioThemeData _getRadioThemeData(
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+RadioThemeData _getRadioThemeData(ColorScheme colorScheme) {
   return RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(
-      (states) => _getCheckFillColor(states, colorScheme, brightness),
+      (states) => _getCheckFillColor(states, colorScheme),
     ),
   );
 }
 
-TabBarTheme _createTabBarTheme(
-  ColorScheme colorScheme,
-  Brightness brightness,
-  Color dividerColor,
-) {
+TabBarTheme _createTabBarTheme(ColorScheme colorScheme, Color dividerColor) {
   return TabBarTheme(
-    labelColor: brightness == Brightness.light
+    labelColor: colorScheme.brightness == Brightness.light
         ? colorScheme.onSurface
         : Colors.white.withOpacity(0.8),
     indicatorColor: colorScheme.primary,
@@ -324,7 +298,6 @@ TabBarTheme _createTabBarTheme(
 
 ProgressIndicatorThemeData _createProgressIndicatorTheme(
   ColorScheme colorScheme,
-  Brightness brightness,
 ) {
   return ProgressIndicatorThemeData(
     circularTrackColor: colorScheme.primary.withOpacity(0.3),
@@ -335,9 +308,8 @@ ProgressIndicatorThemeData _createProgressIndicatorTheme(
 
 FloatingActionButtonThemeData _getFloatingActionButtonThemeData(
   ColorScheme colorScheme,
-  Brightness brightness,
 ) {
-  final light = brightness == Brightness.light;
+  final light = colorScheme.brightness == Brightness.light;
   const elevation = 3.0;
 
   return FloatingActionButtonThemeData(
@@ -403,13 +375,11 @@ ThemeData createYaruLightTheme({
     ),
     iconTheme: IconThemeData(color: colorScheme.onSurface),
     primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
-    progressIndicatorTheme:
-        _createProgressIndicatorTheme(colorScheme, Brightness.light),
+    progressIndicatorTheme: _createProgressIndicatorTheme(colorScheme),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
-    tabBarTheme:
-        _createTabBarTheme(colorScheme, Brightness.light, kDividerColorLight),
-    dialogTheme: _createDialogTheme(Brightness.light),
-    brightness: Brightness.light,
+    tabBarTheme: _createTabBarTheme(colorScheme, kDividerColorLight),
+    dialogTheme: _createDialogTheme(colorScheme),
+    brightness: colorScheme.brightness,
     primaryColor: colorScheme.primary,
     canvasColor: colorScheme.background,
     scaffoldBackgroundColor: colorScheme.background,
@@ -429,30 +399,26 @@ ThemeData createYaruLightTheme({
       colorScheme,
     ),
     textButtonTheme: _createTextButtonThemeData(colorScheme),
-    switchTheme: _getSwitchThemeData(colorScheme, Brightness.light),
-    checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.light),
-    radioTheme: _getRadioThemeData(colorScheme, Brightness.light),
+    switchTheme: _getSwitchThemeData(colorScheme),
+    checkboxTheme: _getCheckBoxThemeData(colorScheme),
+    radioTheme: _getRadioThemeData(colorScheme),
     primaryColorDark: null,
-    appBarTheme: _createAppBarTheme(colorScheme, Brightness.light),
-    floatingActionButtonTheme:
-        _getFloatingActionButtonThemeData(colorScheme, Brightness.light),
+    appBarTheme: _createAppBarTheme(colorScheme),
+    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
     ),
-    inputDecorationTheme:
-        _createInputDecorationTheme(colorScheme, Brightness.light),
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
-    dropdownMenuTheme: _createDropdownMenuTheme(colorScheme, Brightness.light),
-    menuTheme: _createMenuTheme(colorScheme, Brightness.light),
-    popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.light),
+    dropdownMenuTheme: _createDropdownMenuTheme(colorScheme),
+    menuTheme: _createMenuTheme(colorScheme),
+    popupMenuTheme: _createPopupMenuThemeData(colorScheme),
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
-    navigationBarTheme:
-        _createNavigationBarTheme(colorScheme, Brightness.light),
-    navigationRailTheme:
-        _createNavigationRailTheme(colorScheme, Brightness.light),
+    navigationBarTheme: _createNavigationBarTheme(colorScheme),
+    navigationRailTheme: _createNavigationRailTheme(colorScheme),
     dividerTheme: const DividerThemeData(
       color: kDividerColorLight,
     ),
@@ -515,13 +481,11 @@ ThemeData createYaruDarkTheme({
     ),
     iconTheme: IconThemeData(color: colorScheme.onSurface),
     primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
-    progressIndicatorTheme:
-        _createProgressIndicatorTheme(colorScheme, Brightness.dark),
+    progressIndicatorTheme: _createProgressIndicatorTheme(colorScheme),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
-    tabBarTheme:
-        _createTabBarTheme(colorScheme, Brightness.dark, kDividerColorDark),
-    dialogTheme: _createDialogTheme(Brightness.dark),
-    brightness: Brightness.dark,
+    tabBarTheme: _createTabBarTheme(colorScheme, kDividerColorDark),
+    dialogTheme: _createDialogTheme(colorScheme),
+    brightness: colorScheme.brightness,
     primaryColor: colorScheme.primary,
     canvasColor: colorScheme.background,
     scaffoldBackgroundColor: colorScheme.background,
@@ -541,29 +505,26 @@ ThemeData createYaruDarkTheme({
       colorScheme,
     ),
     textButtonTheme: _createTextButtonThemeData(colorScheme),
-    switchTheme: _getSwitchThemeData(colorScheme, Brightness.dark),
-    checkboxTheme: _getCheckBoxThemeData(colorScheme, Brightness.dark),
-    radioTheme: _getRadioThemeData(colorScheme, Brightness.dark),
+    switchTheme: _getSwitchThemeData(colorScheme),
+    checkboxTheme: _getCheckBoxThemeData(colorScheme),
+    radioTheme: _getRadioThemeData(colorScheme),
     primaryColorDark: primaryColor,
-    appBarTheme: _createAppBarTheme(colorScheme, Brightness.dark),
-    floatingActionButtonTheme:
-        _getFloatingActionButtonThemeData(colorScheme, Brightness.dark),
+    appBarTheme: _createAppBarTheme(colorScheme),
+    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
     ),
-    inputDecorationTheme:
-        _createInputDecorationTheme(colorScheme, Brightness.dark),
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
     toggleButtonsTheme: _createToggleButtonsTheme(colorScheme),
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
-    dropdownMenuTheme: _createDropdownMenuTheme(colorScheme, Brightness.dark),
-    menuTheme: _createMenuTheme(colorScheme, Brightness.dark),
-    popupMenuTheme: _createPopupMenuThemeData(colorScheme, Brightness.dark),
+    dropdownMenuTheme: _createDropdownMenuTheme(colorScheme),
+    menuTheme: _createMenuTheme(colorScheme),
+    popupMenuTheme: _createPopupMenuThemeData(colorScheme),
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
-    navigationBarTheme: _createNavigationBarTheme(colorScheme, Brightness.dark),
-    navigationRailTheme:
-        _createNavigationRailTheme(colorScheme, Brightness.dark),
+    navigationBarTheme: _createNavigationBarTheme(colorScheme),
+    navigationRailTheme: _createNavigationRailTheme(colorScheme),
     dividerTheme: const DividerThemeData(
       color: kDividerColorDark,
     ),
@@ -581,11 +542,8 @@ Color contrastColor(Color color) => ThemeData.estimateBrightnessForColor(
     ? Colors.black
     : Colors.white;
 
-PopupMenuThemeData _createPopupMenuThemeData(
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
-  final bgColor = brightness == Brightness.dark
+PopupMenuThemeData _createPopupMenuThemeData(ColorScheme colorScheme) {
+  final bgColor = colorScheme.brightness == Brightness.dark
       ? const Color.fromARGB(255, 34, 34, 34)
       : Colors.white;
   return PopupMenuThemeData(
@@ -594,16 +552,17 @@ PopupMenuThemeData _createPopupMenuThemeData(
     shape: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
-        color: colorScheme.onSurface
-            .withOpacity(brightness == Brightness.light ? 0.3 : 0.2),
+        color: colorScheme.onSurface.withOpacity(
+          colorScheme.brightness == Brightness.light ? 0.3 : 0.2,
+        ),
         width: 1,
       ),
     ),
   );
 }
 
-MenuStyle _createMenuStyle(ColorScheme colorScheme, Brightness brightness) {
-  final bgColor = brightness == Brightness.dark
+MenuStyle _createMenuStyle(ColorScheme colorScheme) {
+  final bgColor = colorScheme.brightness == Brightness.dark
       ? const Color.fromARGB(255, 34, 34, 34)
       : Colors.white;
 
@@ -612,8 +571,9 @@ MenuStyle _createMenuStyle(ColorScheme colorScheme, Brightness brightness) {
     shape: MaterialStateProperty.resolveWith(
       (states) => RoundedRectangleBorder(
         side: BorderSide(
-          color: colorScheme.onSurface
-              .withOpacity(brightness == Brightness.light ? 0.3 : 0.2),
+          color: colorScheme.onSurface.withOpacity(
+            colorScheme.brightness == Brightness.light ? 0.3 : 0.2,
+          ),
           width: 1,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -621,8 +581,9 @@ MenuStyle _createMenuStyle(ColorScheme colorScheme, Brightness brightness) {
     ),
     side: MaterialStateBorderSide.resolveWith(
       (states) => BorderSide(
-        color: colorScheme.onSurface
-            .withOpacity(brightness == Brightness.light ? 0.3 : 0.2),
+        color: colorScheme.onSurface.withOpacity(
+          colorScheme.brightness == Brightness.light ? 0.3 : 0.2,
+        ),
         width: 1,
       ),
     ),
@@ -631,26 +592,20 @@ MenuStyle _createMenuStyle(ColorScheme colorScheme, Brightness brightness) {
   );
 }
 
-MenuThemeData _createMenuTheme(ColorScheme colorScheme, Brightness brightness) {
+MenuThemeData _createMenuTheme(ColorScheme colorScheme) {
   return MenuThemeData(
-    style: _createMenuStyle(colorScheme, brightness),
+    style: _createMenuStyle(colorScheme),
   );
 }
 
-DropdownMenuThemeData _createDropdownMenuTheme(
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+DropdownMenuThemeData _createDropdownMenuTheme(ColorScheme colorScheme) {
   return DropdownMenuThemeData(
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme, brightness),
-    menuStyle: _createMenuStyle(colorScheme, brightness),
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
+    menuStyle: _createMenuStyle(colorScheme),
   );
 }
 
-NavigationBarThemeData _createNavigationBarTheme(
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+NavigationBarThemeData _createNavigationBarTheme(ColorScheme colorScheme) {
   return NavigationBarThemeData(
     backgroundColor: colorScheme.surface,
     surfaceTintColor: colorScheme.surface,
@@ -663,10 +618,7 @@ NavigationBarThemeData _createNavigationBarTheme(
   );
 }
 
-NavigationRailThemeData _createNavigationRailTheme(
-  ColorScheme colorScheme,
-  Brightness brightness,
-) {
+NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
   return NavigationRailThemeData(
     backgroundColor: colorScheme.surface,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
