@@ -475,7 +475,7 @@ ThemeData createYaruDarkTheme({
     inverseSurface: YaruColors.porcelain,
     onInverseSurface: YaruColors.inkstone,
     surfaceTint: YaruColors.coolGrey,
-    surfaceVariant: YaruColors.inkstone,
+    surfaceVariant: const Color.fromARGB(255, 34, 34, 34),
     tertiary: const Color(0xFF18b6ec),
     onTertiary: YaruColors.porcelain,
     tertiaryContainer: const Color(0xFF18b6ec),
@@ -502,8 +502,8 @@ Color contrastColor(Color color) => ThemeData.estimateBrightnessForColor(
 
 PopupMenuThemeData _createPopupMenuThemeData(ColorScheme colorScheme) {
   final bgColor = colorScheme.brightness == Brightness.dark
-      ? const Color.fromARGB(255, 34, 34, 34)
-      : Colors.white;
+      ? colorScheme.surfaceVariant
+      : colorScheme.surface;
   return PopupMenuThemeData(
     color: bgColor,
     surfaceTintColor: bgColor,
@@ -521,9 +521,8 @@ PopupMenuThemeData _createPopupMenuThemeData(ColorScheme colorScheme) {
 
 MenuStyle _createMenuStyle(ColorScheme colorScheme) {
   final bgColor = colorScheme.brightness == Brightness.dark
-      ? const Color.fromARGB(255, 34, 34, 34)
-      : Colors.white;
-
+      ? colorScheme.surfaceVariant
+      : colorScheme.surface;
   return MenuStyle(
     surfaceTintColor: MaterialStateColor.resolveWith((states) => bgColor),
     shape: MaterialStateProperty.resolveWith(
