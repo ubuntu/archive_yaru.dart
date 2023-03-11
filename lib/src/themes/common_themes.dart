@@ -220,7 +220,7 @@ Color _getSwitchThumbColor(Set<MaterialState> states, ColorScheme colorScheme) {
     return colorScheme.onSurface.withOpacity(0.5);
   } else {
     if (states.contains(MaterialState.selected)) {
-      return Colors.white;
+      return colorScheme.onPrimary;
     } else {
       return colorScheme.onSurface.withOpacity(0.7);
     }
