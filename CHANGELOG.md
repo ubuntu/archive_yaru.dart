@@ -1,5 +1,16 @@
 # Changelog
 
+# 0.5.7
+
+* Switch: use onPrimary for selected thumb to match primary track (#314)
+* Menus: use surface variant in dark theme, surface in light theme (#313)
+* Unify light & dark theme creation (#312)
+* Remove redundant brightness arguments (#311)
+* indicatorColor: use primary for both light and dark themes (#309)
+* BottomNavigationBarTheme: use onSurface in dark theme (#308)
+* Pass brightness to _createAppBarTheme() (#307)
+* Sync light and dark themes (#306)
+
 # 0.5.6
 
 * TextTheme: add missing headlineLarge and labelMedium (#297)
