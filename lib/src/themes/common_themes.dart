@@ -396,6 +396,7 @@ ThemeData createYaruTheme({
       backgroundColor: elevatedButtonColor ?? colorScheme.primary,
       textColor: contrastColor(elevatedButtonColor ?? colorScheme.primary),
     ),
+    scrollbarTheme: const ScrollbarThemeData(mainAxisMargin: 5),
   );
 }
 
