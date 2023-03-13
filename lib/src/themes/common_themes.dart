@@ -15,7 +15,7 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
     shape: Border(
       bottom: BorderSide(
         color: colorScheme.onSurface.withOpacity(
-          colorScheme.brightness == Brightness.light ? 0.2 : 0.07,
+          colorScheme.isLight ? 0.2 : 0.07,
         ),
       ),
     ),
@@ -23,7 +23,7 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
     surfaceTintColor: colorScheme.surface,
     toolbarHeight: kAppBarHeight,
     elevation: kAppBarElevation,
-    systemOverlayStyle: colorScheme.brightness == Brightness.light
+    systemOverlayStyle: colorScheme.isLight
         ? SystemUiOverlayStyle.light
         : SystemUiOverlayStyle.dark,
     backgroundColor: colorScheme.surface,
@@ -40,11 +40,11 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
 InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
   final radius = BorderRadius.circular(kButtonRadius);
   const width = 1.0;
-  final light = colorScheme.brightness == Brightness.light;
-  final fill =
-      light ? const Color(0xFFededed) : const Color.fromARGB(255, 40, 40, 40);
+  final fill = colorScheme.isLight
+      ? const Color(0xFFededed)
+      : const Color.fromARGB(255, 40, 40, 40);
   final border = colorScheme.outline;
-  final disabledBorder = light
+  final disabledBorder = colorScheme.isLight
       ? const Color.fromARGB(255, 237, 237, 237)
       : const Color.fromARGB(255, 67, 67, 67);
   return InputDecorationTheme(
@@ -192,7 +192,7 @@ DialogTheme _createDialogTheme(ColorScheme colorScheme) {
     surfaceTintColor: bgColor,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(kWindowRadius),
-      side: colorScheme.brightness == Brightness.dark
+      side: colorScheme.isDark
           ? BorderSide(color: Colors.white.withOpacity(0.2))
           : BorderSide.none,
     ),
@@ -288,7 +288,7 @@ RadioThemeData _getRadioThemeData(ColorScheme colorScheme) {
 
 TabBarTheme _createTabBarTheme(ColorScheme colorScheme, Color dividerColor) {
   return TabBarTheme(
-    labelColor: colorScheme.brightness == Brightness.light
+    labelColor: colorScheme.isLight
         ? colorScheme.onSurface
         : Colors.white.withOpacity(0.8),
     indicatorColor: colorScheme.primary,
@@ -309,11 +309,11 @@ ProgressIndicatorThemeData _createProgressIndicatorTheme(
 FloatingActionButtonThemeData _getFloatingActionButtonThemeData(
   ColorScheme colorScheme,
 ) {
-  final light = colorScheme.brightness == Brightness.light;
   const elevation = 3.0;
 
   return FloatingActionButtonThemeData(
-    backgroundColor: colorScheme.surface.scale(lightness: light ? -0.10 : 0.20),
+    backgroundColor: colorScheme.surface
+        .scale(lightness: colorScheme.isLight ? -0.10 : 0.20),
     foregroundColor: colorScheme.onSurface,
     shape: const CircleBorder(),
     elevation: elevation,
@@ -359,7 +359,7 @@ ThemeData createYaruTheme({
     dialogBackgroundColor: colorScheme.background,
     textTheme: createTextTheme(colorScheme.onSurface),
     indicatorColor: colorScheme.primary,
-    applyElevationOverlayColor: colorScheme.brightness == Brightness.dark,
+    applyElevationOverlayColor: colorScheme.isDark,
     buttonTheme: _buttonThemeData,
     outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
     elevatedButtonTheme: _getElevatedButtonThemeData(
@@ -373,8 +373,7 @@ ThemeData createYaruTheme({
     switchTheme: _getSwitchThemeData(colorScheme),
     checkboxTheme: _getCheckBoxThemeData(colorScheme),
     radioTheme: _getRadioThemeData(colorScheme),
-    primaryColorDark:
-        colorScheme.brightness == Brightness.dark ? colorScheme.primary : null,
+    primaryColorDark: colorScheme.isDark ? colorScheme.primary : null,
     appBarTheme: _createAppBarTheme(colorScheme),
     floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -501,9 +500,8 @@ Color contrastColor(Color color) => ThemeData.estimateBrightnessForColor(
     : Colors.white;
 
 PopupMenuThemeData _createPopupMenuThemeData(ColorScheme colorScheme) {
-  final bgColor = colorScheme.brightness == Brightness.dark
-      ? colorScheme.surfaceVariant
-      : colorScheme.surface;
+  final bgColor =
+      colorScheme.isDark ? colorScheme.surfaceVariant : colorScheme.surface;
   return PopupMenuThemeData(
     color: bgColor,
     surfaceTintColor: bgColor,
@@ -511,7 +509,7 @@ PopupMenuThemeData _createPopupMenuThemeData(ColorScheme colorScheme) {
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
         color: colorScheme.onSurface.withOpacity(
-          colorScheme.brightness == Brightness.light ? 0.3 : 0.2,
+          colorScheme.isLight ? 0.3 : 0.2,
         ),
         width: 1,
       ),
@@ -520,16 +518,15 @@ PopupMenuThemeData _createPopupMenuThemeData(ColorScheme colorScheme) {
 }
 
 MenuStyle _createMenuStyle(ColorScheme colorScheme) {
-  final bgColor = colorScheme.brightness == Brightness.dark
-      ? colorScheme.surfaceVariant
-      : colorScheme.surface;
+  final bgColor =
+      colorScheme.isDark ? colorScheme.surfaceVariant : colorScheme.surface;
   return MenuStyle(
     surfaceTintColor: MaterialStateColor.resolveWith((states) => bgColor),
     shape: MaterialStateProperty.resolveWith(
       (states) => RoundedRectangleBorder(
         side: BorderSide(
           color: colorScheme.onSurface.withOpacity(
-            colorScheme.brightness == Brightness.light ? 0.3 : 0.2,
+            colorScheme.isLight ? 0.3 : 0.2,
           ),
           width: 1,
         ),
@@ -539,7 +536,7 @@ MenuStyle _createMenuStyle(ColorScheme colorScheme) {
     side: MaterialStateBorderSide.resolveWith(
       (states) => BorderSide(
         color: colorScheme.onSurface.withOpacity(
-          colorScheme.brightness == Brightness.light ? 0.3 : 0.2,
+          colorScheme.isLight ? 0.3 : 0.2,
         ),
         width: 1,
       ),
@@ -584,4 +581,9 @@ NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
       color: colorScheme.onSurface.withOpacity(0.8),
     ),
   );
+}
+
+extension on ColorScheme {
+  bool get isDark => brightness == Brightness.dark;
+  bool get isLight => brightness == Brightness.light;
 }
