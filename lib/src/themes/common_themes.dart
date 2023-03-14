@@ -14,9 +14,11 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
     shape: Border(
       bottom: BorderSide(
-        color: colorScheme.onSurface.withOpacity(
-          colorScheme.isLight ? 0.2 : 0.07,
-        ),
+        color: colorScheme.isHighContrast
+            ? colorScheme.outlineVariant
+            : colorScheme.onSurface.withOpacity(
+                colorScheme.isLight ? 0.2 : 0.07,
+              ),
       ),
     ),
     scrolledUnderElevation: kAppBarElevation,
@@ -43,7 +45,9 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
   final fill = colorScheme.isLight
       ? const Color(0xFFededed)
       : const Color.fromARGB(255, 40, 40, 40);
-  final border = colorScheme.outline;
+  final border = colorScheme.isHighContrast
+      ? colorScheme.outlineVariant
+      : colorScheme.outline;
   final disabledBorder = colorScheme.isLight
       ? const Color.fromARGB(255, 237, 237, 237)
       : const Color.fromARGB(255, 67, 67, 67);
@@ -108,7 +112,11 @@ OutlinedButtonThemeData _createOutlinedButtonThemeData(
 ) {
   return OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      side: BorderSide(color: colorScheme.outline),
+      side: BorderSide(
+        color: colorScheme.isHighContrast
+            ? colorScheme.outlineVariant
+            : colorScheme.outline,
+      ),
       visualDensity: _commonButtonStyle.visualDensity,
       // backgroundColor: colorScheme.surface, // defaults to transparent
       foregroundColor: colorScheme.onSurface,
@@ -136,6 +144,7 @@ TextButtonThemeData _createTextButtonThemeData(
 
 ElevatedButtonThemeData _getElevatedButtonThemeData({
   required Color color,
+  required ColorScheme colorScheme,
   Color? textColor,
 }) {
   return ElevatedButtonThemeData(
@@ -146,6 +155,9 @@ ElevatedButtonThemeData _getElevatedButtonThemeData({
       elevation: 0,
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
+        side: colorScheme.isHighContrast
+            ? BorderSide(color: colorScheme.outlineVariant)
+            : BorderSide.none,
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
     ),
@@ -165,6 +177,9 @@ FilledButtonThemeData _createFilledButtonThemeData(
       elevation: 0,
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
+        side: colorScheme.isHighContrast
+            ? BorderSide(color: colorScheme.outlineVariant)
+            : BorderSide.none,
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
     ),
@@ -174,8 +189,12 @@ FilledButtonThemeData _createFilledButtonThemeData(
 ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
   return ToggleButtonsThemeData(
     borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
-    borderColor: colorScheme.outline,
+    borderColor: colorScheme.isHighContrast
+        ? colorScheme.outlineVariant
+        : colorScheme.outline,
     selectedColor: colorScheme.onSurface,
+    selectedBorderColor:
+        colorScheme.isHighContrast ? colorScheme.outlineVariant : null,
     fillColor: colorScheme.outline,
     hoverColor: colorScheme.onSurface.withOpacity(.05),
   );
@@ -193,7 +212,10 @@ DialogTheme _createDialogTheme(ColorScheme colorScheme) {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(kWindowRadius),
       side: colorScheme.isDark
-          ? BorderSide(color: Colors.white.withOpacity(0.2))
+          ? BorderSide(
+              color: Colors.white
+                  .withOpacity(colorScheme.isHighContrast ? 1 : 0.2),
+            )
           : BorderSide.none,
     ),
   );
@@ -315,7 +337,11 @@ FloatingActionButtonThemeData _getFloatingActionButtonThemeData(
     backgroundColor: colorScheme.surface
         .scale(lightness: colorScheme.isLight ? -0.10 : 0.20),
     foregroundColor: colorScheme.onSurface,
-    shape: const CircleBorder(),
+    shape: CircleBorder(
+      side: colorScheme.isHighContrast
+          ? BorderSide(color: colorScheme.outlineVariant)
+          : BorderSide.none,
+    ),
     elevation: elevation,
     focusElevation: elevation,
     hoverElevation: elevation,
@@ -332,7 +358,9 @@ ThemeData createYaruTheme({
   Color? elevatedButtonTextColor,
   bool? useMaterial3 = true,
 }) {
-  dividerColor ??= colorScheme.outline;
+  dividerColor ??= colorScheme.isHighContrast
+      ? colorScheme.outlineVariant
+      : colorScheme.outline;
   return ThemeData.from(
     useMaterial3: useMaterial3,
     colorScheme: colorScheme,
@@ -364,6 +392,7 @@ ThemeData createYaruTheme({
     outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
     elevatedButtonTheme: _getElevatedButtonThemeData(
       color: elevatedButtonColor ?? colorScheme.primary,
+      colorScheme: colorScheme,
       textColor: elevatedButtonTextColor,
     ),
     filledButtonTheme: _createFilledButtonThemeData(
@@ -437,6 +466,7 @@ ThemeData createYaruLightTheme({
     onTertiaryContainer: Colors.white,
     onSurfaceVariant: YaruColors.coolGrey,
     outline: const Color.fromARGB(255, 221, 221, 221),
+    outlineVariant: Colors.black,
     scrim: Colors.black,
   );
   return createYaruTheme(
@@ -485,6 +515,7 @@ ThemeData createYaruDarkTheme({
     onTertiaryContainer: YaruColors.porcelain,
     onSurfaceVariant: YaruColors.warmGrey,
     outline: const Color.fromARGB(255, 68, 68, 68),
+    outlineVariant: Colors.white,
     scrim: Colors.black,
   );
   return createYaruTheme(
@@ -512,9 +543,11 @@ PopupMenuThemeData _createPopupMenuThemeData(ColorScheme colorScheme) {
     shape: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
-        color: colorScheme.onSurface.withOpacity(
-          colorScheme.isLight ? 0.3 : 0.2,
-        ),
+        color: colorScheme.isHighContrast
+            ? colorScheme.outlineVariant
+            : colorScheme.onSurface.withOpacity(
+                colorScheme.isLight ? 0.3 : 0.2,
+              ),
         width: 1,
       ),
     ),
@@ -529,9 +562,11 @@ MenuStyle _createMenuStyle(ColorScheme colorScheme) {
     shape: MaterialStateProperty.resolveWith(
       (states) => RoundedRectangleBorder(
         side: BorderSide(
-          color: colorScheme.onSurface.withOpacity(
-            colorScheme.isLight ? 0.3 : 0.2,
-          ),
+          color: colorScheme.isHighContrast
+              ? colorScheme.outlineVariant
+              : colorScheme.onSurface.withOpacity(
+                  colorScheme.isLight ? 0.3 : 0.2,
+                ),
           width: 1,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -539,9 +574,11 @@ MenuStyle _createMenuStyle(ColorScheme colorScheme) {
     ),
     side: MaterialStateBorderSide.resolveWith(
       (states) => BorderSide(
-        color: colorScheme.onSurface.withOpacity(
-          colorScheme.isLight ? 0.3 : 0.2,
-        ),
+        color: colorScheme.isHighContrast
+            ? colorScheme.outlineVariant
+            : colorScheme.onSurface.withOpacity(
+                colorScheme.isLight ? 0.3 : 0.2,
+              ),
         width: 1,
       ),
     ),
@@ -590,4 +627,5 @@ NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
 extension on ColorScheme {
   bool get isDark => brightness == Brightness.dark;
   bool get isLight => brightness == Brightness.light;
+  bool get isHighContrast => [Colors.black, Colors.white].contains(primary);
 }
