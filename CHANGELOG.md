@@ -1,5 +1,11 @@
 # Changelog
 
+* add high contrast borders (#319)
+* Use an extension for less verbose dark and light color scheme checks (#318)
+* Add scrollbar margin (#317)
+
+# 0.5.8
+
 # 0.5.7
 
 * Switch: use onPrimary for selected thumb to match primary track (#314)
