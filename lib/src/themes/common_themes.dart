@@ -329,15 +329,17 @@ ProgressIndicatorThemeData _createProgressIndicatorTheme(
 }
 
 FloatingActionButtonThemeData _getFloatingActionButtonThemeData(
-  ColorScheme colorScheme,
-) {
+  ColorScheme colorScheme, [
+  Color? buttonColor,
+]) {
   const elevation = 3.0;
+  final bg = buttonColor ?? colorScheme.primary;
 
   return FloatingActionButtonThemeData(
-    backgroundColor: colorScheme.surface
-        .scale(lightness: colorScheme.isLight ? -0.10 : 0.20),
-    foregroundColor: colorScheme.onSurface,
-    shape: CircleBorder(
+    backgroundColor: bg,
+    foregroundColor: contrastColor(bg),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30),
       side: colorScheme.isHighContrast
           ? BorderSide(color: colorScheme.outlineVariant)
           : BorderSide.none,
@@ -404,7 +406,8 @@ ThemeData createYaruTheme({
     radioTheme: _getRadioThemeData(colorScheme),
     primaryColorDark: colorScheme.isDark ? colorScheme.primary : null,
     appBarTheme: _createAppBarTheme(colorScheme),
-    floatingActionButtonTheme: _getFloatingActionButtonThemeData(colorScheme),
+    floatingActionButtonTheme:
+        _getFloatingActionButtonThemeData(colorScheme, elevatedButtonColor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
