@@ -184,19 +184,19 @@ class _ControlsViewState extends State<ControlsView>
                         runSpacing: 10,
                         children: [
                           FloatingActionButton(
-                            onPressed: () => {incrementCounter()},
+                            onPressed: incrementCounter,
                             child: const Icon(Icons.plus_one),
                           ),
                           FloatingActionButton.extended(
-                            onPressed: () => {incrementCounter()},
+                            onPressed: incrementCounter,
                             label: const Text('Yay! +1 ❤️ for Yaru'),
                           ),
                           FloatingActionButton.small(
-                            onPressed: () => {incrementCounter()},
+                            onPressed: incrementCounter,
                             child: const Icon(Icons.plus_one),
                           ),
                           FloatingActionButton.large(
-                            onPressed: () => {incrementCounter()},
+                            onPressed: incrementCounter,
                             child: const Icon(Icons.plus_one),
                           ),
                         ],
