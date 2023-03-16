@@ -1,10 +1,15 @@
 # Changelog
 
+# 0.6.0
+
+* Change FAB Color and shape by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/323
+* updated with new fonts by @elioqoshi in https://github.com/ubuntu/yaru.dart/pull/324
+
+# 0.5.8
+
 * add high contrast borders (#319)
 * Use an extension for less verbose dark and light color scheme checks (#318)
 * Add scrollbar margin (#317)
-
-# 0.5.8
 
 # 0.5.7
 
