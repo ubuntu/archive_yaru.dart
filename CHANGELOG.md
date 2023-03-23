@@ -1,5 +1,10 @@
 # Changelog
 
+# 0.6.1
+
+* export colorscheme extension for convenience (#327)
+* fix high contrast divider color (#326)
+
 # 0.6.0
 
 * Change FAB Color and shape by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/323
