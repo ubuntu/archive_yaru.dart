@@ -474,7 +474,7 @@ ThemeData createYaruLightTheme({
   );
   return createYaruTheme(
     colorScheme: colorScheme,
-    dividerColor: kDividerColorLight,
+    dividerColor: colorScheme.isHighContrast ? null : kDividerColorLight,
     elevatedButtonColor: elevatedButtonColor,
     elevatedButtonTextColor: elevatedButtonTextColor,
     useMaterial3: useMaterial3,
@@ -523,7 +523,7 @@ ThemeData createYaruDarkTheme({
   );
   return createYaruTheme(
     colorScheme: colorScheme,
-    dividerColor: kDividerColorDark,
+    dividerColor: colorScheme.isHighContrast ? null : kDividerColorDark,
     elevatedButtonColor: elevatedButtonColor,
     elevatedButtonTextColor: elevatedButtonTextColor,
     useMaterial3: useMaterial3,
