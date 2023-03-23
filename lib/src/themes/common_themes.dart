@@ -627,7 +627,7 @@ NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
   );
 }
 
-extension on ColorScheme {
+extension YaruColorSchemeX on ColorScheme {
   bool get isDark => brightness == Brightness.dark;
   bool get isLight => brightness == Brightness.light;
   bool get isHighContrast => [Colors.black, Colors.white].contains(primary);
