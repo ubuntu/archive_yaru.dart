@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.6.2
+
+* Revert "updated with new fonts (#324)" (#330)
+
 # 0.6.1
 
 * export colorscheme extension for convenience (#327)
