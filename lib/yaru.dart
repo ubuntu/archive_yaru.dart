@@ -1,5 +1,6 @@
 library yaru;
 
+export 'package:yaru/src/colors.dart';
 export 'package:yaru/src/themes/common_themes.dart';
 export 'package:yaru/src/themes/extensions.dart';
 export 'package:yaru/src/themes/high_contrast.dart';

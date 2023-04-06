@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yaru_colors/yaru_colors.dart';
+import 'package:yaru/src/colors.dart';
 import 'package:yaru/src/themes/kubuntu.dart';
 import 'package:yaru/src/themes/lubuntu.dart';
 import 'package:yaru/src/themes/ubuntu_budgie.dart';
@@ -54,7 +54,7 @@ enum YaruVariant {
   const YaruVariant(this.color);
 
   /// The primary color of the variant.
-  final MaterialColor color;
+  final Color color;
 
   /// A light theme for the variant.
   ThemeData get theme => _yaruLightThemes[this]!;

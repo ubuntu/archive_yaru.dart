@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yaru_colors/yaru_colors.dart';
+import 'package:yaru/src/colors.dart';
 
 /// Yaru-specific theming extensions.
 extension YaruThemeDataExtension on ThemeData {
