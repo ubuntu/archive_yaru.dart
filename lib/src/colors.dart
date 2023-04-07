@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Available Yaru color palettes.
+/// Available Yaru colors.
 class YaruColors {
   YaruColors._();
 
