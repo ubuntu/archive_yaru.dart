@@ -17,9 +17,11 @@ class YaruColors {
   static const Color warmGrey = Color(0xFFAEA79F);
 
   /// Cool Grey
+  ///
   /// For typography, particularly body copy. Black can be quite harsh in
   /// combination with aubergine, but grey delivers more balance while still
   /// being legible.
+  ///
   /// Cool grey can also be used within charts and diagrams.
   static const Color coolGrey = Color(0xFF333333);
 
