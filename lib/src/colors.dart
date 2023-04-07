@@ -43,7 +43,7 @@ class YaruColors {
   static const Color inkstone = Color(0xFF3B3B3B);
 
   /// Jet
-  static const Color jet = Color(0xFF1E1E1E);
+  static const Color jet = Color(0xFF2B2B2B);
 
   /// Light title bar
   static const Color titleBarLight = Color(0xFFEBEBEB);
