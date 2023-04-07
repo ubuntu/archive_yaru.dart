@@ -8,11 +8,12 @@ class YaruColors {
   static const Color orange = Color(0xFFE95420);
 
   /// Warm Grey
+  ///
   /// For balance. The addition of warm grey softens the combination of orange
   /// and aubergine and provides a bridge between the two.
+  ///
   /// Warm grey can be used for; backgrounds, graphics, dot patterns, charts and
   /// diagrams. It can also be used for large size text.
-
   static const Color warmGrey = Color(0xFFAEA79F);
 
   /// Cool Grey
