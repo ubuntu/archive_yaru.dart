@@ -1,4 +1,4 @@
-import 'package:yaru_colors/yaru_colors.dart';
+import 'package:yaru/src/colors.dart';
 import 'package:yaru/src/themes/common_themes.dart';
 
 const _primaryColor = YaruColors.orange;
@@ -18,7 +18,7 @@ final yaruSageLight = createYaruLightTheme(
 );
 
 final yaruSageDark = createYaruDarkTheme(
-  primaryColor: YaruColors.sage.shade500,
+  primaryColor: YaruColors.sage,
 );
 
 final yaruPrussianGreenLight = createYaruLightTheme(
@@ -42,7 +42,7 @@ final yaruBarkLight = createYaruLightTheme(
 );
 
 final yaruBarkDark = createYaruDarkTheme(
-  primaryColor: YaruColors.bark.shade500,
+  primaryColor: YaruColors.bark,
 );
 
 final yaruViridianLight = createYaruLightTheme(

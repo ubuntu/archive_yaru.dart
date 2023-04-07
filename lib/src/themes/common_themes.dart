@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:yaru/src/colors.dart';
 import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/themes/constants.dart';
 import 'package:yaru/src/themes/page_transitions.dart';
-import 'package:yaru_colors/yaru_colors.dart';
 
 const kDividerColorDark = Color.fromARGB(255, 65, 65, 65);
 const kDividerColorLight = Color(0xffdcdcdc);
