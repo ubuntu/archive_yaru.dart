@@ -26,6 +26,7 @@ class YaruColors {
   static const Color coolGrey = Color(0xFF333333);
 
   /// Text Grey
+  ///
   /// Text grey is used for small size headings, sub-headings and body copy text
   /// only.
   static const Color textGrey = Color(0xFF111111);
