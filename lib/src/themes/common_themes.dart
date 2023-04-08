@@ -356,7 +356,7 @@ SliderThemeData _createSliderTheme(ColorScheme colorScheme) {
   return SliderThemeData(
     thumbColor: Colors.white,
     overlayShape: const RoundSliderOverlayShape(
-      overlayRadius: 14,
+      overlayRadius: 13,
     ),
     overlayColor: colorScheme.primary.withOpacity(0.4),
     thumbShape: const RoundSliderThumbShape(elevation: 3.0),
