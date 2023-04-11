@@ -315,6 +315,9 @@ TabBarTheme _createTabBarTheme(ColorScheme colorScheme, Color dividerColor) {
         : Colors.white.withOpacity(0.8),
     indicatorColor: colorScheme.primary,
     dividerColor: dividerColor,
+    overlayColor: MaterialStateColor.resolveWith(
+      (states) => colorScheme.onSurface.withOpacity(0.05),
+    ),
   );
 }
 
