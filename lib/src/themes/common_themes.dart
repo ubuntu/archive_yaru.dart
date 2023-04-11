@@ -358,7 +358,8 @@ SliderThemeData _createSliderTheme(ColorScheme colorScheme) {
     overlayShape: const RoundSliderOverlayShape(
       overlayRadius: 13,
     ),
-    overlayColor: colorScheme.primary.withOpacity(0.4),
+    overlayColor:
+        colorScheme.primary.withOpacity(colorScheme.isLight ? 0.4 : 0.7),
     thumbShape: const RoundSliderThumbShape(elevation: 3.0),
     inactiveTrackColor: colorScheme.onSurface.withOpacity(0.3),
   );
