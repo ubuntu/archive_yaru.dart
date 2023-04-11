@@ -355,6 +355,19 @@ FloatingActionButtonThemeData _getFloatingActionButtonThemeData(
   );
 }
 
+SliderThemeData _createSliderTheme(ColorScheme colorScheme) {
+  return SliderThemeData(
+    thumbColor: Colors.white,
+    overlayShape: const RoundSliderOverlayShape(
+      overlayRadius: 13,
+    ),
+    overlayColor:
+        colorScheme.primary.withOpacity(colorScheme.isLight ? 0.4 : 0.7),
+    thumbShape: const RoundSliderThumbShape(elevation: 3.0),
+    inactiveTrackColor: colorScheme.onSurface.withOpacity(0.3),
+  );
+}
+
 /// Helper function to create a new Yaru theme
 ThemeData createYaruTheme({
   required ColorScheme colorScheme,
@@ -434,6 +447,7 @@ ThemeData createYaruTheme({
       mainAxisMargin: 3.0,
       crossAxisMargin: 3.0,
     ),
+    sliderTheme: _createSliderTheme(colorScheme),
   );
 }
 
