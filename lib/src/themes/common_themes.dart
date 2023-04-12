@@ -107,7 +107,7 @@ final _buttonThemeData = ButtonThemeData(
   ),
 );
 
-OutlinedButtonThemeData _createOutlinedButtonThemeData(
+OutlinedButtonThemeData _createOutlinedButtonTheme(
   ColorScheme colorScheme,
 ) {
   return OutlinedButtonThemeData(
@@ -127,7 +127,7 @@ OutlinedButtonThemeData _createOutlinedButtonThemeData(
   );
 }
 
-TextButtonThemeData _createTextButtonThemeData(
+TextButtonThemeData _createTextButtonTheme(
   ColorScheme colorScheme,
 ) {
   return TextButtonThemeData(
@@ -142,7 +142,7 @@ TextButtonThemeData _createTextButtonThemeData(
   );
 }
 
-ElevatedButtonThemeData _getElevatedButtonThemeData({
+ElevatedButtonThemeData _createElevatedButtonTheme({
   required Color color,
   required ColorScheme colorScheme,
   Color? textColor,
@@ -164,7 +164,7 @@ ElevatedButtonThemeData _getElevatedButtonThemeData({
   );
 }
 
-FilledButtonThemeData _createFilledButtonThemeData(
+FilledButtonThemeData _createFilledButtonTheme(
   ColorScheme colorScheme,
 ) {
   return FilledButtonThemeData(
@@ -223,7 +223,7 @@ DialogTheme _createDialogTheme(ColorScheme colorScheme) {
 
 // Switches
 
-SwitchThemeData _getSwitchThemeData(ColorScheme colorScheme) {
+SwitchThemeData _createSwitchTheme(ColorScheme colorScheme) {
   return SwitchThemeData(
     thumbColor: MaterialStateProperty.resolveWith(
       (states) => _getSwitchThumbColor(states, colorScheme),
@@ -286,7 +286,7 @@ Color _getCheckColor(Set<MaterialState> states, ColorScheme colorScheme) {
   return YaruColors.warmGrey;
 }
 
-CheckboxThemeData _getCheckBoxThemeData(ColorScheme colorScheme) {
+CheckboxThemeData _createCheckBoxTheme(ColorScheme colorScheme) {
   return CheckboxThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(kCheckRadius),
@@ -300,7 +300,7 @@ CheckboxThemeData _getCheckBoxThemeData(ColorScheme colorScheme) {
   );
 }
 
-RadioThemeData _getRadioThemeData(ColorScheme colorScheme) {
+RadioThemeData _createRadioTheme(ColorScheme colorScheme) {
   return RadioThemeData(
     fillColor: MaterialStateProperty.resolveWith(
       (states) => _getCheckFillColor(states, colorScheme),
@@ -331,7 +331,7 @@ ProgressIndicatorThemeData _createProgressIndicatorTheme(
   );
 }
 
-FloatingActionButtonThemeData _getFloatingActionButtonThemeData(
+FloatingActionButtonThemeData _createFloatingActionButtonTheme(
   ColorScheme colorScheme, [
   Color? buttonColor,
 ]) {
@@ -407,23 +407,23 @@ ThemeData createYaruTheme({
     indicatorColor: colorScheme.primary,
     applyElevationOverlayColor: colorScheme.isDark,
     buttonTheme: _buttonThemeData,
-    outlinedButtonTheme: _createOutlinedButtonThemeData(colorScheme),
-    elevatedButtonTheme: _getElevatedButtonThemeData(
+    outlinedButtonTheme: _createOutlinedButtonTheme(colorScheme),
+    elevatedButtonTheme: _createElevatedButtonTheme(
       color: elevatedButtonColor ?? colorScheme.primary,
       colorScheme: colorScheme,
       textColor: elevatedButtonTextColor,
     ),
-    filledButtonTheme: _createFilledButtonThemeData(
+    filledButtonTheme: _createFilledButtonTheme(
       colorScheme,
     ),
-    textButtonTheme: _createTextButtonThemeData(colorScheme),
-    switchTheme: _getSwitchThemeData(colorScheme),
-    checkboxTheme: _getCheckBoxThemeData(colorScheme),
-    radioTheme: _getRadioThemeData(colorScheme),
+    textButtonTheme: _createTextButtonTheme(colorScheme),
+    switchTheme: _createSwitchTheme(colorScheme),
+    checkboxTheme: _createCheckBoxTheme(colorScheme),
+    radioTheme: _createRadioTheme(colorScheme),
     primaryColorDark: colorScheme.isDark ? colorScheme.primary : null,
     appBarTheme: _createAppBarTheme(colorScheme),
     floatingActionButtonTheme:
-        _getFloatingActionButtonThemeData(colorScheme, elevatedButtonColor),
+        _createFloatingActionButtonTheme(colorScheme, elevatedButtonColor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: colorScheme.primary,
       unselectedItemColor: colorScheme.onSurface.withOpacity(0.8),
