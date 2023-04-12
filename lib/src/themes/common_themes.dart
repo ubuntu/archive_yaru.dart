@@ -368,6 +368,109 @@ SliderThemeData _createSliderTheme(ColorScheme colorScheme) {
   );
 }
 
+Color contrastColor(Color color) => ThemeData.estimateBrightnessForColor(
+          color,
+        ) ==
+        Brightness.light
+    ? Colors.black
+    : Colors.white;
+
+PopupMenuThemeData _createPopupMenuTheme(ColorScheme colorScheme) {
+  final bgColor =
+      colorScheme.isDark ? colorScheme.surfaceVariant : colorScheme.surface;
+  return PopupMenuThemeData(
+    color: bgColor,
+    surfaceTintColor: bgColor,
+    shape: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(
+        color: colorScheme.isHighContrast
+            ? colorScheme.outlineVariant
+            : colorScheme.onSurface.withOpacity(
+                colorScheme.isLight ? 0.3 : 0.2,
+              ),
+        width: 1,
+      ),
+    ),
+  );
+}
+
+MenuStyle _createMenuStyle(ColorScheme colorScheme) {
+  final bgColor =
+      colorScheme.isDark ? colorScheme.surfaceVariant : colorScheme.surface;
+  return MenuStyle(
+    surfaceTintColor: MaterialStateColor.resolveWith((states) => bgColor),
+    shape: MaterialStateProperty.resolveWith(
+      (states) => RoundedRectangleBorder(
+        side: BorderSide(
+          color: colorScheme.isHighContrast
+              ? colorScheme.outlineVariant
+              : colorScheme.onSurface.withOpacity(
+                  colorScheme.isLight ? 0.3 : 0.2,
+                ),
+          width: 1,
+        ),
+        borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+    side: MaterialStateBorderSide.resolveWith(
+      (states) => BorderSide(
+        color: colorScheme.isHighContrast
+            ? colorScheme.outlineVariant
+            : colorScheme.onSurface.withOpacity(
+                colorScheme.isLight ? 0.3 : 0.2,
+              ),
+        width: 1,
+      ),
+    ),
+    elevation: MaterialStateProperty.resolveWith((states) => 1),
+    backgroundColor: MaterialStateProperty.resolveWith((states) => bgColor),
+  );
+}
+
+MenuThemeData _createMenuTheme(ColorScheme colorScheme) {
+  return MenuThemeData(
+    style: _createMenuStyle(colorScheme),
+  );
+}
+
+DropdownMenuThemeData _createDropdownMenuTheme(ColorScheme colorScheme) {
+  return DropdownMenuThemeData(
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
+    menuStyle: _createMenuStyle(colorScheme),
+  );
+}
+
+NavigationBarThemeData _createNavigationBarTheme(ColorScheme colorScheme) {
+  return NavigationBarThemeData(
+    backgroundColor: colorScheme.surface,
+    surfaceTintColor: colorScheme.surface,
+    indicatorColor: colorScheme.onSurface.withOpacity(0.1),
+    iconTheme: MaterialStateProperty.resolveWith(
+      (states) => states.contains(MaterialState.selected)
+          ? IconThemeData(color: colorScheme.onSurface)
+          : IconThemeData(color: colorScheme.onSurface.withOpacity(0.8)),
+    ),
+  );
+}
+
+NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
+  return NavigationRailThemeData(
+    backgroundColor: colorScheme.surface,
+    indicatorColor: colorScheme.onSurface.withOpacity(0.1),
+    selectedIconTheme: IconThemeData(color: colorScheme.onSurface),
+    unselectedIconTheme: IconThemeData(
+      color: colorScheme.onSurface.withOpacity(0.8),
+    ),
+  );
+}
+
+extension YaruColorSchemeX on ColorScheme {
+  bool get isDark => brightness == Brightness.dark;
+  bool get isLight => brightness == Brightness.light;
+  bool get isHighContrast => [Colors.black, Colors.white].contains(primary);
+}
+
 /// Helper function to create a new Yaru theme
 ThemeData createYaruTheme({
   required ColorScheme colorScheme,
@@ -433,7 +536,7 @@ ThemeData createYaruTheme({
     textSelectionTheme: _createTextSelectionTheme(colorScheme),
     dropdownMenuTheme: _createDropdownMenuTheme(colorScheme),
     menuTheme: _createMenuTheme(colorScheme),
-    popupMenuTheme: _createPopupMenuThemeData(colorScheme),
+    popupMenuTheme: _createPopupMenuTheme(colorScheme),
     tooltipTheme: _tooltipThemeData,
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
     navigationBarTheme: _createNavigationBarTheme(colorScheme),
@@ -545,107 +648,4 @@ ThemeData createYaruDarkTheme({
     elevatedButtonTextColor: elevatedButtonTextColor,
     useMaterial3: useMaterial3,
   );
-}
-
-Color contrastColor(Color color) => ThemeData.estimateBrightnessForColor(
-          color,
-        ) ==
-        Brightness.light
-    ? Colors.black
-    : Colors.white;
-
-PopupMenuThemeData _createPopupMenuThemeData(ColorScheme colorScheme) {
-  final bgColor =
-      colorScheme.isDark ? colorScheme.surfaceVariant : colorScheme.surface;
-  return PopupMenuThemeData(
-    color: bgColor,
-    surfaceTintColor: bgColor,
-    shape: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(
-        color: colorScheme.isHighContrast
-            ? colorScheme.outlineVariant
-            : colorScheme.onSurface.withOpacity(
-                colorScheme.isLight ? 0.3 : 0.2,
-              ),
-        width: 1,
-      ),
-    ),
-  );
-}
-
-MenuStyle _createMenuStyle(ColorScheme colorScheme) {
-  final bgColor =
-      colorScheme.isDark ? colorScheme.surfaceVariant : colorScheme.surface;
-  return MenuStyle(
-    surfaceTintColor: MaterialStateColor.resolveWith((states) => bgColor),
-    shape: MaterialStateProperty.resolveWith(
-      (states) => RoundedRectangleBorder(
-        side: BorderSide(
-          color: colorScheme.isHighContrast
-              ? colorScheme.outlineVariant
-              : colorScheme.onSurface.withOpacity(
-                  colorScheme.isLight ? 0.3 : 0.2,
-                ),
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(8),
-      ),
-    ),
-    side: MaterialStateBorderSide.resolveWith(
-      (states) => BorderSide(
-        color: colorScheme.isHighContrast
-            ? colorScheme.outlineVariant
-            : colorScheme.onSurface.withOpacity(
-                colorScheme.isLight ? 0.3 : 0.2,
-              ),
-        width: 1,
-      ),
-    ),
-    elevation: MaterialStateProperty.resolveWith((states) => 1),
-    backgroundColor: MaterialStateProperty.resolveWith((states) => bgColor),
-  );
-}
-
-MenuThemeData _createMenuTheme(ColorScheme colorScheme) {
-  return MenuThemeData(
-    style: _createMenuStyle(colorScheme),
-  );
-}
-
-DropdownMenuThemeData _createDropdownMenuTheme(ColorScheme colorScheme) {
-  return DropdownMenuThemeData(
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
-    menuStyle: _createMenuStyle(colorScheme),
-  );
-}
-
-NavigationBarThemeData _createNavigationBarTheme(ColorScheme colorScheme) {
-  return NavigationBarThemeData(
-    backgroundColor: colorScheme.surface,
-    surfaceTintColor: colorScheme.surface,
-    indicatorColor: colorScheme.onSurface.withOpacity(0.1),
-    iconTheme: MaterialStateProperty.resolveWith(
-      (states) => states.contains(MaterialState.selected)
-          ? IconThemeData(color: colorScheme.onSurface)
-          : IconThemeData(color: colorScheme.onSurface.withOpacity(0.8)),
-    ),
-  );
-}
-
-NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
-  return NavigationRailThemeData(
-    backgroundColor: colorScheme.surface,
-    indicatorColor: colorScheme.onSurface.withOpacity(0.1),
-    selectedIconTheme: IconThemeData(color: colorScheme.onSurface),
-    unselectedIconTheme: IconThemeData(
-      color: colorScheme.onSurface.withOpacity(0.8),
-    ),
-  );
-}
-
-extension YaruColorSchemeX on ColorScheme {
-  bool get isDark => brightness == Brightness.dark;
-  bool get isLight => brightness == Brightness.light;
-  bool get isHighContrast => [Colors.black, Colors.white].contains(primary);
 }
