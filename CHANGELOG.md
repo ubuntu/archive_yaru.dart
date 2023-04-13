@@ -1,5 +1,14 @@
 # Changelog
 
+# 0.7.0
+
+* Transfer colors (back) to yaru.dart by @Feichtmeier (#333)
+* Add a slider theme, more similar to yaru gnome by @Feichtmeier (#335)
+* TabBarTheme: grey overlay color by @Feichtmeier (#334)
+* Align some theme function names to _createXXX by @Feichtmeier (#336)
+* Move createYaruXXX functions to bottom of the file by @Feichtmeier (#337)
+* updated with new fonts by @elioqoshi (#324)
+
 # 0.6.2
 
 * Revert "updated with new fonts (#324)" (#330)
