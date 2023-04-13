@@ -7,6 +7,7 @@
 * TabBarTheme: grey overlay color by @Feichtmeier (#334)
 * Align some theme function names to _createXXX by @Feichtmeier (#336)
 * Move createYaruXXX functions to bottom of the file by @Feichtmeier (#337)
+* updated with new fonts by @elioqoshi (#324)
 
 # 0.6.2
 
