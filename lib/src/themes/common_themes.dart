@@ -468,9 +468,10 @@ NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
 DrawerThemeData _createDrawerTheme(ColorScheme colorScheme) {
   return DrawerThemeData(
     shape: RoundedRectangleBorder(
-      borderRadius: const BorderRadius.only(
-          topRight: Radius.circular(kWindowRadius),
-          bottomRight: Radius.circular(kWindowRadius)),
+      borderRadius: const BorderRadiusDirectional.only(
+        topEnd: Radius.circular(kWindowRadius),
+        bottomEnd: Radius.circular(kWindowRadius),
+      ),
       side: BorderSide(
         color: colorScheme.isLight ? Colors.transparent : kDividerColorDark,
       ),
