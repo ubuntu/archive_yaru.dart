@@ -35,9 +35,19 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final theme = YaruTheme.of(context);
+
+    void selectIndex(int index) {
+      setState(() => _selectedIndex = index);
+      Navigator.of(context).pop();
+    }
+
     return Scaffold(
+      drawer: _Drawer(
+        selectedIndex: _selectedIndex,
+        selectIndex: selectIndex,
+      ),
       appBar: AppBar(
-        leading: SizedBox(
+        title: SizedBox(
           width: 50,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -203,6 +213,45 @@ class HomePageState extends State<HomePage> {
             );
           }
         },
+      ),
+    );
+  }
+}
+
+class _Drawer extends StatelessWidget {
+  const _Drawer({
+    required int selectedIndex,
+    required this.selectIndex,
+  }) : _selectedIndex = selectedIndex;
+
+  final int _selectedIndex;
+  final Function(int index) selectIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    final map = <String, IconData>{
+      'Fonts': Icons.font_download,
+      'Controls': Icons.radio_button_checked,
+      'Text Fields': Icons.text_fields,
+      'Palette': Icons.palette,
+      'Containers': Icons.square_outlined,
+    };
+
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          const DrawerHeader(
+            child: Text('Drawer Header'),
+          ),
+          for (int i = 0; i < map.length; i++)
+            ListTile(
+              selected: _selectedIndex == i,
+              leading: Icon(map.entries.elementAt(i).value),
+              title: Text(map.entries.elementAt(i).key),
+              onTap: () => selectIndex(i),
+            ),
+        ],
       ),
     );
   }
