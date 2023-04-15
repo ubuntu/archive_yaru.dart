@@ -465,6 +465,21 @@ NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
   );
 }
 
+DrawerThemeData _createDrawerTheme(ColorScheme colorScheme) {
+  return DrawerThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: const BorderRadiusDirectional.only(
+        topEnd: Radius.circular(kWindowRadius),
+        bottomEnd: Radius.circular(kWindowRadius),
+      ),
+      side: BorderSide(
+        color: colorScheme.isLight ? Colors.transparent : kDividerColorDark,
+      ),
+    ),
+    backgroundColor: colorScheme.background,
+  );
+}
+
 extension YaruColorSchemeX on ColorScheme {
   bool get isDark => brightness == Brightness.dark;
   bool get isLight => brightness == Brightness.light;
@@ -551,6 +566,10 @@ ThemeData createYaruTheme({
       crossAxisMargin: 3.0,
     ),
     sliderTheme: _createSliderTheme(colorScheme),
+    drawerTheme: _createDrawerTheme(colorScheme),
+    listTileTheme: ListTileThemeData(
+      iconColor: colorScheme.onSurface.withOpacity(0.8),
+    ),
   );
 }
 
