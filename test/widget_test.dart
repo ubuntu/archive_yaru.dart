@@ -214,7 +214,6 @@ extension ThemeTester on WidgetTester {
       MaterialApp(
         key: ValueKey(data),
         home: YaruTheme(
-          child: Container(),
           data: data,
           platform: FakePlatform(
             operatingSystem: Platform.linux,
@@ -224,6 +223,7 @@ extension ThemeTester on WidgetTester {
             },
           ),
           settings: settings,
+          child: Container(),
         ),
       ),
     );
