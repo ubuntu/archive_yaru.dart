@@ -17,6 +17,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
+        flutter-version: '3.7.x'
 
     - name: Get dependencies
       run: flutter pub get
@@ -32,6 +33,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
+        flutter-version: '3.7.x'
 
     - name: Get dependencies
       run: flutter pub get
@@ -51,6 +53,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
+        flutter-version: '3.7.x'
 
     - name: Check for any formatting issues
       run: flutter format --set-exit-if-changed .
@@ -63,6 +66,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
+        flutter-version: '3.7.x'
 
     - name: Get dependencies
       run: flutter pub get
@@ -78,6 +82,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         channel: 'stable'
+        flutter-version: '3.7.x'
 
     - name: Get dependencies
       run: flutter pub get
