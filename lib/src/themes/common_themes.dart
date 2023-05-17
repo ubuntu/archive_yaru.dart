@@ -114,20 +114,18 @@ OutlinedButtonThemeData _createOutlinedButtonTheme(
   ColorScheme colorScheme,
 ) {
   return OutlinedButtonThemeData(
-    style: _commonButtonStyle.merge(
-      OutlinedButton.styleFrom(
-        side: BorderSide(
-          color: colorScheme.isHighContrast
-              ? colorScheme.outlineVariant
-              : colorScheme.outline,
-        ),
-        // backgroundColor: colorScheme.surface, // defaults to transparent
-        foregroundColor: colorScheme.onSurface,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kButtonRadius),
-        ),
+    style: OutlinedButton.styleFrom(
+      side: BorderSide(
+        color: colorScheme.isHighContrast
+            ? colorScheme.outlineVariant
+            : colorScheme.outline,
       ),
-    ),
+      // backgroundColor: colorScheme.surface, // defaults to transparent
+      foregroundColor: colorScheme.onSurface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kButtonRadius),
+      ),
+    ).merge(_commonButtonStyle),
   );
 }
 
@@ -135,15 +133,13 @@ TextButtonThemeData _createTextButtonTheme(
   ColorScheme colorScheme,
 ) {
   return TextButtonThemeData(
-    style: _commonButtonStyle.merge(
-      TextButton.styleFrom(
-        iconColor: colorScheme.primary,
-        foregroundColor: colorScheme.primary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kButtonRadius),
-        ),
+    style: TextButton.styleFrom(
+      iconColor: colorScheme.primary,
+      foregroundColor: colorScheme.primary,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kButtonRadius),
       ),
-    ),
+    ).merge(_commonButtonStyle),
   );
 }
 
@@ -153,20 +149,18 @@ ElevatedButtonThemeData _createElevatedButtonTheme({
   Color? textColor,
 }) {
   return ElevatedButtonThemeData(
-    style: _commonButtonStyle.merge(
-      ElevatedButton.styleFrom(
-        backgroundColor: color,
-        foregroundColor: textColor ?? contrastColor(color),
-        elevation: 0,
-        shadowColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          side: colorScheme.isHighContrast
-              ? BorderSide(color: colorScheme.outlineVariant)
-              : BorderSide.none,
-          borderRadius: BorderRadius.circular(kButtonRadius),
-        ),
+    style: ElevatedButton.styleFrom(
+      backgroundColor: color,
+      foregroundColor: textColor ?? contrastColor(color),
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        side: colorScheme.isHighContrast
+            ? BorderSide(color: colorScheme.outlineVariant)
+            : BorderSide.none,
+        borderRadius: BorderRadius.circular(kButtonRadius),
       ),
-    ),
+    ).merge(_commonButtonStyle),
   );
 }
 
@@ -174,22 +168,20 @@ FilledButtonThemeData _createFilledButtonTheme(
   ColorScheme colorScheme,
 ) {
   return FilledButtonThemeData(
-    style: _commonButtonStyle.merge(
-      FilledButton.styleFrom(
-        disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
-        backgroundColor: colorScheme.onSurface.withOpacity(0.1),
-        surfaceTintColor: colorScheme.onSurface.withOpacity(0.1),
-        foregroundColor: colorScheme.onSurface,
-        elevation: 0,
-        shadowColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          side: colorScheme.isHighContrast
-              ? BorderSide(color: colorScheme.outlineVariant)
-              : BorderSide.none,
-          borderRadius: BorderRadius.circular(kButtonRadius),
-        ),
+    style: FilledButton.styleFrom(
+      disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
+      backgroundColor: colorScheme.onSurface.withOpacity(0.1),
+      surfaceTintColor: colorScheme.onSurface.withOpacity(0.1),
+      foregroundColor: colorScheme.onSurface,
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        side: colorScheme.isHighContrast
+            ? BorderSide(color: colorScheme.outlineVariant)
+            : BorderSide.none,
+        borderRadius: BorderRadius.circular(kButtonRadius),
       ),
-    ),
+    ).merge(_commonButtonStyle),
   );
 }
 
