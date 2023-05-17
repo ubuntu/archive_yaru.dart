@@ -99,7 +99,10 @@ const _tooltipThemeData = TooltipThemeData(
 
 // Buttons
 
-const _commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
+const _commonButtonStyle = ButtonStyle(
+  visualDensity: VisualDensity.standard,
+  padding: MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 16)),
+);
 
 final _buttonThemeData = ButtonThemeData(
   shape: RoundedRectangleBorder(
@@ -111,19 +114,19 @@ OutlinedButtonThemeData _createOutlinedButtonTheme(
   ColorScheme colorScheme,
 ) {
   return OutlinedButtonThemeData(
-    style: OutlinedButton.styleFrom(
-      side: BorderSide(
-        color: colorScheme.isHighContrast
-            ? colorScheme.outlineVariant
-            : colorScheme.outline,
+    style: _commonButtonStyle.merge(
+      OutlinedButton.styleFrom(
+        side: BorderSide(
+          color: colorScheme.isHighContrast
+              ? colorScheme.outlineVariant
+              : colorScheme.outline,
+        ),
+        // backgroundColor: colorScheme.surface, // defaults to transparent
+        foregroundColor: colorScheme.onSurface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(kButtonRadius),
+        ),
       ),
-      visualDensity: _commonButtonStyle.visualDensity,
-      // backgroundColor: colorScheme.surface, // defaults to transparent
-      foregroundColor: colorScheme.onSurface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(kButtonRadius),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
     ),
   );
 }
@@ -132,14 +135,14 @@ TextButtonThemeData _createTextButtonTheme(
   ColorScheme colorScheme,
 ) {
   return TextButtonThemeData(
-    style: TextButton.styleFrom(
-      iconColor: colorScheme.primary,
-      foregroundColor: colorScheme.primary,
-      visualDensity: _commonButtonStyle.visualDensity,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(kButtonRadius),
+    style: _commonButtonStyle.merge(
+      TextButton.styleFrom(
+        iconColor: colorScheme.primary,
+        foregroundColor: colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(kButtonRadius),
+        ),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
     ),
   );
 }
@@ -150,19 +153,19 @@ ElevatedButtonThemeData _createElevatedButtonTheme({
   Color? textColor,
 }) {
   return ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: color,
-      foregroundColor: textColor ?? contrastColor(color),
-      visualDensity: _commonButtonStyle.visualDensity,
-      elevation: 0,
-      shadowColor: Colors.transparent,
-      shape: RoundedRectangleBorder(
-        side: colorScheme.isHighContrast
-            ? BorderSide(color: colorScheme.outlineVariant)
-            : BorderSide.none,
-        borderRadius: BorderRadius.circular(kButtonRadius),
+    style: _commonButtonStyle.merge(
+      ElevatedButton.styleFrom(
+        backgroundColor: color,
+        foregroundColor: textColor ?? contrastColor(color),
+        elevation: 0,
+        shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          side: colorScheme.isHighContrast
+              ? BorderSide(color: colorScheme.outlineVariant)
+              : BorderSide.none,
+          borderRadius: BorderRadius.circular(kButtonRadius),
+        ),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
     ),
   );
 }
@@ -171,21 +174,21 @@ FilledButtonThemeData _createFilledButtonTheme(
   ColorScheme colorScheme,
 ) {
   return FilledButtonThemeData(
-    style: FilledButton.styleFrom(
-      disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
-      backgroundColor: colorScheme.onSurface.withOpacity(0.1),
-      surfaceTintColor: colorScheme.onSurface.withOpacity(0.1),
-      foregroundColor: colorScheme.onSurface,
-      visualDensity: _commonButtonStyle.visualDensity,
-      elevation: 0,
-      shadowColor: Colors.transparent,
-      shape: RoundedRectangleBorder(
-        side: colorScheme.isHighContrast
-            ? BorderSide(color: colorScheme.outlineVariant)
-            : BorderSide.none,
-        borderRadius: BorderRadius.circular(kButtonRadius),
+    style: _commonButtonStyle.merge(
+      FilledButton.styleFrom(
+        disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
+        backgroundColor: colorScheme.onSurface.withOpacity(0.1),
+        surfaceTintColor: colorScheme.onSurface.withOpacity(0.1),
+        foregroundColor: colorScheme.onSurface,
+        elevation: 0,
+        shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          side: colorScheme.isHighContrast
+              ? BorderSide(color: colorScheme.outlineVariant)
+              : BorderSide.none,
+          borderRadius: BorderRadius.circular(kButtonRadius),
+        ),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
     ),
   );
 }
