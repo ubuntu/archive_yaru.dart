@@ -123,6 +123,7 @@ OutlinedButtonThemeData _createOutlinedButtonTheme(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
     ),
   );
 }
@@ -138,6 +139,7 @@ TextButtonThemeData _createTextButtonTheme(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
     ),
   );
 }
@@ -160,6 +162,7 @@ ElevatedButtonThemeData _createElevatedButtonTheme({
             : BorderSide.none,
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
     ),
   );
 }
@@ -182,6 +185,7 @@ FilledButtonThemeData _createFilledButtonTheme(
             : BorderSide.none,
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
     ),
   );
 }
