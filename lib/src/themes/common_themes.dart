@@ -99,7 +99,10 @@ const _tooltipThemeData = TooltipThemeData(
 
 // Buttons
 
-const _commonButtonStyle = ButtonStyle(visualDensity: VisualDensity.standard);
+const _commonButtonStyle = ButtonStyle(
+  visualDensity: VisualDensity.standard,
+  padding: MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 16)),
+);
 
 final _buttonThemeData = ButtonThemeData(
   shape: RoundedRectangleBorder(
@@ -117,13 +120,12 @@ OutlinedButtonThemeData _createOutlinedButtonTheme(
             ? colorScheme.outlineVariant
             : colorScheme.outline,
       ),
-      visualDensity: _commonButtonStyle.visualDensity,
       // backgroundColor: colorScheme.surface, // defaults to transparent
       foregroundColor: colorScheme.onSurface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
-    ),
+    ).merge(_commonButtonStyle),
   );
 }
 
@@ -134,11 +136,10 @@ TextButtonThemeData _createTextButtonTheme(
     style: TextButton.styleFrom(
       iconColor: colorScheme.primary,
       foregroundColor: colorScheme.primary,
-      visualDensity: _commonButtonStyle.visualDensity,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
-    ),
+    ).merge(_commonButtonStyle),
   );
 }
 
@@ -151,7 +152,6 @@ ElevatedButtonThemeData _createElevatedButtonTheme({
     style: ElevatedButton.styleFrom(
       backgroundColor: color,
       foregroundColor: textColor ?? contrastColor(color),
-      visualDensity: _commonButtonStyle.visualDensity,
       elevation: 0,
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
@@ -160,7 +160,7 @@ ElevatedButtonThemeData _createElevatedButtonTheme({
             : BorderSide.none,
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
-    ),
+    ).merge(_commonButtonStyle),
   );
 }
 
@@ -173,7 +173,6 @@ FilledButtonThemeData _createFilledButtonTheme(
       backgroundColor: colorScheme.onSurface.withOpacity(0.1),
       surfaceTintColor: colorScheme.onSurface.withOpacity(0.1),
       foregroundColor: colorScheme.onSurface,
-      visualDensity: _commonButtonStyle.visualDensity,
       elevation: 0,
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
@@ -182,7 +181,7 @@ FilledButtonThemeData _createFilledButtonTheme(
             : BorderSide.none,
         borderRadius: BorderRadius.circular(kButtonRadius),
       ),
-    ),
+    ).merge(_commonButtonStyle),
   );
 }
 

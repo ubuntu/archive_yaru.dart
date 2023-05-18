@@ -227,10 +227,10 @@ class _ControlsViewState extends State<ControlsView>
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
+                    const Padding(
+                      padding: EdgeInsets.all(12.0),
                       child: Row(
-                        children: const [
+                        children: [
                           DropdownMenu(
                             dropdownMenuEntries: [
                               DropdownMenuEntry(value: 1, label: '1'),
@@ -407,8 +407,8 @@ class _ControlsViewState extends State<ControlsView>
                         const Text('No'),
                       ],
                     ),
-                    Row(
-                      children: const <Widget>[
+                    const Row(
+                      children: <Widget>[
                         Switch(
                           value: true,
                           onChanged: null,
@@ -416,8 +416,8 @@ class _ControlsViewState extends State<ControlsView>
                         Text('Disabled Yes'),
                       ],
                     ),
-                    Row(
-                      children: const <Widget>[
+                    const Row(
+                      children: <Widget>[
                         Switch(
                           value: false,
                           onChanged: null,
@@ -428,17 +428,17 @@ class _ControlsViewState extends State<ControlsView>
                   ],
                 ),
               ),
-              Column(
+              const Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(18.0),
+                    padding: EdgeInsets.all(18.0),
                     child: Row(
-                      children: const [
+                      children: [
                         CircularProgressIndicator(),
                       ],
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(18.0),
                     child: LinearProgressIndicator(),
                   ),

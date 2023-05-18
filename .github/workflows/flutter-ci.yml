@@ -53,7 +53,7 @@ jobs:
         channel: 'stable'
 
     - name: Check for any formatting issues
-      run: flutter format --set-exit-if-changed .
+      run: dart format --set-exit-if-changed .
 
   pub:
     runs-on: ubuntu-20.04
