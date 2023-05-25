@@ -224,6 +224,9 @@ DialogTheme _createDialogTheme(ColorScheme colorScheme) {
 
 SwitchThemeData _createSwitchTheme(ColorScheme colorScheme) {
   return SwitchThemeData(
+    trackOutlineColor: MaterialStateColor.resolveWith(
+      (states) => Colors.transparent,
+    ),
     thumbColor: MaterialStateProperty.resolveWith(
       (states) => _getSwitchThumbColor(states, colorScheme),
     ),
@@ -240,22 +243,25 @@ Color _getSwitchThumbColor(Set<MaterialState> states, ColorScheme colorScheme) {
     }
     return colorScheme.onSurface.withOpacity(0.5);
   } else {
-    if (states.contains(MaterialState.selected)) {
-      return colorScheme.onPrimary;
-    } else {
-      return colorScheme.onSurface.withOpacity(0.7);
-    }
+    return colorScheme.onPrimary;
   }
 }
 
 Color _getSwitchTrackColor(Set<MaterialState> states, ColorScheme colorScheme) {
+  final uncheckedColor = colorScheme.onSurface.withOpacity(.25);
+  final disabledUncheckedColor = colorScheme.onSurface.withOpacity(.15);
+  final disabledCheckedColor = colorScheme.onSurface.withOpacity(.18);
+
   if (states.contains(MaterialState.disabled)) {
-    return colorScheme.onSurface.withOpacity(0.15);
+    if (states.contains(MaterialState.selected)) {
+      return disabledCheckedColor;
+    }
+    return disabledUncheckedColor;
   } else {
     if (states.contains(MaterialState.selected)) {
       return colorScheme.primary;
     } else {
-      return colorScheme.outline;
+      return uncheckedColor;
     }
   }
 }
