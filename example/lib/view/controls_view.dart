@@ -169,7 +169,8 @@ class _ControlsViewState extends State<ControlsView>
                           children: [
                             ToggleButtons(
                               isSelected: _toggleButtons,
-                              onPressed: (v) => updateBoolList(_toggleButtons, v),
+                              onPressed: (v) =>
+                                  updateBoolList(_toggleButtons, v),
                               children: [
                                 for (final v in _toggleButtons)
                                   Text(v ? 'On' : 'Off'),
