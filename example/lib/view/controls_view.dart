@@ -12,6 +12,18 @@ class _ControlsViewState extends State<ControlsView>
   late TabController tabController;
   int _counter = 0;
 
+  final List<bool> _toggleButtons = [true, false, false];
+  int _dropdownIndex = 1;
+
+  void updateBoolList(List<bool> arr, int index) {
+    if (index < 0 || index > arr.length) return;
+    setState(() {
+      for (int i = 0; i < arr.length; i++) {
+        arr[i] = i == index;
+      }
+    });
+  }
+
   void incrementCounter() {
     setState(() {
       _counter++;
@@ -156,21 +168,20 @@ class _ControlsViewState extends State<ControlsView>
                         child: Row(
                           children: [
                             ToggleButtons(
-                              isSelected: const [true, false, false],
-                              onPressed: (v) {},
-                              children: const [
-                                Text('Yes'),
-                                Text('No'),
-                                Text('No')
+                              isSelected: _toggleButtons,
+                              onPressed: (v) => updateBoolList(_toggleButtons, v),
+                              children: [
+                                for (bool v in _toggleButtons)
+                                  Text(v ? 'On' : 'Off'),
                               ],
                             ),
                             const SizedBox(width: 15),
                             ToggleButtons(
                               isSelected: const [true, false, false],
                               children: const [
-                                Text('Yes'),
-                                Text('No'),
-                                Text('No')
+                                Text('Off'),
+                                Text('Off'),
+                                Text('Off')
                               ],
                             ),
                           ],
@@ -207,20 +218,24 @@ class _ControlsViewState extends State<ControlsView>
                       child: Row(
                         children: <Widget>[
                           DropdownButton<int>(
-                            onChanged: (value) {},
-                            value: 1,
+                            onChanged: (v) {
+                              setState(() {
+                                _dropdownIndex = v ?? 1;
+                              });
+                            },
+                            value: _dropdownIndex,
                             items: const <DropdownMenuItem<int>>[
                               DropdownMenuItem(
                                 value: 1,
-                                child: Text('One'),
+                                child: Text(' One '),
                               ),
                               DropdownMenuItem(
                                 value: 2,
-                                child: Text('Two'),
+                                child: Text(' Two '),
                               ),
                               DropdownMenuItem(
                                 value: 3,
-                                child: Text('Three'),
+                                child: Text(' Three '),
                               ),
                             ],
                           ),
@@ -232,6 +247,7 @@ class _ControlsViewState extends State<ControlsView>
                       child: Row(
                         children: [
                           DropdownMenu(
+                            label: Text('Label'),
                             dropdownMenuEntries: [
                               DropdownMenuEntry(value: 1, label: '1'),
                               DropdownMenuEntry(value: 2, label: '2'),
