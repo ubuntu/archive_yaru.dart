@@ -171,7 +171,7 @@ class _ControlsViewState extends State<ControlsView>
                               isSelected: _toggleButtons,
                               onPressed: (v) => updateBoolList(_toggleButtons, v),
                               children: [
-                                for (bool v in _toggleButtons)
+                                for (final v in _toggleButtons)
                                   Text(v ? 'On' : 'Off'),
                               ],
                             ),
@@ -246,6 +246,16 @@ class _ControlsViewState extends State<ControlsView>
                       padding: EdgeInsets.all(12.0),
                       child: Row(
                         children: [
+                          DropdownMenu(
+                            dropdownMenuEntries: [
+                              DropdownMenuEntry(value: 1, label: '1'),
+                              DropdownMenuEntry(value: 2, label: '2'),
+                              DropdownMenuEntry(value: 3, label: '3')
+                            ],
+                          ),
+                          SizedBox(
+                            width: 12,
+                          ),
                           DropdownMenu(
                             label: Text('Label'),
                             dropdownMenuEntries: [
