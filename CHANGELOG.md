@@ -1,5 +1,13 @@
 # Changelog
 
+# 0.8.0
+
+* feat: Adapt SwitchTheme to yaru gnome by @Feichtmeier (#345) 
+* ci: pin flutter version at 3.10.x by @jpnurmi (#344) 
+* Import YaruColorExtension from yaru_colors.dart by @jpnurmi (#341)
+* Migrate to Flutter 3.10 & Dart 3.0 by @jpnurmi (#342) 
+* Add a DrawerTheme and ListTileTheme by @Feichtmeier (#340)
+
 # 0.7.0
 
 * Transfer colors (back) to yaru.dart by @Feichtmeier (#333)
