@@ -55,6 +55,12 @@ class YaruColors {
   /// Dark title bar
   static const Color titleBarDark = Color(0xFF303030);
 
+  /// Light link
+  static const Color linkLight = Color(0xFF0094FF); // YaruColors.blue[500]
+
+  /// Dark link
+  static const Color linkDark = Color(0xFF0073E5); // YaruColors.blue[700]
+
   /// Olive
   static const Color olive = Color(0xFF4B8501);
 

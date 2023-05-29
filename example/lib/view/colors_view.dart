@@ -208,6 +208,7 @@ class ColorsView extends StatelessWidget {
           children: [
             _colorContainer('success', theme.colorScheme.success),
             _colorContainer('warning', theme.colorScheme.warning),
+            _colorContainer('link', theme.colorScheme.link),
           ],
         ),
       ],
