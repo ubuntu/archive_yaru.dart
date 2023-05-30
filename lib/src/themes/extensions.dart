@@ -19,7 +19,8 @@ extension YaruColorSchemeExtension on ColorScheme {
   bool get isLight => brightness == Brightness.light;
 
   /// Whether the primary color is either black or white.
-  bool get isHighContrast => [Colors.black, Colors.white].contains(primary);
+  bool get isHighContrast =>
+      const [Colors.black, Colors.white].contains(primary);
 
   /// A color to indicate success e.g. for text input validation.
   ///
