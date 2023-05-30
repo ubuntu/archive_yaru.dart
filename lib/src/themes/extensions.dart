@@ -12,6 +12,15 @@ extension YaruThemeDataExtension on ThemeData {
 
 /// Yaru-specific color scheme extensions.
 extension YaruColorSchemeExtension on ColorScheme {
+  /// Whether the brightness is dark.
+  bool get isDark => brightness == Brightness.dark;
+
+  /// Whether the brightness is light.
+  bool get isLight => brightness == Brightness.light;
+
+  /// Whether the primary color is either black or white.
+  bool get isHighContrast => [Colors.black, Colors.white].contains(primary);
+
   /// A color to indicate success e.g. for text input validation.
   ///
   /// ```dart
