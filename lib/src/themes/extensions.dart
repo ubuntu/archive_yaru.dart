@@ -4,10 +4,10 @@ import 'package:yaru/src/colors.dart';
 @Deprecated('Use YaruColorSchemeExtension instead.')
 extension YaruThemeDataExtension on ThemeData {
   @Deprecated('Use ColorScheme.success instead.')
-  Color get successColor => YaruColors.success;
+  Color get successColor => colorScheme.success;
 
   @Deprecated('Use ColorScheme.warning instead.')
-  Color get warningColor => YaruColors.warning;
+  Color get warningColor => colorScheme.warning;
 }
 
 /// Yaru-specific color scheme extensions.
