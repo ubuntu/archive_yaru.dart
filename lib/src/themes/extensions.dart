@@ -43,4 +43,22 @@ extension YaruColorSchemeExtension on ColorScheme {
   /// See also:
   ///  * [ColorScheme.error]
   Color get warning => YaruColors.warning;
+
+  /// A color for presenting links.
+  ///
+  /// ```dart
+  /// Theme.of(context).colorScheme.link
+  /// ```
+  Color get link => brightness == Brightness.light
+      ? YaruColors.linkDark
+      : YaruColors.linkLight;
+
+  /// A color for presenting links on [inverseSurface].
+  ///
+  /// ```dart
+  /// Theme.of(context).colorScheme.inverseLink
+  /// ```
+  Color get inverseLink => brightness == Brightness.light
+      ? YaruColors.linkLight
+      : YaruColors.linkDark;
 }
