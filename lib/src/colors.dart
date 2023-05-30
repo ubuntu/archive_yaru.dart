@@ -31,8 +31,14 @@ class YaruColors {
   /// only.
   static const Color textGrey = Color(0xFF111111);
 
-  /// Error
+  @Deprecated('Use errorLight or errorDark instead.')
   static const Color error = Color(0xFFff0000);
+
+  /// Light error
+  static const Color errorLight = Color(0xFFE86581); // YaruColors.red[300]
+
+  /// Dark error
+  static const Color errorDark = Color(0xFFB52A4A); // YaruColors.red[700]
 
   /// Warning
   static const Color warning = Color(0xFFf99b11);
