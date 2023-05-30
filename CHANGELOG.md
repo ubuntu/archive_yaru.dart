@@ -1,5 +1,12 @@
 # Changelog
 
+# 0.8.1
+
+* feat: deprecate YaruThemeDataExtension in favor of YaruColorSchemeExtension by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/349
+* feat: add YaruColorSchemeExtension.link and .inverseLink by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/348
+* Added interactions for ToggleButtons & DropdownButtons by @PietroTambu in https://github.com/ubuntu/yaru.dart/pull/347
+* feat: theme-specific error colors by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/350
+
 # 0.8.0
 
 * feat: Adapt SwitchTheme to yaru gnome by @Feichtmeier (#345) 
