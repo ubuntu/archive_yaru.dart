@@ -193,6 +193,23 @@ class ColorsView extends StatelessWidget {
             _colorContainer('xubuntuBlue', YaruColors.xubuntuBlue),
           ],
         ),
+        const _SpacedDivider(),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20, left: 5),
+          child: Text(
+            'Extension Colors',
+            style: headlineStyle,
+          ),
+        ),
+        GridView(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: _gridDelegate,
+          children: [
+            _colorContainer('success', theme.colorScheme.success),
+            _colorContainer('warning', theme.colorScheme.warning),
+          ],
+        ),
       ],
     );
   }

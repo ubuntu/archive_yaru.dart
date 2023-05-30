@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:yaru/src/colors.dart';
 import 'package:yaru/src/text/text_theme.dart';
 import 'package:yaru/src/themes/constants.dart';
+import 'package:yaru/src/themes/extensions.dart';
 import 'package:yaru/src/themes/page_transitions.dart';
 
 const kDividerColorDark = Color.fromARGB(255, 65, 65, 65);
@@ -483,12 +484,6 @@ DrawerThemeData _createDrawerTheme(ColorScheme colorScheme) {
     ),
     backgroundColor: colorScheme.background,
   );
-}
-
-extension YaruColorSchemeX on ColorScheme {
-  bool get isDark => brightness == Brightness.dark;
-  bool get isLight => brightness == Brightness.light;
-  bool get isHighContrast => [Colors.black, Colors.white].contains(primary);
 }
 
 /// Helper function to create a new Yaru theme
