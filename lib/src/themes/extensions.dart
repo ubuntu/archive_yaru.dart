@@ -30,7 +30,7 @@ extension YaruColorSchemeExtension on ColorScheme {
   ///
   /// See also:
   ///  * [ColorScheme.error]
-  Color get success => YaruColors.success;
+  Color get success => YaruColorScheme.from(brightness).success;
 
   /// A color to indicate warnings.
   ///
@@ -42,23 +42,24 @@ extension YaruColorSchemeExtension on ColorScheme {
   ///
   /// See also:
   ///  * [ColorScheme.error]
-  Color get warning => YaruColors.warning;
+  Color get warning => YaruColorScheme.from(brightness).warning;
 
   /// A color for presenting links.
   ///
   /// ```dart
   /// Theme.of(context).colorScheme.link
   /// ```
-  Color get link => brightness == Brightness.light
-      ? YaruColors.linkDark
-      : YaruColors.linkLight;
+  Color get link => YaruColorScheme.from(brightness).link;
 
   /// A color for presenting links on [inverseSurface].
   ///
   /// ```dart
   /// Theme.of(context).colorScheme.inverseLink
   /// ```
-  Color get inverseLink => brightness == Brightness.light
-      ? YaruColors.linkLight
-      : YaruColors.linkDark;
+  Color get inverseLink => YaruColorScheme.from(brightness.inverse).link;
+}
+
+extension on Brightness {
+  Brightness get inverse =>
+      this == Brightness.light ? Brightness.dark : Brightness.light;
 }

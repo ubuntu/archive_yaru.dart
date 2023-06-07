@@ -582,7 +582,7 @@ ThemeData createYaruLightTheme({
 }) {
   final colorScheme = ColorScheme.fromSeed(
     seedColor: primaryColor,
-    error: YaruColors.errorDark,
+    error: YaruColorScheme.light.error,
     onError: Colors.white,
     brightness: Brightness.light,
     primary: primaryColor,
@@ -631,7 +631,7 @@ ThemeData createYaruDarkTheme({
 }) {
   final colorScheme = ColorScheme.fromSeed(
     seedColor: primaryColor,
-    error: YaruColors.errorLight,
+    error: YaruColorScheme.dark.error,
     onError: Colors.white,
     brightness: Brightness.dark,
     primary: primaryColor,

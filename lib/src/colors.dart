@@ -31,19 +31,19 @@ class YaruColors {
   /// only.
   static const Color textGrey = Color(0xFF111111);
 
-  @Deprecated('Use errorLight or errorDark instead.')
+  @Deprecated('Use YaruColorScheme.error instead.')
   static const Color error = Color(0xFFff0000);
 
-  /// Light error
+  @Deprecated('Use YaruColorScheme.error instead.')
   static const Color errorLight = Color(0xFFE86581); // YaruColors.red[300]
 
-  /// Dark error
+  @Deprecated('Use YaruColorScheme.error instead.')
   static const Color errorDark = Color(0xFFB52A4A); // YaruColors.red[700]
 
-  /// Warning
+  @Deprecated('Use YaruColorScheme.warning instead.')
   static const Color warning = Color(0xFFf99b11);
 
-  /// Success
+  @Deprecated('Use YaruColorScheme.success instead.')
   static const Color success = Color(0xFF0e8420);
 
   /// Porcelain
@@ -61,10 +61,10 @@ class YaruColors {
   /// Dark title bar
   static const Color titleBarDark = Color(0xFF303030);
 
-  /// Light link
+  @Deprecated('Use YaruColorScheme.link instead.')
   static const Color linkLight = Color(0xFF0094FF); // YaruColors.blue[500]
 
-  /// Dark link
+  @Deprecated('Use YaruColorScheme.link instead.')
   static const Color linkDark = Color(0xFF0073E5); // YaruColors.blue[700]
 
   /// Olive
@@ -120,6 +120,58 @@ class YaruColors {
 
   /// Xubuntu Blue
   static const Color xubuntuBlue = Color(0xFF0044AA);
+}
+
+/// Yaru color scheme.
+class YaruColorScheme {
+  /// Creates a color scheme with the given colors.
+  const YaruColorScheme({
+    required this.error,
+    required this.success,
+    required this.warning,
+    required this.link,
+  });
+
+  /// Error color
+  final Color error;
+
+  /// Success color
+  final Color success;
+
+  /// Warning color
+  final Color warning;
+
+  /// Link color
+  final Color link;
+
+  /// Color scheme for a light theme.
+  static const light = YaruColorScheme(
+    error: Color(0xFFB52A4A), // YaruColors.red[700],
+    success: Color(0xFF0e8420),
+    warning: Color(0xFFf99b11),
+    link: Color(0xFF0073E5), // YaruColors.blue[700],
+  );
+
+  /// Color scheme for a dark theme.
+  static const dark = YaruColorScheme(
+    error: Color(0xFFE86581), // YaruColors.red[300]
+    success: Color(0xFF0e8420),
+    warning: Color(0xFFf99b11),
+    link: Color(0xFF0094FF), // YaruColors.blue[500]
+  );
+
+  /// Color scheme from the given [brightness].
+  factory YaruColorScheme.from(Brightness brightness) {
+    return switch (brightness) {
+      Brightness.light => YaruColorScheme.light,
+      Brightness.dark => YaruColorScheme.dark,
+    };
+  }
+
+  /// Color scheme for the given [context].
+  static YaruColorScheme of(BuildContext context) {
+    return YaruColorScheme.from(Theme.of(context).brightness);
+  }
 }
 
 /// Set of useful methods when working with [Color]
