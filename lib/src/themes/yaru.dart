@@ -5,12 +5,12 @@ const _primaryColor = YaruColors.orange;
 
 final yaruLight = createYaruLightTheme(
   primaryColor: _primaryColor,
-  elevatedButtonColor: YaruColorScheme.light.success,
+  elevatedButtonColor: YaruColors.light.success,
 );
 
 final yaruDark = createYaruDarkTheme(
   primaryColor: _primaryColor,
-  elevatedButtonColor: YaruColorScheme.dark.success,
+  elevatedButtonColor: YaruColors.dark.success,
 );
 
 final yaruSageLight = createYaruLightTheme(

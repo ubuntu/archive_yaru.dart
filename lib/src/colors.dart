@@ -2,7 +2,41 @@ import 'package:flutter/material.dart';
 
 /// Available Yaru colors.
 class YaruColors {
-  YaruColors._();
+  const YaruColors._({
+    required this.error,
+    required this.success,
+    required this.warning,
+    required this.link,
+  });
+
+  /// Colors derived from the given [brightness].
+  factory YaruColors.from(Brightness brightness) {
+    return switch (brightness) {
+      Brightness.light => YaruColors.light,
+      Brightness.dark => YaruColors.dark,
+    };
+  }
+
+  /// Colors for the given [context].
+  static YaruColors of(BuildContext context) {
+    return YaruColors.from(Theme.of(context).brightness);
+  }
+
+  /// Theme-specific colors for light themes.
+  static const light = YaruColors._(
+    error: Color(0xFFB52A4A), // YaruColors.red[700],
+    success: Color(0xFF0e8420),
+    warning: Color(0xFFf99b11),
+    link: Color(0xFF0073E5), // YaruColors.blue[700],
+  );
+
+  /// Theme-specific colors for dark themes.
+  static const dark = YaruColors._(
+    error: Color(0xFFE86581), // YaruColors.red[300]
+    success: Color(0xFF0e8420),
+    warning: Color(0xFFf99b11),
+    link: Color(0xFF0094FF), // YaruColors.blue[500]
+  );
 
   /// Ubuntu Orange
   static const Color orange = Color(0xFFE95420);
@@ -31,20 +65,20 @@ class YaruColors {
   /// only.
   static const Color textGrey = Color(0xFF111111);
 
-  @Deprecated('Use YaruColorScheme.error instead.')
-  static const Color error = Color(0xFFff0000);
+  /// Error
+  final Color error;
 
-  @Deprecated('Use YaruColorScheme.error instead.')
+  @Deprecated('Use YaruColors.dark.error instead.')
   static const Color errorLight = Color(0xFFE86581); // YaruColors.red[300]
 
-  @Deprecated('Use YaruColorScheme.error instead.')
+  @Deprecated('Use YaruColors.light.error instead.')
   static const Color errorDark = Color(0xFFB52A4A); // YaruColors.red[700]
 
-  @Deprecated('Use YaruColorScheme.warning instead.')
-  static const Color warning = Color(0xFFf99b11);
+  /// Warning
+  final Color warning;
 
-  @Deprecated('Use YaruColorScheme.success instead.')
-  static const Color success = Color(0xFF0e8420);
+  /// Success
+  final Color success;
 
   /// Porcelain
   static const Color porcelain = Color(0xFFFAFAFA);
@@ -61,10 +95,13 @@ class YaruColors {
   /// Dark title bar
   static const Color titleBarDark = Color(0xFF303030);
 
-  @Deprecated('Use YaruColorScheme.link instead.')
+  /// Link
+  final Color link;
+
+  @Deprecated('Use YaruColors.dark.link instead.')
   static const Color linkLight = Color(0xFF0094FF); // YaruColors.blue[500]
 
-  @Deprecated('Use YaruColorScheme.link instead.')
+  @Deprecated('Use YaruColors.light.link instead.')
   static const Color linkDark = Color(0xFF0073E5); // YaruColors.blue[700]
 
   /// Olive
@@ -120,58 +157,6 @@ class YaruColors {
 
   /// Xubuntu Blue
   static const Color xubuntuBlue = Color(0xFF0044AA);
-}
-
-/// Yaru color scheme.
-class YaruColorScheme {
-  /// Creates a color scheme with the given colors.
-  const YaruColorScheme({
-    required this.error,
-    required this.success,
-    required this.warning,
-    required this.link,
-  });
-
-  /// Error color
-  final Color error;
-
-  /// Success color
-  final Color success;
-
-  /// Warning color
-  final Color warning;
-
-  /// Link color
-  final Color link;
-
-  /// Color scheme for a light theme.
-  static const light = YaruColorScheme(
-    error: Color(0xFFB52A4A), // YaruColors.red[700],
-    success: Color(0xFF0e8420),
-    warning: Color(0xFFf99b11),
-    link: Color(0xFF0073E5), // YaruColors.blue[700],
-  );
-
-  /// Color scheme for a dark theme.
-  static const dark = YaruColorScheme(
-    error: Color(0xFFE86581), // YaruColors.red[300]
-    success: Color(0xFF0e8420),
-    warning: Color(0xFFf99b11),
-    link: Color(0xFF0094FF), // YaruColors.blue[500]
-  );
-
-  /// Color scheme from the given [brightness].
-  factory YaruColorScheme.from(Brightness brightness) {
-    return switch (brightness) {
-      Brightness.light => YaruColorScheme.light,
-      Brightness.dark => YaruColorScheme.dark,
-    };
-  }
-
-  /// Color scheme for the given [context].
-  static YaruColorScheme of(BuildContext context) {
-    return YaruColorScheme.from(Theme.of(context).brightness);
-  }
 }
 
 /// Set of useful methods when working with [Color]
