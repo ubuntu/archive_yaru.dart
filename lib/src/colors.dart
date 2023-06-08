@@ -2,7 +2,41 @@ import 'package:flutter/material.dart';
 
 /// Available Yaru colors.
 class YaruColors {
-  YaruColors._();
+  const YaruColors._({
+    required this.error,
+    required this.success,
+    required this.warning,
+    required this.link,
+  });
+
+  /// Colors derived from the given [brightness].
+  factory YaruColors.from(Brightness brightness) {
+    return switch (brightness) {
+      Brightness.light => YaruColors.light,
+      Brightness.dark => YaruColors.dark,
+    };
+  }
+
+  /// Colors for the given [context].
+  static YaruColors of(BuildContext context) {
+    return YaruColors.from(Theme.of(context).brightness);
+  }
+
+  /// Theme-specific colors for light themes.
+  static const light = YaruColors._(
+    error: Color(0xFFB52A4A), // YaruColors.red[700],
+    success: Color(0xFF0e8420),
+    warning: Color(0xFFf99b11),
+    link: Color(0xFF0073E5), // YaruColors.blue[700],
+  );
+
+  /// Theme-specific colors for dark themes.
+  static const dark = YaruColors._(
+    error: Color(0xFFE86581), // YaruColors.red[300]
+    success: Color(0xFF0e8420),
+    warning: Color(0xFFf99b11),
+    link: Color(0xFF0094FF), // YaruColors.blue[500]
+  );
 
   /// Ubuntu Orange
   static const Color orange = Color(0xFFE95420);
@@ -31,20 +65,20 @@ class YaruColors {
   /// only.
   static const Color textGrey = Color(0xFF111111);
 
-  @Deprecated('Use errorLight or errorDark instead.')
-  static const Color error = Color(0xFFff0000);
+  /// Error
+  final Color error;
 
-  /// Light error
+  @Deprecated('Use YaruColors.dark.error instead.')
   static const Color errorLight = Color(0xFFE86581); // YaruColors.red[300]
 
-  /// Dark error
+  @Deprecated('Use YaruColors.light.error instead.')
   static const Color errorDark = Color(0xFFB52A4A); // YaruColors.red[700]
 
   /// Warning
-  static const Color warning = Color(0xFFf99b11);
+  final Color warning;
 
   /// Success
-  static const Color success = Color(0xFF0e8420);
+  final Color success;
 
   /// Porcelain
   static const Color porcelain = Color(0xFFFAFAFA);
@@ -61,10 +95,13 @@ class YaruColors {
   /// Dark title bar
   static const Color titleBarDark = Color(0xFF303030);
 
-  /// Light link
+  /// Link
+  final Color link;
+
+  @Deprecated('Use YaruColors.dark.link instead.')
   static const Color linkLight = Color(0xFF0094FF); // YaruColors.blue[500]
 
-  /// Dark link
+  @Deprecated('Use YaruColors.light.link instead.')
   static const Color linkDark = Color(0xFF0073E5); // YaruColors.blue[700]
 
   /// Olive
