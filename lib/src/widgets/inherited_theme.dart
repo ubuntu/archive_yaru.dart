@@ -13,10 +13,12 @@ YaruVariant? _detectYaruVariant(Platform platform) {
       : null;
   if (desktop != null) {
     if (desktop.contains('BUDGIE')) return YaruVariant.ubuntuBudgieBlue;
+    if (desktop.contains('CINNAMON')) return YaruVariant.ubuntuCinnamonBrown;
     if (desktop.contains('GNOME')) return YaruVariant.orange;
     if (desktop.contains('KDE')) return YaruVariant.kubuntuBlue;
     if (desktop.contains('LXQT')) return YaruVariant.lubuntuBlue;
     if (desktop.contains('MATE')) return YaruVariant.ubuntuMateGreen;
+    if (desktop.contains('UNITY')) return YaruVariant.ubuntuUnityPurple;
     if (desktop.contains('XFCE')) return YaruVariant.xubuntuBlue;
   }
   return null;
