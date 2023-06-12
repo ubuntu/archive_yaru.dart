@@ -87,6 +87,14 @@ void main() {
       expect(YaruTheme.of(context).variant, YaruVariant.ubuntuBudgieBlue);
     });
 
+    testWidgets('cinnamon', (tester) async {
+      final settings = createMockSettings();
+      await tester.pumpTheme(desktop: 'X-Cinnamon', settings: settings);
+      await untilCalled(settings.getThemeName());
+      final context = tester.element(find.byType(Container));
+      expect(YaruTheme.of(context).variant, YaruVariant.ubuntuCinnamonBrown);
+    });
+
     testWidgets('ubuntu', (tester) async {
       final settings = createMockSettings();
       await tester.pumpTheme(desktop: 'GNOME:ubuntu', settings: settings);
@@ -117,6 +125,14 @@ void main() {
       await untilCalled(settings.getThemeName());
       final context = tester.element(find.byType(Container));
       expect(YaruTheme.of(context).variant, YaruVariant.ubuntuMateGreen);
+    });
+
+    testWidgets('unity', (tester) async {
+      final settings = createMockSettings();
+      await tester.pumpTheme(desktop: 'Unity', settings: settings);
+      await untilCalled(settings.getThemeName());
+      final context = tester.element(find.byType(Container));
+      expect(YaruTheme.of(context).variant, YaruVariant.ubuntuUnityPurple);
     });
 
     testWidgets('xubuntu', (tester) async {
