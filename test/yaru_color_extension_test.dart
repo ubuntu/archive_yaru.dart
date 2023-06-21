@@ -198,4 +198,8 @@ void main() {
       );
     });
   });
+
+  test('hex', () {
+    expect(const Color(0x12345678).toHex(), '#12345678');
+  });
 }
