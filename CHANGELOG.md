@@ -1,13 +1,13 @@
 # Changelog
 
-# 0.8.1
+## 0.8.1
 
 * feat: deprecate YaruThemeDataExtension in favor of YaruColorSchemeExtension by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/349
 * feat: add YaruColorSchemeExtension.link and .inverseLink by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/348
 * Added interactions for ToggleButtons & DropdownButtons by @PietroTambu in https://github.com/ubuntu/yaru.dart/pull/347
 * feat: theme-specific error colors by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/350
 
-# 0.8.0
+## 0.8.0
 
 * feat: Adapt SwitchTheme to yaru gnome by @Feichtmeier (#345) 
 * ci: pin flutter version at 3.10.x by @jpnurmi (#344) 
@@ -15,7 +15,7 @@
 * Migrate to Flutter 3.10 & Dart 3.0 by @jpnurmi (#342) 
 * Add a DrawerTheme and ListTileTheme by @Feichtmeier (#340)
 
-# 0.7.0
+## 0.7.0
 
 * Transfer colors (back) to yaru.dart by @Feichtmeier (#333)
 * Add a slider theme, more similar to yaru gnome by @Feichtmeier (#335)
@@ -24,27 +24,27 @@
 * Move createYaruXXX functions to bottom of the file by @Feichtmeier (#337)
 * updated with new fonts by @elioqoshi (#324)
 
-# 0.6.2
+## 0.6.2
 
 * Revert "updated with new fonts (#324)" (#330)
 
-# 0.6.1
+## 0.6.1
 
 * export colorscheme extension for convenience (#327)
 * fix high contrast divider color (#326)
 
-# 0.6.0
+## 0.6.0
 
 * Change FAB Color and shape by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/323
 * updated with new fonts by @elioqoshi in https://github.com/ubuntu/yaru.dart/pull/324
 
-# 0.5.8
+## 0.5.8
 
 * add high contrast borders (#319)
 * Use an extension for less verbose dark and light color scheme checks (#318)
 * Add scrollbar margin (#317)
 
-# 0.5.7
+## 0.5.7
 
 * Switch: use onPrimary for selected thumb to match primary track (#314)
 * Menus: use surface variant in dark theme, surface in light theme (#313)
@@ -55,41 +55,41 @@
 * Pass brightness to _createAppBarTheme() (#307)
 * Sync light and dark themes (#306)
 
-# 0.5.6
+## 0.5.6
 
 * TextTheme: add missing headlineLarge and labelMedium (#297)
 * Example: attempt to clarify the buttons (#296)
 * FilledButton proposal (#298)
 
-# 0.5.5
+## 0.5.5
 
 * Tone down outline borders (#292)
 
-# 0.5.4
+## 0.5.4
 
 * Use filled buttons with a grey fill and an outline (#288)
 * Separate outline and divider colors (#287)
 * Dark theme: lighten borders, darken input fills (#284)
 * FAB colors have too high contrast (#283)
 
-# 0.5.3
+## 0.5.3
 
 * Improve FAB style (#280)
 * pubspec.yaml: restore platform map (#276)
 * pubspec: add issue tracker link (#277)
 * Add missing flavors & update example (#279)
 
-# 0.5.2
+## 0.5.2
 
 * Relax Flutter version constraint to allow beta (#274)
 * Regenerate package metadata (#273)
 
-# 0.5.1
+## 0.5.1
 
 * Example fix inputs view not having a const constructor (#271)
 * Fix Light theme: surface and background got incorrectly switched in 0.5.0 (#270)
 
-# 0.5.0
+## 0.5.0
 
 * Fix button view
 * Fix secondary containers and chips (#264)
