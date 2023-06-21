@@ -256,4 +256,13 @@ extension YaruColorExtension on Color {
     return hslColor
         .withSaturation(hslColor.lightness == 0.0 ? 0.0 : hslColor.saturation);
   }
+
+  /// Returns a hex representation (`#AARRGGBB`) of the color.
+  String toHex() {
+    return '#${alpha.toHex()}${red.toHex()}${green.toHex()}${blue.toHex()}';
+  }
+}
+
+extension on int {
+  String toHex() => toRadixString(16).padLeft(2, '0');
 }
