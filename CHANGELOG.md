@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.9.0 (2023-06-28)
+
+## What's Changed
+* feat(colors)!: introduce theme-specific semantic colors by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/352
+* feat: auto-detect Cinnamon & Unity by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/353
+* feat: add YaruColorExtension.toHex() for passing colors to HTML by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/354
+* chore(changelog): fix formatting by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/356
+* ci: let release-please maintain the changelog by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/355
+* ci(release): temp override release-as 0.9.0 by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/358
+* feat: add static YaruVariant.accents by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/359
+* ci: exempt github-actions[bot] from the CLA check by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/360
+
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v0.8.1...v0.9.0
+
 ## 0.8.1
 
 * feat: deprecate YaruThemeDataExtension in favor of YaruColorSchemeExtension by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/349
