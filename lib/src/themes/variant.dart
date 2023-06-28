@@ -61,6 +61,20 @@ enum YaruVariant {
 
   /// A dark theme for the variant.
   ThemeData get darkTheme => _yaruDarkThemes[this]!;
+
+  /// The available accent color variants excluding Ubuntu flavors.
+  static const List<YaruVariant> accents = [
+    orange,
+    bark,
+    sage,
+    olive,
+    viridian,
+    prussianGreen,
+    blue,
+    purple,
+    magenta,
+    red,
+  ];
 }
 
 final _yaruLightThemes = <YaruVariant, ThemeData>{
