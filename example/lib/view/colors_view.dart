@@ -14,6 +14,7 @@ class ColorsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    Map<String, Color> colors = _getAllColors(theme);
 
     final headlineStyle = theme.textTheme.headlineMedium;
 
@@ -27,104 +28,18 @@ class ColorsView extends StatelessWidget {
             style: headlineStyle,
           ),
         ),
-        GridView(
+        GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: _gridDelegate,
-          children: [
-            _colorContainer(
-              'primaryColor',
-              theme.primaryColor,
-            ),
-            _colorContainer(
-              'primary',
-              theme.colorScheme.primary,
-            ),
-            _colorContainer(
-              'onPrimary',
-              theme.colorScheme.onPrimary,
-            ),
-            _colorContainer(
-              'onPrimaryContainer',
-              theme.colorScheme.onPrimaryContainer,
-            ),
-            _colorContainer(
-              'secondary',
-              theme.colorScheme.secondary,
-            ),
-            _colorContainer(
-              'onSecondary',
-              theme.colorScheme.onSecondary,
-            ),
-            _colorContainer(
-              'secondaryContainer',
-              theme.colorScheme.secondaryContainer,
-            ),
-            _colorContainer(
-              'onSecondaryContainer',
-              theme.colorScheme.onSecondaryContainer,
-            ),
-            _colorContainer(
-              'tertiary',
-              theme.colorScheme.tertiary,
-            ),
-            _colorContainer(
-              'onTertiary',
-              theme.colorScheme.onTertiary,
-            ),
-            _colorContainer(
-              'tertiaryContainer',
-              theme.colorScheme.tertiaryContainer,
-            ),
-            _colorContainer(
-              'onTertiaryContainer',
-              theme.colorScheme.onTertiaryContainer,
-            ),
-            _colorContainer(
-              'surface',
-              theme.colorScheme.surface,
-            ),
-            _colorContainer(
-              'surfaceTint',
-              theme.colorScheme.surfaceTint,
-            ),
-            _colorContainer(
-              'surfaceVariant',
-              theme.colorScheme.surfaceVariant,
-            ),
-            _colorContainer(
-              'background',
-              theme.colorScheme.background,
-            ),
-            _colorContainer(
-              'onBackground',
-              theme.colorScheme.onBackground,
-            ),
-            _colorContainer(
-              'inversePrimary',
-              theme.colorScheme.inversePrimary,
-            ),
-            _colorContainer(
-              'inverseSurface',
-              theme.colorScheme.inverseSurface,
-            ),
-            _colorContainer(
-              'error',
-              theme.colorScheme.error,
-            ),
-            _colorContainer(
-              'errorContainer',
-              theme.colorScheme.errorContainer,
-            ),
-            _colorContainer(
-              'onError',
-              theme.colorScheme.onError,
-            ),
-            _colorContainer(
-              'scrim',
-              theme.colorScheme.scrim,
-            ),
-          ],
+          itemCount: colors.length,
+          itemBuilder: (context, index) {
+            final e = colors.entries.elementAt(index);
+            return _colorContainer(
+              e.key,
+              e.value,
+            );
+          },
         ),
         const _SpacedDivider(),
         Padding(
@@ -243,4 +158,43 @@ class _SpacedDivider extends StatelessWidget {
       ),
     );
   }
+}
+
+Map<String, Color> _getAllColors(ThemeData theme) {
+  final s = theme.colorScheme;
+
+  final colors = <String, Color>{
+    'primaryColor': theme.primaryColor,
+    'primary': s.primary,
+    'onPrimary': s.onPrimary,
+    'primaryContainer': s.primaryContainer,
+    'onPrimaryContainer': s.onPrimaryContainer,
+    'secondary': s.secondary,
+    'onSecondary': s.onSecondary,
+    'secondaryContainer': s.secondaryContainer,
+    'onSecondaryContainer': s.onSecondaryContainer,
+    'tertiary': s.tertiary,
+    'onTertiary': s.onTertiary,
+    'tertiaryContainer': s.tertiaryContainer,
+    'onTertiaryContainer': s.onTertiaryContainer,
+    'error': s.error,
+    'onError': s.onError,
+    'errorContainer': s.errorContainer,
+    'onErrorContainer': s.onErrorContainer,
+    'outline': s.outline,
+    'outlineVariant': s.outlineVariant,
+    'background': s.background,
+    'onBackground': s.onBackground,
+    'surface': s.surface,
+    'onSurface': s.onSurface,
+    'surfaceVariant': s.surfaceVariant,
+    'onSurfaceVariant': s.onSurfaceVariant,
+    'inverseSurface': s.inverseSurface,
+    'onInverseSurface': s.onInverseSurface,
+    'inversePrimary': s.inversePrimary,
+    'shadow': s.shadow,
+    'scrim': s.scrim,
+    'surfaceTint': s.surfaceTint,
+  };
+  return colors;
 }
