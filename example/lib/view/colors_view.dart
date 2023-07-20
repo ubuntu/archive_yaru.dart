@@ -121,7 +121,7 @@ class ColorsView extends StatelessWidget {
             Text(
               backgroundColor
                   .toString()
-                  .replaceAll('Color(0xff', '#')
+                  .replaceAll('Color(0x', '#')
                   .replaceAll(')', ''),
               style: TextStyle(
                 color: foregroundColor ?? contrastColor(backgroundColor),
