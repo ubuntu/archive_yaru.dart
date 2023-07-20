@@ -14,217 +14,121 @@ class ColorsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
-    final headlineStyle = theme.textTheme.headlineMedium;
+    final accentColors = _getAccentColors(theme);
+    final baseColors = _getBaseColors(theme);
+    final specialColors = _getSpecialColors(theme);
+    final extensionColors = _getExtensionColors(theme);
 
     return ListView(
       padding: const EdgeInsets.all(15),
       children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20, left: 5),
-          child: Text(
-            'Theme Colors',
-            style: headlineStyle,
-          ),
+        ..._themeSection(
+          theme: theme,
+          colors: accentColors,
+          headline: 'Theme Accent Colors',
         ),
-        GridView(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: _gridDelegate,
-          children: [
-            _colorContainer(
-              'primaryColor',
-              theme.primaryColor,
-            ),
-            _colorContainer(
-              'primary',
-              theme.colorScheme.primary,
-            ),
-            _colorContainer(
-              'onPrimary',
-              theme.colorScheme.onPrimary,
-            ),
-            _colorContainer(
-              'onPrimaryContainer',
-              theme.colorScheme.onPrimaryContainer,
-            ),
-            _colorContainer(
-              'secondary',
-              theme.colorScheme.secondary,
-            ),
-            _colorContainer(
-              'onSecondary',
-              theme.colorScheme.onSecondary,
-            ),
-            _colorContainer(
-              'secondaryContainer',
-              theme.colorScheme.secondaryContainer,
-            ),
-            _colorContainer(
-              'onSecondaryContainer',
-              theme.colorScheme.onSecondaryContainer,
-            ),
-            _colorContainer(
-              'tertiary',
-              theme.colorScheme.tertiary,
-            ),
-            _colorContainer(
-              'onTertiary',
-              theme.colorScheme.onTertiary,
-            ),
-            _colorContainer(
-              'tertiaryContainer',
-              theme.colorScheme.tertiaryContainer,
-            ),
-            _colorContainer(
-              'onTertiaryContainer',
-              theme.colorScheme.onTertiaryContainer,
-            ),
-            _colorContainer(
-              'surface',
-              theme.colorScheme.surface,
-            ),
-            _colorContainer(
-              'surfaceTint',
-              theme.colorScheme.surfaceTint,
-            ),
-            _colorContainer(
-              'surfaceVariant',
-              theme.colorScheme.surfaceVariant,
-            ),
-            _colorContainer(
-              'background',
-              theme.colorScheme.background,
-            ),
-            _colorContainer(
-              'onBackground',
-              theme.colorScheme.onBackground,
-            ),
-            _colorContainer(
-              'inversePrimary',
-              theme.colorScheme.inversePrimary,
-            ),
-            _colorContainer(
-              'inverseSurface',
-              theme.colorScheme.inverseSurface,
-            ),
-            _colorContainer(
-              'error',
-              theme.colorScheme.error,
-            ),
-            _colorContainer(
-              'errorContainer',
-              theme.colorScheme.errorContainer,
-            ),
-            _colorContainer(
-              'onError',
-              theme.colorScheme.onError,
-            ),
-            _colorContainer(
-              'scrim',
-              theme.colorScheme.scrim,
-            ),
-          ],
+        ..._themeSection(
+          theme: theme,
+          colors: baseColors,
+          headline: 'Theme Base Colors',
         ),
-        const _SpacedDivider(),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20, left: 5),
-          child: Text(
-            'Accent Colors',
-            style: headlineStyle,
-          ),
+        ..._themeSection(
+          theme: theme,
+          colors: specialColors,
+          headline: 'Theme Special Colors',
         ),
-        GridView(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: _gridDelegate,
-          children: [
-            _colorContainer('orange', YaruColors.orange),
-            _colorContainer('olive', YaruColors.olive),
-            _colorContainer('viridian', YaruColors.viridian),
-            _colorContainer('purple', YaruColors.purple),
-            _colorContainer('red', YaruColors.red),
-            _colorContainer('blue', YaruColors.blue),
-            _colorContainer('magenta', YaruColors.magenta),
-            _colorContainer('sage', YaruColors.sage),
-            _colorContainer('prussianGreen', YaruColors.prussianGreen),
-            _colorContainer('bark', YaruColors.bark),
-          ],
+        ..._themeSection(
+          theme: theme,
+          colors: _getYaruPrimaryColors(theme),
+          headline: 'Primary Color Yaru Variations',
         ),
-        const _SpacedDivider(),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20, left: 5),
-          child: Text(
-            'Flavor Colors',
-            style: headlineStyle,
-          ),
+        ..._themeSection(
+          theme: theme,
+          colors: _getUbuntuFlavourColors(theme),
+          headline: 'Ubuntu Flavor Colors',
         ),
-        GridView(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: _gridDelegate,
-          children: [
-            _colorContainer('kubuntuBlue', YaruColors.kubuntuBlue),
-            _colorContainer('lubuntuBlue', YaruColors.lubuntuBlue),
-            _colorContainer(
-              'ubuntuBudgieBlue',
-              YaruColors.ubuntuBudgieBlue,
-            ),
-            _colorContainer(
-              'ubuntuButterflyPink',
-              YaruColors.ubuntuButterflyPink,
-            ),
-            _colorContainer(
-              'ubuntuCinnamonBrown',
-              YaruColors.ubuntuCinnamonBrown,
-            ),
-            _colorContainer(
-              'ubuntuMateGreen',
-              YaruColors.ubuntuMateGreen,
-            ),
-            _colorContainer(
-              'ubuntuStudioBlue',
-              YaruColors.ubuntuStudioBlue,
-            ),
-            _colorContainer(
-              'ubuntuUnityPurple',
-              YaruColors.ubuntuUnityPurple,
-            ),
-            _colorContainer('xubuntuBlue', YaruColors.xubuntuBlue),
-          ],
-        ),
-        const _SpacedDivider(),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 20, left: 5),
-          child: Text(
-            'Extension Colors',
-            style: headlineStyle,
-          ),
-        ),
-        GridView(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: _gridDelegate,
-          children: [
-            _colorContainer('success', theme.colorScheme.success),
-            _colorContainer('warning', theme.colorScheme.warning),
-            _colorContainer('link', theme.colorScheme.link),
-          ],
-        ),
+        ..._themeSection(
+          theme: theme,
+          colors: extensionColors,
+          headline: 'Extension Colors',
+        )
       ],
     );
   }
 
-  Widget _colorContainer(String colorName, Color color) {
-    return Container(
-      decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(6)),
-      child: Center(
+  List<Widget> _themeSection({
+    required ThemeData theme,
+    required Map<String, (Color, Color?)> colors,
+    required String headline,
+  }) {
+    final headlineStyle = theme.textTheme.headlineMedium;
+
+    return [
+      Padding(
+        padding: const EdgeInsets.only(bottom: 20, left: 5),
         child: Text(
-          colorName,
-          style: TextStyle(
-            color: contrastColor(color),
+          headline,
+          style: headlineStyle,
+        ),
+      ),
+      GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: _gridDelegate,
+        itemCount: colors.length,
+        itemBuilder: (context, index) {
+          final e = colors.entries.elementAt(index);
+          return _colorContainer(
+            e.key,
+            e.value.$1,
+            e.value.$2,
+          );
+        },
+      ),
+      const _SpacedDivider(),
+    ];
+  }
+
+  Widget _colorContainer(
+    String colorName,
+    Color backgroundColor, [
+    Color? foregroundColor,
+  ]) {
+    return Container(
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(6),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: const Offset(0, 1),
+            spreadRadius: 1,
+            blurRadius: 2,
           ),
+        ],
+      ),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              colorName,
+              style: TextStyle(
+                color: foregroundColor ?? contrastColor(backgroundColor),
+                fontSize: 11,
+              ),
+            ),
+            Text(
+              backgroundColor
+                  .toString()
+                  .replaceAll('Color(0x', '#')
+                  .replaceAll(')', ''),
+              style: TextStyle(
+                color: foregroundColor ?? contrastColor(backgroundColor),
+                fontSize: 8,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -243,4 +147,115 @@ class _SpacedDivider extends StatelessWidget {
       ),
     );
   }
+}
+
+Map<String, (Color, Color?)> _getSpecialColors(ThemeData theme) {
+  final s = theme.colorScheme;
+
+  final colors = <String, (Color, Color?)>{
+    'error': (s.error, s.onError),
+    'onError': (s.onError, null),
+    'shadow': (s.shadow, null),
+    'scrim': (s.scrim, null),
+  };
+  return colors;
+}
+
+Map<String, (Color, Color?)> _getAccentColors(ThemeData theme) {
+  final s = theme.colorScheme;
+
+  final colors = <String, (Color, Color?)>{
+    'primary': (s.primary, s.onPrimary),
+    'onPrimary': (s.onPrimary, null),
+    'inversePrimary': (s.inversePrimary, null),
+    'primaryContainer': (s.primaryContainer, s.onPrimaryContainer),
+    'onPrimaryContainer': (s.onPrimaryContainer, null),
+    'secondary': (s.secondary, s.onSecondary),
+    'onSecondary': (s.onSecondary, null),
+    'secondaryContainer': (s.secondaryContainer, s.onSecondaryContainer),
+    'onSecondaryContainer': (s.onSecondaryContainer, null),
+    'tertiary': (s.tertiary, s.onTertiary),
+    'onTertiary': (s.onTertiary, null),
+    'tertiaryContainer': (s.tertiaryContainer, s.onTertiaryContainer),
+    'onTertiaryContainer': (s.onTertiaryContainer, null),
+  };
+  return colors;
+}
+
+Map<String, (Color, Color?)> _getBaseColors(ThemeData theme) {
+  final s = theme.colorScheme;
+
+  final colors = <String, (Color, Color?)>{
+    'background': (s.background, s.onBackground),
+    'onBackground': (s.onBackground, null),
+    'surface': (s.surface, s.onSurface),
+    'onSurface': (s.onSurface, null),
+    'surfaceTint': (s.surfaceTint, null),
+    'surfaceVariant': (s.surfaceVariant, s.onSurfaceVariant),
+    'onSurfaceVariant': (s.onSurfaceVariant, null),
+    'inverseSurface': (s.inverseSurface, s.onInverseSurface),
+    'onInverseSurface': (s.onInverseSurface, null),
+  };
+  return colors;
+}
+
+Map<String, (Color, Color?)> _getYaruPrimaryColors(ThemeData theme) {
+  return {
+    'orange': (YaruColors.orange, theme.colorScheme.onPrimary),
+    'olive': (YaruColors.olive, theme.colorScheme.onPrimary),
+    'viridian': (YaruColors.viridian, theme.colorScheme.onPrimary),
+    'purple': (YaruColors.purple, theme.colorScheme.onPrimary),
+    'red': (YaruColors.red, theme.colorScheme.onPrimary),
+    'blue': (YaruColors.blue, theme.colorScheme.onPrimary),
+    'magenta': (YaruColors.magenta, theme.colorScheme.onPrimary),
+    'sage': (YaruColors.sage, theme.colorScheme.onPrimary),
+    'prussianGreen': (YaruColors.prussianGreen, theme.colorScheme.onPrimary),
+    'bark': (YaruColors.bark, theme.colorScheme.onPrimary),
+  };
+}
+
+Map<String, (Color, Color?)> _getUbuntuFlavourColors(ThemeData theme) {
+  return {
+    'kubuntuBlue': (YaruColors.kubuntuBlue, theme.colorScheme.onPrimary),
+    'lubuntuBlue': (YaruColors.lubuntuBlue, theme.colorScheme.onPrimary),
+    'ubuntuBudgieBlue': (
+      YaruColors.ubuntuBudgieBlue,
+      theme.colorScheme.onPrimary
+    ),
+    'ubuntuButterflyPink': (
+      YaruColors.ubuntuButterflyPink,
+      theme.colorScheme.onPrimary
+    ),
+    'ubuntuCinnamonBrown': (
+      YaruColors.ubuntuCinnamonBrown,
+      theme.colorScheme.onPrimary
+    ),
+    'ubuntuMateGreen': (
+      YaruColors.ubuntuMateGreen,
+      theme.colorScheme.onPrimary
+    ),
+    'ubuntuStudioBlue': (
+      YaruColors.ubuntuStudioBlue,
+      theme.colorScheme.onPrimary
+    ),
+    'ubuntuUnityPurple': (
+      YaruColors.ubuntuUnityPurple,
+      theme.colorScheme.onPrimary
+    ),
+    'xubuntuBlue': (YaruColors.xubuntuBlue, theme.colorScheme.onPrimary),
+  };
+}
+
+Map<String, (Color, Color)> _getExtensionColors(ThemeData theme) {
+  return {
+    'success': (
+      theme.colorScheme.success,
+      contrastColor(theme.colorScheme.success)
+    ),
+    'warning': (
+      theme.colorScheme.warning,
+      contrastColor(theme.colorScheme.warning)
+    ),
+    'link': (theme.colorScheme.link, contrastColor(theme.colorScheme.link)),
+  };
 }
