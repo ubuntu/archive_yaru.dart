@@ -23,9 +23,10 @@ class ColorsView extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       children: [
         ..._themeSection(
-            theme: theme,
-            colors: accentColors,
-            headline: 'Theme Accent Colors'),
+          theme: theme,
+          colors: accentColors,
+          headline: 'Theme Accent Colors',
+        ),
         ..._themeSection(
           theme: theme,
           colors: baseColors,
