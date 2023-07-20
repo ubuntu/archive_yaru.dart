@@ -108,11 +108,27 @@ class ColorsView extends StatelessWidget {
         ],
       ),
       child: Center(
-        child: Text(
-          colorName,
-          style: TextStyle(
-            color: foregroundColor ?? contrastColor(backgroundColor),
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              colorName,
+              style: TextStyle(
+                color: foregroundColor ?? contrastColor(backgroundColor),
+                fontSize: 11,
+              ),
+            ),
+            Text(
+              backgroundColor
+                  .toString()
+                  .replaceAll('Color(0xff', '#')
+                  .replaceAll(')', ''),
+              style: TextStyle(
+                color: foregroundColor ?? contrastColor(backgroundColor),
+                fontSize: 8,
+              ),
+            ),
+          ],
         ),
       ),
     );
