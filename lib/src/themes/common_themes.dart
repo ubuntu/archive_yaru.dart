@@ -102,7 +102,14 @@ const _tooltipThemeData = TooltipThemeData(
 
 const _commonButtonStyle = ButtonStyle(
   visualDensity: VisualDensity.standard,
-  padding: MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 16)),
+  padding: MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 0)),
+  maximumSize: MaterialStatePropertyAll(
+    Size(kButtonHeight, double.infinity),
+  ),
+  minimumSize: MaterialStatePropertyAll(
+    Size(kButtonHeight, kButtonHeight),
+  ),
+  iconSize: MaterialStatePropertyAll(kButtonIconsHeight),
 );
 
 final _buttonThemeData = ButtonThemeData(
@@ -188,6 +195,12 @@ FilledButtonThemeData _createFilledButtonTheme(
 
 ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
   return ToggleButtonsThemeData(
+    constraints: const BoxConstraints(
+      minHeight: kButtonHeight,
+      minWidth: kButtonHeight,
+      maxWidth: double.infinity,
+      maxHeight: kButtonHeight,
+    ),
     borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
     borderColor: colorScheme.isHighContrast
         ? colorScheme.outlineVariant

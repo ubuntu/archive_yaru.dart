@@ -163,30 +163,50 @@ class _ControlsViewState extends State<ControlsView>
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        height: 40,
-                        child: Row(
-                          children: [
-                            ToggleButtons(
-                              isSelected: _toggleButtons,
-                              onPressed: (v) =>
-                                  updateBoolList(_toggleButtons, v),
-                              children: [
-                                for (final v in _toggleButtons)
-                                  Text(v ? 'On' : 'Off'),
-                              ],
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 95,
+                            child: ElevatedButton.icon(
+                              onPressed: () {},
+                              label: const Text('Icon'),
+                              icon: const Icon(Icons.hearing_outlined),
                             ),
-                            const SizedBox(width: 15),
-                            ToggleButtons(
-                              isSelected: const [true, false, false],
-                              children: const [
-                                Text('Off'),
-                                Text('Off'),
-                                Text('Off')
-                              ],
+                          ),
+                          const SizedBox(width: 15),
+                          SizedBox(
+                            width: 95,
+                            child: ElevatedButton.icon(
+                              onPressed: null,
+                              label: const Text('Icon'),
+                              icon: const Icon(Icons.hearing_outlined),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          ToggleButtons(
+                            isSelected: _toggleButtons,
+                            onPressed: (v) => updateBoolList(_toggleButtons, v),
+                            children: [
+                              for (final v in _toggleButtons)
+                                Text(v ? 'On' : 'Off'),
+                            ],
+                          ),
+                          const SizedBox(width: 15),
+                          ToggleButtons(
+                            isSelected: const [true, false, false],
+                            children: const [
+                              Text('Off'),
+                              Text('Off'),
+                              Text('Off')
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                     Padding(
