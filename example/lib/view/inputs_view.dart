@@ -61,7 +61,6 @@ class _InputsViewState extends State<InputsView> {
                     size: 16,
                   ),
                 ),
-                prefixIconConstraints: BoxConstraints(minHeight: 100),
                 hintText: 'Awesome Textfield',
                 labelText: 'Awesome Textfield',
               ),
@@ -79,6 +78,8 @@ class _InputsViewState extends State<InputsView> {
           const TextField(
             decoration: InputDecoration(
               labelText: 'Username',
+              prefixText: 'My Cool Prefix: ',
+              suffixText: ' your nice Suffix',
             ),
           ),
           const SizedBox(height: 15),

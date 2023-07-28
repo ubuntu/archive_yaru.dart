@@ -43,6 +43,7 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
 InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
   final radius = BorderRadius.circular(kButtonRadius);
   const width = 1.0;
+  const strokeAlign = 0.0;
   final fill = colorScheme.isLight
       ? const Color(0xFFededed)
       : const Color.fromARGB(255, 40, 40, 40);
@@ -52,6 +53,14 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
   final disabledBorder = colorScheme.isLight
       ? const Color.fromARGB(255, 237, 237, 237)
       : const Color.fromARGB(255, 67, 67, 67);
+
+  const textStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    textBaseline: TextBaseline.alphabetic,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  );
+
   return InputDecorationTheme(
     filled: true,
     fillColor: fill,
@@ -67,23 +76,51 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
       borderRadius: radius,
     ),
     enabledBorder: OutlineInputBorder(
+      borderSide:
+          BorderSide(width: width, color: border, strokeAlign: strokeAlign),
+      borderRadius: radius,
+    ),
+    activeIndicatorBorder:
+        const BorderSide(width: width, strokeAlign: strokeAlign),
+    outlineBorder: const BorderSide(width: width, strokeAlign: strokeAlign),
+    focusedErrorBorder: OutlineInputBorder(
       borderSide: BorderSide(
         width: width,
-        color: border,
+        color: colorScheme.error,
+        strokeAlign: strokeAlign,
       ),
       borderRadius: radius,
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(width: width, color: colorScheme.error),
+      borderSide: BorderSide(
+        width: width,
+        color: colorScheme.error,
+        strokeAlign: strokeAlign,
+      ),
       borderRadius: radius,
     ),
     disabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(width: width, color: disabledBorder),
+      borderSide: BorderSide(
+        width: width,
+        color: disabledBorder,
+        strokeAlign: strokeAlign,
+      ),
       borderRadius: radius,
     ),
     isDense: true,
     iconColor: colorScheme.onSurface,
-    contentPadding: const EdgeInsets.all(12),
+    contentPadding:
+        const EdgeInsets.only(left: 12, right: 12, bottom: 9, top: 10),
+    constraints: const BoxConstraints(minHeight: 35, maxHeight: 60),
+    helperStyle: textStyle,
+    hintStyle: textStyle,
+    labelStyle: textStyle,
+    suffixStyle: textStyle.copyWith(
+      color: colorScheme.onSurface.scale(lightness: -0.2),
+    ),
+    prefixStyle: textStyle.copyWith(
+      color: colorScheme.onSurface.scale(lightness: -0.2),
+    ),
   );
 }
 
