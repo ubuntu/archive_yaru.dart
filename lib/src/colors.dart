@@ -89,6 +89,9 @@ class YaruColors {
   /// Jet
   static const Color jet = Color(0xFF2B2B2B);
 
+  /// Dark Jet
+  static const Color darkJet = Color(0xFF252525);
+
   /// Light title bar
   static const Color titleBarLight = Color(0xFFEBEBEB);
 

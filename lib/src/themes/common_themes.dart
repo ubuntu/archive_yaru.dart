@@ -204,7 +204,7 @@ ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
 
 DialogTheme _createDialogTheme(ColorScheme colorScheme) {
   final bgColor = colorScheme.brightness == Brightness.dark
-      ? YaruColors.jet
+      ? YaruColors.darkJet
       : YaruColors.porcelain;
   return DialogTheme(
     backgroundColor: bgColor,
@@ -645,7 +645,7 @@ ThemeData createYaruDarkTheme({
         elevatedButtonColor?.withOpacity(0.4) ?? primaryColor.withOpacity(0.4),
     onSecondaryContainer:
         highContrast ? Colors.white : (elevatedButtonTextColor ?? Colors.white),
-    background: YaruColors.jet,
+    background: YaruColors.darkJet,
     onBackground: YaruColors.porcelain,
     surface: YaruColors.jet,
     onSurface: YaruColors.porcelain,
