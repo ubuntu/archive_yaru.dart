@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.10.0 (2023-08-07)
+
+## What's Changed
+* chore: dependabot by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/362
+* ci: reuse pr title & release actions from ufc/actions by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/364
+* ci: specify FLUTTER_VERSION environment variable by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/366
+* chore(example): show all colorscheme colors by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/368
+* feat: make dark theme darker by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/373
+* fix: remove spacing for font styles by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/372
+* fix: update handy_window and use it correctly by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/374
+* fix: remove wrong flutter dir cmake manipulation by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/375
+
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v0.9.0...v0.10.0
+
 ## 0.9.0 (2023-06-28)
 
 ## What's Changed
