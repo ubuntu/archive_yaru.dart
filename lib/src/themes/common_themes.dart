@@ -24,7 +24,6 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
     ),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.surface,
-    toolbarHeight: kAppBarHeight,
     elevation: kAppBarElevation,
     systemOverlayStyle: colorScheme.isLight
         ? SystemUiOverlayStyle.light
