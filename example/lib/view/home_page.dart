@@ -47,26 +47,19 @@ class HomePageState extends State<HomePage> {
         selectIndex: selectIndex,
       ),
       appBar: AppBar(
-        title: SizedBox(
-          width: 50,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextButton(
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.all(0),
-                shape: const CircleBorder(),
-              ),
-              onPressed: () => AppTheme.apply(
-                context,
-                themeMode: theme.themeMode == ThemeMode.light
-                    ? ThemeMode.dark
-                    : ThemeMode.light,
-              ),
-              child: Icon(
-                theme.themeMode == ThemeMode.light
-                    ? Icons.dark_mode
-                    : Icons.light_mode,
-              ),
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: IconButton(
+            onPressed: () => AppTheme.apply(
+              context,
+              themeMode: theme.themeMode == ThemeMode.light
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
+            ),
+            icon: Icon(
+              theme.themeMode == ThemeMode.light
+                  ? Icons.dark_mode
+                  : Icons.light_mode,
             ),
           ),
         ),
