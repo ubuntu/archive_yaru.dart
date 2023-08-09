@@ -18,6 +18,7 @@ class _ButtonsState extends State<Buttons> {
 
   @override
   Widget build(BuildContext context) {
+    const icon = Icon(Icons.circle_notifications);
     final buttons = <(Widget, Widget)>[
       (
         TextButton(
@@ -58,6 +59,58 @@ class _ButtonsState extends State<Buttons> {
         const ElevatedButton(
           onPressed: null,
           child: Text('Elevated'),
+        ),
+      ),
+      (
+        ElevatedButton.icon(
+          icon: icon,
+          onPressed: () {},
+          label: const Text('Elevated'),
+        ),
+        ElevatedButton.icon(
+          icon: icon,
+          onPressed: null,
+          label: const Text('Elevated'),
+        ),
+      ),
+      (
+        IconButton.filled(
+          onPressed: () {},
+          icon: icon,
+        ),
+        const IconButton.filled(
+          onPressed: null,
+          icon: icon,
+        ),
+      ),
+      (
+        IconButton.outlined(
+          onPressed: () {},
+          icon: icon,
+        ),
+        const IconButton.outlined(
+          onPressed: null,
+          icon: icon,
+        ),
+      ),
+      (
+        IconButton.filledTonal(
+          onPressed: () {},
+          icon: icon,
+        ),
+        const IconButton.filledTonal(
+          onPressed: null,
+          icon: icon,
+        ),
+      ),
+      (
+        IconButton(
+          onPressed: () {},
+          icon: icon,
+        ),
+        const IconButton(
+          onPressed: null,
+          icon: icon,
         ),
       ),
     ];

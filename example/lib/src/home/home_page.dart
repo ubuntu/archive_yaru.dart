@@ -9,6 +9,8 @@ import 'package:yaru_example/src/controls/controls_view.dart';
 import 'package:yaru_example/src/fonts/fonts_view.dart';
 import 'package:yaru_example/src/textfields/text_fields_view.dart';
 
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -58,6 +60,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       drawer: _Drawer(
         selectedIndex: _selectedIndex,
         onSelected: (index) {
@@ -67,6 +70,12 @@ class HomePageState extends State<HomePage> {
         items: _items,
       ),
       appBar: AppBar(
+        leading: Center(
+          child: IconButton(
+            onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+            icon: const Icon(Icons.menu),
+          ),
+        ),
         title: const _Title(),
         actions: const [
           Padding(
