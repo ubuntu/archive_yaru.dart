@@ -9,39 +9,43 @@ class Progress extends StatefulWidget {
 }
 
 class _ProgressState extends State<Progress> {
-  var _elevation = 1.0;
+  var _level = 1.0;
+  final _width = 300.0;
   @override
   Widget build(BuildContext context) {
+    final children = [
+      SizedBox(
+        width: _width,
+        child: LinearProgressIndicator(value: _level),
+      ),
+      CircularProgressIndicator(value: _level),
+      SizedBox(width: _width, child: const LinearProgressIndicator()),
+      const CircularProgressIndicator(),
+    ];
+
     return Padding(
       padding: const EdgeInsets.all(kWrapPadding),
-      child: Wrap(
-        spacing: kWrapSpacing,
-        runSpacing: kWrapSpacing,
+      child: Column(
         children: [
+          SizedBox(
+            width: _width,
+            child: Slider(
+              value: _level,
+              max: 1,
+              min: 0,
+              onChanged: (value) => setState(() => _level = value),
+            ),
+          ),
           const SizedBox(
-            width: 300,
-            child: LinearProgressIndicator(),
+            height: kWrapSpacing,
           ),
           Wrap(
             spacing: kWrapSpacing,
-            children: [
-              const CircularProgressIndicator(),
-              CircularProgressIndicator(
-                value: _elevation,
-              ),
-            ],
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(_elevation.toStringAsFixed(2)),
-              Slider(
-                value: _elevation,
-                max: 1,
-                min: 0,
-                onChanged: (value) => setState(() => _elevation = value),
-              ),
-            ],
+            runSpacing: kWrapSpacing,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            direction: Axis.vertical,
+            verticalDirection: VerticalDirection.down,
+            children: children,
           ),
         ],
       ),
