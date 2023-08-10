@@ -63,7 +63,7 @@ class _ContainersViewState extends State<ContainersView> {
 
     return SizedBox(
       width: 400,
-      child: Column(
+      child: ListView(
         children: [
           const SizedBox(
             height: kWrapSpacing,
