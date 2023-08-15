@@ -246,6 +246,7 @@ FilledButtonThemeData _createFilledButtonTheme(
 IconButtonThemeData _createIconButtonTheme(ColorScheme colorScheme) {
   return IconButtonThemeData(
     style: IconButton.styleFrom(
+      padding: isMobile ? null : EdgeInsets.zero,
       foregroundColor: colorScheme.onSurface,
       highlightColor: colorScheme.onSurface.withOpacity(0.05),
       surfaceTintColor: colorScheme.background,

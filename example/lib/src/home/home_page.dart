@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart';
 import 'package:yaru_example/main.dart';
-import 'package:yaru_example/src/constants.dart';
-import 'package:yaru_example/src/home/color_disk.dart';
 import 'package:yaru_example/src/colors/colors_view.dart';
+import 'package:yaru_example/src/constants.dart';
 import 'package:yaru_example/src/containers/containers_view.dart';
 import 'package:yaru_example/src/controls/controls_view.dart';
 import 'package:yaru_example/src/fonts/fonts_view.dart';
+import 'package:yaru_example/src/home/color_disk.dart';
 import 'package:yaru_example/src/textfields/text_fields_view.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
@@ -154,6 +154,7 @@ class _ThemeButton extends StatelessWidget {
     final light = theme.themeMode == ThemeMode.light;
 
     return PopupMenuButton<Color>(
+      padding: EdgeInsets.zero,
       icon: Icon(
         Icons.color_lens,
         color: Theme.of(context).primaryColor,
