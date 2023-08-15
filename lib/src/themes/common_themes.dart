@@ -646,6 +646,15 @@ SnackBarThemeData _createSnackBarTheme(ColorScheme colorScheme) {
   );
 }
 
+ChipThemeData _createChipTheme({
+  required Color selectedColor,
+  required ColorScheme colorScheme,
+}) {
+  return ChipThemeData(
+    selectedColor: selectedColor.withOpacity(.4),
+  );
+}
+
 /// Helper function to create a new Yaru theme
 ThemeData createYaruTheme({
   required ColorScheme colorScheme,
@@ -730,6 +739,10 @@ ThemeData createYaruTheme({
       iconColor: colorScheme.onSurface.withOpacity(0.8),
     ),
     snackBarTheme: _createSnackBarTheme(colorScheme),
+    chipTheme: _createChipTheme(
+      selectedColor: elevatedButtonColor ?? colorScheme.primary,
+      colorScheme: colorScheme,
+    ),
   );
 }
 
@@ -740,6 +753,13 @@ ThemeData createYaruLightTheme({
   Color? elevatedButtonTextColor,
   bool? useMaterial3 = true,
 }) {
+  final secondary = primaryColor.scale(lightness: 0.2).cap(saturation: .9);
+  final secondaryContainer =
+      primaryColor.scale(lightness: 0.85).cap(saturation: .5);
+  final tertiary = primaryColor.scale(lightness: 0.5).cap(saturation: .8);
+  final tertiaryContainer =
+      primaryColor.scale(lightness: 0.75).cap(saturation: .75);
+
   final colorScheme = ColorScheme.fromSeed(
     seedColor: primaryColor,
     error: YaruColors.light.error,
@@ -750,11 +770,10 @@ ThemeData createYaruLightTheme({
     primaryContainer: YaruColors.porcelain,
     onPrimaryContainer: YaruColors.jet,
     inversePrimary: YaruColors.jet,
-    secondary: elevatedButtonColor ?? primaryColor,
-    onSecondary: contrastColor(elevatedButtonColor ?? primaryColor),
-    secondaryContainer:
-        elevatedButtonColor?.withOpacity(0.4) ?? primaryColor.withOpacity(0.4),
-    onSecondaryContainer: elevatedButtonTextColor ?? YaruColors.jet,
+    secondary: secondary,
+    onSecondary: contrastColor(secondary),
+    secondaryContainer: secondaryContainer,
+    onSecondaryContainer: contrastColor(secondaryContainer),
     background: YaruColors.porcelain,
     onBackground: YaruColors.jet,
     surface: Colors.white,
@@ -763,10 +782,10 @@ ThemeData createYaruLightTheme({
     onInverseSurface: YaruColors.porcelain,
     surfaceTint: YaruColors.warmGrey,
     surfaceVariant: YaruColors.warmGrey,
-    tertiary: const Color(0xFF18b6ec),
-    onTertiary: Colors.white,
-    tertiaryContainer: const Color(0xFF18b6ec),
-    onTertiaryContainer: Colors.white,
+    tertiary: tertiary,
+    onTertiary: contrastColor(tertiary),
+    tertiaryContainer: tertiaryContainer,
+    onTertiaryContainer: contrastColor(tertiaryContainer),
     onSurfaceVariant: YaruColors.coolGrey,
     outline: const Color.fromARGB(255, 221, 221, 221),
     outlineVariant: Colors.black,
@@ -789,6 +808,15 @@ ThemeData createYaruDarkTheme({
   bool? useMaterial3 = true,
   bool highContrast = false,
 }) {
+  final secondary = primaryColor.scale(lightness: -0.3, saturation: -0.15);
+  final secondaryContainer = primaryColor
+      .scale(lightness: -0.6, saturation: -0.75)
+      .capDown(lightness: .175);
+  final tertiary = primaryColor.scale(lightness: -0.5, saturation: -0.25);
+  final tertiaryContainer = primaryColor
+      .scale(lightness: -0.5, saturation: -0.65)
+      .capDown(lightness: .2);
+
   final colorScheme = ColorScheme.fromSeed(
     seedColor: primaryColor,
     error: YaruColors.dark.error,
@@ -799,12 +827,10 @@ ThemeData createYaruDarkTheme({
     onPrimary: contrastColor(primaryColor),
     onPrimaryContainer: YaruColors.porcelain,
     inversePrimary: YaruColors.porcelain,
-    secondary: elevatedButtonColor ?? primaryColor,
-    onSecondary: contrastColor(elevatedButtonColor ?? primaryColor),
-    secondaryContainer:
-        elevatedButtonColor?.withOpacity(0.4) ?? primaryColor.withOpacity(0.4),
-    onSecondaryContainer:
-        highContrast ? Colors.white : (elevatedButtonTextColor ?? Colors.white),
+    secondary: secondary,
+    onSecondary: contrastColor(primaryColor.scale(lightness: -0.25)),
+    secondaryContainer: secondaryContainer,
+    onSecondaryContainer: Colors.white,
     background: YaruColors.darkJet,
     onBackground: YaruColors.porcelain,
     surface: YaruColors.jet,
@@ -813,9 +839,9 @@ ThemeData createYaruDarkTheme({
     onInverseSurface: YaruColors.inkstone,
     surfaceTint: YaruColors.coolGrey,
     surfaceVariant: const Color.fromARGB(255, 34, 34, 34),
-    tertiary: const Color(0xFF18b6ec),
+    tertiary: tertiary,
     onTertiary: YaruColors.porcelain,
-    tertiaryContainer: const Color(0xFF18b6ec),
+    tertiaryContainer: tertiaryContainer,
     onTertiaryContainer: YaruColors.porcelain,
     onSurfaceVariant: YaruColors.warmGrey,
     outline: const Color.fromARGB(255, 68, 68, 68),
