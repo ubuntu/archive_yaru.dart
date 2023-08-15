@@ -251,6 +251,50 @@ extension YaruColorExtension on Color {
         .toColor();
   }
 
+  Color cap({
+    double alpha = 1.0,
+    double saturation = 1.0,
+    double lightness = 1.0,
+  }) {
+    assert(alpha >= 0.0 && alpha <= 1.0);
+    assert(saturation >= 0.0 && saturation <= 1.0);
+    assert(lightness >= 0.0 && lightness <= 1.0);
+
+    final hslColor = _getPatchedHslColor();
+
+    return hslColor
+        .withAlpha(hslColor.alpha <= alpha ? hslColor.alpha : alpha)
+        .withSaturation(
+          hslColor.saturation <= saturation ? hslColor.saturation : saturation,
+        )
+        .withLightness(
+          hslColor.lightness <= lightness ? hslColor.lightness : lightness,
+        )
+        .toColor();
+  }
+
+  Color capDown({
+    double alpha = 0.0,
+    double saturation = 0.0,
+    double lightness = 0.0,
+  }) {
+    assert(alpha >= 0.0 && alpha <= 1.0);
+    assert(saturation >= 0.0 && saturation <= 1.0);
+    assert(lightness >= 0.0 && lightness <= 1.0);
+
+    final hslColor = _getPatchedHslColor();
+
+    return hslColor
+        .withAlpha(hslColor.alpha >= alpha ? hslColor.alpha : alpha)
+        .withSaturation(
+          hslColor.saturation >= saturation ? hslColor.saturation : saturation,
+        )
+        .withLightness(
+          hslColor.lightness >= lightness ? hslColor.lightness : lightness,
+        )
+        .toColor();
+  }
+
   HSLColor _getPatchedHslColor() {
     final hslColor = HSLColor.fromColor(this);
 
