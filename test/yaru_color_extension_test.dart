@@ -199,6 +199,56 @@ void main() {
     });
   });
 
+  group('Color.cap() test -', () {
+    test('With out of range amount', () {
+      expect(() => midColor.cap(alpha: -1.1), throwsAssertionError);
+      expect(() => midColor.cap(alpha: 1.1), throwsAssertionError);
+      expect(() => midColor.cap(saturation: -1.1), throwsAssertionError);
+      expect(() => midColor.cap(saturation: 1.1), throwsAssertionError);
+      expect(() => midColor.cap(lightness: -1.1), throwsAssertionError);
+      expect(() => midColor.cap(lightness: 1.1), throwsAssertionError);
+    });
+    test('With various amount', () {
+      expect(
+        midColor.cap(alpha: 0.25),
+        const Color(0x4040bfbf),
+      );
+      expect(
+        midColor.cap(saturation: 0.25),
+        const Color(0x80609f9f),
+      );
+      expect(
+        midColor.cap(lightness: 0.25),
+        const Color(0x80206060),
+      );
+    });
+  });
+
+  group('Color.capDown() test -', () {
+    test('With out of range amount', () {
+      expect(() => midColor.capDown(alpha: -1.1), throwsAssertionError);
+      expect(() => midColor.capDown(alpha: 1.1), throwsAssertionError);
+      expect(() => midColor.capDown(saturation: -1.1), throwsAssertionError);
+      expect(() => midColor.capDown(saturation: 1.1), throwsAssertionError);
+      expect(() => midColor.capDown(lightness: -1.1), throwsAssertionError);
+      expect(() => midColor.capDown(lightness: 1.1), throwsAssertionError);
+    });
+    test('With various amount', () {
+      expect(
+        midColor.capDown(alpha: 0.75),
+        const Color(0xbf40bfbf),
+      );
+      expect(
+        midColor.capDown(saturation: 0.75),
+        const Color(0x8020dfdf),
+      );
+      expect(
+        midColor.capDown(lightness: 0.75),
+        const Color(0x80a0dfdf),
+      );
+    });
+  });
+
   test('hex', () {
     expect(const Color(0x12345678).toHex(), '#12345678');
   });
