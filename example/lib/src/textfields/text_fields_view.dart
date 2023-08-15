@@ -32,6 +32,18 @@ class _TextFieldsViewState extends State<TextFieldsView> {
       Row(
         children: [
           Expanded(
+            child: FilledButton(
+              onPressed: () {},
+              child: const Text(
+                'Filled Button',
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: kWrapSpacing,
+          ),
+          Expanded(
             child: OutlinedButton(
               onPressed: () {},
               child: const Text(

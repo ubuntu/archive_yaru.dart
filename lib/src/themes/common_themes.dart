@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yaru/src/colors.dart';
@@ -9,12 +12,16 @@ import 'package:yaru/src/themes/page_transitions.dart';
 const kDividerColorDark = Color.fromARGB(255, 65, 65, 65);
 const kDividerColorLight = Color(0xffdcdcdc);
 
+bool get isMobile =>
+    !kIsWeb && (Platform.isAndroid || Platform.isIOS || Platform.isFuchsia);
+
 // AppBar
 
 AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
     shape: Border(
       bottom: BorderSide(
+        strokeAlign: -1,
         color: colorScheme.isHighContrast
             ? colorScheme.outlineVariant
             : colorScheme.onSurface.withOpacity(
@@ -34,14 +41,19 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
           color: colorScheme.onSurface,
           fontWeight: FontWeight.normal,
         ),
-    iconTheme: IconThemeData(color: colorScheme.onSurface),
+    iconTheme: IconThemeData(
+      color: colorScheme.onSurface,
+      size: isMobile ? kComfortableIconSize : kCompactIconSize,
+    ),
     actionsIconTheme: IconThemeData(color: colorScheme.onSurface),
+    toolbarHeight: isMobile ? kComfortableAppBarHeight : kCompactAppBarHeight,
   );
 }
 
 InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
   final radius = BorderRadius.circular(kButtonRadius);
   const width = 1.0;
+  const strokeAlign = 0.0;
   final fill = colorScheme.isLight
       ? const Color(0xFFededed)
       : const Color.fromARGB(255, 40, 40, 40);
@@ -51,6 +63,12 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
   final disabledBorder = colorScheme.isLight
       ? const Color.fromARGB(255, 237, 237, 237)
       : const Color.fromARGB(255, 67, 67, 67);
+
+  const textStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+  );
+
   return InputDecorationTheme(
     filled: true,
     fillColor: fill,
@@ -66,23 +84,55 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
       borderRadius: radius,
     ),
     enabledBorder: OutlineInputBorder(
+      borderSide:
+          BorderSide(width: width, color: border, strokeAlign: strokeAlign),
+      borderRadius: radius,
+    ),
+    activeIndicatorBorder:
+        const BorderSide(width: width, strokeAlign: strokeAlign),
+    outlineBorder: const BorderSide(width: width, strokeAlign: strokeAlign),
+    focusedErrorBorder: OutlineInputBorder(
       borderSide: BorderSide(
         width: width,
-        color: border,
+        color: colorScheme.error,
+        strokeAlign: strokeAlign,
       ),
       borderRadius: radius,
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(width: width, color: colorScheme.error),
+      borderSide: BorderSide(
+        width: width,
+        color: colorScheme.error,
+        strokeAlign: strokeAlign,
+      ),
       borderRadius: radius,
     ),
     disabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(width: width, color: disabledBorder),
+      borderSide: BorderSide(
+        width: width,
+        color: disabledBorder,
+        strokeAlign: strokeAlign,
+      ),
       borderRadius: radius,
     ),
-    isDense: true,
+    isDense: isMobile ? false : true,
     iconColor: colorScheme.onSurface,
-    contentPadding: const EdgeInsets.all(12),
+    contentPadding: isMobile
+        ? const EdgeInsets.all(12)
+        : const EdgeInsets.only(left: 12, right: 12, bottom: 9, top: 10),
+    helperStyle: isMobile ? null : textStyle,
+    hintStyle: isMobile ? null : textStyle,
+    labelStyle: isMobile ? null : textStyle,
+    suffixStyle: isMobile
+        ? null
+        : textStyle.copyWith(
+            color: colorScheme.onSurface.scale(lightness: -0.2),
+          ),
+    prefixStyle: isMobile
+        ? null
+        : textStyle.copyWith(
+            color: colorScheme.onSurface.scale(lightness: -0.2),
+          ),
   );
 }
 
@@ -99,9 +149,18 @@ const _tooltipThemeData = TooltipThemeData(
 
 // Buttons
 
-const _commonButtonStyle = ButtonStyle(
-  visualDensity: VisualDensity.standard,
-  padding: MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 16)),
+final _commonButtonStyle = ButtonStyle(
+  padding: isMobile
+      ? const MaterialStatePropertyAll(
+          EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 18,
+          ),
+        )
+      : const MaterialStatePropertyAll(EdgeInsets.all(16)),
+  iconSize: isMobile
+      ? const MaterialStatePropertyAll(kComfortableButtonIconSize)
+      : const MaterialStatePropertyAll(kCompactButtonIconSize),
 );
 
 final _buttonThemeData = ButtonThemeData(
@@ -185,8 +244,70 @@ FilledButtonThemeData _createFilledButtonTheme(
   );
 }
 
+IconButtonThemeData _createIconButtonTheme(ColorScheme colorScheme) {
+  return IconButtonThemeData(
+    style: IconButton.styleFrom(
+      padding: isMobile ? null : EdgeInsets.zero,
+      foregroundColor: colorScheme.onSurface,
+      highlightColor: colorScheme.onSurface.withOpacity(0.05),
+      surfaceTintColor: colorScheme.background,
+      fixedSize: isMobile
+          ? null
+          : const Size(kCompactButtonHeight, kCompactButtonHeight),
+      minimumSize: isMobile
+          ? null
+          : const Size(kCompactButtonHeight, kCompactButtonHeight),
+      maximumSize: isMobile
+          ? null
+          : const Size(kCompactButtonHeight, kCompactButtonHeight),
+      tapTargetSize: isMobile
+          ? MaterialTapTargetSize.padded
+          : MaterialTapTargetSize.shrinkWrap,
+      iconSize: isMobile ? kComfortableIconSize : kCompactIconSize,
+    ),
+  );
+}
+
+MenuButtonThemeData _createMenuItemTheme(
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+) {
+  return MenuButtonThemeData(
+    style: ButtonStyle(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      alignment: Alignment.center,
+      textStyle: MaterialStatePropertyAll(textTheme.bodyMedium),
+      maximumSize: MaterialStatePropertyAll(
+        Size(
+          999,
+          (isMobile ? kComfortableButtonHeight : kCompactButtonHeight) + 10,
+        ),
+      ),
+      minimumSize: MaterialStatePropertyAll(
+        Size(
+          20,
+          (isMobile ? kComfortableButtonHeight : kCompactButtonHeight) + 10,
+        ),
+      ),
+    ),
+  );
+}
+
 ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
   return ToggleButtonsThemeData(
+    constraints: isMobile
+        ? const BoxConstraints(
+            minHeight: kComfortableButtonHeight,
+            minWidth: 60,
+            maxWidth: double.infinity,
+            maxHeight: kComfortableButtonHeight,
+          )
+        : const BoxConstraints(
+            minHeight: kCompactButtonHeight,
+            minWidth: 50,
+            maxWidth: double.infinity,
+            maxHeight: kCompactButtonHeight,
+          ),
     borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
     borderColor: colorScheme.isHighContrast
         ? colorScheme.outlineVariant
@@ -441,13 +562,21 @@ MenuThemeData _createMenuTheme(ColorScheme colorScheme) {
 
 DropdownMenuThemeData _createDropdownMenuTheme(ColorScheme colorScheme) {
   return DropdownMenuThemeData(
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme).copyWith(
+      constraints: BoxConstraints(
+        maxHeight: isMobile ? kComfortableButtonHeight : kCompactButtonHeight,
+        minHeight: isMobile ? kComfortableButtonHeight : kCompactButtonHeight,
+      ),
+    ),
     menuStyle: _createMenuStyle(colorScheme),
   );
 }
 
 NavigationBarThemeData _createNavigationBarTheme(ColorScheme colorScheme) {
   return NavigationBarThemeData(
+    height: isMobile
+        ? kComfortableNavigationBarHeight
+        : kCompactNavigationBarHeight,
     backgroundColor: colorScheme.surface,
     surfaceTintColor: colorScheme.surface,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
@@ -463,9 +592,13 @@ NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
   return NavigationRailThemeData(
     backgroundColor: colorScheme.surface,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
-    selectedIconTheme: IconThemeData(color: colorScheme.onSurface),
+    selectedIconTheme: IconThemeData(
+      color: colorScheme.onSurface,
+      size: isMobile ? kComfortableIconSize : kCompactIconSize,
+    ),
     unselectedIconTheme: IconThemeData(
       color: colorScheme.onSurface.withOpacity(0.8),
+      size: isMobile ? kComfortableIconSize : kCompactIconSize,
     ),
   );
 }
@@ -496,18 +629,15 @@ ThemeData createYaruTheme({
   dividerColor ??= colorScheme.isHighContrast
       ? colorScheme.outlineVariant
       : colorScheme.outline;
+  final textTheme = createTextTheme(colorScheme.onSurface);
   return ThemeData.from(
     useMaterial3: useMaterial3,
     colorScheme: colorScheme,
   ).copyWith(
-    iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(
-        foregroundColor: colorScheme.onSurface,
-        highlightColor: colorScheme.onSurface.withOpacity(0.05),
-        surfaceTintColor: colorScheme.background,
-      ),
+    iconTheme: IconThemeData(
+      color: colorScheme.onSurface,
+      size: isMobile ? kComfortableIconSize : kCompactIconSize,
     ),
-    iconTheme: IconThemeData(color: colorScheme.onSurface),
     primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
     progressIndicatorTheme: _createProgressIndicatorTheme(colorScheme),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
@@ -520,7 +650,7 @@ ThemeData createYaruTheme({
     cardColor: colorScheme.surface,
     dividerColor: dividerColor,
     dialogBackgroundColor: colorScheme.background,
-    textTheme: createTextTheme(colorScheme.onSurface),
+    textTheme: textTheme,
     indicatorColor: colorScheme.primary,
     applyElevationOverlayColor: colorScheme.isDark,
     buttonTheme: _buttonThemeData,
@@ -534,6 +664,8 @@ ThemeData createYaruTheme({
       colorScheme,
     ),
     textButtonTheme: _createTextButtonTheme(colorScheme),
+    iconButtonTheme: _createIconButtonTheme(colorScheme),
+    menuButtonTheme: _createMenuItemTheme(colorScheme, textTheme),
     switchTheme: _createSwitchTheme(colorScheme),
     checkboxTheme: _createCheckBoxTheme(colorScheme),
     radioTheme: _createRadioTheme(colorScheme),

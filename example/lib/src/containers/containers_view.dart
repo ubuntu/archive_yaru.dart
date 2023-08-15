@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yaru_example/src/constants.dart';
+import 'package:yaru_icons/yaru_icons.dart';
 
 class ContainersView extends StatefulWidget {
   const ContainersView({super.key});
@@ -11,6 +12,12 @@ class ContainersView extends StatefulWidget {
 class _ContainersViewState extends State<ContainersView> {
   var _elevation = 2.0;
   var _inDialog = true;
+  final _icons = [
+    YaruIcons.address_book,
+    YaruIcons.application_bag,
+    YaruIcons.beaker,
+    YaruIcons.calendar_important
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -59,20 +66,36 @@ class _ContainersViewState extends State<ContainersView> {
       card,
       slider,
       containerWithBorder,
+      for (var i = 0; i < _icons.length; i++)
+        ListTile(
+          leading: Icon(_icons[i]),
+          title: Text("ListTile title $i"),
+          subtitle: i.isEven ? null : const Text('Subtitle'),
+          trailing: const Text("Trailing"),
+        )
     ];
 
     return SizedBox(
       width: 400,
-      child: Column(
+      child: ListView(
         children: [
           const SizedBox(
             height: kWrapSpacing,
           ),
-          Switch(
-            value: _inDialog,
-            onChanged: (v) => setState(
-              () => _inDialog = v,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Switch(
+                value: _inDialog,
+                onChanged: (v) => setState(
+                  () => _inDialog = v,
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              const Text('Show in dialog'),
+            ],
           ),
           if (_inDialog)
             SimpleDialog(

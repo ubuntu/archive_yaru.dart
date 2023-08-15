@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yaru_example/src/constants.dart';
+import 'package:yaru_icons/yaru_icons.dart';
 
 class Fabs extends StatelessWidget {
   const Fabs({super.key});
@@ -15,7 +16,7 @@ class Fabs extends StatelessWidget {
       children: [
         FloatingActionButton(
           onPressed: onPressed,
-          child: const Icon(Icons.plus_one),
+          child: const Icon(YaruIcons.plus),
         ),
         FloatingActionButton.extended(
           onPressed: onPressed,
@@ -23,11 +24,11 @@ class Fabs extends StatelessWidget {
         ),
         FloatingActionButton.small(
           onPressed: onPressed,
-          child: const Icon(Icons.plus_one),
+          child: const Icon(YaruIcons.plus),
         ),
         FloatingActionButton.large(
           onPressed: onPressed,
-          child: const Icon(Icons.plus_one),
+          child: const Icon(YaruIcons.plus),
         ),
       ],
     );

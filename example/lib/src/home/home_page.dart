@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart';
 import 'package:yaru_example/main.dart';
-import 'package:yaru_example/src/constants.dart';
-import 'package:yaru_example/src/home/color_disk.dart';
 import 'package:yaru_example/src/colors/colors_view.dart';
+import 'package:yaru_example/src/constants.dart';
 import 'package:yaru_example/src/containers/containers_view.dart';
 import 'package:yaru_example/src/controls/controls_view.dart';
 import 'package:yaru_example/src/fonts/fonts_view.dart';
+import 'package:yaru_example/src/home/color_disk.dart';
 import 'package:yaru_example/src/textfields/text_fields_view.dart';
+import 'package:yaru_icons/yaru_icons.dart';
+
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,32 +28,32 @@ class HomePageState extends State<HomePage> {
     const FontsView(): (
       const Badge(
         label: Text('123'),
-        child: Icon(Icons.font_download_outlined),
+        child: Icon(YaruIcons.font),
       ),
       const Badge(
         label: Text('123'),
-        child: Icon(Icons.font_download),
+        child: Icon(YaruIcons.font),
       ),
       'Fonts'
     ),
     const ControlsView(): (
-      const Icon(Icons.radio_button_checked_outlined),
-      const Icon(Icons.radio_button_checked),
+      const Icon(YaruIcons.radiobox_checked),
+      const Icon(YaruIcons.radiobox_checked_filled),
       'Controls'
     ),
     const TextFieldsView(): (
-      const Icon(Icons.text_fields_outlined),
-      const Icon(Icons.text_fields),
+      const Icon(YaruIcons.text_editor),
+      const Icon(YaruIcons.text_editor_filled),
       'TextFields'
     ),
     const ColorsView(): (
-      const Icon(Icons.color_lens_outlined),
-      const Icon(Icons.color_lens),
+      const Icon(YaruIcons.colors),
+      const Icon(YaruIcons.colors_filled),
       'Palette'
     ),
     const ContainersView(): (
-      const Icon(Icons.square_outlined),
-      const Icon(Icons.square),
+      const Icon(YaruIcons.window),
+      const Icon(YaruIcons.window_filled),
       'Containers'
     ),
   };
@@ -58,6 +61,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       drawer: _Drawer(
         selectedIndex: _selectedIndex,
         onSelected: (index) {
@@ -67,6 +71,12 @@ class HomePageState extends State<HomePage> {
         items: _items,
       ),
       appBar: AppBar(
+        leading: Center(
+          child: IconButton(
+            onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+            icon: const Icon(YaruIcons.menu),
+          ),
+        ),
         title: const _Title(),
         actions: const [
           Padding(
@@ -145,8 +155,9 @@ class _ThemeButton extends StatelessWidget {
     final light = theme.themeMode == ThemeMode.light;
 
     return PopupMenuButton<Color>(
+      padding: EdgeInsets.zero,
       icon: Icon(
-        Icons.color_lens,
+        YaruIcons.color_select,
         color: Theme.of(context).primaryColor,
       ),
       itemBuilder: (context) {
@@ -203,7 +214,7 @@ class _Title extends StatelessWidget {
         );
       },
       icon: Icon(
-        light ? Icons.light_mode : Icons.dark_mode,
+        light ? YaruIcons.sun_filled : YaruIcons.clear_night_filled,
       ),
     );
   }
