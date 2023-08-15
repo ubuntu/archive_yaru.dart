@@ -618,6 +618,33 @@ DrawerThemeData _createDrawerTheme(ColorScheme colorScheme) {
   );
 }
 
+SnackBarThemeData _createSnackBarTheme(ColorScheme colorScheme) {
+  final light = colorScheme.brightness == Brightness.light;
+  const fg = Colors.white;
+  return SnackBarThemeData(
+    backgroundColor: Colors.black.withOpacity(0.8),
+    closeIconColor: fg,
+    actionTextColor: Colors.white,
+    contentTextStyle: const TextStyle(color: fg),
+    actionBackgroundColor: Colors.transparent,
+    disabledActionTextColor: fg.withOpacity(0.7),
+    disabledActionBackgroundColor: Colors.transparent,
+    behavior: SnackBarBehavior.floating,
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(
+        isMobile ? kComfortableButtonHeight : kCompactButtonHeight,
+      ),
+      side: light
+          ? BorderSide.none
+          : BorderSide(
+              color: fg.withOpacity(0.25),
+              width: 1,
+            ),
+    ),
+  );
+}
+
 /// Helper function to create a new Yaru theme
 ThemeData createYaruTheme({
   required ColorScheme colorScheme,
@@ -701,6 +728,7 @@ ThemeData createYaruTheme({
     listTileTheme: ListTileThemeData(
       iconColor: colorScheme.onSurface.withOpacity(0.8),
     ),
+    snackBarTheme: _createSnackBarTheme(colorScheme),
   );
 }
 
