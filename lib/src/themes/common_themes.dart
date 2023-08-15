@@ -622,7 +622,7 @@ SnackBarThemeData _createSnackBarTheme(ColorScheme colorScheme) {
   final light = colorScheme.brightness == Brightness.light;
   const fg = Colors.white;
   return SnackBarThemeData(
-    backgroundColor: Colors.black.withOpacity(0.8),
+    backgroundColor: const Color.fromARGB(255, 20, 20, 20).withOpacity(0.8),
     closeIconColor: fg,
     actionTextColor: Colors.white,
     contentTextStyle: const TextStyle(color: fg),
@@ -638,7 +638,7 @@ SnackBarThemeData _createSnackBarTheme(ColorScheme colorScheme) {
       side: light
           ? BorderSide.none
           : BorderSide(
-              color: fg.withOpacity(0.2),
+              color: fg.withOpacity(0.14),
               width: 1,
             ),
     ),
