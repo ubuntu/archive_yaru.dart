@@ -638,7 +638,7 @@ SnackBarThemeData _createSnackBarTheme(ColorScheme colorScheme) {
       side: light
           ? BorderSide.none
           : BorderSide(
-              color: fg.withOpacity(0.25),
+              color: fg.withOpacity(0.2),
               width: 1,
             ),
     ),
