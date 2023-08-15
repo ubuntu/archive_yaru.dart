@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.0 (2023-08-15)
+
+## What's Changed
+* fix: remove appbar height by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/378
+* chore: example rewrite by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/381
+* feat!: Better platform independent sizes by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/383
+* feat: snackbar theme by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/385
+* fix: reduce dark snackbar border brightness by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/386
+* fix: improve light themes contrast by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/387
+* fix: set default size for snackbars by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/389
+* feat!: use different shade of the same color for primary, secondary, tertiary by @Jupi007 in https://github.com/ubuntu/yaru.dart/pull/390
+
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v0.10.0...v1.0.0
+
 ## 0.10.0 (2023-08-07)
 
 ## What's Changed
