@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yaru_example/src/constants.dart';
+import 'package:yaru_icons/yaru_icons.dart';
 
 class Buttons extends StatefulWidget {
   const Buttons({super.key});
@@ -18,7 +19,7 @@ class _ButtonsState extends State<Buttons> {
 
   @override
   Widget build(BuildContext context) {
-    const icon = Icon(Icons.circle_notifications);
+    const icon = Icon(YaruIcons.notification_filled);
     final buttons = <(Widget, Widget)>[
       (
         TextButton(

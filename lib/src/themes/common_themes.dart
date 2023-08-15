@@ -21,6 +21,7 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
     shape: Border(
       bottom: BorderSide(
+        strokeAlign: -1,
         color: colorScheme.isHighContrast
             ? colorScheme.outlineVariant
             : colorScheme.onSurface.withOpacity(

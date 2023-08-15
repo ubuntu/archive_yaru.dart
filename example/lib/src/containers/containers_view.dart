@@ -1,7 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:yaru_example/src/constants.dart';
+import 'package:yaru_icons/yaru_icons.dart';
 
 class ContainersView extends StatefulWidget {
   const ContainersView({super.key});
@@ -13,6 +12,12 @@ class ContainersView extends StatefulWidget {
 class _ContainersViewState extends State<ContainersView> {
   var _elevation = 2.0;
   var _inDialog = true;
+  final _icons = [
+    YaruIcons.address_book,
+    YaruIcons.application_bag,
+    YaruIcons.beaker,
+    YaruIcons.calendar_important
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +66,9 @@ class _ContainersViewState extends State<ContainersView> {
       card,
       slider,
       containerWithBorder,
-      for (var i = 0; i < 4; i++)
+      for (var i = 0; i < _icons.length; i++)
         ListTile(
-          leading: Icon(getRandomIcon()),
+          leading: Icon(_icons[i]),
           title: Text("ListTile title $i"),
           subtitle: i.isEven ? null : const Text('Subtitle'),
           trailing: const Text("Trailing"),
@@ -104,15 +109,4 @@ class _ContainersViewState extends State<ContainersView> {
       ),
     );
   }
-}
-
-IconData getRandomIcon() {
-  final Random random = Random();
-  const String chars = '0123456789ABCDEF';
-  int length = 3;
-  String hex = '0xe';
-  while (length-- > 0) {
-    hex += chars[(random.nextInt(16)) | 0];
-  }
-  return IconData(int.parse(hex), fontFamily: 'MaterialIcons');
 }
