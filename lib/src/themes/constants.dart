@@ -4,6 +4,8 @@ const kWindowRadius = 8.0;
 const kAppBarElevation = 0.0;
 const kCompactAppBarHeight = 46.0;
 const kComfortableAppBarHeight = 56.0;
+const kCompactNavigationBarHeight = 64.0;
+const kComfortableNavigationBarHeight = 74.0;
 
 const kCompactButtonHeight = 34.0;
 const kComfortableButtonHeight = 44.0;

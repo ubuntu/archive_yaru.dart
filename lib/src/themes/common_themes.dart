@@ -574,6 +574,9 @@ DropdownMenuThemeData _createDropdownMenuTheme(ColorScheme colorScheme) {
 
 NavigationBarThemeData _createNavigationBarTheme(ColorScheme colorScheme) {
   return NavigationBarThemeData(
+    height: isMobile
+        ? kComfortableNavigationBarHeight
+        : kCompactNavigationBarHeight,
     backgroundColor: colorScheme.surface,
     surfaceTintColor: colorScheme.surface,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
