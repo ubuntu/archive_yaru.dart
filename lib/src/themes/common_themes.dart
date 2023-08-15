@@ -622,6 +622,7 @@ SnackBarThemeData _createSnackBarTheme(ColorScheme colorScheme) {
   final light = colorScheme.brightness == Brightness.light;
   const fg = Colors.white;
   return SnackBarThemeData(
+    width: kSnackBarWidth,
     backgroundColor: const Color.fromARGB(255, 20, 20, 20).withOpacity(0.8),
     closeIconColor: fg,
     actionTextColor: Colors.white,
