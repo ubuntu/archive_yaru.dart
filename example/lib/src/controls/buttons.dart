@@ -125,7 +125,7 @@ class _ButtonsState extends State<Buttons> {
           Wrap(
             spacing: kWrapSpacing,
             children: [button.$1, button.$2],
-          )
+          ),
       ],
     );
   }

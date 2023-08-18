@@ -34,7 +34,7 @@ class Chips extends StatelessWidget {
           label: const Text('Once they re involved'),
           selected: false,
           onSelected: (value) {},
-        )
+        ),
       ],
     );
   }

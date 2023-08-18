@@ -110,7 +110,7 @@ class HomePageState extends State<HomePage> {
                   child: Center(
                     child: _items.entries.elementAt(_selectedIndex).key,
                   ),
-                )
+                ),
               ],
             );
           } else {
@@ -170,7 +170,7 @@ class _ThemeButton extends StatelessWidget {
                   color: light ? Colors.black : Colors.white,
                   selected: theme.highContrast == true,
                 ),
-                const Text('highContrast')
+                const Text('highContrast'),
               ],
             ),
           ),
@@ -188,10 +188,10 @@ class _ThemeButton extends StatelessWidget {
                     selected:
                         variant == theme.variant && theme.highContrast != true,
                   ),
-                  Text(variant.name)
+                  Text(variant.name),
                 ],
               ),
-            )
+            ),
         ];
       },
     );

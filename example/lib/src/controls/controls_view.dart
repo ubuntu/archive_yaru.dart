@@ -21,7 +21,7 @@ class _ControlsViewState extends State<ControlsView>
     (Tab(text: 'Fabs'), Fabs()),
     (Tab(text: 'ToggleAbles'), ToggleAbles()),
     (Tab(text: 'Chips'), Chips()),
-    (Tab(text: 'Progress'), Progress())
+    (Tab(text: 'Progress'), Progress()),
   ];
 
   @override
