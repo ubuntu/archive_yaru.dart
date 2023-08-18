@@ -16,7 +16,7 @@ class _ContainersViewState extends State<ContainersView> {
     YaruIcons.address_book,
     YaruIcons.application_bag,
     YaruIcons.beaker,
-    YaruIcons.calendar_important
+    YaruIcons.calendar_important,
   ];
 
   @override
@@ -72,7 +72,7 @@ class _ContainersViewState extends State<ContainersView> {
           title: Text("ListTile title $i"),
           subtitle: i.isEven ? null : const Text('Subtitle'),
           trailing: const Text("Trailing"),
-        )
+        ),
     ];
 
     return SizedBox(
@@ -104,7 +104,7 @@ class _ContainersViewState extends State<ContainersView> {
               children: children,
             )
           else
-            ...children
+            ...children,
         ],
       ),
     );

@@ -92,7 +92,7 @@ class _TextFieldsViewState extends State<TextFieldsView> {
         dropdownMenuEntries: [
           DropdownMenuEntry(value: 1, label: '1'),
           DropdownMenuEntry(value: 2, label: '2'),
-          DropdownMenuEntry(value: 3, label: '3')
+          DropdownMenuEntry(value: 3, label: '3'),
         ],
       ),
     ];

@@ -65,7 +65,7 @@ class ToggleAbles extends StatelessWidget {
               children: const [Text('Off'), Text('Off'), Text('Off')],
             ),
           ],
-        )
+        ),
       ],
     );
   }

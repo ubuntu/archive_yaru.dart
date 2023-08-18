@@ -51,7 +51,7 @@ class ColorsView extends StatelessWidget {
           theme: theme,
           colors: extensionColors,
           headline: 'Extension Colors',
-        )
+        ),
       ],
     );
   }
