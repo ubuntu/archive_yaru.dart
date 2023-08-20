@@ -91,11 +91,16 @@ class _ContainersViewState extends State<ContainersView> {
                   () => _inDialog = v,
                 ),
               ),
-              const SizedBox(
-                width: 10,
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: SizedBox(height: 40, child: VerticalDivider()),
               ),
               const Text('Show in dialog'),
             ],
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: Divider(),
           ),
           if (_inDialog)
             SimpleDialog(
