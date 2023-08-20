@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0 (2023-08-20)
+
+## What's Changed
+* fix: update to flutter 3.13 by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/391
+* fix: snackbar visibility by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/393
+* feat: make dividers 1px thick by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/394
+
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v1.0.0...v1.1.0
+
 ## 1.0.0 (2023-08-15)
 
 ## What's Changed
