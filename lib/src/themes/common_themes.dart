@@ -717,7 +717,8 @@ ThemeData createYaruTheme({
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
     navigationBarTheme: _createNavigationBarTheme(colorScheme),
     navigationRailTheme: _createNavigationRailTheme(colorScheme),
-    dividerTheme: DividerThemeData(color: dividerColor),
+    dividerTheme:
+        DividerThemeData(color: dividerColor, space: 1.0, thickness: 0.0),
     badgeTheme: BadgeThemeData(
       backgroundColor: elevatedButtonColor ?? colorScheme.primary,
       textColor: contrastColor(elevatedButtonColor ?? colorScheme.primary),
