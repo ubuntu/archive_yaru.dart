@@ -727,7 +727,7 @@ ThemeData createYaruTheme({
       mainAxisMargin: 3.0,
       crossAxisMargin: 3.0,
     ),
-    splashFactory: isMobile ? : null : NoSplash.splashFactory,
+    splashFactory: isMobile ? null : NoSplash.splashFactory,
     sliderTheme: _createSliderTheme(colorScheme),
     drawerTheme: _createDrawerTheme(colorScheme),
     listTileTheme: ListTileThemeData(
