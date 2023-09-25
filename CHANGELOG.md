@@ -1,5 +1,45 @@
 # Changelog
 
+## 1.1.0 (2023-08-20)
+
+## What's Changed
+* fix: update to flutter 3.13 by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/391
+* fix: snackbar visibility by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/393
+* feat: make dividers 1px thick by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/394
+
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v1.0.0...v1.1.0
+
+## 1.0.0 (2023-08-15)
+
+## What's Changed
+* fix: remove appbar height by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/378
+* chore: example rewrite by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/381
+* feat!: Better platform independent sizes by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/383
+* feat: snackbar theme by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/385
+* fix: reduce dark snackbar border brightness by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/386
+* fix: improve light themes contrast by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/387
+* fix: set default size for snackbars by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/389
+* feat!: use different shade of the same color for primary, secondary, tertiary by @Jupi007 in https://github.com/ubuntu/yaru.dart/pull/390
+
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v0.10.0...v1.0.0
+
+## 0.10.0 (2023-08-07)
+
+## What's Changed
+* chore: dependabot by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/362
+* ci: reuse pr title & release actions from ufc/actions by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/364
+* ci: specify FLUTTER_VERSION environment variable by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/366
+* chore(example): show all colorscheme colors by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/368
+* feat: make dark theme darker by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/373
+* fix: remove spacing for font styles by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/372
+* fix: update handy_window and use it correctly by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/374
+* fix: remove wrong flutter dir cmake manipulation by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/375
+
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v0.9.0...v0.10.0
+
 ## 0.9.0 (2023-06-28)
 
 ## What's Changed

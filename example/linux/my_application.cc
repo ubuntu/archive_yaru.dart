@@ -1,9 +1,7 @@
 #include "my_application.h"
 
 #include <flutter_linux/flutter_linux.h>
-#ifdef GDK_WINDOWING_X11
-#include <gdk/gdkx.h>
-#endif
+#include <handy.h>
 
 #include "flutter/generated_plugin_registrant.h"
 
@@ -17,35 +15,19 @@ G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
 // Implements GApplication::activate.
 static void my_application_activate(GApplication* application) {
   MyApplication* self = MY_APPLICATION(application);
-  GtkWindow* window =
-      GTK_WINDOW(gtk_application_window_new(GTK_APPLICATION(application)));
 
-  // Use a header bar when running in GNOME as this is the common style used
-  // by applications and is the setup most users will be using (e.g. Ubuntu
-  // desktop).
-  // If running on X and not using GNOME then just use a traditional title bar
-  // in case the window manager does more exotic layout, e.g. tiling.
-  // If running on Wayland assume the header bar will work (may need changing
-  // if future cases occur).
-  gboolean use_header_bar = TRUE;
-#ifdef GDK_WINDOWING_X11
-  GdkScreen* screen = gtk_window_get_screen(window);
-  if (GDK_IS_X11_SCREEN(screen)) {
-    const gchar* wm_name = gdk_x11_screen_get_window_manager_name(screen);
-    if (g_strcmp0(wm_name, "GNOME Shell") != 0) {
-      use_header_bar = FALSE;
-    }
-  }
-#endif
-  if (use_header_bar) {
-    GtkHeaderBar* header_bar = GTK_HEADER_BAR(gtk_header_bar_new());
-    gtk_widget_show(GTK_WIDGET(header_bar));
-    gtk_header_bar_set_title(header_bar, "Yaru Theme Widget Factory");
-    gtk_header_bar_set_show_close_button(header_bar, TRUE);
-    gtk_window_set_titlebar(window, GTK_WIDGET(header_bar));
-  } else {
-    gtk_window_set_title(window, "Yaru Theme Widget Factory");
-  }
+  GtkWindow* window = GTK_WINDOW(hdy_application_window_new());
+  gtk_window_set_application(window, GTK_APPLICATION(application));
+
+  GtkBox* box = GTK_BOX(gtk_box_new(GTK_ORIENTATION_VERTICAL, 0));
+  gtk_widget_show(GTK_WIDGET(box));
+  gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(box));
+
+  HdyHeaderBar* header_bar = HDY_HEADER_BAR(hdy_header_bar_new());
+  hdy_header_bar_set_show_close_button(header_bar, TRUE);
+  gtk_widget_show(GTK_WIDGET(header_bar));
+  hdy_header_bar_set_title(header_bar, "Yaru Theme Widget Factory");
+  gtk_container_add(GTK_CONTAINER(box), GTK_WIDGET(header_bar));
 
    GdkGeometry geometry;
   geometry.min_width = 600;
@@ -58,8 +40,7 @@ static void my_application_activate(GApplication* application) {
   fl_dart_project_set_dart_entrypoint_arguments(project, self->dart_entrypoint_arguments);
 
   FlView* view = fl_view_new(project);
-   
-  gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
+  gtk_box_pack_end(GTK_BOX(box), GTK_WIDGET(view), true, true, 0);
 
   fl_register_plugins(FL_PLUGIN_REGISTRY(view));
 

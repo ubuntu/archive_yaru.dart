@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yaru_example/src/constants.dart';
 
 class FontsView extends StatelessWidget {
   const FontsView({super.key});
@@ -6,58 +7,66 @@ class FontsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(kWrapSpacing),
       children: <Widget>[
         Text(
-          'headline1',
+          'displayLarge',
           style: Theme.of(context).textTheme.displayLarge,
         ),
         Text(
-          'headline2',
+          'displayMedium',
           style: Theme.of(context).textTheme.displayMedium,
         ),
         Text(
-          'headline3',
+          'displaySmall',
           style: Theme.of(context).textTheme.displaySmall,
         ),
         Text(
-          'headline4',
+          'headlineLarge',
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+        Text(
+          'headlineMedium',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         Text(
-          'headline5',
+          'headlineSmall',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         Text(
-          'headline6',
+          'titleLarge',
           style: Theme.of(context).textTheme.titleLarge,
         ),
         Text(
-          'subtitle1',
+          'titleMedium',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         Text(
-          'subtitle2',
+          'titleSmall',
           style: Theme.of(context).textTheme.titleSmall,
         ),
         Text(
-          'bodyText1',
+          'bodyLarge',
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         Text(
-          'bodyText2',
+          'bodyMedium',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         Text(
-          'caption',
+          'bodySmall',
           style: Theme.of(context).textTheme.bodySmall,
         ),
         Text(
-          'button',
+          'labelLarge',
           style: Theme.of(context).textTheme.labelLarge,
         ),
         Text(
-          'overline',
+          'labelMedium',
+          style: Theme.of(context).textTheme.labelMedium,
+        ),
+        Text(
+          'labelSmall',
           style: Theme.of(context).textTheme.labelSmall,
         ),
       ],

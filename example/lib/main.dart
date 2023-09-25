@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart';
-import 'package:yaru_example/view/home_page.dart';
+
+import 'home.dart';
 
 void main() {
   runApp(const MyApp());

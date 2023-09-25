@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yaru/src/colors.dart';
@@ -9,12 +12,16 @@ import 'package:yaru/src/themes/page_transitions.dart';
 const kDividerColorDark = Color.fromARGB(255, 65, 65, 65);
 const kDividerColorLight = Color(0xffdcdcdc);
 
+bool get isMobile =>
+    !kIsWeb && (Platform.isAndroid || Platform.isIOS || Platform.isFuchsia);
+
 // AppBar
 
 AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
   return AppBarTheme(
     shape: Border(
       bottom: BorderSide(
+        strokeAlign: -1,
         color: colorScheme.isHighContrast
             ? colorScheme.outlineVariant
             : colorScheme.onSurface.withOpacity(
@@ -24,7 +31,6 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
     ),
     scrolledUnderElevation: kAppBarElevation,
     surfaceTintColor: colorScheme.surface,
-    toolbarHeight: kAppBarHeight,
     elevation: kAppBarElevation,
     systemOverlayStyle: colorScheme.isLight
         ? SystemUiOverlayStyle.light
@@ -35,14 +41,19 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
           color: colorScheme.onSurface,
           fontWeight: FontWeight.normal,
         ),
-    iconTheme: IconThemeData(color: colorScheme.onSurface),
+    iconTheme: IconThemeData(
+      color: colorScheme.onSurface,
+      size: isMobile ? kComfortableIconSize : kCompactIconSize,
+    ),
     actionsIconTheme: IconThemeData(color: colorScheme.onSurface),
+    toolbarHeight: isMobile ? kComfortableAppBarHeight : kCompactAppBarHeight,
   );
 }
 
 InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
   final radius = BorderRadius.circular(kButtonRadius);
   const width = 1.0;
+  const strokeAlign = 0.0;
   final fill = colorScheme.isLight
       ? const Color(0xFFededed)
       : const Color.fromARGB(255, 40, 40, 40);
@@ -52,6 +63,12 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
   final disabledBorder = colorScheme.isLight
       ? const Color.fromARGB(255, 237, 237, 237)
       : const Color.fromARGB(255, 67, 67, 67);
+
+  const textStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+  );
+
   return InputDecorationTheme(
     filled: true,
     fillColor: fill,
@@ -67,23 +84,55 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
       borderRadius: radius,
     ),
     enabledBorder: OutlineInputBorder(
+      borderSide:
+          BorderSide(width: width, color: border, strokeAlign: strokeAlign),
+      borderRadius: radius,
+    ),
+    activeIndicatorBorder:
+        const BorderSide(width: width, strokeAlign: strokeAlign),
+    outlineBorder: const BorderSide(width: width, strokeAlign: strokeAlign),
+    focusedErrorBorder: OutlineInputBorder(
       borderSide: BorderSide(
         width: width,
-        color: border,
+        color: colorScheme.error,
+        strokeAlign: strokeAlign,
       ),
       borderRadius: radius,
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide(width: width, color: colorScheme.error),
+      borderSide: BorderSide(
+        width: width,
+        color: colorScheme.error,
+        strokeAlign: strokeAlign,
+      ),
       borderRadius: radius,
     ),
     disabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(width: width, color: disabledBorder),
+      borderSide: BorderSide(
+        width: width,
+        color: disabledBorder,
+        strokeAlign: strokeAlign,
+      ),
       borderRadius: radius,
     ),
-    isDense: true,
+    isDense: isMobile ? false : true,
     iconColor: colorScheme.onSurface,
-    contentPadding: const EdgeInsets.all(12),
+    contentPadding: isMobile
+        ? const EdgeInsets.all(12)
+        : const EdgeInsets.only(left: 12, right: 12, bottom: 9, top: 10),
+    helperStyle: isMobile ? null : textStyle,
+    hintStyle: isMobile ? null : textStyle,
+    labelStyle: isMobile ? null : textStyle,
+    suffixStyle: isMobile
+        ? null
+        : textStyle.copyWith(
+            color: colorScheme.onSurface.scale(lightness: -0.2),
+          ),
+    prefixStyle: isMobile
+        ? null
+        : textStyle.copyWith(
+            color: colorScheme.onSurface.scale(lightness: -0.2),
+          ),
   );
 }
 
@@ -100,9 +149,18 @@ const _tooltipThemeData = TooltipThemeData(
 
 // Buttons
 
-const _commonButtonStyle = ButtonStyle(
-  visualDensity: VisualDensity.standard,
-  padding: MaterialStatePropertyAll(EdgeInsets.symmetric(horizontal: 16)),
+final _commonButtonStyle = ButtonStyle(
+  padding: isMobile
+      ? const MaterialStatePropertyAll(
+          EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 18,
+          ),
+        )
+      : const MaterialStatePropertyAll(EdgeInsets.all(16)),
+  iconSize: isMobile
+      ? const MaterialStatePropertyAll(kComfortableButtonIconSize)
+      : const MaterialStatePropertyAll(kCompactButtonIconSize),
 );
 
 final _buttonThemeData = ButtonThemeData(
@@ -186,8 +244,70 @@ FilledButtonThemeData _createFilledButtonTheme(
   );
 }
 
+IconButtonThemeData _createIconButtonTheme(ColorScheme colorScheme) {
+  return IconButtonThemeData(
+    style: IconButton.styleFrom(
+      padding: isMobile ? null : EdgeInsets.zero,
+      foregroundColor: colorScheme.onSurface,
+      highlightColor: colorScheme.onSurface.withOpacity(0.05),
+      surfaceTintColor: colorScheme.background,
+      fixedSize: isMobile
+          ? null
+          : const Size(kCompactButtonHeight, kCompactButtonHeight),
+      minimumSize: isMobile
+          ? null
+          : const Size(kCompactButtonHeight, kCompactButtonHeight),
+      maximumSize: isMobile
+          ? null
+          : const Size(kCompactButtonHeight, kCompactButtonHeight),
+      tapTargetSize: isMobile
+          ? MaterialTapTargetSize.padded
+          : MaterialTapTargetSize.shrinkWrap,
+      iconSize: isMobile ? kComfortableIconSize : kCompactIconSize,
+    ),
+  );
+}
+
+MenuButtonThemeData _createMenuItemTheme(
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+) {
+  return MenuButtonThemeData(
+    style: ButtonStyle(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      alignment: Alignment.center,
+      textStyle: MaterialStatePropertyAll(textTheme.bodyMedium),
+      maximumSize: MaterialStatePropertyAll(
+        Size(
+          999,
+          (isMobile ? kComfortableButtonHeight : kCompactButtonHeight) + 10,
+        ),
+      ),
+      minimumSize: MaterialStatePropertyAll(
+        Size(
+          20,
+          (isMobile ? kComfortableButtonHeight : kCompactButtonHeight) + 10,
+        ),
+      ),
+    ),
+  );
+}
+
 ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
   return ToggleButtonsThemeData(
+    constraints: isMobile
+        ? const BoxConstraints(
+            minHeight: kComfortableButtonHeight,
+            minWidth: 60,
+            maxWidth: double.infinity,
+            maxHeight: kComfortableButtonHeight,
+          )
+        : const BoxConstraints(
+            minHeight: kCompactButtonHeight,
+            minWidth: 50,
+            maxWidth: double.infinity,
+            maxHeight: kCompactButtonHeight,
+          ),
     borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
     borderColor: colorScheme.isHighContrast
         ? colorScheme.outlineVariant
@@ -204,7 +324,7 @@ ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
 
 DialogTheme _createDialogTheme(ColorScheme colorScheme) {
   final bgColor = colorScheme.brightness == Brightness.dark
-      ? YaruColors.jet
+      ? YaruColors.darkJet
       : YaruColors.porcelain;
   return DialogTheme(
     backgroundColor: bgColor,
@@ -442,13 +562,21 @@ MenuThemeData _createMenuTheme(ColorScheme colorScheme) {
 
 DropdownMenuThemeData _createDropdownMenuTheme(ColorScheme colorScheme) {
   return DropdownMenuThemeData(
-    inputDecorationTheme: _createInputDecorationTheme(colorScheme),
+    inputDecorationTheme: _createInputDecorationTheme(colorScheme).copyWith(
+      constraints: BoxConstraints(
+        maxHeight: isMobile ? kComfortableButtonHeight : kCompactButtonHeight,
+        minHeight: isMobile ? kComfortableButtonHeight : kCompactButtonHeight,
+      ),
+    ),
     menuStyle: _createMenuStyle(colorScheme),
   );
 }
 
 NavigationBarThemeData _createNavigationBarTheme(ColorScheme colorScheme) {
   return NavigationBarThemeData(
+    height: isMobile
+        ? kComfortableNavigationBarHeight
+        : kCompactNavigationBarHeight,
     backgroundColor: colorScheme.surface,
     surfaceTintColor: colorScheme.surface,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
@@ -464,9 +592,13 @@ NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
   return NavigationRailThemeData(
     backgroundColor: colorScheme.surface,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
-    selectedIconTheme: IconThemeData(color: colorScheme.onSurface),
+    selectedIconTheme: IconThemeData(
+      color: colorScheme.onSurface,
+      size: isMobile ? kComfortableIconSize : kCompactIconSize,
+    ),
     unselectedIconTheme: IconThemeData(
       color: colorScheme.onSurface.withOpacity(0.8),
+      size: isMobile ? kComfortableIconSize : kCompactIconSize,
     ),
   );
 }
@@ -486,6 +618,36 @@ DrawerThemeData _createDrawerTheme(ColorScheme colorScheme) {
   );
 }
 
+SnackBarThemeData _createSnackBarTheme(ColorScheme colorScheme) {
+  const fg = Colors.white;
+  return SnackBarThemeData(
+    width: kSnackBarWidth,
+    backgroundColor: const Color.fromARGB(255, 20, 20, 20).withOpacity(0.95),
+    closeIconColor: fg,
+    actionTextColor: Colors.white,
+    contentTextStyle: const TextStyle(color: fg),
+    actionBackgroundColor: Colors.transparent,
+    disabledActionTextColor: fg.withOpacity(0.7),
+    disabledActionBackgroundColor: Colors.transparent,
+    behavior: SnackBarBehavior.floating,
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(
+        isMobile ? kComfortableButtonHeight : kCompactButtonHeight,
+      ),
+    ),
+  );
+}
+
+ChipThemeData _createChipTheme({
+  required Color selectedColor,
+  required ColorScheme colorScheme,
+}) {
+  return ChipThemeData(
+    selectedColor: selectedColor.withOpacity(.4),
+  );
+}
+
 /// Helper function to create a new Yaru theme
 ThemeData createYaruTheme({
   required ColorScheme colorScheme,
@@ -497,18 +659,15 @@ ThemeData createYaruTheme({
   dividerColor ??= colorScheme.isHighContrast
       ? colorScheme.outlineVariant
       : colorScheme.outline;
+  final textTheme = createTextTheme(colorScheme.onSurface);
   return ThemeData.from(
     useMaterial3: useMaterial3,
     colorScheme: colorScheme,
   ).copyWith(
-    iconButtonTheme: IconButtonThemeData(
-      style: IconButton.styleFrom(
-        foregroundColor: colorScheme.onSurface,
-        highlightColor: colorScheme.onSurface.withOpacity(0.05),
-        surfaceTintColor: colorScheme.background,
-      ),
+    iconTheme: IconThemeData(
+      color: colorScheme.onSurface,
+      size: isMobile ? kComfortableIconSize : kCompactIconSize,
     ),
-    iconTheme: IconThemeData(color: colorScheme.onSurface),
     primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
     progressIndicatorTheme: _createProgressIndicatorTheme(colorScheme),
     pageTransitionsTheme: YaruPageTransitionsTheme.horizontal,
@@ -521,7 +680,7 @@ ThemeData createYaruTheme({
     cardColor: colorScheme.surface,
     dividerColor: dividerColor,
     dialogBackgroundColor: colorScheme.background,
-    textTheme: createTextTheme(colorScheme.onSurface),
+    textTheme: textTheme,
     indicatorColor: colorScheme.primary,
     applyElevationOverlayColor: colorScheme.isDark,
     buttonTheme: _buttonThemeData,
@@ -535,6 +694,8 @@ ThemeData createYaruTheme({
       colorScheme,
     ),
     textButtonTheme: _createTextButtonTheme(colorScheme),
+    iconButtonTheme: _createIconButtonTheme(colorScheme),
+    menuButtonTheme: _createMenuItemTheme(colorScheme, textTheme),
     switchTheme: _createSwitchTheme(colorScheme),
     checkboxTheme: _createCheckBoxTheme(colorScheme),
     radioTheme: _createRadioTheme(colorScheme),
@@ -556,7 +717,8 @@ ThemeData createYaruTheme({
     bottomAppBarTheme: BottomAppBarTheme(color: colorScheme.surface),
     navigationBarTheme: _createNavigationBarTheme(colorScheme),
     navigationRailTheme: _createNavigationRailTheme(colorScheme),
-    dividerTheme: DividerThemeData(color: dividerColor),
+    dividerTheme:
+        DividerThemeData(color: dividerColor, space: 1.0, thickness: 0.0),
     badgeTheme: BadgeThemeData(
       backgroundColor: elevatedButtonColor ?? colorScheme.primary,
       textColor: contrastColor(elevatedButtonColor ?? colorScheme.primary),
@@ -570,6 +732,11 @@ ThemeData createYaruTheme({
     listTileTheme: ListTileThemeData(
       iconColor: colorScheme.onSurface.withOpacity(0.8),
     ),
+    snackBarTheme: _createSnackBarTheme(colorScheme),
+    chipTheme: _createChipTheme(
+      selectedColor: elevatedButtonColor ?? colorScheme.primary,
+      colorScheme: colorScheme,
+    ),
   );
 }
 
@@ -580,6 +747,13 @@ ThemeData createYaruLightTheme({
   Color? elevatedButtonTextColor,
   bool? useMaterial3 = true,
 }) {
+  final secondary = primaryColor.scale(lightness: 0.2).cap(saturation: .9);
+  final secondaryContainer =
+      primaryColor.scale(lightness: 0.85).cap(saturation: .5);
+  final tertiary = primaryColor.scale(lightness: 0.5).cap(saturation: .8);
+  final tertiaryContainer =
+      primaryColor.scale(lightness: 0.75).cap(saturation: .75);
+
   final colorScheme = ColorScheme.fromSeed(
     seedColor: primaryColor,
     error: YaruColors.light.error,
@@ -588,25 +762,24 @@ ThemeData createYaruLightTheme({
     primary: primaryColor,
     onPrimary: contrastColor(primaryColor),
     primaryContainer: YaruColors.porcelain,
-    onPrimaryContainer: YaruColors.inkstone,
-    inversePrimary: YaruColors.inkstone,
-    secondary: elevatedButtonColor ?? primaryColor,
-    onSecondary: contrastColor(elevatedButtonColor ?? primaryColor),
-    secondaryContainer:
-        elevatedButtonColor?.withOpacity(0.4) ?? primaryColor.withOpacity(0.4),
-    onSecondaryContainer: elevatedButtonTextColor ?? YaruColors.jet,
+    onPrimaryContainer: YaruColors.jet,
+    inversePrimary: YaruColors.jet,
+    secondary: secondary,
+    onSecondary: contrastColor(secondary),
+    secondaryContainer: secondaryContainer,
+    onSecondaryContainer: contrastColor(secondaryContainer),
     background: YaruColors.porcelain,
-    onBackground: YaruColors.inkstone,
+    onBackground: YaruColors.jet,
     surface: Colors.white,
-    onSurface: YaruColors.inkstone,
+    onSurface: YaruColors.jet,
     inverseSurface: YaruColors.jet,
     onInverseSurface: YaruColors.porcelain,
     surfaceTint: YaruColors.warmGrey,
     surfaceVariant: YaruColors.warmGrey,
-    tertiary: const Color(0xFF18b6ec),
-    onTertiary: Colors.white,
-    tertiaryContainer: const Color(0xFF18b6ec),
-    onTertiaryContainer: Colors.white,
+    tertiary: tertiary,
+    onTertiary: contrastColor(tertiary),
+    tertiaryContainer: tertiaryContainer,
+    onTertiaryContainer: contrastColor(tertiaryContainer),
     onSurfaceVariant: YaruColors.coolGrey,
     outline: const Color.fromARGB(255, 221, 221, 221),
     outlineVariant: Colors.black,
@@ -629,6 +802,15 @@ ThemeData createYaruDarkTheme({
   bool? useMaterial3 = true,
   bool highContrast = false,
 }) {
+  final secondary = primaryColor.scale(lightness: -0.3, saturation: -0.15);
+  final secondaryContainer = primaryColor
+      .scale(lightness: -0.6, saturation: -0.75)
+      .capDown(lightness: .175);
+  final tertiary = primaryColor.scale(lightness: -0.5, saturation: -0.25);
+  final tertiaryContainer = primaryColor
+      .scale(lightness: -0.5, saturation: -0.65)
+      .capDown(lightness: .2);
+
   final colorScheme = ColorScheme.fromSeed(
     seedColor: primaryColor,
     error: YaruColors.dark.error,
@@ -639,13 +821,11 @@ ThemeData createYaruDarkTheme({
     onPrimary: contrastColor(primaryColor),
     onPrimaryContainer: YaruColors.porcelain,
     inversePrimary: YaruColors.porcelain,
-    secondary: elevatedButtonColor ?? primaryColor,
-    onSecondary: contrastColor(elevatedButtonColor ?? primaryColor),
-    secondaryContainer:
-        elevatedButtonColor?.withOpacity(0.4) ?? primaryColor.withOpacity(0.4),
-    onSecondaryContainer:
-        highContrast ? Colors.white : (elevatedButtonTextColor ?? Colors.white),
-    background: YaruColors.jet,
+    secondary: secondary,
+    onSecondary: contrastColor(primaryColor.scale(lightness: -0.25)),
+    secondaryContainer: secondaryContainer,
+    onSecondaryContainer: Colors.white,
+    background: YaruColors.darkJet,
     onBackground: YaruColors.porcelain,
     surface: YaruColors.jet,
     onSurface: YaruColors.porcelain,
@@ -653,9 +833,9 @@ ThemeData createYaruDarkTheme({
     onInverseSurface: YaruColors.inkstone,
     surfaceTint: YaruColors.coolGrey,
     surfaceVariant: const Color.fromARGB(255, 34, 34, 34),
-    tertiary: const Color(0xFF18b6ec),
+    tertiary: tertiary,
     onTertiary: YaruColors.porcelain,
-    tertiaryContainer: const Color(0xFF18b6ec),
+    tertiaryContainer: tertiaryContainer,
     onTertiaryContainer: YaruColors.porcelain,
     onSurfaceVariant: YaruColors.warmGrey,
     outline: const Color.fromARGB(255, 68, 68, 68),

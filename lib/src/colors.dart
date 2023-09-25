@@ -89,6 +89,9 @@ class YaruColors {
   /// Jet
   static const Color jet = Color(0xFF2B2B2B);
 
+  /// Dark Jet
+  static const Color darkJet = Color(0xFF252525);
+
   /// Light title bar
   static const Color titleBarLight = Color(0xFFEBEBEB);
 
@@ -245,6 +248,50 @@ extension YaruColorExtension on Color {
         .withHue(hue ?? hslColor.hue)
         .withSaturation(saturation ?? hslColor.saturation)
         .withLightness(lightness ?? hslColor.lightness)
+        .toColor();
+  }
+
+  Color cap({
+    double alpha = 1.0,
+    double saturation = 1.0,
+    double lightness = 1.0,
+  }) {
+    assert(alpha >= 0.0 && alpha <= 1.0);
+    assert(saturation >= 0.0 && saturation <= 1.0);
+    assert(lightness >= 0.0 && lightness <= 1.0);
+
+    final hslColor = _getPatchedHslColor();
+
+    return hslColor
+        .withAlpha(hslColor.alpha <= alpha ? hslColor.alpha : alpha)
+        .withSaturation(
+          hslColor.saturation <= saturation ? hslColor.saturation : saturation,
+        )
+        .withLightness(
+          hslColor.lightness <= lightness ? hslColor.lightness : lightness,
+        )
+        .toColor();
+  }
+
+  Color capDown({
+    double alpha = 0.0,
+    double saturation = 0.0,
+    double lightness = 0.0,
+  }) {
+    assert(alpha >= 0.0 && alpha <= 1.0);
+    assert(saturation >= 0.0 && saturation <= 1.0);
+    assert(lightness >= 0.0 && lightness <= 1.0);
+
+    final hslColor = _getPatchedHslColor();
+
+    return hslColor
+        .withAlpha(hslColor.alpha >= alpha ? hslColor.alpha : alpha)
+        .withSaturation(
+          hslColor.saturation >= saturation ? hslColor.saturation : saturation,
+        )
+        .withLightness(
+          hslColor.lightness >= lightness ? hslColor.lightness : lightness,
+        )
         .toColor();
   }
 
