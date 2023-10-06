@@ -10,23 +10,23 @@ class Chips extends StatelessWidget {
       spacing: kWrapSpacing,
       runSpacing: kWrapSpacing,
       children: [
-        const Chip(label: Text('Ch-ch-ch-Chip n Dale ')),
+        const Chip(label: Text('Ch-ch-ch-Chip n Dale')),
         Chip(
           label: const Text('Rescue Rangers'),
           onDeleted: () {},
         ),
         const ChoiceChip(
-          label: Text('Ch-ch-ch-Chip n Dale '),
+          label: Text('Ch-ch-ch-Chip n Dale'),
           selected: false,
           onSelected: null,
         ),
         ChoiceChip(
-          label: const Text('When there s danger '),
+          label: const Text("When there's danger"),
           selected: true,
           onSelected: (value) {},
         ),
         const ChoiceChip(
-          label: Text('No,no it never fails'),
+          label: Text('No, no, it never fails'),
           selected: true,
           onSelected: null,
         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yaru_example/src/constants.dart';
 
-class ToggleAbles extends StatelessWidget {
-  const ToggleAbles({super.key});
+class Toggleables extends StatelessWidget {
+  const Toggleables({super.key});
 
   @override
   Widget build(BuildContext context) {
