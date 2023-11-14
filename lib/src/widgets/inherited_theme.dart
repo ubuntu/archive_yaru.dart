@@ -7,23 +7,6 @@ import 'package:platform/platform.dart';
 import 'package:yaru/src/settings.dart';
 import 'package:yaru/yaru.dart';
 
-YaruVariant? _detectYaruVariant(Platform platform) {
-  final desktop = !kIsWeb
-      ? platform.environment['XDG_CURRENT_DESKTOP']?.toUpperCase()
-      : null;
-  if (desktop != null) {
-    if (desktop.contains('BUDGIE')) return YaruVariant.ubuntuBudgieBlue;
-    if (desktop.contains('CINNAMON')) return YaruVariant.ubuntuCinnamonBrown;
-    if (desktop.contains('GNOME')) return YaruVariant.orange;
-    if (desktop.contains('KDE')) return YaruVariant.kubuntuBlue;
-    if (desktop.contains('LXQT')) return YaruVariant.lubuntuBlue;
-    if (desktop.contains('MATE')) return YaruVariant.ubuntuMateGreen;
-    if (desktop.contains('UNITY')) return YaruVariant.ubuntuUnityPurple;
-    if (desktop.contains('XFCE')) return YaruVariant.xubuntuBlue;
-  }
-  return null;
-}
-
 /// Applies Yaru theme to descendant widgets.
 ///
 /// Descendant widgets obtain the current theme's [YaruThemeData] object using
@@ -153,7 +136,10 @@ class _YaruThemeState extends State<YaruTheme> {
     super.initState();
     if (widget.data.variant == null && canDetectVariant()) {
       _settings = widget._settings ?? YaruSettings();
-      _variant = resolveVariant(_settings?.getThemeName());
+      _variant = YaruVariant.resolve(
+        platform: widget._platform,
+        name: _settings?.getThemeName(),
+      );
       _subscription = _settings!.themeNameChanged.listen(updateVariant);
     }
   }
@@ -171,28 +157,18 @@ class _YaruThemeState extends State<YaruTheme> {
   }
 
   // "Yaru-prussiangreen-dark" => YaruAccent.prussianGreen
-  YaruVariant? resolveVariant(String? name) {
-    if (name?.endsWith('-dark') == true) {
-      name = name!.substring(0, name.length - 5);
-    }
-    if (name?.startsWith('Yaru-') == true) {
-      name = name!.substring(5);
-    }
-    if (name == 'Yaru') {
-      return YaruVariant.orange;
-    }
-    for (final value in YaruVariant.values) {
-      if (value.name.toLowerCase() == name?.toLowerCase()) {
-        return value;
-      }
-    }
-    return _detectYaruVariant(widget._platform);
-  }
 
   void updateVariant([String? value]) {
     assert(canDetectVariant());
     final name = value ?? _settings?.getThemeName();
-    setState(() => _variant = resolveVariant(name));
+    setState(
+      () {
+        _variant = YaruVariant.resolve(
+          platform: widget._platform,
+          name: name,
+        );
+      },
+    );
   }
 
   ThemeMode resolveMode() {

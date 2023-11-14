@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:platform/platform.dart';
 import 'package:yaru/src/colors.dart';
 import 'package:yaru/src/themes/kubuntu.dart';
 import 'package:yaru/src/themes/lubuntu.dart';
@@ -75,6 +77,49 @@ enum YaruVariant {
     magenta,
     red,
   ];
+
+  static YaruVariant? _detect(Platform platform) {
+    final desktop = !kIsWeb
+        ? platform.environment['XDG_CURRENT_DESKTOP']?.toUpperCase()
+        : null;
+
+    if (desktop == null) {
+      return null;
+    }
+
+    if (desktop.contains('BUDGIE')) return YaruVariant.ubuntuBudgieBlue;
+    if (desktop.contains('CINNAMON')) return YaruVariant.ubuntuCinnamonBrown;
+    if (desktop.contains('GNOME')) return YaruVariant.orange;
+    if (desktop.contains('KDE')) return YaruVariant.kubuntuBlue;
+    if (desktop.contains('LXQT')) return YaruVariant.lubuntuBlue;
+    if (desktop.contains('MATE')) return YaruVariant.ubuntuMateGreen;
+    if (desktop.contains('UNITY')) return YaruVariant.ubuntuUnityPurple;
+    if (desktop.contains('XFCE')) return YaruVariant.xubuntuBlue;
+
+    return null;
+  }
+
+  static YaruVariant? resolve({required Platform platform, String? name}) {
+    if (name?.endsWith('-dark') == true) {
+      name = name!.substring(0, name.length - 5);
+    }
+
+    if (name?.startsWith('Yaru-') == true) {
+      name = name!.substring(5);
+    }
+
+    if (name == 'Yaru') {
+      return YaruVariant.orange;
+    }
+
+    for (final value in YaruVariant.values) {
+      if (value.name.toLowerCase() == name?.toLowerCase()) {
+        return value;
+      }
+    }
+
+    return _detect(platform);
+  }
 }
 
 final _yaruLightThemes = <YaruVariant, ThemeData>{
