@@ -19,7 +19,7 @@ class _ControlsViewState extends State<ControlsView>
   final items = const <(Widget, Widget)>[
     (Tab(text: 'Buttons'), Buttons()),
     (Tab(text: 'Fabs'), Fabs()),
-    (Tab(text: 'ToggleAbles'), ToggleAbles()),
+    (Tab(text: 'Toggleables'), Toggleables()),
     (Tab(text: 'Chips'), Chips()),
     (Tab(text: 'Progress'), Progress()),
   ];
