@@ -43,10 +43,10 @@ AppBarTheme _createAppBarTheme(ColorScheme colorScheme) {
         ),
     iconTheme: IconThemeData(
       color: colorScheme.onSurface,
-      size: isMobile ? kComfortableIconSize : kCompactIconSize,
+      size: kCompactIconSize,
     ),
     actionsIconTheme: IconThemeData(color: colorScheme.onSurface),
-    toolbarHeight: isMobile ? kComfortableAppBarHeight : kCompactAppBarHeight,
+    toolbarHeight: kCompactAppBarHeight,
   );
 }
 
@@ -115,24 +115,19 @@ InputDecorationTheme _createInputDecorationTheme(ColorScheme colorScheme) {
       ),
       borderRadius: radius,
     ),
-    isDense: isMobile ? false : true,
+    isDense: true,
     iconColor: colorScheme.onSurface,
-    contentPadding: isMobile
-        ? const EdgeInsets.all(12)
-        : const EdgeInsets.only(left: 12, right: 12, bottom: 9, top: 10),
-    helperStyle: isMobile ? null : textStyle,
-    hintStyle: isMobile ? null : textStyle,
-    labelStyle: isMobile ? null : textStyle,
-    suffixStyle: isMobile
-        ? null
-        : textStyle.copyWith(
-            color: colorScheme.onSurface.scale(lightness: -0.2),
-          ),
-    prefixStyle: isMobile
-        ? null
-        : textStyle.copyWith(
-            color: colorScheme.onSurface.scale(lightness: -0.2),
-          ),
+    contentPadding:
+        const EdgeInsets.only(left: 12, right: 12, bottom: 9, top: 10),
+    helperStyle: textStyle,
+    hintStyle: textStyle,
+    labelStyle: textStyle,
+    suffixStyle: textStyle.copyWith(
+      color: colorScheme.onSurface.scale(lightness: -0.2),
+    ),
+    prefixStyle: textStyle.copyWith(
+      color: colorScheme.onSurface.scale(lightness: -0.2),
+    ),
   );
 }
 
@@ -149,18 +144,9 @@ const _tooltipThemeData = TooltipThemeData(
 
 // Buttons
 
-final _commonButtonStyle = ButtonStyle(
-  padding: isMobile
-      ? const MaterialStatePropertyAll(
-          EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 18,
-          ),
-        )
-      : const MaterialStatePropertyAll(EdgeInsets.all(16)),
-  iconSize: isMobile
-      ? const MaterialStatePropertyAll(kComfortableButtonIconSize)
-      : const MaterialStatePropertyAll(kCompactButtonIconSize),
+const _commonButtonStyle = ButtonStyle(
+  padding: MaterialStatePropertyAll(EdgeInsets.all(16)),
+  iconSize: MaterialStatePropertyAll(kCompactButtonIconSize),
 );
 
 final _buttonThemeData = ButtonThemeData(
@@ -247,23 +233,15 @@ FilledButtonThemeData _createFilledButtonTheme(
 IconButtonThemeData _createIconButtonTheme(ColorScheme colorScheme) {
   return IconButtonThemeData(
     style: IconButton.styleFrom(
-      padding: isMobile ? null : EdgeInsets.zero,
+      padding: EdgeInsets.zero,
       foregroundColor: colorScheme.onSurface,
       highlightColor: colorScheme.onSurface.withOpacity(0.05),
       surfaceTintColor: colorScheme.background,
-      fixedSize: isMobile
-          ? null
-          : const Size(kCompactButtonHeight, kCompactButtonHeight),
-      minimumSize: isMobile
-          ? null
-          : const Size(kCompactButtonHeight, kCompactButtonHeight),
-      maximumSize: isMobile
-          ? null
-          : const Size(kCompactButtonHeight, kCompactButtonHeight),
-      tapTargetSize: isMobile
-          ? MaterialTapTargetSize.padded
-          : MaterialTapTargetSize.shrinkWrap,
-      iconSize: isMobile ? kComfortableIconSize : kCompactIconSize,
+      fixedSize: const Size(kCompactButtonHeight, kCompactButtonHeight),
+      minimumSize: const Size(kCompactButtonHeight, kCompactButtonHeight),
+      maximumSize: const Size(kCompactButtonHeight, kCompactButtonHeight),
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      iconSize: kCompactIconSize,
     ),
   );
 }
@@ -277,16 +255,16 @@ MenuButtonThemeData _createMenuItemTheme(
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       alignment: Alignment.center,
       textStyle: MaterialStatePropertyAll(textTheme.bodyMedium),
-      maximumSize: MaterialStatePropertyAll(
+      maximumSize: const MaterialStatePropertyAll(
         Size(
           999,
-          (isMobile ? kComfortableButtonHeight : kCompactButtonHeight) + 10,
+          (kCompactButtonHeight) + 10,
         ),
       ),
-      minimumSize: MaterialStatePropertyAll(
+      minimumSize: const MaterialStatePropertyAll(
         Size(
           20,
-          (isMobile ? kComfortableButtonHeight : kCompactButtonHeight) + 10,
+          (kCompactButtonHeight) + 10,
         ),
       ),
     ),
@@ -295,19 +273,12 @@ MenuButtonThemeData _createMenuItemTheme(
 
 ToggleButtonsThemeData _createToggleButtonsTheme(ColorScheme colorScheme) {
   return ToggleButtonsThemeData(
-    constraints: isMobile
-        ? const BoxConstraints(
-            minHeight: kComfortableButtonHeight,
-            minWidth: 60,
-            maxWidth: double.infinity,
-            maxHeight: kComfortableButtonHeight,
-          )
-        : const BoxConstraints(
-            minHeight: kCompactButtonHeight,
-            minWidth: 50,
-            maxWidth: double.infinity,
-            maxHeight: kCompactButtonHeight,
-          ),
+    constraints: const BoxConstraints(
+      minHeight: kCompactButtonHeight,
+      minWidth: 50,
+      maxWidth: double.infinity,
+      maxHeight: kCompactButtonHeight,
+    ),
     borderRadius: const BorderRadius.all(Radius.circular(kButtonRadius)),
     borderColor: colorScheme.isHighContrast
         ? colorScheme.outlineVariant
@@ -563,9 +534,9 @@ MenuThemeData _createMenuTheme(ColorScheme colorScheme) {
 DropdownMenuThemeData _createDropdownMenuTheme(ColorScheme colorScheme) {
   return DropdownMenuThemeData(
     inputDecorationTheme: _createInputDecorationTheme(colorScheme).copyWith(
-      constraints: BoxConstraints(
-        maxHeight: isMobile ? kComfortableButtonHeight : kCompactButtonHeight,
-        minHeight: isMobile ? kComfortableButtonHeight : kCompactButtonHeight,
+      constraints: const BoxConstraints(
+        maxHeight: kCompactButtonHeight,
+        minHeight: kCompactButtonHeight,
       ),
     ),
     menuStyle: _createMenuStyle(colorScheme),
@@ -574,9 +545,7 @@ DropdownMenuThemeData _createDropdownMenuTheme(ColorScheme colorScheme) {
 
 NavigationBarThemeData _createNavigationBarTheme(ColorScheme colorScheme) {
   return NavigationBarThemeData(
-    height: isMobile
-        ? kComfortableNavigationBarHeight
-        : kCompactNavigationBarHeight,
+    height: kCompactNavigationBarHeight,
     backgroundColor: colorScheme.surface,
     surfaceTintColor: colorScheme.surface,
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
@@ -594,11 +563,11 @@ NavigationRailThemeData _createNavigationRailTheme(ColorScheme colorScheme) {
     indicatorColor: colorScheme.onSurface.withOpacity(0.1),
     selectedIconTheme: IconThemeData(
       color: colorScheme.onSurface,
-      size: isMobile ? kComfortableIconSize : kCompactIconSize,
+      size: kCompactIconSize,
     ),
     unselectedIconTheme: IconThemeData(
       color: colorScheme.onSurface.withOpacity(0.8),
-      size: isMobile ? kComfortableIconSize : kCompactIconSize,
+      size: kCompactIconSize,
     ),
   );
 }
@@ -633,7 +602,7 @@ SnackBarThemeData _createSnackBarTheme(ColorScheme colorScheme) {
     elevation: 0,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(
-        isMobile ? kComfortableButtonHeight : kCompactButtonHeight,
+        kCompactButtonHeight,
       ),
     ),
   );
@@ -660,13 +629,29 @@ ThemeData createYaruTheme({
       ? colorScheme.outlineVariant
       : colorScheme.outline;
   final textTheme = createTextTheme(colorScheme.onSurface);
+
+  if (isMobile) {
+    return ThemeData(
+      textTheme: textTheme,
+      dividerColor: dividerColor,
+      scaffoldBackgroundColor: colorScheme.surface,
+      dividerTheme: DividerThemeData(
+        color: dividerColor,
+        space: 1.0,
+        thickness: 1.0,
+      ),
+      useMaterial3: true,
+      colorScheme: colorScheme,
+    );
+  }
+
   return ThemeData.from(
     useMaterial3: useMaterial3,
     colorScheme: colorScheme,
   ).copyWith(
     iconTheme: IconThemeData(
       color: colorScheme.onSurface,
-      size: isMobile ? kComfortableIconSize : kCompactIconSize,
+      size: kCompactIconSize,
     ),
     primaryIconTheme: IconThemeData(color: colorScheme.onSurface),
     progressIndicatorTheme: _createProgressIndicatorTheme(colorScheme),
@@ -727,7 +712,7 @@ ThemeData createYaruTheme({
       mainAxisMargin: 3.0,
       crossAxisMargin: 3.0,
     ),
-    splashFactory: isMobile ? null : NoSplash.splashFactory,
+    splashFactory: NoSplash.splashFactory,
     sliderTheme: _createSliderTheme(colorScheme),
     drawerTheme: _createDrawerTheme(colorScheme),
     listTileTheme: ListTileThemeData(

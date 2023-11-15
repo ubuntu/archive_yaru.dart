@@ -103,9 +103,10 @@ class HomePageState extends State<HomePage> {
                   onDestinationSelected: (index) =>
                       setState(() => _selectedIndex = index),
                 ),
-                const VerticalDivider(
-                  width: 0.0,
-                ),
+                if (!isMobile)
+                  const VerticalDivider(
+                    width: 0.0,
+                  ),
                 Expanded(
                   child: Center(
                     child: _items.entries.elementAt(_selectedIndex).key,
@@ -121,9 +122,10 @@ class HomePageState extends State<HomePage> {
                     child: _items.entries.elementAt(_selectedIndex).key,
                   ),
                 ),
-                const Divider(
-                  height: 0.0,
-                ),
+                if (!isMobile)
+                  const Divider(
+                    height: 0.0,
+                  ),
                 NavigationBar(
                   destinations: [
                     for (final item in _items.entries)
