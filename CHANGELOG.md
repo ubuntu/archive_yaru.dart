@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.2.0 (2023-11-15)
+
+## What's Changed
+* ci: remove CLA check by @jpnurmi in https://github.com/ubuntu/yaru.dart/pull/365
+* feat: added no splash factory by @TheLiux in https://github.com/ubuntu/yaru.dart/pull/395
+* chore: fixed typos by @TheLiux in https://github.com/ubuntu/yaru.dart/pull/402
+* fix: Improve android support by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/404
+
+## New Contributors
+* @TheLiux made their first contribution in https://github.com/ubuntu/yaru.dart/pull/395
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v1.1.0...v1.2.0
+
 ## 1.1.0 (2023-08-20)
 
 ## What's Changed
