@@ -370,7 +370,6 @@ extension _YaruThemeDataX on ThemeData {
     return copyWith(
       extensions: data.extensions,
       pageTransitionsTheme: data.pageTransitionsTheme,
-      useMaterial3: data.useMaterial3,
       visualDensity: data.visualDensity,
     );
   }
