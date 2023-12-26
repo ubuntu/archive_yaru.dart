@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.1 (2023-12-26)
+
+## What's Changed
+* fix: theming background color by @BLKKKBVSIK in https://github.com/ubuntu/yaru.dart/pull/405
+
+## New Contributors
+* @BLKKKBVSIK made their first contribution in https://github.com/ubuntu/yaru.dart/pull/405
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v1.2.0...v1.2.1
+
 ## 1.2.0 (2023-11-15)
 
 ## What's Changed
