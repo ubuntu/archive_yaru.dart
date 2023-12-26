@@ -754,7 +754,7 @@ ThemeData createYaruLightTheme({
     onSecondary: contrastColor(secondary),
     secondaryContainer: secondaryContainer,
     onSecondaryContainer: contrastColor(secondaryContainer),
-    background: YaruColors.porcelain,
+    background: Colors.white,
     onBackground: YaruColors.jet,
     surface: Colors.white,
     onSurface: YaruColors.jet,
