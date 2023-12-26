@@ -81,7 +81,7 @@ class YaruColors {
   final Color success;
 
   /// Porcelain
-  static const Color porcelain = Color(0xFFFFFFFF);
+  static const Color porcelain = Color(0xFFFAFAFA);
 
   /// Inkstone
   static const Color inkstone = Color(0xFF3B3B3B);
