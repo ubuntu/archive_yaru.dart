@@ -590,14 +590,11 @@ DrawerThemeData _createDrawerTheme(ColorScheme colorScheme) {
 SnackBarThemeData _createSnackBarTheme(ColorScheme colorScheme) {
   const fg = Colors.white;
   return SnackBarThemeData(
-    width: kSnackBarWidth,
-    backgroundColor: const Color.fromARGB(255, 20, 20, 20).withOpacity(0.95),
+    backgroundColor: const Color.fromARGB(250, 20, 20, 20),
     closeIconColor: fg,
-    actionTextColor: Colors.white,
+    actionTextColor: colorScheme.primary,
     contentTextStyle: const TextStyle(color: fg),
-    actionBackgroundColor: Colors.transparent,
     disabledActionTextColor: fg.withOpacity(0.7),
-    disabledActionBackgroundColor: Colors.transparent,
     behavior: SnackBarBehavior.floating,
     elevation: 0,
     shape: RoundedRectangleBorder(

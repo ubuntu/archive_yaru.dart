@@ -8,6 +8,7 @@ import 'package:yaru_example/src/controls/controls_view.dart';
 import 'package:yaru_example/src/fonts/fonts_view.dart';
 import 'package:yaru_example/src/home/color_disk.dart';
 import 'package:yaru_example/src/textfields/text_fields_view.dart';
+import 'package:yaru_example/src/utils.dart';
 import 'package:yaru_icons/yaru_icons.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
@@ -78,9 +79,13 @@ class HomePageState extends State<HomePage> {
           ),
         ),
         title: const _Title(),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: kWrapSpacing),
+        actions: [
+          IconButton(
+            onPressed: () => showSnack(context),
+            icon: const Icon(YaruIcons.plus),
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: kWrapSpacing),
             child: _ThemeButton(),
           ),
         ],

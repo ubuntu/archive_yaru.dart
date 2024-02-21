@@ -2,20 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yaru_example/src/constants.dart';
 import 'package:yaru_icons/yaru_icons.dart';
 
-class Buttons extends StatefulWidget {
+class Buttons extends StatelessWidget {
   const Buttons({super.key});
-
-  @override
-  State<Buttons> createState() => _ButtonsState();
-}
-
-class _ButtonsState extends State<Buttons> {
-  void incrementCounter() {
-    setState(() {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Yay! ❤️ for Yaru')));
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

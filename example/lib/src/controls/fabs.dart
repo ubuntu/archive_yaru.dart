@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yaru_example/src/constants.dart';
+import 'package:yaru_example/src/utils.dart';
 import 'package:yaru_icons/yaru_icons.dart';
 
 class Fabs extends StatelessWidget {
@@ -7,8 +8,7 @@ class Fabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void onPressed() => ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text('Yay! ❤️ for Yaru')));
+    void onPressed() => showSnack(context);
 
     return Wrap(
       spacing: kWrapSpacing,
