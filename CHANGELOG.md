@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.2 (2024-02-21)
+
+## What's Changed
+* fix(SnackBarTheme): Improve SnackBarTheme by @Feichtmeier in https://github.com/ubuntu/yaru.dart/pull/409
+
+
+**Full Changelog**: https://github.com/ubuntu/yaru.dart/compare/v1.2.1...v1.2.2
+
 ## 1.2.1 (2023-12-26)
 
 ## What's Changed
